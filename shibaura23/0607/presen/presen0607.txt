@@ -1,0 +1,103 @@
+Title::slide0
+::\newcommand{\hiduke}{0607}
+::\newcommand{\hako}[2][1]{\fbox{\raisebox{#1mm}{\mbox{}}\raisebox{-#1mm}{\mbox{}}\,\phantom{#2}\,}}
+::\newcommand{\hakoa}[2][1]{\fbox{\raisebox{#1mm}{\mbox{}}\raisebox{-#1mm}{\mbox{}}\,#2\,}}
+::\newcommand{\hakom}[2][1]{\hako[#1]{$#2$}}
+::\newcommand{\hakoma}[2][1]{\hakoa[#1]{$#2$}}
+::\def\rad{\;\mathrm{rad}}
+::\def\deg#1{#1^{\circ}}
+::\newcommand{\sbunsuu}[2]{\scalebox{0.6}{$\bunsuu{#1}{#2}$}}
+::\def\pow{$\hspace{-1.5mm}＾\hspace{-1mm}$}
+::\def\dlim{\displaystyle\lim}
+::\newcommand{\brd}[2][1]{\scalebox{#1}{\color{red}\fbox{\color{black}$#2$}}}
+::\newcommand\down[1][0.5zw]{\vspace{#1}\\}
+::\newcommand{\sfrac}[3][0.65]{\scalebox{#1}{$\frac{#2}{#3}$}}
+::\newcommand{\phn}[1]{\phantom{#1}}
+::\newcommand{\scb}[2][0.6]{\scalebox{#1}{#2}}
+::\newcommand{\dsum}{\displaystyle\sum}
+
+\def\MARU{}
+\renewcommand{\MARU}[1]{{\ooalign{\hfil$#1$\/\hfil\crcr\raise.167ex\hbox{\mathhexbox20D}}}}
+
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\hiduke-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\hiduke-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+\newcounter{ban}
+\setcounter{ban}{1}
+
+\newcommand{\monban}[1][\hiduke]{%
+#1-\theban\ %
+\addtocounter{ban}{1}%
+}
+
+\newcommand{\monbannoadd}[1][\hiduke]{%
+#1-\theban\ %
+%\addtocounter{ban}{1}%
+}
+
+\newcommand{\addban}{%
+\addtocounter{ban}{1}%%210614
+}
+
+\newcounter{edawidth}
+\newcounter{edactr}
+
+\newcommand{\seteda}[1]{
+\setcounter{edawidth}{#1}
+\setcounter{edactr}{1}
+}
+
+\newcommand{\eda}[2][\theedawidth ]{%
+\noindent\Ltab{#1 mm}{[\theedactr]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+
+%%%%%%%%%%%%
+main::KeTCindy
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+new::\ketcindy とは
+%repeat=1
+\slidepage
+
+itemize
+item::Cinderellaと連携して\TeX 用の図を作成
+item::\TeX のディストリビューション\\
+\hspace*{2zw}TeXLive, KeTTeX(TeXLiveのサブセット版)
+item::picture環境\\
+\hspace*{2zw}Tpic,Pict2e,Tikz
+item::Rとpdfビューアも用いる
+end
+
+%%%%%%%%%%%%
+new::\ketcindy のインストール
+%repeat=2
+\slidepage
+
+layer::{120}{0}
+%[2,-]::putnote::se{85}{47}::presen0607
+end
+
+itemize
+item::\TeX, Cinderella, R, KeTCindyパッケージ\vspace{-2mm}
+item::Windowsの場合のみSumatra(PDFビューア)も\vspace{-2mm}
+item::実は，Maxima, gcc の呼び出しもできる\vspace{-2mm}
+item::\href{https://s-takato.github.io/ketcindyorg/indexj.html}{KeTCindy Home}を参照\vspace{-2mm}
+%[2,-]::item::[課題]\monban インストールの状況(番号で)\\
+%[2,-]::コメントや質問(もしあったら)\seteda{35}\\
+%[2,-]::\eda[23]{TeX}\eda[37]{Cinderella}\eda{R}\\
+%[2,-]::\eda[40]{Sumatra}\eda{KeTCindy}
+end

@@ -1,0 +1,36 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) q1i1:(1-3*j)+(2-5*j)
+(%i7) q1i2:(10-7*j)-(3+9*j)
+(%i8) q1i3:((-4)+7*j)*(3+2*j)
+(%i9) q1i4:((-2)+6*j)*(2+6*j)
+(%i10) q1i5:(5+2*j)/(1-3*j)
+(%i11) q1i6:(1+j)/((-2)+5*j)-(4-2*j)/(2+5*j)
+(%i12) q1o1:ratsimp(ev(q1i1,j = %i))
+(%i13) q1o2:ratsimp(ev(q1i2,j = %i))
+(%i14) q1o3:ratsimp(ev(q1i3,j = %i))
+(%i15) q1o4:ratsimp(ev(q1i4,j = %i))
+(%i16) q1o5:ratsimp(ev(q1i5,j = %i))
+(%i17) q1o6:ratsimp(ev(q1i6,j = %i))
+(%i18) q1p5:realpart(q1o5)+imagpart(q1o5)*%i
+(%i19) disp(q1o1)
+3-8*%i
+
+(%i20) disp(q1o2)
+7-16*%i
+
+(%i21) disp(q1o3)
+13*%i-26
+
+(%i22) disp(q1o4)
+-40
+
+(%i23) disp(q1p5)
+(17*%i)/10-1/10
+
+(%i24) disp(q1o6)
+(17*%i+5)/29
+
+(%i25) closefile()
