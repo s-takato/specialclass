@@ -64,40 +64,134 @@ Title::slide0
 
 
 %%%%%%%%%%%%
-main::KeTCindy
-\slidepage[m]
+%%main::KeTCindy
+%%\slidepage[m]
 %%%%%%%%%%%%
 
 %%%%%%%%%%%%
 new::\ketcindy とは
-%repeat=1
+%repeat=4
 \slidepage
 
 itemize
-item::Cinderellaと連携して\TeX 用の図を作成
-item::\TeX のディストリビューション\\
-\hspace*{2zw}TeXLive, KeTTeX(TeXLiveのサブセット版)
-item::picture環境\\
-\hspace*{2zw}Tpic,Pict2e,Tikz
-item::Rとpdfビューアも用いる
+item::Cinderella(Cindy)と連携して\TeX 用の図を作成する
+%[2,-]::item::CindyScriptを用いてCindy画面に図を作成
+%[3,-]::item::実行ボタンを押すとTeX描画コードを出力\\
+%[4,-]::\hspace*{2zw}描画コードはTpic,Pict2e,Tikz
 end
 
 %%%%%%%%%%%%
-new::\ketcindy のインストール
-%repeat=2
+new::描画サンプル
+%repeat=4
 \slidepage
 
 layer::{120}{0}
-%[2,-]::putnote::se{85}{47}::presen0607
+%[1]::\putnotes{63}{5}{\includegraphics[bb=0.00 0.00 1047.00 367.00,width=120mm]{fig/sample1.pdf}}
+%[2,-]::putnote::s{63}{5}::sample1,1
 end
+
+\vspace*{40mm}
+...
+
+%[3,-]::itemize
+%[3,-]::item::\TeX のディストリビューション\\
+%[3,-]::\hspace*{2zw}TeXLive, KeTTeX(TeXLiveのサブセット版)
+%[4,-]::item::picture環境\\
+%[4,-]::\hspace*{2zw}Tpic,Pict2e,Tikz
+%[3,-]::end
+
+
+%%%%%%%%%%%%
+new::\ketcindy のインストール
+%repeat=5
+\slidepage
 
 itemize
 item::\TeX, Cinderella, R, KeTCindyパッケージ\vspace{-2mm}
-item::Windowsの場合のみSumatra(PDFビューア)も\vspace{-2mm}
-item::実は，Maxima, gcc の呼び出しもできる\vspace{-2mm}
-item::\href{https://s-takato.github.io/ketcindyorg/indexj.html}{KeTCindy Home}を参照\vspace{-2mm}
-%[2,-]::item::[課題]\monban インストールの状況(番号で)\\
-%[2,-]::コメントや質問(もしあったら)\seteda{35}\\
-%[2,-]::\eda[23]{TeX}\eda[37]{Cinderella}\eda{R}\\
-%[2,-]::\eda[40]{Sumatra}\eda{KeTCindy}
+%[2,-]::item::Windowsの場合のみSumatra(PDFビューア)も\vspace{-2mm}
+%[3,-]::item::実は，Maxima, gcc の呼び出しもできる\vspace{-2mm}
+%[4,-]::item::\href{https://s-takato.github.io/ketcindyorg/indexj.html}{KeTCindy Home}を参照\vspace{-2mm}
+%[5,-]::item::[課題]\monban 使用しているシステムを教えて下さい\seteda{80}\\
+%[5,-]::\eda{WindowsかMacか}\\
+%[5,-]::\eda{OSの名前}
 end
+
+%%%%%%%%%%%%
+new::KeTTeX のインストール
+%repeat=1
+\slidepage
+
+layer::{120}{0}
+putnote::se{85}{30}::presen0607
+end
+
+itemize
+item::[課題]\monban TeX インストールの状況\seteda{80}\\
+\eda{状況の番号(表から)}\\
+\eda{1,2の場合，詳細を説明してください}
+end
+
+%%%%%%%%%%%%
+new::R(, Sumatra)のインストール
+%repeat=1
+\slidepage
+
+layer::{120}{0}
+putnote::se{85}{30}::presen0607
+end
+
+itemize
+item::[課題]\monban R(, Sumatra) インストールの状況\seteda{80}\\
+\eda{状況の番号(表から)}\\
+\eda{1,2の場合，詳細を説明してください}
+end
+
+%%%%%%%%%%%%
+new::Cinderella のインストール
+%repeat=1
+\slidepage
+
+layer::{120}{0}
+putnote::se{85}{30}::presen0607
+end
+
+itemize
+item::[課題]\monban Cinderella インストールの状況\seteda{80}\\
+\eda{状況の番号(表から)}\\
+\eda{1,2の場合，詳細を説明してください}
+end
+
+%%%%%%%%%%%%
+new::KeTCindy のインストール
+%repeat=1
+\slidepage
+
+layer::{120}{0}
+putnote::se{85}{30}::presen0607
+end
+
+itemize
+item::[課題]\monban KeTCindy インストールの状況\seteda{80}\\
+\eda{状況の番号(表から)}\\
+\eda{1,2の場合，詳細を説明してください}
+end
+
+%%%%%%%%%%%%
+new::図ファイルの作成
+%repeat=1
+\slidepage
+
+layer::{120}{0}
+%%putnote::se{85}{30}::presen0607
+end
+
+itemize
+item::以下，ユーザーホーム/ketcindy(+月日)をホーム
+item::ホームのKeTCindyリファレンスを適宜参照
+item::ホーム/templatesの01figure.cdyを立ち上げる\\
+\hspace*{1zw}.cdyのアプリをCinderellaに設定
+item::画面の幾何点を動かして，三角形を変えてみる
+item::ボタンfigureを押すと，pdfが表示される
+item::figフォルダに図ファイル01figure.texができている
+end
+

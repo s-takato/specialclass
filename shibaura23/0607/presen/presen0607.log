@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p3.9.0-u1.27-210218-2.6 (utf8.uptex) (TeX Live 2021) (preloaded format=uplatex 2022.3.23)  4 JUN 2023 10:26
+This is e-upTeX, Version 3.141592653-p3.9.0-u1.27-210218-2.6 (utf8.uptex) (TeX Live 2021) (preloaded format=uplatex 2022.3.23)  6 JUN 2023 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -520,43 +520,74 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 123.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 123.
+(Font)              scaled to size 8.65997pt on input line 129.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 123.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 123.
- [1] [2] [3]
-(./fig/presen0607.tex
+(Font)              scaled to size 8.65997pt on input line 129.
+ [1] [1] [1]
+[1]
+File: fig/sample1.pdf Graphic file (type pdf)
+<fig/sample1.pdf>
+File: fig/sample1.pdf Graphic file (type pdf)
+<fig/sample1.pdf>
+File: fig/sample1.pdf Graphic file (type pdf)
+<fig/sample1.pdf>
+File: fig/sample1.pdf Graphic file (type pdf)
+<fig/sample1.pdf>
+ [2] (./fig/sample1.tex
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 47.
+(Font)              scaled to size 9.6222pt on input line 13.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 47.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+(Font)              scaled to size 6.73553pt on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
 
 
 (/Applications/KeTTeX.app/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
 
 
 (/Applications/KeTTeX.app/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-(./fig/presen0607.tex) (./fig/presen0607.tex) (./fig/presen0607.tex) [3]
-(./presen0607.aux)
-Package rerunfilecheck Info: File `presen0607.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- ) 
+(./fig/sample1.tex) (./fig/sample1.tex) (./fig/sample1.tex) [2]
+(./fig/sample1.tex) (./fig/sample1.tex) (./fig/sample1.tex) (./fig/sample1.tex)
+[2] (./fig/sample1.tex) (./fig/sample1.tex) (./fig/sample1.tex)
+(./fig/sample1.tex) [2] [3] [3] [3] [3] [3] (./fig/presen0607.tex)
+(./fig/presen0607.tex) (./fig/presen0607.tex) (./fig/presen0607.tex) [4]
+(./fig/presen0607.tex) (./fig/presen0607.tex) (./fig/presen0607.tex)
+(./fig/presen0607.tex) [5] (./fig/presen0607.tex) (./fig/presen0607.tex)
+(./fig/presen0607.tex) (./fig/presen0607.tex) [6] (./fig/presen0607.tex)
+(./fig/presen0607.tex) (./fig/presen0607.tex) (./fig/presen0607.tex) [7]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.421 ホ
+         ームのKeTCindyリファレンスを参照
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.421 ホ
+         ームのKeTCindyリファレンスを参照
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
 Here is how much of TeX's memory you used:
- 11585 strings out of 480222
- 173878 string characters out of 5892594
- 590882 words of memory out of 5000000
- 29712 multiletter control sequences out of 15000+600000
+ 11639 strings out of 480222
+ 174953 string characters out of 5892594
+ 596005 words of memory out of 5000000
+ 29717 multiletter control sequences out of 15000+600000
  478749 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 91i,8n,93p,332b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on presen0607.dvi (5 pages, 74180 bytes).
+ 91i,10n,93p,332b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on presen0607.dvi (18 pages, 309556 bytes).

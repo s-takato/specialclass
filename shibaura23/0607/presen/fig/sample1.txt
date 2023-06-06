@@ -1,0 +1,8 @@
+%%Title: sample1.pdf
+%%Creator: extractbb 20210318
+%%BoundingBox: 0 0 1047 367
+%%HiResBoundingBox: 0.000000 0.000000 1047.000000 367.000000
+%%PDFVersion: 1.4
+%%Pages: 1
+%%CreationDate: Tue Jun  6 12:35:36 2023
+
