@@ -1,0 +1,195 @@
+Title::slide0
+::\newcommand{\hiduke}{0614}
+::\newcommand{\hako}[2][1]{\fbox{\raisebox{#1mm}{\mbox{}}\raisebox{-#1mm}{\mbox{}}\,\phantom{#2}\,}}
+::\newcommand{\hakoa}[2][1]{\fbox{\raisebox{#1mm}{\mbox{}}\raisebox{-#1mm}{\mbox{}}\,#2\,}}
+::\newcommand{\hakom}[2][1]{\hako[#1]{$#2$}}
+::\newcommand{\hakoma}[2][1]{\hakoa[#1]{$#2$}}
+::\def\rad{\;\mathrm{rad}}
+::\def\deg#1{#1^{\circ}}
+::\newcommand{\sbunsuu}[2]{\scalebox{0.6}{$\bunsuu{#1}{#2}$}}
+::\def\pow{$\hspace{-1.5mm}＾\hspace{-1mm}$}
+::\def\dlim{\displaystyle\lim}
+::\newcommand{\brd}[2][1]{\scalebox{#1}{\color{red}\fbox{\color{black}$#2$}}}
+::\newcommand\down[1][0.5zw]{\vspace{#1}\\}
+::\newcommand{\sfrac}[3][0.65]{\scalebox{#1}{$\frac{#2}{#3}$}}
+::\newcommand{\phn}[1]{\phantom{#1}}
+::\newcommand{\scb}[2][0.6]{\scalebox{#1}{#2}}
+::\newcommand{\dsum}{\displaystyle\sum}
+
+\def\MARU{}
+\renewcommand{\MARU}[1]{{\ooalign{\hfil$#1$\/\hfil\crcr\raise.167ex\hbox{\mathhexbox20D}}}}
+
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\hiduke-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\hiduke-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+\newcounter{ban}
+\setcounter{ban}{1}
+
+\newcommand{\monban}[1][\hiduke]{%
+#1-\theban\ %
+\addtocounter{ban}{1}%
+}
+
+\newcommand{\monbannoadd}[1][\hiduke]{%
+#1-\theban\ %
+%\addtocounter{ban}{1}%
+}
+
+\newcommand{\addban}{%
+\addtocounter{ban}{1}%%210614
+}
+
+\newcounter{edawidth}
+\newcounter{edactr}
+
+\newcommand{\seteda}[1]{
+\setcounter{edawidth}{#1}
+\setcounter{edactr}{1}
+}
+
+\newcommand{\eda}[2][\theedawidth ]{%
+\noindent\Ltab{#1 mm}{[\theedactr]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+%%%%%%%%%%%%
+new::GCの利用
+%repeat=1
+\slidepage
+
+itemize
+item::課題のやり取りをGC(GoogleClassroom)で行う．
+item::課題は，htmlの形で配付する．
+item::課題の Pgの下にある矢印を押してページを変える\\
+　・{\color{red}「Q---」はタイトルページなので入力しない}
+item::[課題]\monban 出席と準備状況を聞きます．\seteda{60}\\
+\eda{出席していたら「はい」，そうでなければ「いいえ」}\\
+\eda{KeTCindyの動作確認ができているか}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyによる作図手順
+%repeat=3
+\slidepage
+
+enumerate::[1.]
+item::ユーザホームのketcindy(+日付)フォルダを開く
+%[2,-]::item::temlate(samples)の１つのcdyファイルをクリック\\
+%[2,-]::　・例えば，01figure.cdyを用いる\\
+%[2,-]::　・Cinderellaを直接立ち上げない\\
+%[2,-]::　・他のフォルダに移したり名前を変えてもいい\\
+%[2,-]::　・名前には全角文字や半角スペースを使わない
+%[3,-]::item::トップメニューから「スクリプト」＞Scriptを開く\\
+end
+
+%%%%%%%%%%%%
+new::KeTCindyによる作図手順(続)
+%repeat=4
+\slidepage
+
+enumerate::[1.]
+\setcounter{enumi}{3}
+item::適宜Cindy画面に点(幾何点)を追加する\\
+　・幾何点は画面で移動できる\\
+　・Scriptで点(リスト点)を追加することもできる\\
+　　　　p1=[3,2];　（動かすには座標を変更）
+%[2,-]::item::KetinitからWindispgの間のスクリプトを修正する
+%[3,-]::item::右上のギヤマークを押すとCindy画面の図が変わる
+%[4,-]::item::Figureボタンを押すとTeXが走ってPDFができる
+end
+
+%%%%%%%%%%%%
+new::幾何点とリスト点
+%repeat=5
+\slidepage
+
+itemize
+item::templatesの01figure.cdyを開く
+item::画面の幾何点Cを消去する\\
+　・点をクリックして「消しゴム」ツール
+%[2,-]::item::Scriptを見るとコンソールにエラーが出ている\\
+%[3,-]::　・３行目のコマンドでCがないから
+%[4,-]::item::リスト点pCを追加する\\
+%[4,-]::　・pC=[ ];
+%[5,-]::A,B,pCの三角形をかく
+end
+
+%%%%%%%%%%%%
+new::課題(幾何点とリスト点)
+%repeat=1
+\slidepage
+
+itemize
+item::[課題]\monban 以下に答えよ\seteda{60}\\
+\eda{pC=...の行をコピペせよ}\\
+\eda{A,B,pCの三角形をかく行をコピペせよ}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyのヘルプ
+%repeat=1
+\slidepage
+
+itemize
+item::KeTCindyのリファレンス\\
+　・ユーザホームのKeTCindyReferenceJ.pdf\vspace{-1mm}
+item::Cinderellaのヘルプ\\
+　・トップメニューのヘルプからマニュアルをクリック\vspace{-1mm}
+item::KeTCindyのコマンドは大文字から始まる\vspace{-1mm}
+item::スクリプト画面（の最後）に Help("Listplot");\\
+・簡単な説明(例)が表示される\\
+・大文字小文字を区別する
+end
+
+%%%%%%%%%%%%
+new::関数のグラフPlotdata
+%repeat=1
+\slidepage
+
+itemize
+item::Help("Plotdata")またはHelp("Plot")
+item::Plotdata("1","sin(x)","x",["Num=100"]);\\
+・"1"はデータ名　値がgr1という名前で格納\\
+・ "sin(x)"　$y=\sin x$のグラフ\\
+・xの範囲　"x=[XMIN,XMAX]"\\
+・オプション指定(線種，色，分点数など)\\
+　　　"dr,2"　実線で太さ2倍\\
+　　　"da"　破線\\
+　　　"Color=red"　赤色でかく
+end
+
+%%%%%%%%%%%%
+new::課題(関数のグラフ)
+%repeat=1
+\slidepage
+
+itemize
+item::[課題]\monban 関数\verb|y=x^2|のグラフ\seteda{60}\\
+\eda{線種("dr","da","do")を指定せよ}\\
+\eda{"Color="を指定せよ}\\
+\eda{Plotdataの行をコピペせよ}
+end
+
+%%%%%%%%%%%%
+new::PDFの大きさの調整
+%repeat=2
+\slidepage
+
+itemize
+item::描画領域(SW,NEで囲まれる長方形）内の図に合ったPDFを出力したい\vspace{-2mm}
+%[2,-]::item::手順\\
+%[2,-]::1.Ketinitの直後に　Setparent(ファイル名)\\
+　Cdyname()+"p"　Cindy名に"p"をつける
+end
+%[2,-]::2.Windispgの直前に　Figpdf();\\
+%[2,-]::3.Figureの代わりにParentボタンを押す\\

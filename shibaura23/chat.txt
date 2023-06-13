@@ -1,0 +1,12 @@
+Microsoft Windows [Version 10.0.19045.2965]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Tuki1>cd "C:/ketcindy4.4.32/doc/fig"
+
+C:\ketcindy4.4.32\doc\fig>"C:/Program Files/R/R-4.3.0/bin/R" --vanilla --slave < "update.r" 2> errormessageR.txt
+
+C:\ketcindy4.4.32\doc\fig>C:/kettex/texlive/bin/win32/mktexlsr
+No definition of TEXMFDBS.
+Maybe you are not using ls-R.
+
+C:\ketcindy4.4.32\doc\fig>
