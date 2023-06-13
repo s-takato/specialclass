@@ -1,0 +1,8 @@
+%%Title: swne.pdf
+%%Creator: extractbb 20210318
+%%BoundingBox: 0 0 264 253
+%%HiResBoundingBox: 0.000000 0.000000 264.000000 253.000000
+%%PDFVersion: 1.4
+%%Pages: 1
+%%CreationDate: Wed Jun 14 08:11:16 2023
+

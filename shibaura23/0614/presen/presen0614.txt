@@ -173,6 +173,10 @@ new::課題(関数のグラフ)
 %repeat=1
 \slidepage
 
+layer::{100}{0}
+\putnotes{55}{35}{\includegraphics[bb=0.00 0.00 666.00 210.00,width=100mm]{fig/plotdatasample.pdf}}
+end
+
 itemize
 item::[課題]\monban 関数\verb|y=x^2|のグラフ\seteda{60}\\
 \eda{線種("dr","da","do")を指定せよ}\\
@@ -182,14 +186,19 @@ end
 
 %%%%%%%%%%%%
 new::PDFの大きさの調整
-%repeat=2
+%repeat=3
 \slidepage
 
-itemize
-item::描画領域(SW,NEで囲まれる長方形）内の図に合ったPDFを出力したい\vspace{-2mm}
-%[2,-]::item::手順\\
-%[2,-]::1.Ketinitの直後に　Setparent(ファイル名)\\
-　Cdyname()+"p"　Cindy名に"p"をつける
+layer::{100}{0}
+\putnotese{95}{4}{\includegraphics[bb=0.00 0.00 264.00 253.00,width=30mm]{fig/swne.pdf}}
 end
-%[2,-]::2.Windispgの直前に　Figpdf();\\
-%[2,-]::3.Figureの代わりにParentボタンを押す\\
+
+itemize
+item::描画領域　SW,NEで囲まれる長方形\vspace{-2mm}
+%[2,-]::item::描画領域に合ったPDFを出力したい．\vspace{6mm}
+%[3,-]::item::手順\\
+%[3,-]::1.Ketinitの直後に　Setparent(ファイル名)\\
+%[3,-]::　Cdyname()+"p"　Cindy名に"p"をつける\\
+%[3,-]::2.Windispgの直前に　Figpdf();\\
+%[3,-]::3.Figureの代わりにParentボタンを押す
+end

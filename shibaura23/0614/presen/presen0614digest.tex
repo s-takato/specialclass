@@ -266,6 +266,11 @@ Plotdata("1","sin(x)","x",["Num=100"]);\\
 \vspace*{18mm}
 
 \slidepage
+
+\begin{layer}{100}{0}
+\putnotes{55}{35}{\includegraphics[bb=0.00 0.00 666.00 210.00,width=100mm]{fig/plotdatasample.pdf}}
+\end{layer}
+
 \begin{itemize}
 \item
 [課題]\monban 関数\verb|y=x^2|のグラフ\seteda{60}\\
@@ -283,16 +288,23 @@ Plotdata("1","sin(x)","x",["Num=100"]);\\
 \vspace*{18mm}
 
 \slidepage
+
+\begin{layer}{100}{0}
+\putnotese{95}{4}{\includegraphics[bb=0.00 0.00 264.00 253.00,width=30mm]{fig/swne.pdf}}
+\end{layer}
+
 \begin{itemize}
 \item
-描画領域(SW,NEで囲まれる長方形）内の図に合ったPDFを出力したい\vspace{-2mm}
+描画領域　SW,NEで囲まれる長方形\vspace{-2mm}
+\item
+描画領域に合ったPDFを出力したい．\vspace{6mm}
 \item
 手順\\
 1.Ketinitの直後に　Setparent(ファイル名)\\
-　Cdyname()+"p"　Cindy名に"p"をつける
-\end{itemize}
+　Cdyname()+"p"　Cindy名に"p"をつける\\
 2.Windispgの直前に　Figpdf();\\
-3.Figureの代わりにParentボタンを押す\\
+3.Figureの代わりにParentボタンを押す
+\end{itemize}
 \label{pageend}\mbox{}
 
 \end{document}
