@@ -1,0 +1,7 @@
+Addax(0);
+Letter(Mvpt([0,1]),"e",   "[1] はい　 1",["Size=1"]);
+Letter(Mvpt([0,0.5]),"e","[1] いいえ 0",["Size=1"]);
+
+Letter(Mvpt([0,-0.5]),"e","[2]できている　2",["Size=1"]);
+Letter(Mvpt([0,-1]),"e","[2] PDFはまだ　1",["Size=1"]);
+Letter(Mvpt([0,-1.5]),"e","[2] 全部がまだ　0",["Size=1"]);

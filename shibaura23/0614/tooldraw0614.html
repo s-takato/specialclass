@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>tooldraw0614.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+typeflg=0;
+startflg=1;
+
+posyL=[23,-3.3,-35];
+poskey=[19.5,-17.67]; 
+
+tmp=[59.1,-6.7];
+tmp2=["if(ch==2,nf=1,n1=1);",
+      "if(ch==2,nf=max([1,nf-1]),n1=max([1,n1-1]));",
+      "if(ch==2,nf=min([nfall,nf+1]),n1=min([n1all,n1+1]));",
+      "if(ch==2,nf=nfall,n1=n1all);"];
+forall(1..4,
+  Settextkey(204+#,[tmp_1+(#-1)*4.3,0.8],"　　",tmp2_(#),14);
+);
+
+Sortsel(fLorg,key):=(
+  regional(fL,tmp,tmp1,tmp2,head,tail,nL,out);
+  fL=fLorg;
+  tmp=length(key);
+  if(tmp>0,
+    fL=select(fLorg,substring(#,0,tmp)==key);
+  );
+  tmp1=indexof(fL_1,"-");
+  head=substring(fL_1,0,tmp1);
+  nL=[];
+  forall(fL,
+    tmp2=indexof(#,".");
+    if(tmp2>0,
+      tail=substring(#,tmp2-1,length(#));
+      tmp=substring(#,length(head),tmp2-1);
+    ,
+      tail="";
+      tmp=substring(#,tmp1,length(#));
+    );      
+    nL=append(nL,parse(tmp));
+  );
+  nL=sort(nL);
+  out=apply(nL,head+#+tail);
+  out;
+);
+
+////%Keytable start////
+Keytable(nx,dx,ny,dy,plb,clr):=
+  Keytable(nx,dx,ny,dy,plb,clr,[],0,22); //210629
+Keytable(nx,dx,ny,dy,plb,clr,nameL,nmove,sz):=( //230406
+  // Keytable(5,20,3,10,....)
+  // Keytable(0,dxL,0,dyL,...)
+  regional(xL,yL,plt,prt,prb,row,col,name,tmp,tmp2,pos);
+  if(nx>0,  //211012from
+    xL=apply(0..nx,#/10*dx+plb_1);
+  ,
+    xL=[plb_1];
+    forall(dx,
+      tmp=xL_(-1)+#/10;
+      xL=append(xL,tmp);
+    );
+  );
+  if(ny>0,
+    yL=apply(0..ny,(ny-#)/10*dy+plb_2);
+  ,
+    yL=[plb_2];
+    forall(dy,
+      tmp=yL_(-1)+#/10;
+      yL=append(yL,tmp);
+    );
+  );  //211012to
+  plt=[xL_1,yL_1]; prt=[xL_(-1),yL_1]; prb=[xL_(-1),yL_(-1)];
+  if(clr!=0,//shade==1, 230406
+    fillpoly([plb,plt,prt,prb,plb],color->clr);
+  );
+  forall(xL,draw([#,plb_2],[#,plt_2],color->[0,0,0]));
+  forall(yL,draw([plb_1,#],[prb_1,#],color->[0,0,0]));
+  if(length(nameL)>0,
+    forall(1..(length(yL)-1),row,
+      tmp1=yL_row;
+      tmp2=yL_(row+1);
+      pos=[0,(tmp1+tmp2)/2];
+      forall(1..(length(xL)-1),col,
+        name=nameL_row_col;
+        tmp1=xL_col;
+        tmp2=xL_(col+1);
+        pos_1=(tmp1+tmp2)/2;
+        tmp=indexof(name,",");
+       drawtext(pos+nmove,name,align->"mid",size->sz);
+      );
+    );
+  );
+);
+////%Keytable end////
+
+
+CtrkeyL=[
+  [["PS","PL","AC","CL","BS"]],
+  [["Cap"],["Gre"],["Bld"],["Vec"]],
+  [["Cal"],["Lin"],[""]],
+  [["Rec"]],
+  [["＜","","＞"]],
+  [["$<\!<$","$<$","$>$","$>\!>$"]]
+];
+
+Keyname():=(
+  regional(nL,nL2,nL3,tmp1);
+  nL=[
+    ["a","b","c","sin","sq",")","7","8","9","＋"],
+    ["x","y","z","cos","fr",",","4","5","6","ー"],
+    ["r","s","t","tan","tfr","(","1","2","3","＊","'"],
+    ["w","_","=","log","ln","^","0",".","sp","／"]
+  ];
+  nL2=[
+    ["°","＠","[","]","|","d","e","f","g","lim","pi"],
+    ["$\times$","!","{","}","$\neq$","h","i","j","k","int","$\infty$"],
+    ["dot",":",";","$\leq$","$\geq","l","m","n","o","'","cs"],
+    ["\","$\pm$","$\mp$","<",">","p","q","u","v","sum","tx"]
+  ];
+  
+  if(Shift==1,
+    nL2_3_11="$d$"; nL2_4_10="$[.]_{}^{}$"; nL2_4_11="$\partial$";
+  );
+  if(Shift==2,
+    nL2_1_10="mat"; nL2_2_10="det"; nL2_4_11="$\circ$";
+  );
+
+  if(keytype==2,
+    tmp1=["A","B","C"]; forall(1..3,nL_1_(#)=tmp1_#);
+    tmp1=["D","E","F","G"]; forall(1..4,nL2_1_(#+5)=tmp1_#);
+    tmp1=["X","Y","Z"]; forall(1..3,nL_2_(#)=tmp1_#);
+    tmp1=["H","I","J","K"]; forall(1..4,nL2_2_(#+5)=tmp1_#);
+    tmp1=["R","S","T"]; forall(1..3,nL_3_(#)=tmp1_#);
+    tmp1=["L","M","N","O"]; forall(1..4,nL2_3_(#+5)=tmp1_#);
+    tmp1=["W"]; forall(1..1,nL_4_(#)=tmp1_#);
+    tmp1=["P","Q","U","V"]; forall(1..4,nL2_4_(#+5)=tmp1_#);
+  );
+  if(keytype==3,
+    tmp1=["$\alpha$","$\beta$","$\gamma$"];
+    forall(1..3,nL_1_(#)=tmp1_#);
+    tmp1=["$\Delta$","$\delta$","$\varepsilon$","$\varphi$"];
+    forall(1..4,nL2_1_(#+5)=tmp1_#);
+    tmp1=["$\kappa$","$\iota$","$\zeta$"];
+    forall(1..3,nL_2_(#)=tmp1_#);
+    tmp1=["$\Theta$","$\theta$","$\chi$","$\xi$"];
+    forall(1..4,nL2_2_(#+5)=tmp1_#);
+    tmp1=["$\rho$","$\sigma$","$\tau$"];
+    forall(1..3,nL_3_(#)=tmp1_#);
+    tmp1=["$\lambda","$\mu$","$\nu$","$\omega$"];
+    forall(1..4,nL2_3_(#+5)=tmp1_#);
+    tmp1=["$\Omega$"];
+    forall(1..1,nL_4_(#)=tmp1_#);
+    tmp1=["$\Psi$","$\psi$","$\Phi$","$\Lambda$"];
+    forall(1..4,nL2_4_(#+5)=tmp1_#);
+  );
+  if(keytype==4,
+    tmp1=apply(["a","b","c"],"$\mathbf{"+#+"}$");
+    forall(1..3,nL_1_(#)=tmp1_#);
+    tmp1=apply(["d","e","f","g"],"$\mathbf{"+#+"}$");
+    forall(1..4,nL2_1_(#+5)=tmp1_(#));
+    tmp1=apply(["x","y","z"],"$\mathbf{"+#+"}$");
+    forall(1..3,nL_2_(#)=tmp1_#);
+    tmp1=apply(["h","i","j","k"],"$\mathbf{"+#+"}$");
+    forall(1..4,nL2_2_(#+5)=tmp1_#);
+    tmp1=apply(["r","s","t"],"$\mathbf{"+#+"}$");
+    forall(1..3,nL_3_(#)=tmp1_#);
+    tmp1=apply(["l","m","n","o"],"$\mathbf{"+#+"}$");
+    forall(1..4,nL2_3_(#+5)=tmp1_#);
+    tmp1=apply(["w"],"$\mathbf{"+#+"}$");
+    forall(1..1,nL_4_(#)=tmp1_#);
+    tmp1=apply(["p","q","r","s"],"$\mathbf{"+#+"}$");
+    forall(1..4,nL2_4_(#+5)=tmp1_#);
+  );
+  if(keytype==5,
+    tmp1=apply(["a","b","c"],"$\vec{"+#+"}$");
+    forall(1..3,nL_1_(#)=tmp1_#);
+    tmp1=apply(["d","e","f","g"],"$\vec{"+#+"}$");
+    forall(1..4,nL2_1_(#+5)=tmp1_(#));
+    tmp1=apply(["x","y","z"],"$\vec{"+#+"}$");
+    forall(1..3,nL_2_(#)=tmp1_#);
+    tmp1=apply(["h","i","j","k"],"$\vec{"+#+"}$");
+    forall(1..4,nL2_2_(#+5)=tmp1_#);
+    tmp1=apply(["r","s","t"],"$\vec{"+#+"}$");
+    forall(1..3,nL_3_(#)=tmp1_#);
+    tmp1=apply(["l","m","n","o"],"$\vec{"+#+"}$");
+    forall(1..4,nL2_3_(#+5)=tmp1_#);
+    tmp1=apply(["w"],"$\vec{"+#+"}$");
+    forall(1..1,nL_4_(#)=tmp1_#);
+    tmp1=apply(["p","q","r","s"],"$\vec{"+#+"}$");
+    forall(1..4,nL2_4_(#+5)=tmp1_#);
+  );
+  [nL,nL2];
+);
+
+poskey=[19.5,-17.67]; 
+Setkeytable():=(
+//Setwindow([-20,65],[-17,15]);
+//Setwindow([-20,65],[-17,15]);
+  nameL=Keyname();
+  Keytable(10,43,4,33,poskey,[1,1,0],nameL_1,[0,-0.5],21);
+  tmp=poskey+[0,-14];
+  Keytable(11,43,4,33,tmp,[1,1,0],nameL_2,[0,-0.5],21);
+  tmp=[poskey_1-4.3,-0.1];
+  Keytable(5,43,1,33,tmp,0,CtrkeyL_1,[0,-0.5],21);
+  tmp=[poskey_1+9*4.3,-0.1];
+  Keytable(4,43,1,33,tmp,0,CtrkeyL_6,[0,-0.5],21);
+  tmp=poskey-[4.3,0];
+  Keytable(1,43,4,33,tmp,0,CtrkeyL_2,[0,-0.5],21);
+  tmp=poskey+[4.3*10,2*3.3];
+  Keytable(1,43,2,33,tmp,0,CtrkeyL_3,[0,-0.5],21);
+  tmp=[poskey_1+4*4.3,-0.1];
+  Keytable(0,[46,100,46],1,33,tmp,0,CtrkeyL_5,[0,-0.5],21);
+  tmp=poskey+[-4.3,-14];
+  Keytable(1,43,1,33,tmp,0,CtrkeyL_4,[0,-0.5],21);
+);
+
+Embeddraw(fdr,ftask):=(
+  regional(drwL,taskL,Obkup,Sbkup,LineL,LineL1,LineL2,
+     TlineL,tfile,fid,tmp,tmp1,tmp2,tmp3,tmp4);
+  drwL=Readlines(Dirdrw,fdr);
+  LineL=Readlines(Dircdy,ftask);
+  tmp=Filelist(Dircdy);
+//  tmp1=select(tmp,indexof(#,"json")>0);
+//  tmp2=select(tmp,indexof(#,"jsoffL")>0);
+//  if(length(tmp1)>0,tfile=tmp1_1);
+//  if(length(tmp2)>0,tfile=tmp2_1);
+//  tmp1=select(tmp,indexof(
+    tfile=Cdyname()+".html";
+  TlineL=Readlines(Dircdy,tfile);
+  Obkup=O.xy;
+  Sbkup=S.xy;
+  Putpoint("O",[200,0]);
+  Putpoint("S",[200,1]);
+//  setdirectory(Dircdy);
+  tmp1=select(1..(length(LineL)),
+        indexof(LineL_#,Dqq("csdraw"))>0);
+  tmp1=tmp1_1;
+  tmp=select((tmp1-10)..tmp1,
+         indexof(LineL_#,"</"+"script"+">")>0);
+  tmp1=tmp_(-1);
+  LineL1=LineL_(1..(tmp1-1));
+  LineL=LineL_(tmp1..(length(LineL)));
+  tmp1=select(1..(length(TlineL)),
+          indexof(TlineL_#,"l"+"inestart=1")>0);
+  tmp1=tmp1_1;
+  tmp2=select(tmp1..(length(TlineL)),
+       indexof(TlineL_#,"l"+"ineend=1")>0);
+  tmp2=tmp2_1;
+  tmp=TlineL_((tmp1+1)..(tmp2-1));
+  LineL1=concat(LineL1,tmp);
+  tmp2=select(1..10,
+         indexof(LineL_#,"Ketinit")>0);
+  tmp2=tmp2_1;
+  tmp=LineL_(1..tmp2);
+  LineL1=concat(LineL1,tmp);
+  LineL=LineL_((tmp2+1)..(length(LineL)));
+  tmp1=replace(ftask,".html","os.txt");
+  tmp=Readlines(Dirdrw,tmp1);
+  LineL1=concat(LineL1,tmp);
+  LineL1=concat(LineL1,drwL);
+  tmp1=select(1..(length(LineL)),
+         indexof(LineL_#,"g"+"eometry:")>0);
+  tmp1=tmp1_1;
+  tmp2=select((tmp1+1)..(length(LineL)),
+         indexof(LineL_#,"p"+"orts:")>0);
+  tmp2=tmp2_1-1;
+  tmp=LineL_(1..tmp1);
+  LineL1=concat(LineL1,tmp);
+  LineL2=LineL_((tmp1+1)..(tmp2));
+  LineL=LineL_((tmp1+1)..(length(LineL)));
+  tmp1=select(1..(length(TlineL)),
+         indexof(TlineL_#,"g"+"eometry: ")>0);
+  tmp1=tmp1_1+1;
+  tmp2=select((tmp1)..(length(TlineL)),
+         indexof(TlineL_#,"p"+"orts: ")>0);
+  tmp2=tmp2_1-1;
+  TlineL=TlineL_(tmp1..tmp2);
+  tmp3=[];
+  forall(LineL2,
+    if(indexof(#,"{name")>0,
+	    tmp1=Indexall(#,Dq);
+	    tmp2=substring(#,tmp1_1,tmp1_2-1);
+	    tmp3=append(tmp3,tmp2);
+	  );
+  );
+  tmp3=concat(tmp3,["O","S"]);
+  forall(TlineL,
+    if(indexof(#,"{name")>0,
+	    tmp1=Indexall(#,Dq);
+	    tmp2=substring(#,tmp1_1,tmp1_2-1);
+	    if(indexof(tmp2,"Text")>0,
+        tmp=replace(tmp2,"Text","");
+	  	  tmp=parse(tmp);
+	    	if(tmp<400,
+		      tmp2=tmp3_1;
+	    	);
+      );
+	  if(!contains(tmp3,tmp2),
+	    LineL=prepend(#,LineL);
+	  );
+	);
+  );
+  LineL=concat(LineL1,LineL);
+  setdirectory(Dircdy);
+  tmp=replace(ftask,".html","dr.html");
+  fid=openfile(tmp);
+  forall(LineL,
+    println(fid,#);
+  );
+  closefile(fid);
+  Putpoint("O",Obkup);
+  Putpoint("S",Sbkup);
+);
+
+Setinit(nq):=(
+  File=FileL_nq;
+  subsedit(2,File);
+  tmp1=format(Center,2)+";";
+  tmp2=format(Scale,2)+";";
+  println("  Center="+tmp1);
+  println("  Scale="+tmp2);
+);
+
+Makescriptfile(dir,fscr):=(
+  regional(lbs,lbf,script,tmp,tmp1,fid);
+  //global dispL,Scale,B,A1,A2,S
+  lbfx=50;
+  lbfy=3;
+  tmp1="drawimage(";
+  tmp1=tmp1+format(O.xy,2)+",";
+  tmp=replace(fscr,"image.txt",".png");
+  tmp1=tmp1+Dqq(tmp)+",scale->";
+  script=tmp1+format(Scale,2)+");";
+  tmp1="Center="+format(O.xy,2)+";";
+  tmp1=tmp1+"Scale="+format(Pt2sc(S.x),2)+";";
+  setdirectory(dir);
+  fid=openfile(fscr);
+  println(fid,script);
+  println(fid,tmp1);
+  closefile(fid);
+);
+
+Setimginit():=(
+  regional(tmp,tmp1);
+  //global typeL,Dirpng,Date,FtaskL
+//  tmp=T3.x+40;
+//  Putpoint("O",[tmp,T3.y]);
+  typeL=["png->txt","image.txt","img2html"];
+  tmp=Filelist(Dirdrw);
+  FimL=select(tmp,indexof(#,".png")>0);
+  nfiall=length(FimL);
+  tmp=apply(FimL,replace(#,".png",""));
+  tmp=text(tmp);
+  tmp=substring(tmp,1,length(tmp)-1);
+  Subsedit(1,tmp);
+  tmp=apply(FimL,replace(#,"kettaskv",""));
+  tmp1=apply(tmp,indexof(#,"."));
+  nameL=apply(1..(length(tmp)),
+           substring(tmp_#,0,tmp1_#-1));
+  if(length(nameL)>0,
+    tmp1=indexof(nameL_1,"-");
+    Date=substring(nameL_1,0,tmp1-1);
+    tmp1=apply(nameL,replace(#,Date+"-",""));
+    tmp1=text(tmp1);
+    tmp=substring(tmp1,1,length(tmp1)-1);
+  );
+);
+
+Setdrwinit():=(
+  regional(tmp,tmp1,tmp2);
+  //global Dirdrw,FtaskL,nfall,nameL,Date
+  inspect(Text15,"text.text","OS保存");
+  tmp=apply(FtaskL,replace(#,"kettaskv",""));
+  tmp1=apply(tmp,indexof(#,"."));
+  nameL=apply(1..(length(tmp)),
+           substring(tmp_#,0,tmp1_#-1));
+  tmp1=indexof(nameL_1,"-");
+  Date=substring(nameL_1,0,tmp1-1);
+  tmp1=apply(nameL,replace(#,Date+"-",""));
+  tmp1=text(tmp1);
+  tmp=substring(tmp1,1,length(tmp1)-1);
+  Subsedit(1,tmp);
+);
+
+Writecenterscale(fname):=(
+  regional(tmp);
+  tmp=replace(fname,".html","os.txt");
+  setdirectory(Dirdrw);
+  fid=openfile(tmp);
+  println(fid,"Center="+format(O.xy,3)+";");
+  println(fid,"Scale="+format(Pt2sc(S.xy),3)+";");
+  println(fid,"Putpoint("+Dqq("O")+",Center);");
+  println(fid,"Putpoint("+Dqq("S")+",Sc2pt(Scale));");
+  closefile(fid);
+);
+
+Setcenterscale(fname):=(
+  regional(tmp);
+  tmp=replace(fname,".html","os.txt");
+  if(!isexists(Dirdrw,tmp),
+    Writecenterscale(tmp);
+  );
+  setdirectory(Dirdrw);
+  import(tmp); //no ketjs
+);
+
+
+
+linestart=1;
+
+Mvpt(pt):=(
+ Scale*pt+Center;
+);
+
+Rmpt(mpt):=(
+ (mpt-Center)/Scale;
+);
+
+Pt2sc(pt):=(
+  regional(sx);
+  if(ispoint(pt),sx=pt.x,sx=pt_1);
+  2^(1/5*(sx-35));
+);
+
+Sc2pt(sc):=(
+  regional(sx);
+  sx=5*log(sc)/log(2)+35;
+  [sx,4];
+);
+
+Mvdraw(num,opt):=(
+  regional(pltL,out,tmp,tmp1);
+  pltL=parse(num);
+  if(length(pltL)==1,
+    Pointdata("-m"+num,ptL,opt);
+  ,
+    out=apply(pltL,Mvpt(#));
+    Listplot("-m"+num,out,append(opt,"Msg=y"));
+  );
+  out;
+);
+
+lineend=1;
+
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+//20230529
+//20230515
+Ketinit(1.5);
+Dirdrw=Dircdy+"drawdata";
+
+Center=O.xy;
+Scale=Pt2sc(S.xy);
+
+if(startflg==1,
+//  imdrflg=1; startimflg=1;
+  imdrflg=1; startimlg=1;
+  tmp1=Filelist(Dircdy);//no ketjs
+  tmp2=select(tmp1,indexof(#,Cdyname()+".html")>0);
+  tmp1=select(tmp1,indexof(#,"kettaskv")>0);
+  tmp1=select(tmp1,indexof(#,"dr.html")==0);
+  if((length(tmp1)>0)&(length(tmp2)>0),
+    FtaskL=Sortsel(tmp1,"kettaskv");
+    nftall=length(FtaskL);
+    nf=1;
+    okflg=0;
+    Ftask=FtaskL_nf;
+    startimflg=1;
+    startdrflg=1;
+    typeflg=0;
+    pngflg=0;
+    okflg=0;
+    scriptflg=0;
+    insertflg=0;
+    drawflg=0;
+    Subsedit(1,"");
+    Subsedit(2,"");
+    Putpoint("T1",[15.5,17.4]);
+    Putpoint("T3",[15.5,11]);
+    Putpoint("T4",[15.5,7.8]);
+    Putpoint("S",[35,4]);
+    Putpoint("O",[58,12]);
+    chpL=[[9.4,23.8],[9.4,-2.5]];
+    ch=2;
+    goflg=1;
+  ,
+    goflg=0;
+    if(length(tmp1)==0,goflg=-1);
+  );
+  startflg=0;
+);
+//Slider("C",Mvpt([1,0]),Mvpt([3,0]));
+inspect(C,"ptsize",6); //no ketjs
+if(goflg<=0,
+  drawtext(T1.xy+[3,0],"Export "+Cdyname()+"*.html",
+              size->20,color->[1,0,0]);
+  if(goflg==-1,
+    drawtext(T2.xy+[3,0],"ketataskv*.html not found",
+         size->20,color->[1,0,0]);
+  );
+);
+if(goflg==1,
+  Putpoint("W",chpL_ch);
+);
+
+//T2.x=T1.x; T4.x=T3.x;
+Setkeytable();
+//Subsedit(2,File);
+Putpoint("O",[58,12],O.xy);
+Slider("S",[15,4],[55,4]);
+Putpoint("T3",[15.5,11.4],T3.xy);
+Putpoint("T4",[15.5,7.8],T4.xy);
+
+if(imdrflg==1,
+  inspect(Text12,"text.text","Imag");
+  if(startimflg==1,
+    inspect(Text15,"text.text","ステップ");
+    Setimginit();
+    tmp=Filelist(Dircdy);
+    tmp2=Cdyname()+".html";
+    tmp1=select(tmp,indexof(#,tmp2)>0);
+    if(length(tmp1)==0,
+      drawtext(T1.xy+[3,0],
+         "Export to html",
+           size->20,color->[1,0,0]);
+    );
+    tmp=Filelist(Dirdrw);
+    FimL=select(tmp,indexof(#,".png")>0);
+    nifall=length(FimL);
+    if(nifall==0,
+      drawtext(T3.xy+[3,0],
+         "(Date-No).png not found",
+             size->20,color->[1,0,0]);
+    ,
+      tmp1=apply(FimL,replace(#,".png",""));
+      FimtaL=[];
+      forall(tmp1,fi,
+        tmp=select(FtaskL,indexof(#,fi)>0);
+        if(length(tmp)>0,
+          FimtaL=append(FimtaL,tmp_1);
+        );
+      );
+    );
+    if(length(FimtaL)>0,
+      Fimta=FimtaL_nf;
+      Subsedit(2,Fimta);
+    );
+    okflg=0;
+    nf=1;
+    nfnow=0;
+    startimflg=0;
+  );
+  if(typeflg>=1,
+    tmp=typeL_(typeflg);
+    inspect(Text15,"text.text",tmp);
+    if(typeflg==1,pngflg=1;scriptflg=0;insertflg=0);
+    if(typeflg==2,pngflg=0;scriptflg=1;insertflg=0);
+    if(typeflg==3,pngflg=0;scriptflg=0;insertflg=1);
+  );
+
+  if(pngflg==1,
+  //  メディアブラウザに登録
+  //「HTMLに書き出し」
+    filein=Namecdy+".html";
+    data=Readlines(Dircdy,filein);
+    start=select(1..(length(data)),
+           indexof(data_#,"images:")>0);
+    start=start_1;
+    dline=select((start+1)..(length(data)),
+           indexof(data_#,"data:image")>0);
+    dline=select(dline,indexof(data_#,"indexof")==0);
+    out=[];
+    dout=[];
+    forall(dline,
+      tmpd=data_#;
+      if(tmpd_(-1)==",",
+        tmpd=substring(tmpd,0,length(tmpd)-1);
+      );
+      tmp1=indexof(tmpd,Dq);
+      tmp2=indexof(data_#,":")-2;
+      tmp=substring(tmpd,tmp1,tmp2);
+      dout=append(dout,replace(tmp,".png",""));
+      out=append(out,[tmp,tmpd]);
+    );
+    fnameL=Sortsel(dout,"");
+    tmp=text(fnameL);
+    tmp=substring(tmp,1,length(tmp)-1);
+    Subsedit(1,tmp);
+    if(okflg==1,
+      forall(fnameL,fn,
+        tmp=select(1..(length(out)),
+               indexof(out_#_1,fn)>0);
+        tmp=tmp_1;
+        tmp1=out_tmp_2;
+        fname=fn+"png.txt";
+        setdirectory(Dirdrw);
+        fid=openfile(fname);
+        println(fid,tmp1);
+        closefile(fid);
+      );
+      okflg=0;
+      pngflg=0;
+    );
+  );
+
+  if(scriptflg==1,
+    fL=Filelist(Dirdrw);
+    fL=select(fL,indexof(#,".png")>0);
+    fL=select(fL,indexof(#,"-")>0);
+    pngL=Sortsel(fL,"");
+    tmp=text(pngL);
+    tmp=replace(tmp,".png","");
+    tmp=substring(tmp,1,length(tmp)-1);
+    fname=pngL_nf;
+    subsedit(1,text(tmp));
+    subsedit(2,fname);
+    fhead=replace(fname,".png","");
+    fscr=fhead+"image.txt";
+    if(nf!=nfnow,
+      if(isexists(Dirdrw,fscr),
+        setdirectory(Dirdrw);
+        import(fscr);
+        Putpoint("S",Sc2pt(Scale));
+        Putpoint("O",Center);
+        Putpoint("T3",[O.x-40,O.y]);
+      ,
+        Scale=Pt2sc(S.xy);
+        Putpoint("O",[T3.x+40,T3.y]);
+        Center=O.xy;
+        drawimage(Center,fname,scale->Scale);
+      );
+      nfnow=nf;
+    );
+    Slider("S",[15,4],[55,4]);
+    Scale=Pt2sc(S.xy);
+    Putpoint("T3",[O.x-40,O.y],T3.xy);
+    Putpoint("O",[T3.x+40,T3.y]);
+    Putpoint("O",[50,10],O.xy);
+    drawimage(O.xy,fname,scale->Scale);
+    if(okflg==1,
+      Makescriptfile(Dirdrw,fscr);
+      okflg=0;
+      scriptflg=0;
+    );
+  );
+
+  if(insertflg==1,
+    fL=Filelist(Dircdy);
+    fL=select(fL,indexof(#,".html")>0);
+    fL=select(fL,indexof(#,"dr.html")==0);
+    fL=select(fL,indexof(#,"kettaskv")>0);
+    fL=select(fL,indexof(#,"-")>0);
+    fnameL=Sortsel(fL,"");
+    fL=Filelist(Dirdrw);
+    fL=select(fL,indexof(#,".txt")>0);
+    fL=select(fL,indexof(#,"image")>0);
+    tmp1=apply(fL,replace(#,Date+"-",""));
+    tmp1=apply(tmp1,replace(#,"image.txt",""));
+    tmp1=apply(tmp1,parse(#));
+    tmp1=sort(tmp1);
+    scrL=apply(tmp1,Date+"-"+#+"image.txt");
+    fnameL=[];
+    forall(scrL,scr,
+      tmp=replace(scr,"image.txt","");
+      tmp="kettaskv"+tmp+".html";
+      fnameL=append(fnameL,tmp);
+    );
+    if(okflg==1,
+      forall(1..(length(fnameL)),nn,
+        fname=fnameL_nn;
+        scr=scrL_nn;
+        data=Readlines(Dircdy,fname);
+        line=Select(1..(length(data)),
+                 indexof(data_#,"csconsole:")>0);
+        line=line_1;
+        data1=data_(1..line);
+        data2=data_((line+1)..(length(data)));
+        tmp=fpng+".png";
+        tmp=select(1..(length(data2)),
+                 indexof(data2_#,tmp)>0);
+        if(length(tmp)>0,
+          tmp=tmp_1;
+          tmp1=data2_(1..(tmp-1));
+          data1=concat(data1,tmp1);
+          data2=data2_((tmp+1)..(length(data2)));
+        );
+        tmp1=indexof(fname,"-");
+        tmp2=indexof(fname,".");
+        fpng=substring(fname,tmp1-5,tmp2-1);
+        fpng=replace(fpng,"nr","");
+        tmp=fpng+"png.txt";
+        png=Readlines(Dirdrw,tmp);
+        tmp="  images: {";
+        tmp1=select(data1,indexof(#,tmp)>0);
+        if(length(tmp1)==0,
+          data1=append(data1,"  images: {");
+          data2=prepend("  },",data2);
+        );
+        data2=concat(png,data2);
+        line=select(1..(length(data1)),
+                indexof(data1_#,"Ketinit(")>0);
+        line=line_(-1);
+        data1a=data1_(1..line);
+        data1b=data1_((line+1)..(length(data1)));
+        tmp=fpng+"image.txt";
+        if(isexists(Dirdrw,tmp),
+          script=Readlines(Dirdrw,tmp);
+          script=script_1;
+        ,
+          tmp="drawimage([40,0],";
+          script=tmp+Dqq(fpng+".png")+",scale->2);";
+        );
+        if(indexof(data1b_1,fpng+".png")>0,
+            data1b=data1b_(2..(length(data1b)));
+        );
+        data1=append(data1a,script);
+        data1=concat(data1,data1b);
+        data=concat(data1,data2);
+        setdirectory(Dircdy);
+        fname=replace(fname,".html","dr.html");
+        fid=openfile(fname);
+        forall(data,
+          println(fid,#);
+        );
+        closefile(fid);
+      );
+      okflg=0;
+      insertflg=0;
+    );
+  );
+); //end imdrflg==1
+
+if(imdrflg==2,
+// offLを作成しておく
+  inspect(Text12,"text.text","Draw");
+  if((startdrflg==1)&(goflg==1),
+    Setdrwinit();
+    tmp=Filelist(Dircdy);
+    tmp2=Cdyname()+".html";
+    tmp1=select(tmp,indexof(#,tmp2)>0);
+    if(length(tmp1)==0,
+      drawtext(T1.xy+[3,0],
+         "Export to html",
+           size->20,color->[1,0,0]);
+    );
+    tmp=Filelist(Dirdrw);
+    FdrL=select(tmp,indexof(#,"draw.txt")>0);
+    if(length(FdrL)==0,
+      drawtext(T3.xy+[3,0],
+         "(Date-No)draw.txt not found",
+           size->20,color->[1,0,0]);
+    ,
+      tmp1=indexof(FdrL_1,"-");
+      tmp2=indexof(FdrL_1,"draw.txt");
+      tmp3=substring(FdrL_1,0,tmp1);
+      tmp=apply(FdrL,substring(#,tmp1,tmp2-1));
+      tmp=apply(tmp,parse(#));
+      tmp=sort(tmp);
+      FdrL=apply(tmp,tmp3+#+"draw.txt");
+      nfall=length(FdrL);
+    );
+    nf=1;
+    nfnow=0;
+    startdrflg=0;
+  );
+  if(goflg==1,
+    tmp=apply(FdrL,replace(#,".txt",""));
+    tmp=text(tmp);
+    Subsedit(1,substring(tmp,1,length(tmp)-1));
+    Fdr=FdrL_nf;
+    tmp=replace(Fdr,"draw.txt","");
+    tmp=select(FtaskL,indexof(#,tmp)>0);
+    if(length(tmp)>0,
+      Ftask=tmp_1;
+    ,
+      Ftask="";
+    );
+    Subsedit(2,Ftask);
+    if(typeflg>0,
+      Writecenterscale(Ftask);
+      typeflg=0;
+    );
+    if(nf!=nfnow,
+      Setcenterscale(Ftask);
+      nfnow=nf;
+    );
+    Putpoint("O",[58,12],O.xy);
+    Slider("S",[15,4],[55,4]);
+    Center=O.xy;
+    Scale=Pt2sc(S.xy);
+    setdirectory(Dirdrw);
+    import(Fdr);
+    if(okflg>=1, //no ketjs on
+      DrwscrL=Readlines(Dirdrw,Fdr);
+      Embeddraw(Fdr,Ftask);
+      okflg=0;
+    ); //no ketjs off
+  );
+);
+
+Windispg();
+
+
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "Text1", type: "EditableText", pos: [4.0, 3.9148936170212765, 0.1702127659574468], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 500, text: "0614-3", textsize: 24.0},
+    {name: "NE", type: "Free", pos: [-2.4, -4.0, -0.8], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text2", type: "EditableText", pos: [4.0, -0.8516129032258064, 0.25806451612903225], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 580, text: "kettaskv0614-3.html", textsize: 24.0},
+    {name: "T1", type: "Free", pos: [-3.5632183908045985, -4.0, -0.2298850574712644], color: [0.0, 0.0, 0.0], labeled: true, size: 6.0, border: false},
+    {name: "T2", type: "Free", pos: [4.0, 3.664516129032258, 0.25806451612903225], color: [1.0, 0.784, 0.0], labeled: true, size: 6.0, border: false},
+    {name: "T3", type: "Free", pos: [4.0, 2.838709677419355, 0.25806451612903225], color: [0.0, 0.0, 0.0], labeled: true, size: 6.0, border: false},
+    {name: "T4", type: "Free", pos: [4.0, 2.0129032258064514, 0.25806451612903225], color: [1.0, 0.784, 0.0], labeled: true, size: 6.0, border: false},
+    {name: "SW", type: "Free", pos: [4.0, 0.2, -2.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text3", type: "EditableText", pos: [4.0, -0.8621236133122027, 0.06339144215530904], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 180, text: "St=", textsize: 21.0},
+    {name: "Text9", type: "EditableText", pos: [1.7714285714285714, -4.0, 0.11428571428571428], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 580, textsize: 24.0},
+    {name: "S", type: "Free", pos: [4.0, 0.45714285714285713, 0.11428571428571428], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "O", type: "Free", pos: [4.0, 0.8275862068965518, 0.0689655172413793], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "W", type: "Free", pos: [4.0, -1.0638297872340423, 0.42553191489361697], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "A", type: "Free", pos: [4.0, -0.0, 1.3333333333333333], color: [1.0, 0.0, 0.0], labeled: true, size: 6.0},
+    {name: "C", type: "Free", pos: [4.0, 0.0991513967305486, 0.04544060345121384], color: [1.0, 0.0, 0.0], labeled: true, size: 6.0},
+    {name: "Text0", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.44, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [592.0, -20.0]}},
+    {name: "Text7", type: "Button", pos: [-2.0, -4.0, -0.17391304347826086], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 0.0], fillalpha: 0.45, script: "ch=1;initflg=1;", text: "1", textsize: 18.0},
+    {name: "Text8", type: "Button", pos: [4.0, -1.1478260869565216, 0.34782608695652173], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 0.0], fillalpha: 0.45, script: "ch=2;initflg=1;", text: "2", textsize: 18.0},
+    {name: "Text120", type: "Button", pos: [4.0, -0.540084388185654, 0.05625879043600563], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.27272728085517883, script: "startflg=1;", text: "Rset", textsize: 16.0},
+    {name: "Text19", type: "Button", pos: [4.0, -0.9676511954992967, 0.05625879043600563], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "okflg=1;", text: "O  K", textsize: 16.0},
+    {name: "Text204", type: "Text", pos: [4.0, 0.04193971166448231, 0.05242463958060289], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.2, text: "　　", textsize: 14.0},
+    {name: "Text205", type: "Button", pos: [4.0, 0.05414551607445009, 0.0676818950930626], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "if(ch==2,nf=1,n1=1);", text: "　　", textsize: 14.0},
+    {name: "Text206", type: "Button", pos: [4.0, 0.050473186119873815, 0.06309148264984227], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "if(ch==2,nf=max([1,nf-1]),n1=max([1,n1-1]));", text: "　　", textsize: 14.0},
+    {name: "Text207", type: "Button", pos: [4.0, 0.047267355982274745, 0.05908419497784343], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "if(ch==2,nf=min([nfall,nf+1]),n1=min([n1all,n1+1]));", text: "　　", textsize: 14.0},
+    {name: "Text208", type: "Button", pos: [4.0, 0.044444444444444446, 0.05555555555555555], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "if(ch==2,nf=nfall,n1=n1all);", text: "　　", textsize: 14.0},
+    {name: "Text15", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "typeflg=typeflg+1;\nif(typeflg==4,typeflg=0);", text: "ステップ", textsize: 24.0, dock: {corner: "UL", offset: [159.0, -20.0]}},
+    {name: "Text14", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "startflg=1;\n\n", text: "リセット", textsize: 24.0, dock: {corner: "UL", offset: [365.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "imdrflg=3-imdrflg;\nif(imdrflg==1,startimflg=1);\nif(imdrflg==2,startdrflg=1);\n", text: "Imag", textsize: 24.0, dock: {corner: "UL", offset: [89.0, -20.0]}},
+    {name: "Text6", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.44, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [503.0, -20.0]}},
+    {name: "Text13", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "okflg=1;", text: "実 行", textsize: 24.0, dock: {corner: "UL", offset: [292.0, -20.0]}}
+  ],
+  behavior: [
+    {type: "Environment", friction: 0.13488372093023257}
+  ],
+  ports: [{
+    width: 822,
+    height: 586,
+    id: "CSCanvas",
+    transform: [{visibleRect: [9.156514314855679, 29.016581389457556, 103.10091739544691, -37.95594927383498]}],
+    axes: true,
+    grid: 5.0,
+    snap: true,
+    background: "rgb(225,225,225)"
+  }],
+  csconsole: false,
+  images: {
+    "0614-3.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnAAAADVCAYAAADXXc3XAAABfGlDQ1BJQ0MgUHJvZmlsZQAAKJFjYGAqSSwoyGFhYGDIzSspCnJ3UoiIjFJgv8PAzcDDIMRgxSCemFxc4BgQ4MOAE3y7xsAIoi/rgsxK8/x506a1fP4WNq+ZclYlOrj1gQF3SmpxMgMDIweQnZxSnJwLZOcA2TrJBUUlQPYMIFu3vKQAxD4BZIsUAR0IZN8BsdMh7A8gdhKYzcQCVhMS5AxkSwDZAkkQtgaInQ5hW4DYyRmJKUC2B8guiBvAgNPDRcHcwFLXkYC7SQa5OaUwO0ChxZOaFxoMcgcQyzB4MLgwKDCYMxgwWDLoMjiWpFaUgBQ65xdUFmWmZ5QoOAJDNlXBOT+3oLQktUhHwTMvWU9HwcjA0ACkDhRnEKM/B4FNZxQ7jxDLX8jAYKnMwMDcgxBLmsbAsH0PA4PEKYSYyjwGBn5rBoZt5woSixLhDmf8xkKIX5xmbARh8zgxMLDe+///sxoDA/skBoa/E////73o//+/i4H2A+PsQA4AJHdp4IxrEg8AAAGdaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjYyNDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4yMTM8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KScpqfQAAQABJREFUeAHtnQe4VNXV9xfcRpUqCkoRFUEQMSo2rLHE8loTU00+NYmJqZr3ja+PxiT6xjwmMcZujLHERGOLkRg1lqiIiNgQFKSDWACpUi7cAt/+bXNguNwyZ+bMmXNm/ut5LjPMnLPP3v+9Zu+1V223yZGJhIAQEAJCQAgIASEgBFKDQPvU9FQdFQJCQAgIASEgBISAEPAISIATIwgBISAEhIAQEAJCIGUISIBL2YSpu0JACAgBISAEhIAQkAAnHhACQkAICAEhIASEQMoQkACXsglTd4WAEBACQkAICAEhIAFOPCAEhIAQEAJCQAgIgZQhIAEuZROm7goBISAEhIAQEAJCQAKceEAICAEhIASEgBAQAilDQAJcyiZM3RUCQkAICAEhIASEgAQ48YAQEAJCQAgIASEgBFKGgAS4lE2YuisEhIAQEAJCQAgIAQlw4gEhIASEgBAQAkJACKQMAQlwKZswdVcICAEhIASEgBAQAhLgxANCQAgIASEgBISAEEgZAhLgUjZh6q4QEAJCQAgIASEgBCTAiQeEgBAQAkJACAgBIZAyBCTApWzC1F0hIASEgBAQAkJACEiAEw8IASEgBISAEBACQiBlCEiAS9mEqbtCQAgIASEgBISAEJAAJx4QAkJACAgBISAEhEDKEJAAl7IJU3eFgBAQAkJACAgBISABTjwgBISAEBACQkAICIGUISABLmUTpu4KASEgBISAEBACQkACnHhACAgBISAEhIAQEAIpQ0ACXMomTN0VAkJACAgBISAEhIAEOPGAEBACQkAICAEhIARShoAEuJRNmLorBISAEBACQkAICAEJcOIBISAEhIAQEAJCQAikDIHUC3CbNm2yjRs3pgx2dbfUERBflvoMp2984sn0zVmp91g8md8MV+Z3e3HvbmhosOXLl9uqVausZ8+e1r17d6uoqPCdgjHq6upsw4YN1qlTJ6usTPVQiwu0nh4KAfFlKLh0cQwIiCdjAFmPCIWAeDIUXM1enFoNHILZpEmT7N5777WHH37YLrjgAps9e/bmQdbW1tr9999v5557rr311lubP9cbIVBIBMSXhURXbeeCgHgyF9R0TyEREE9Gg24qBTi0a++8845NmzbNzj77bBs2bJgX3iZOnLgZlcWLF9uECRO8dq5bt26bP9cbIVAoBMSXhUJW7eaKgHgyV+R0X6EQEE9Gh2wqBTik99WrV9t2221n7dq1s3nz5hkat969e29G5qOPPvJC3U477WQDBw7c/Lne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40Jaz8kWAfFktkhFf107p91qO/Qz+uc22yKVFW666SabPXu2F9SGDBli5Jp5+umnvebt7LPPtlNOOaVZE2uzDepDIZAnAuLJPAHU7QVBQHxZEFjVaB4IiCfzAC/HWxMlwDEG5EmENkypc+bMMRwlqbDQv39/CW45TrJuyw8B8WR++OnuwiAgviwMrmo1dwTEk7ljl8udiRPgchmE7hECQkAICAEhIASEQDkhUPQghnICW2MVAkJACAgBISAEhEAUCEiAiwJFtSEEhIAQEAJCQAgIgRgRkAAXI9h6lBAQAkJACAgBISAEokBAAlwUKKoNISAEhIAQEAJCQAjEiIAEuBjB1qOEgBAQAkJACAgBIRAFAhLgokBRbQgBISAEhIAQEAJCIEYEJMDFCLYeJQSEgBAQAkJACAiBKBCQABcFimpDCAgBISAEhIAQEAIxIiABLkaw9SghIASEgBAQAkJACESBgAS4KFBUG0JACAgBISAEhIAQiBEBCXAxgq1HCQEhIASEgBAQAkIgCgQkwEWBotoQAkJACAgBISAEhECMCEiAixFsPUoICAEhIASEgBAQAlEgUBm2kU2bNllDQ4P/496Kigqrrq4O20zJXA8e9fX11tjYaO3atbPKykr/VzIDTMFAxJNbT5J4cms8kvq/UuNb8V3rnFZq8936aPVttgjk87sJLcDV1tba66+/bi+99JLV1NTY0KFD7dhjj822r1lfx6AghKIk04oVK2zixIk2Y8YM69Chg40aNcoOOuigJHe55Pomntx6SsWTW+OR1P+VGt+K71rntELP98aNG70igVcUKygTAopiP42ijaA/pfaaDzb5/G62zHCWiK5Zs8ZeeeUVe+GFF+zII480mGX9+vX28ccfewGma9eu/rPVq1dbXV2dde/ePWsNHZos2qc93nPvdtttl2XPwl+G1oz+V1VVbXVzmPEwcbTBeKdOnepxkAC3FZwF/09zPMlDw8xjS52MiyfhRTTb8BOLL3/t22/xcAgzFvFkS7OZrM+b49sw89zaaKLi2zD9Ed+1NiPm97ameyd3hMG46RPAfMOGDbZu3TpbuXKlzZ071+9BAwcOtF133dU6d+7s96fly5f79WSHHXZo2kSr/w/aX7t2rX8GF/fr18+vT63eWAZftvYbCzOn+fxuKn7mKAzWTOS8efOsb9++duGFFxqM8sgjj9iZ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"
+  },
+  use: ["katex"],
+  cinderella: {build: 2072, version: [3, 0, 2072]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>
