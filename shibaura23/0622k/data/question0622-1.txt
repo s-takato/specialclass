@@ -1,6 +1,6 @@
 Q
 Tentative Schedule of Arrival and Departure//
-Omit the month. For example, (20,7) means from 20 to 7
+Omit the month. (20,7) : Aug.20 - Sep.7
 [1] 1st choice 
 [2] 2nd choice
 [3] 3rd choice

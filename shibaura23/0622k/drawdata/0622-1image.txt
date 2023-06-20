@@ -1,2 +1,2 @@
-drawimage([81.1,12.99],"0622-1.png",scale->4.39);
-Center=[81.1,12.99];Scale=4.39;
+drawimage([81.18,11.61],"0622-1.png",scale->4.39);
+Center=[81.18,11.61];Scale=4.39;
