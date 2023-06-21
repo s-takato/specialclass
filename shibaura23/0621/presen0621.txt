@@ -99,19 +99,17 @@ item::図のPDFをワードなどで使いたい\vspace{-2mm}
 end
 
 %%%%%%%%%%%%
-new::設定関連
+new::Texエディタのインストール
 %repeat=1
 \slidepage
 
 itemize
-item::Reference(以下Ref)のP3---11を参照
-item::主なコマンド\\
-　\Ltab{40mm}{Addax}座標軸を描く(1)，描かない(0)\\
-　\Ltab{40mm}{Setax}座標軸のラベル(x,y,O)\\
-　\Ltab{40mm}{Setunitlen}画面の1の物理長
-item::例\\
-　\verb|Setax(["l","x","e","y","n","O","sw"]);|\\
-　\verb|Setunitlen("5mm");|
+item::\TeX のエディタ\\
+　・編集とコンパイルと表示\\
+　・TeXWorks, TeXShop が一般的
+item::インストールと設定\\
+　・ ketcindy home/エディタ設定　を参照
+
 end
 
 %%%%%%%%%%%%
