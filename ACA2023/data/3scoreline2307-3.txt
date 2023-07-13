@@ -1,0 +1,7 @@
+quline="Q01::Answer the question	[]::Write what you notice";
+shline="Q01---	[] ";
+caline="Q01::	[]::";
+mrkline="0	4";
+mxscline="0	-1";
+sqline="01AA	2	2CR02BB	2	2CR03CC	2	2";
+ansline="1	01AA	未提出CR2	02BB	未提出CR3	03CC	未提出";
