@@ -1,0 +1,10 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) dtLL:[[1,no,tan(x)-(cos(x)^2-sin(x)^2),2*sin(x)-2*sin(x)*cos(x),tan(x)-(tan(x)+x/cos(x)^2),1-sin(x)^2/cos(x)^2],[2,no,12-(cos(x)^2-sin(x)^2),2-2*sin(x)*cos(x),3-(tan(x)+x/cos(x)^2),4-sin(x)^2/cos(x)^2],[3,no,cos(x)^2-(cos(x)^2-sin(x)^2),sin(2*x)-2*sin(x)*cos(x),(tan(x)+x/cos(x)^2)-(tan(x)+x/cos(x)^2),(1/cos(x)^2-1)-sin(x)^2/cos(x)^2]]
+(%i7) res:ratsimp(dtLL)
+(%i8) disp(res)
+[[1,no,tan(x)+sin(x)^2-cos(x)^2,(2-2*cos(x))*sin(x),-x/cos(x)^2,-(sin(x)^2-cos(x)^2)/cos(x)^2],[2,no,sin(x)^2-cos(x)^2+12,2-2*cos(x)*sin(x),-(cos(x)^2*tan(x)-3*cos(x)^2+x)/cos(x)^2,-(sin(x)^2-4*cos(x)^2)/cos(x)^2],[3,no,sin(x)^2,sin(2*x)-2*cos(x)*sin(x),0,-(sin(x)^2+cos(x)^2-1)/cos(x)^2]]
+
+(%i9) closefile()

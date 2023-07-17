@@ -1,0 +1,20 @@
+ACA2023d-1の結果
+1 01AA 0717 10:12:16
+Q01 Differenciate
+[1]  y=sin(x)cos(x)
+　正解 cos(2,x)-sin(2,x)
+　答え tan(x)
+　得点 0
+[2]  y=sin(2,x)=sin(x)sin(x)
+　正解 2sin(x)cos(x)
+　答え 2sin(x)
+　得点 0
+[3]  y=xtan(x)
+　正解 tan(x)+fr(x,cos(2,x))
+　答え tan(x)
+　得点 0
+[4]  y=tan(x)-x
+　正解 fr(sin(2,x),cos(2,x))
+　答え 1
+　得点 0
+

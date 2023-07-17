@@ -1,0 +1,9 @@
+writefile("/Users/takatoosetsuo/specialclass.git/ACA2023d/fig/toolketmathE1res.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+dtLL:[[1,no,(tan(x))-(cos(x)^(2)-sin(x)^(2)),(2*sin(x))-(2*sin(x)*cos(x)),(tan(x))-(tan(x)+((x)/(cos(x)^(2)))),(1)-(((sin(x)^(2))/(cos(x)^(2))))],[2,no,(12)-(cos(x)^(2)-sin(x)^(2)),(2)-(2*sin(x)*cos(x)),(3)-(tan(x)+((x)/(cos(x)^(2)))),(4)-(((sin(x)^(2))/(cos(x)^(2))))],[3,no,(cos(x)^(2))-(cos(x)^(2)-sin(x)^(2)),(sin(2*x))-(2*sin(x)*cos(x)),(tan(x)+((x)/(cos(x)^(2))))-(tan(x)+((x)/(cos(x)^(2)))),(((1)/(cos(x)^(2)))-1)-(((sin(x)^(2))/(cos(x)^(2))))]]$/*##*/
+res:ratsimp(dtLL)$/*##*/
+disp(res)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

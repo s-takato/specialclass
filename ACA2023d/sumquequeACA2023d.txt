@@ -1,0 +1,6 @@
+Q01
+Differenciate
+[1] y=sin(x)cos(x)
+[2] y=sin(2,x)=sin(x)sin(x)
+[3] y=xtan(x)
+[4] y=tan(x)-x
