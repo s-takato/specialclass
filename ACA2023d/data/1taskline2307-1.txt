@@ -1,3 +1,0 @@
-quline="Q01::Differenciate	[1]:: y=sin(x)cos(x)	[2]:: y=sin(2,x)=sin(x)sin(x)	[3]:: y=xtan(x)	[4]:: y=tan(x)-x";
-shline="Q01---	[1] y'=  	[2] y'=  	[3] y'=  	[4] y'=  ";
-sqline="01AA	2	2	2	2	2CR02BB	2	2	2	2	2CR03CC	2	2	2	2	2";

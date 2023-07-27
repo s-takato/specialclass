@@ -3089,9 +3089,9 @@ Lettermove(dir,str):=(
 Ketcindyjsfigure=0;
 Ketcindyjsscale=1;
 aalinestart=1;
-quline="Q03::Let the right weight M_1=1;	[1]:: M_2=1; What happens?	[2]:: M_2=1.1; What happens?	[3]:: M_2=1.05; What happens?";
-shline="Q03---	[1] M_2=1; 	[2] M_2=1.1; 	[3] M_2=1.05;";
-sqline="01AA	2	2	2	2CR02BB	2	2	2	2CR03CC	2	2	2	2";
+quline="Q03::Let the right weight M_1=1;	[1]:: M_2=1; What happens?	[2]:: M_2=1.1; What happens?	[3]:: M_2=1.05; What happens?	[4]:: Find the smallest M_2 for which W_2 up/down.";
+shline="Q03---	[1] M_2=1; 	[2] M_2=1.1; 	[3] M_2=1.05; 	[4] M_2=1.";
+sqline="01AA	2	2	2	2	2CR02BB	2	2	2	2	2CR03CC	2	2	2	2	2";
 quLL=Line2list(quline);
 shL=Line2list(shline);
 sqLL=Line2list(sqline);
@@ -4929,8 +4929,8 @@ if(stok==1,
   Subsedit(3,StrL_3);
 );
 
-Center=[90.813,10.226];
-Scale=4.71;
+Center=[90.257,11.782];
+Scale=4.265;
 if(ketlibflg==1,
   eqG="-((2*G*Q-2*G*G+G^2)*R-g*sin(F))/((P-F)*R-L0)";
   eqQ="((m1*G^2*P-m1*F*G^2)*R^2+((-g*m1*cos(F))-L0*m1*G^2+g*m2)*R)/((m2+m1)*R^2+I0)";
@@ -4951,7 +4951,12 @@ tmp=Textedit(2,"","");
 if(indexof(tmp,"M_2=")>0,
   tmp1=indexof(tmp,"=");
   tmp2=indexof(tmp,";");
-  tmp=substring(tmp,tmp1,tmp2-1);
+  if(tmp2>0,
+    tmp=substring(tmp,tmp1,tmp2-1);
+  ,
+    tmp=substring(tmp,tmp1,length(tmp));
+    tmp=Removespace(tmp);
+  );
   tmp1=parse(tmp);
   if(m2now!=tmp1,
     repva_4=tmp1;

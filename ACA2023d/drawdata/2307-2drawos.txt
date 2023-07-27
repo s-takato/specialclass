@@ -1,4 +1,0 @@
-Center=[85.362,4.505];
-Scale=4.71;
-Putpoint("O",Center);
-Putpoint("S",Sc2pt(Scale));

@@ -1,7 +1,0 @@
-quline="Q01::Differenciate	[1]:: y=sin(x)cos(x)	[2]:: y=sin(2,x)=sin(x)sin(x)	[3]:: y=xtan(x)	[4]:: y=tan(x)-x";
-shline="Q01---	[1] y'=  	[2] y'=  	[3] y'=  	[4] y'=  ";
-caline="Q01::	[1]::cos(2,x)-sin(2,x)	[2]::2sin(x)cos(x)	[3]::tan(x)+fr(x,cos(2,x))	[4]::fr(sin(2,x),cos(2,x))";
-mrkline="0	2	2	2	2";
-mxscline="0	1	1	1	1";
-sqline="01AA	2	2	2	2	2CR02BB	2	2	2	2	2CR03CC	2	2	2	2	2";
-ansline="1	01AA	071710:12:16	Q01---	[1] y'=  tan(x)	[2] y'=  2sin(x)	[3] y'=  tan(x)	[4] y'=  1CR2	02BB	071710:13:11	Q01---	[1] y'=  12	[2] y'=  2	[3] y'=  3	[4] y'=  4CR3	03CC	071710:14:59	Q01---	[1] y'=  cos(2,x)	[2] y'=  sin(2x)	[3] y'=  tan(x)+fr(x,cos(2,x))	[4] y'=  fr(1,cos(2,x))-1";
