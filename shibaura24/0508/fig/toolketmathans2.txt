@@ -1,0 +1,25 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) q1i1:(x+2)^2-9
+(%i7) q1i2:(x-1)^2-2
+(%i8) q1i3:(-(x+2)^2)+5
+(%i9) q1i4:(x+1/2)^2+3/4
+(%i10) q1o1:expand(q1i1)
+(%i11) q1o2:expand(q1i2)
+(%i12) q1o3:expand(q1i3)
+(%i13) q1o4:expand(q1i4)
+(%i14) disp(q1o1)
+x^2+4*x-5
+
+(%i15) disp(q1o2)
+x^2-2*x-1
+
+(%i16) disp(q1o3)
+(-x^2)-4*x+1
+
+(%i17) disp(q1o4)
+x^2+x+1
+
+(%i18) closefile()

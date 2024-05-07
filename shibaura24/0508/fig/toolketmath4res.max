@@ -1,0 +1,9 @@
+writefile("/Users/takatoosetsuo/polytech23.git/102-0424/fig/toolketmath4res.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+dtLL:[[1],[2,no,ns],[3,no,ns],[4,no,ns],[5,no,ns],[6,no,ns],[7],[8],[9,no,ns],[10,no,ns],[11,no,ns]]$/*##*/
+res:ratsimp(dtLL)$/*##*/
+disp(res)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

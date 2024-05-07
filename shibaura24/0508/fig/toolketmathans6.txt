@@ -1,0 +1,25 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) q1i1:x^2+4*x+2
+(%i7) q1i2:x^2+2*x-2
+(%i8) q1i3:x^2-6*x+1
+(%i9) q1i4:x^2-8*x+2
+(%i10) q1o1:solve(q1i1 = 0,x)
+(%i11) q1o2:solve(q1i2 = 0,x)
+(%i12) q1o3:solve(q1i3 = 0,x)
+(%i13) q1o4:solve(q1i4 = 0,x)
+(%i14) disp(q1o1)
+[x = (-sqrt(2))-2,x = sqrt(2)-2]
+
+(%i15) disp(q1o2)
+[x = (-sqrt(3))-1,x = sqrt(3)-1]
+
+(%i16) disp(q1o3)
+[x = 3-2^(3/2),x = 2^(3/2)+3]
+
+(%i17) disp(q1o4)
+[x = 4-sqrt(14),x = sqrt(14)+4]
+
+(%i18) closefile()

@@ -1,0 +1,25 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) q1i1:-sqrt(64)
+(%i7) q1i2:sqrt(4/9)
+(%i8) q1i3:(-sqrt(11))^2
+(%i9) q1i4:-(-sqrt(3))^2
+(%i10) q1o1:ratsimp(q1i1)
+(%i11) q1o2:ratsimp(q1i2)
+(%i12) q1o3:ratsimp(q1i3)
+(%i13) q1o4:ratsimp(q1i4)
+(%i14) disp(q1o1)
+-8
+
+(%i15) disp(q1o2)
+2/3
+
+(%i16) disp(q1o3)
+11
+
+(%i17) disp(q1o4)
+-3
+
+(%i18) closefile()

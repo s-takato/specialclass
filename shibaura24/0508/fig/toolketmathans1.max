@@ -1,0 +1,15 @@
+writefile("/Users/takatoosetsuo/polytech.git/polytech24/102-0422/fig/toolketmathans1.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+q1i1:(0)^2-1$/*##*/
+q1i2:(1)^2-1$/*##*/
+q1i3:(-2)^2-1$/*##*/
+q1i4:(a+1)^2-1$/*##*/
+q1o4:expand(q1i4)$/*##*/
+disp(q1i1)$/*##*/
+disp(q1i2)$/*##*/
+disp(q1i3)$/*##*/
+disp(q1o4)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

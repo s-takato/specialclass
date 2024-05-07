@@ -1,0 +1,8 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+/Users/takatoosetsuo/polytech23.git/102-0424/fig/toolketmatham2res.max:5:769:incorrect syntax: Illegal use of delimiter )
+)-([(1)/(2),2]),(1/)
+                  ^
+(%o6) "/Users/takatoosetsuo/polytech23.git/102-0424/fig/toolketmatham2res.max"

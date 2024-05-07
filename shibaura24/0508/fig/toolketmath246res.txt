@@ -1,0 +1,8 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+/Users/takatoosetsuo/polytech.git/polytech24/102-0422/fig/toolketmath246res.max:5:17:incorrect syntax: ___ is not an infix operator
+dtLL:[[1,no,(1___)
+                ^
+(%o6) "/Users/takatoosetsuo/polytech.git/polytech24/102-0422/fig/toolketmath246res.max"

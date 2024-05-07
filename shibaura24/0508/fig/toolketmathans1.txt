@@ -1,0 +1,22 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) q1i1:0^2-1
+(%i7) q1i2:1^2-1
+(%i8) q1i3:(-2)^2-1
+(%i9) q1i4:(a+1)^2-1
+(%i10) q1o4:expand(q1i4)
+(%i11) disp(q1i1)
+-1
+
+(%i12) disp(q1i2)
+0
+
+(%i13) disp(q1i3)
+3
+
+(%i14) disp(q1o4)
+a^2+2*a
+
+(%i15) closefile()

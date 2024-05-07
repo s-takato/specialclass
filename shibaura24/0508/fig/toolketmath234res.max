@@ -1,0 +1,9 @@
+writefile("/Users/takatoosetsuo/polytech.git/polytech24/102-0422/fig/toolketmath234res.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+dtLL:[[1,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[2,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[3,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[4,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[5,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[6,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[7],[8,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[9,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),(20*sqrt(2))-(5*(2)^(((5)/(2))))],[10,no,((m*p)*2*sqrt(3))-(-2*sqrt(3)),((p*m)*3*sqrt(2))-(3*sqrt(2)),([2*sqrt(3),-4*sqrt(3)])-(2*sqrt(3)),((p*m)*20*sqrt(2))-(5*(2)^(((5)/(2))))],[11,no,(-2*sqrt(3))-(-2*sqrt(3)),(3*sqrt(2))-(3*sqrt(2)),(2*sqrt(3))-(2*sqrt(3)),((10)*sin(8)*sqrt(108))-(5*(2)^(((5)/(2))))]]$/*##*/
+res:ratsimp(dtLL)$/*##*/
+disp(res)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

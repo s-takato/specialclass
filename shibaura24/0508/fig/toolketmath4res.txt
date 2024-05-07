@@ -1,0 +1,10 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) dtLL:[[1],[2,no,ns],[3,no,ns],[4,no,ns],[5,no,ns],[6,no,ns],[7],[8],[9,no,ns],[10,no,ns],[11,no,ns]]
+(%i7) res:ratsimp(dtLL)
+(%i8) disp(res)
+[[1],[2,no,ns],[3,no,ns],[4,no,ns],[5,no,ns],[6,no,ns],[7],[8],[9,no,ns],[10,no,ns],[11,no,ns]]
+
+(%i9) closefile()
