@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>0522radian.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+kL=keydownlist();
+if(length(kL)>0,
+  if(kL==[17,70], //Ctr+f (Figures)
+    Viewtex();
+    kc();
+  );
+  if(kL==[16,17,80], //Ctr+Shift+p (Parent)
+    if(length(Shellparent)>0,
+      Makeshell(),Makebat();
+    );
+    WritetoSci(2);
+    kc();
+  );
+  if(kL==[17,74], //Ctr+j (Ketjsoff)
+    Mkketcindyjs(append(KETJSOP,"Web=n"));
+  );
+  if(kL==[16,17,74], //Ctr+Shift+j (Ketjson)
+    Mkketcindyjs(append(KETJSOP,"Web=yj"));
+  );
+);
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit();
+
+Setketcindyjs(["Grid=0.2"]);
+
+Setwindow([-1.2,1.2],[-1.2,1.2]);
+Setunitlen("2cm");
+
+pO=[0,0];
+pA=[1,0];
+
+Circledata("1",[pO,1],["dr,2"]);
+Putoncurve("B","cr1");
+th=arcsin(B.y);
+rng=Assign("Rng=[0,th]",["th",th]);
+Circledata("2",[pO,1],[rng,"Color=red","dr,2"]);
+Listplot("1",[pO,B],["dr,2"]);
+Anglemark("1",[pA,pO,B],["E=\theta"]);
+pP=[cos(th/2),sin(th/2)];
+
+Expr(pP,"ne","l=\theta");
+Expr(A,"e","\theta=\dfrac{l}{r}",["Color=red"]);
+Htickmark([-1,"s1w","-1",1,"s1e","1"]);
+Vtickmark([-1,"sw1","-1",1,"nw1","1"]);
+
+Windispg();
+//Help("Setket");
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "SW", type: "Free", pos: [4.0, 4.0, -3.3333333333333335], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "NE", type: "Free", pos: [4.0, 4.0, 3.3333333333333335], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "B", type: "Free", pos: [-0.251162078, -4.0, -4.0], color: [1.0, 0.0, 0.0], labeled: true, size: 6.0},
+    {name: "A", type: "Free", pos: [-1.0894654597444275, -4.0, -3.6887396429175108], color: [1.0, 0.0, 0.0], visible: false, size: 0.0}
+  ],
+  ports: [{
+    width: 855,
+    height: 440,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-3.061997692758416, 1.6811614901279297, 3.1987032842510548, -1.5407197144149558]}],
+    grid: 0.25,
+    background: "rgb(168,176,192)"
+  }],
+  csconsole: false,
+  cinderella: {build: 2083, version: [3, 0, 2083]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>

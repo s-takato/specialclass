@@ -1,7 +1,8 @@
 #!/bin/sh
 cd "/Users/takatoosetsuo/specialclass.git/shibaura24/0522/fig"
-"/Applications/KeTTeX.app/texlive/bin/universal-darwin/uplatex" "slide0main.tex"
-"/Applications/KeTTeX.app/texlive/bin/universal-darwin/dvipdfmx" "slide0main.dvi"
-rm "slide0main.dvi"
-open -a "preview" "slide0main.pdf"
+"/Library/Frameworks/R.framework/Versions/Current/Resources/bin/R" --vanilla --slave < "radian.r"
+"/Applications/KeTTeX.app/texlive/bin/universal-darwin/uplatex" "radianmain.tex"
+"/Applications/KeTTeX.app/texlive/bin/universal-darwin/dvipdfmx" "radianmain.dvi"
+rm "radianmain.dvi"
+open -a "preview" "radianmain.pdf"
 exit 0

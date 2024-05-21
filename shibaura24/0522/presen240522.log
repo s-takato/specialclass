@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.0-u1.29-230214-2.6 (utf8.uptex) (TeX Live 2023) (preloaded format=uplatex 2024.3.18)  21 MAY 2024 21:19
+This is e-upTeX, Version 3.141592653-p4.1.0-u1.29-230214-2.6 (utf8.uptex) (TeX Live 2023) (preloaded format=uplatex 2024.3.18)  22 MAY 2024 04:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,7 +529,7 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 8.65997pt on input line 92.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 5.77332pt on input line 92.
- [2] [3] [4] [5] [6] (./presen240522.aux)
+ [2] (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) [2] (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) [2] (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) [2] (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) [2] (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) (./fig/radian.tex) [2] [3] [4] [5] [6] (./presen240522.aux)
  ***********
 pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2023-11-01> patch level 1
@@ -539,12 +539,12 @@ Package rerunfilecheck Info: File `presen240522.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14065 strings out of 476265
- 198829 string characters out of 5792606
+ 14109 strings out of 476265
+ 199502 string characters out of 5792606
  1987032 words of memory out of 5000000
- 36078 multiletter control sequences out of 15000+600000
+ 36081 multiletter control sequences out of 15000+600000
  571774 words of font info for 100 fonts, out of 16000000 for 9000
  14 hyphenation exceptions out of 8191
- 125i,13n,126p,313b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,16n,126p,313b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on presen240522.dvi (7 pages, 238568 bytes).
+Output written on presen240522.dvi (12 pages, 419288 bytes).
