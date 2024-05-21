@@ -1,0 +1,9 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) dtp(u,v):=block(w:flatten([u-v]),w . w)
+/Users/takatoosetsuo/specialclass.git/shibaura24/0508/data/fig/toolketmath2res.max:6:380:incorrect syntax: %pi is not an infix operator
+dtp(%pi*rˆ(2),(　%pi*
+                  ^
+(%o7) "/Users/takatoosetsuo/specialclass.git/shibaura24/0508/data/fig/toolketmath2res.max"

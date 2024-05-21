@@ -1,0 +1,12 @@
+NIL
+(%i3) powerdisp:false
+(%i4) display2d:false
+(%i5) linel:1000
+(%i6) dtp(u,v):=block(w:flatten([u-v]),w . w)
+(%i7) scLL:[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+(%i8) dtLL:[]
+(%i9) for st thru length(scLL) do (scL:scLL[st],dtL:[],for nq thru length(scL) do (tmp:scL[nq],dtL:endcons(tmp,dtL)),dtLL:endcons(dtL,dtLL))
+(%i10) disp(dtLL)
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+
+(%i11) closefile()

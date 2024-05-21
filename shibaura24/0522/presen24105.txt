@@ -1,0 +1,361 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\def\deg#1{#1^{\circ}}
+::\newcommand{\monthday}{0520}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+%%%%%%%%%%%%
+main::三角関数
+
+%%%%%%%%%%%%
+new::正弦曲線を描く(再挑戦)
+%repeat=1
+\slidepage
+
+itemize
+ item::[課題]\monban 「REC」を押して表示されるデータを提出せよ．
+end
+
+%%%%%%%%%%%%
+new::正弦曲線の特徴
+%repeat=6
+\slidepage
+
+layer::{120}{0}
+putnote::s{60}{5}::graphsin
+end
+
+\vspace{30mm}
+
+%[2,-]::itemize
+%[2]::item::{\color{red}振幅}は
+%[3,-]::item::{\color{red}振幅}は$1$（値の範囲は$-1$から$1$）
+%[4]::item::{\color{red}周期}は
+%[5,-]::item::{\color{red}周期}は$2\pi$（$2\pi$で元に戻る）
+%[6,-]::item::原点対称
+%[2,-]::end
+
+
+%%%%%%%%%%%%
+new::正弦曲線(課題)
+%repeat=1
+\slidepage
+
+\down
+
+「関数のグラフ」でグラフをかいてみよう．
+
+itemize
+item::[課題]\monban 次の関数の振幅と周期を答えよ\seteda{50}\vspace{2mm}\\
+\eda{$y=2\sin x$}\eda{$y=\bunsuu{1}{3}\sin x$}\\
+\eda{$y=\sin 2x$}\eda{$y=4\sin\bunsuu{x}{2}$}
+item::[課題]\monban 次の関数の振幅と周期を答えよ\seteda{50}\vspace{2mm}\\
+\eda{$y=A\sin x$}\eda{$y=\sin bx$}
+end
+
+%%%%%%%%%%%%
+new::振幅・周期
+%repeat=6
+\slidepage
+
+itemize
+item::$y=\sin x$の振幅は$1$，周期は$2\pi$
+%[2]::item::$y=A \sin x$の振幅は$\phantom{A}$，周期は$\phantom{2\pi}$
+%[3]::item::$y=A \sin x$の振幅は$A$，周期は$\phantom{2\pi}$
+%[4,-]::item::$y=A \sin x$の振幅は$A$，周期は$2\pi$
+%[5]::item::$y=\sin(bx)$の周期は$\phantom{\bunsuu{2\pi}{b}}$
+%[6,-]::item::$y=\sin(bx)$の振幅は$1$，周期は$\bunsuu{2\pi}{b}$
+end
+
+%%%%%%%%%%%%
+new::位相
+%repeat=5
+\slidepage
+
+itemize
+item::「関数のグラフ」でグラフをかいてみよう．
+item::[課題]\monbannoadd $y=\sin x$のグラフとの関係を答えよ．\seteda{60}\\
+\eda{$y=\sin(x-1)$}\eda{$y=\sin(x-2)$}\\
+\eda{$y=\sin(x+1)$}\eda{$y=\sin(x+\bunsuu{\pi}{2})$}
+%[2,-]::item::$y=\sin(x-c)$は$y=\sin x$を\\
+%[3,-]::\hspace*{3zw}右方向に$c$だけ平行移動 {\color{red}位相が$c$だけ遅れる}
+%[4,-]::item::$y=\sin(x+c)$は$y=\sin x$を\\
+%[5,-]::\hspace*{3zw}左方向に$c$だけ平行移動 {\color{red}位相が$-c$だけ進む}
+end
+
+%%%%%%%%%%%%ｒ
+new::$y=\cos x$のグラフ(余弦曲線)
+%repeat=5
+\slidepage
+
+%[1]::\addban
+
+layer::{120}{0}
+putnote::s{62}{6}::graphcos
+\putnoten{118}{6}{\small $y=\cos x$}
+%[5,-]::putnote::s{62}{6}::graphsinadd
+%[5,-]::\putnoten{80}{6}{\color{red}\small $y=\sin x$}
+end
+
+\vspace*{28mm}
+
+itemize
+%thin[2,-]::item::{\color{red}振幅}は$1$（値の範囲は$-1$から$1$）\vspace{-1mm}
+%thin[3,-]::item::{\color{red}周期}は$2\pi$（$2\pi$で元に戻る）\vspace{-1mm}
+%thin[4,-]::item::$\cos x$は$y$軸対称\vspace{-1mm}
+%thin[5,-]::item::$\cos x$は$\sin x$を左に$\frac{\pi}{2}$平行移動（{\color{red}位相}が$\frac{\pi}{2}$進む）
+end
+
+%%%%%%%%%%%%
+new::角度の和の三角関数
+%repeat=1
+\slidepage
+
+itemize
+item::2つの角を$A,\ B$とする（通常はギリシャ文字 $\alpha,\  \beta$）
+item::$\sin(A+B)=\sin A+\sin B$が成り立つかを考えよう
+item::$\sin\deg{30}+\sin\deg{60}=\sin(\deg{30}+\deg{60})$になるかを調べる
+item::{\large $\sin \deg{90}=1,\ \sin \deg{30}=\bunsuu{1}{2},\ \sin \deg{60}=\bunsuu{\sqrt{3}}{2}$}
+item::[課題]\monban $\sqrt{3}=1.732$を用いて答えよ．\seteda{90}\\
+\eda{$\sin\deg{30}+\sin\deg{60}$を計算せよ}\\
+\eda{$\sin(A+B)=\sin A+\sin B$は成り立つと言えるか}
+end
+
+%%%%%%%%%%%%
+new::加法定理
+%repeat=2
+\slidepage
+
+itemize
+item::[]$\sin(A+B)=\sin A \cos B+\cos A\sin B$
+item::[]$\sin( A- B)=\sin A\cos B-\cos A\sin B$
+item::[]$\cos( A+ B)=\cos A\cos B-\sin A\sin B$
+item::[]$\cos( A- B)=\cos A\cos B+\sin A\sin B$
+end
+
+%%%%%%%%%%%%%%
+%%new::加法定理の証明
+%%%%repeat=2
+%%\slidepage
+%%
+%%layer::{120}{0}
+%%putnote::s{65}{10}::kahoteiri
+%%end
+
+%%%%%%%%%%%%
+new::具体例(テキストP181)
+%repeat=11,para
+\slidepage
+
+itemize
+%[1]::item::{\color{blue}\normalsize $\sin 30\degree=\hako{$\bunsuu{1}{2}$},\ \sin 45\degree=\hako{$\bunsuu{1}{\sqrt{2}}$},\ \sin 60\degree=\hako{$\bunsuu{\sqrt{3}}{2}$}$}\\
+%[2,-]::item::{\color{blue}\normalsize $\sin 30\degree=\hakoa{$\bunsuu{1}{2}$},\ \sin 45\degree=\hakoa{$\bunsuu{1}{\sqrt{2}}$},\ \sin 60\degree=\hakoa{$\bunsuu{\sqrt{3}}{2}$}$}\\
+%[3]::{\color{blue}\normalsize $\cos 30\degree=\hako{$\bunsuu{\sqrt{3}}{2}$},\ \cos 45\degree=\hako{$\bunsuu{1}{\sqrt{2}}$},\ \cos 60\degree=\hako{$\bunsuu{1}{2}$}$}
+%[4,-]::{\color{blue}\normalsize $\cos 30\degree=\hakoa{$\bunsuu{\sqrt{3}}{2}$},\ \cos 45\degree=\hakoa{$\bunsuu{1}{\sqrt{2}}$},\ \cos 60\degree=\hakoa{$\bunsuu{1}{2}$}$}
+%[5,-]::item::$\sin 75\degree$\\
+%[6,-]::$=\sin(45\degree+30\degree)$
+%[7,-]::$=\sin 45\degree \cos 30\degree+\cos 45\degree \sin 30\degree$
+%[8,-]::$=\bunsuu{1}{\sqrt{2}}\bunsuu{\sqrt{3}}{2}+\bunsuu{1}{\sqrt{2}}\bunsuu{1}{2}=$
+%[9,-]::$\bunsuu{\sqrt{3}+1}{2\sqrt{2}}=$
+%[10,-]::$\bunsuu{\sqrt{6}+\sqrt{2}}{4}$
+%[11,-]::item::[課題]\monban 次を求めよ\seteda{50}\\
+%[11,-]::\eda{$\sin 15\degree$}\eda{$\cos 75\degree$}
+end
+
+%%%%%%%%%%%%
+new::グラフの対称性
+%repeat=3
+\slidepage
+
+layer::{120}{0}
+putnote::s{62}{1}::graphsin,0.9
+putnote::s{62}{28}::graphcos,0.9
+\putnotese{10}{60}{[1] $\sin(-x)$を$\sin x$または$\cos x$で表せ}
+\putnotese{10}{67}{[2] $\cos(-x)$を$\sin x$または$\cos x$で表せ}
+%[2,-]::\putnotese{70}{-2}{{\color{red}原点対称（奇関数）}}
+%[3,-]::\putnotese{70}{25}{{\color{red}$y$軸対称（偶関数）}}
+
+end
+
+\vspace{46mm}
+...
+
+itemize
+item::[課題]\monbannoadd 曲線上の点を動かしてみて答えよ
+end
+
+%%%%%%%%%%%%
+new::加法定理による等式証明($-x$)
+%repeat=8
+\slidepage
+
+%[1]::\addban
+
+itemize
+item::{\normalsize\color{blue} $\sin 0=0,\ \cos 0=1,\ \sin\pi=0,\ \cos\pi=-1$}
+item::$\sin(-x)$\\
+%[2,-]::$=\sin(0-x)=$
+%[3,-]::$\sin 0 \cos x-\cos 0\sin x=$
+%[4,-]::$-\sin x$
+%[5,-]::item::$\cos(-x)$\\
+%[6,-]::$=\cos(0-x)=$
+%[7,-]::$\cos 0 \cos x+\sin 0\sin x=$
+%[8,-]::$\cos x$
+end
+
+
+
+
+%%%%%%%%%%%%
+main::弧度法（radian）
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::角度の測り方1
+%repeat=5
+\slidepage
+
+layer::{120}{0}
+%[1]::putnote::se{90}{10}::kakudo60
+%[2]::putnote::se{90}{10}::kakudo360
+%[3]::putnote::se{90}{10}::kakudo180
+%[4,-]::putnote::se{90}{10}::kakudo001
+end
+
+\noindent
+度　${}^{\circ}$\vspace{-1mm}
+
+itemize
+%thin[2,-]::item::１周を$360^{\circ}$とする
+%thin[3,-]::item::半周は$180^{\circ}$とする
+%thin[4,-]::item::一周の$\bunsuu{1}{360}$を$1^{\circ}$とする
+%thin[5,-]::item::数学的な意味は余りない
+%thin[5,-]::item::日常的には使いやすい
+end
+
+%%%%%%%%%%%%
+new::角度の測り方2（弧度法）
+%repeat=5,para
+\slidepage
+
+layer::{120}{0}
+putnote::se{87}{10}::radian
+end
+
+itemize
+%thin[1,-]::item::弧の長さ$\ell$と半径$r$の比\ $\theta(\rad)=\bunsuu{\ell}{r}$\vspace{-1mm}
+%thin[2,-]::item::半径$r$の円周は$2\pi r$だから\\
+%thin[2,-]::　$\mbox{1周の角}(360^{\circ})=\bunsuu{2\pi r}{r}=2\pi$
+%thin[3,-]::item::$\mbox{半周の角}(180^{\circ})=\pi$
+%thin[4,-]::item::比なので単位はない（$\sin$などと同じ）\\
+%thin[5,-]::　度と区別するときは，ラジアン(rad)を付ける
+end
+
+%%%%%%%%%%%%
+new::弧度法による角度の例
+%repeat=8
+\slidepage
+
+itemize
+%[1]::item::$\deg{60}$は$\deg{180}$の\hakom{\bunsuu{1}{3}}，したがって　$\deg{60}=\hakom{\bunsuu{\pi}{3}}$
+%[2]::item::$\deg{60}$は$\deg{180}$の\hakoma{\bunsuu{1}{3}}，したがって　$\deg{60}=\hakom{\bunsuu{\pi}{3}}$
+%[3,-]::item::$\deg{60}$は$\deg{180}$の\hakoma{\bunsuu{1}{3}}，したがって　$\deg{60}=\hakoma{\bunsuu{\pi}{3}}$
+%[4]::item::$\deg{90}$は$\deg{180}$の\hakom{\bunsuu{1}{2}}，したがって　$\deg{90}=\hakom{\bunsuu{\pi}{2}}$
+%[5]::item::$\deg{90}$は$\deg{180}$の\hakoma{\bunsuu{1}{2}}，したがって　$\deg{90}=\hakom{\bunsuu{\pi}{2}}$
+%[6,-]::item::$\deg{90}$は$\deg{180}$の\hakoma{\bunsuu{1}{2}}，したがって　$\deg{90}=\hakoma{\bunsuu{\pi}{2}}$
+%[7,-]::item::$1\degree$は$\bunsuu{\pi}{180}$　　$1$(ラジアン)は$\bunsuu{180}{\pi}$
+%[8,-]::item::[問]\monban $\degree$をラジアン，ラジアンを$\degree$に変換せよ．\seteda{30}\\
+%[8,-]::\eda{$30\degree$}\eda{$45\degree$}
+%[8,-]::\eda{$\pi$}\eda{$\bunsuu{2\pi}{3}$}
+end
+
+%%%%%%%%%%%%
+new::度とラジアンの換算
+%repeat=6
+\slidepage
+
+itemize
+item::[]1つの角について，$x\text{度}=y$(ラジアン)とする
+%[2,-]::item::[]$1$度は$\bunsuu{\pi}{180}$
+%[3,-]::　　$x$度は$\bunsuu{\pi}{180}\times x$
+%[4,-]::item::[]$1$は$\bunsuu{180}{\pi}$度
+%[5,-]::　　$y$は$\bunsuu{180}{\pi}\times y$度
+%[6,-]::item::[問]\monban 次の角を変換せよ(整数か$\pi$を含む分数で)\seteda{30}\\
+%[6,-]::\eda{$3.1416$}\eda{$10\degree$}\eda{$1$}\eda{$60\degree$}
+end
+
+%%%%%%%%%%%%
+new::正弦関数と正弦曲線
+%repeat=7
+\slidepage
+
+layer::{120}{0}
+%[7,-]::putnote::s{65}{70}::fig221045
+end
+
+itemize
+item::一般角を$x$とおく．
+%[2,-]::item::任意の$x$に対して，$y=\sin x$の値が定まる．
+%[3,-]::item::これを正弦関数という(三角関数の１つ)．
+%[4,-]::item::$y=\sin x$のグラフを正弦曲線という．
+%[5,-]::item::{\color{red}$x$はラジアンとする．}\vspace{-2mm}
+%[6,-]::item::[]　横軸を度とすると下図になってしまう
+end
+
+%%%%%%%%%%%%
+new::$y=\sin x$のグラフ
+%repeat=8
+\slidepage
+
+layer::{120}{0}
+%[1..7]::putnote::se{80}{3}::fig221046,0.8
+%[8,-]::putnote::se{80}{3}::fig221046b,0.8
+end
+
+{\color{red}
+layer::{120}{0}
+%[3,-]::\qarrowline[8]{43}{26}{33}{150}{40}
+%[3,-]::\circleline{46}{25}{1}
+%[6,-]::\qarrowline[8]{35}{43}{38}{122}{40}
+%[6,-]::\circleline{37}{44}{1}
+end
+}
+
+itemize
+item::{\color{red}半径$1$}の円に点$\mathrm{P}(X,Y)$をとる
+%[2,3]::item::[]\hspace*{3zw}$\sin x=\bunsuu{Y}{r}\phantom{=Y}$
+%[4,-]::item::[]\hspace*{3zw}$\sin x=\bunsuu{Y}{r}=Y$
+%[5,-]::item::また弧の長さを$\ell$とすると\\
+%[5,6]::\hspace*{3zw}$x=\bunsuu{\ell}{r}$
+%[7,-]::\hspace*{3zw}$x=\bunsuu{\ell}{r}=\ell$
+%[8,-]::item::[問]\monban $x,\ \sin x$は\\(1)-(4)のどの長さで表されるか．\seteda{40}\\
+%[8,-]::\eda{$x$は}\eda{$\sin x$は}
+end
+
+%%%%%%%%%%%%
+new::正弦曲線を描く
+%repeat=1
+\slidepage
+
+itemize
+item::アプリを動かしてみよう\vspace{-2mm}
+item::[(1)]赤い点を動かして$x$を決め，「点を打つ」\\
+ 　長さが$x$の弧を表示して$(x,\sin x)$に点を打つ．\vspace{-2mm}
+item::[(2)]いくつかの点を打って「点を結ぶ」\\
+ 　正弦曲線との違いが表示される\\
+ 　さらに「点を打つ」，「点を結ぶ」を繰り返す．\vspace{-2mm}
+item::[(3)]正弦曲線との違いをできるだけ小さくする
+item::[問]\monban 「REC」を押して表示されるデータを提出せよ．
+end
+

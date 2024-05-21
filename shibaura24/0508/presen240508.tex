@@ -11,7 +11,7 @@
 \usepackage[dvipdfmx,colorlinks=true,linkcolor=blue,filecolor=blue]{hyperref}
 \usepackage{emath,emathE,emathMw}
 
-\newcommand{\monthday}{0509}
+\newcommand{\monthday}{0508}
 
 \definecolor{slidecolora}{cmyk}{0.98,0.13,0,0.43}
 \definecolor{slidecolorb}{cmyk}{0.2,0,0,0}
@@ -258,9 +258,7 @@
 しかし，オンラインでのやりとりには向かない\\
 　＝＞1次元記法がいいが数式の意味がわかりいくい
 \item
-そこで数式表示アプリをKeTMathを作った\\
-\item
-さらに，課題をやりとりするKeTLMSを作った
+そこで\TeX をベースに数式表示アプリを作った\\
 \end{itemize}
 
 \sameslide
@@ -276,7 +274,24 @@
 しかし，オンラインでのやりとりには向かない\\
 　＝＞1次元記法がいいが数式の意味がわかりいくい
 \item
-そこで数式表示アプリをKeTMathを作った\\
+そこで\TeX をベースに数式表示アプリを作った\\
+　・1次元数式を入力すると即時に2次元数式を表示
+\end{itemize}
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\begin{itemize}
+\item
+普通の数式(2次元記法)は見やすい．\\
+　$\dfrac{4}{9}$,\ $\sqrt{7}$,\ $5^3$
+\item
+しかし，オンラインでのやりとりには向かない\\
+　＝＞1次元記法がいいが数式の意味がわかりいくい
+\item
+そこで\TeX をベースに数式表示アプリを作った\\
 　・1次元数式を入力すると即時に2次元数式を表示
 \item
 さらに，課題をやりとりするKeTLMSを作った
@@ -293,7 +308,7 @@
 \Ltab{8zw}{分数 (fraction)}$\dfrac{a}{b}\ \Longleftrightarrow$\ \verb|fr(a,b)|
 \item
 \Ltab{8zw}{割り算}$a\div b\ \Longleftrightarrow$\ \verb|a {\div} b|\\
-\hfill（あまり使わない）
+\hfill（\verb|\div|は\TeX の記法）
 \item
 \Ltab{6zw}{掛け算}$ab\ \Longleftrightarrow$\ \verb|ab|
 \item
@@ -401,6 +416,23 @@
 \end{layer}
 
 \addban
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{授業終了アンケート}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit
+
+\begin{layer}{120}{0}
+\addtext{8}{課題\monbannoadd}{答えてください}
+\addban
+\end{layer}
+
 \label{pageend}\mbox{}
 
 \end{document}

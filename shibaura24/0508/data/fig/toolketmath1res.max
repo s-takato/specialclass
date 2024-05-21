@@ -1,0 +1,19 @@
+writefile("/Users/takatoosetsuo/specialclass.git/shibaura24/0508/data/fig/toolketmath1res.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+dtp(u,v):=block(w:flatten([u-v]),w.w)$/*##*/
+scLL:[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]$/*##*/
+dtLL:[]$/*##*/
+for st:1 thru length(scLL) do(
+  scL:scLL[st],
+  dtL:[],
+  for nq:1 thru length(scL) do(
+    tmp:scL[nq],
+    dtL:endcons(tmp,dtL)
+  ),
+  dtLL:endcons(dtL,dtLL)
+)$/*##*/
+disp(dtLL)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

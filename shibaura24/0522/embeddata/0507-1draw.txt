@@ -1,0 +1,21 @@
+  Setwindow([-3,3],[-3,3]);
+  fn="";
+//if(mod(nqu,2)==0, //add embed
+    fn=Textedit(2,"");
+	fn=Removespace(fn);
+	fn=Tocindyform(fn);
+//); //add embed
+  if(length(fn)>0,
+    if(indexof(fn,"?")==0,
+      Mvplotdata("1",fn,"x=[-3,3]",["dr,2"]);
+    );
+  );
+  Expr(Mvpt(1,0),"s","1");
+  Expr(Mvpt(0,1),"w","1");
+  ctr=1;
+  forall((-3)..3,
+    Mvlist("h"+ctr,[[-3,#],[3,#]],["dr,0.5"]);
+    Mvlist("v"+ctr,[[#,-3],[#,3]],["dr,0.5"]);
+    ctr=ctr+1;
+  );
+  Mvdrwxy();
