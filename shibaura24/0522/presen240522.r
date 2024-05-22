@@ -1,7 +1,7 @@
 setwd("/Users/takatoosetsuo/specialclass.git/shibaura24/0522")##
 source('/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/ketpiccurrent.r')##
 Ketinit()##
-Setwindow(c((-3.5),(3.5)),c((-0.5),(5)))####
+Setwindow(c((-1.2),(1.2)),c((-1.2),(1.2)))####
 options(digits=10);##
 arccos=acos; arcsin=asin; arctan=atan##
 Dt=readLines('presen240522.tex',encoding='UTF-8')##

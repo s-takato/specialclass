@@ -1,28 +1,14 @@
-
 縮約版
-https://s-takato.github.io/ketcindyorg/offline/drawgraphv6.html
-
-資料
-digest
-https://s-takato.github.io/polytech/polytech24/105-0520/presen24105digest.pdf
+https://s-takato.github.io/specialclass/shibaura24/0522/presen240522digest.pdf
 
 質問
-問 0520-1 定義によってsin(x)のグラフをかけ．
-https://s-takato.github.io/polytech/polytech24/105-0520/drawsine24.html
-問 0520-2 sin(A)=fr(2,3)とする
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-2.html
-問 0520-3 次の角は第何象限にあるか.
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-3id.html
-問 0520-4  次の値を求めよ
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-4i.html
-問 0520-5  第4象限での符号を+,-で答えよ
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-5i.html
-問 0520-6 度をラジアン，ラジアンを度に変換せよ
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0514-6.html
-問 0520-7 次の角を変換せよ (整数か$\pi$を含む分数で)
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-7.html
-課題 0520-8 (1)-(4)のどの長さで表されるか
-https://s-takato.github.io/polytech/polytech24/105-0520/kettaskv0520-8i.html
-課題 0520-9 正弦曲線との違いをできるだけ小さくせよ
-https://s-takato.github.io/polytech/polytech24/105-0520/q9drawsine6jsoffL.html
-
+問 0522-1 アプリを動かして，誤差(違い)をできるだけ 小さくしてください
+https://s-takato.github.io/specialclass/shibaura24/0522/drawsine24.html
+問 0522-2 Cinderellaのインストール状況
+https://s-takato.github.io/specialclass/shibaura24/0522/kettaskv0522-2.html
+問 0522-3 Rのインストール状況
+https://s-takato.github.io/specialclass/shibaura24/0522/kettaskv0522-3.html
+問 0520-4 KeTCindyのインストール状況
+https://s-takato.github.io/specialclass/shibaura24/0522/kettaskv0522-3.html
+問 0520-5 TeXのインストール状況
+https://s-takato.github.io/specialclass/shibaura24/0522/kettaskv0522-3.html
