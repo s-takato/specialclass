@@ -3142,7 +3142,7 @@ th=arcsin(B.y);
 rng=Assign("Rng=[0,th]",["th",th]);
 Circledata("2",[pO,1],[rng,"Color=red","dr,2"]);
 Listplot("1",[pO,B],["dr,2"]);
-Anglemark("1",[pA,pO,B],["E=\theta"]);
+Anglemark("1",[pA,pO,B],[0.7,"E=\theta"]);
 pP=[cos(th/2),sin(th/2)];
 
 Expr(pP,"ne","l=\theta");
@@ -3169,14 +3169,14 @@ var cdy = CindyJS({
   geometry: [
     {name: "SW", type: "Free", pos: [4.0, 4.0, -3.3333333333333335], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
     {name: "NE", type: "Free", pos: [4.0, 4.0, 3.3333333333333335], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
-    {name: "B", type: "Free", pos: [-0.251162078, -4.0, -4.0], color: [1.0, 0.0, 0.0], labeled: false, size: 6.0, border: true },
+    {name: "B", type: "Free", pos: [1.58165077314, 3.68, 4.0], color: [1.0, 0.0, 0.0], labeled: false, size: 6.0, border: true },
     {name: "A", type: "Free", pos: [-1.0894654597444275, -4.0, -3.6887396429175108], color: [1.0, 0.0, 0.0], visible: false, size: 0.0, border: true }
   ],
   ports: [{
     width: 855,
-    height: 440,
+    height: 457,
     id: "CSCanvas",
-    transform: [{visibleRect: [-3.061997692758416, 1.6811614901279297, 3.1987032842510548, -1.5407197144149558]}],
+    transform: [{visibleRect: [-3.057125915674215, 1.6805039464604368, 3.2035750613352554, -1.6658590318943327]}],
     grid: 0.2,
     background: "rgb(247,247,247)"
   }],

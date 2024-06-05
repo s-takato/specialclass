@@ -1721,16 +1721,6 @@ Norm(v1):=(  // 16.09.01
 Norm(v1,v2):=(
   Norm(v2-v1);
 );
-Subsedit(no,str):=(
- regional(tmp,tmp1);
- if(isstring(str),
-   tmp1=str;
- ,
-   tmp1=text(str);
- );
- tmp="Text"+text(no); //210211[2lines]
- parse(tmp).currenttext=tmp1;
-);
 Textedit(no):=(
   regional(tmp,tmp1,tmp2);
   tmp="Text"+text(no)+".currenttext";
@@ -1750,6 +1740,16 @@ tmp1=Textedit(n0); //
   if(length(tmp2)==0,out=str,out=tmp2);
   out;
 ); //210208to
+Subsedit(no,str):=(
+ regional(tmp,tmp1);
+ if(isstring(str),
+   tmp1=str;
+ ,
+   tmp1=text(str);
+ );
+ tmp="Text"+text(no); //210211[2lines]
+ parse(tmp).currenttext=tmp1;
+);
 Pointdata(nm,list):=Pointdata(nm,list,[]);
 Pointdata(nm,listorg,optionsorg):=(
   regional(list,name,opstr,opcindy,Msg,options,Ltype,
@@ -4069,7 +4069,7 @@ keynameL=[
 ];
 
 
-stL="0001AC,0005AH,0013AH,0028AH,0034AH,0047AH,0048AH,0050AH,0055AH,0059AH,0061AH,0064AH,0070AH,0084AH,0085AH,0086AH,0088AH,0089AH,0090AH,0091AH,0092AH,0098AH,0099AH,0102AH,1003AH,3002MH,1006AH,1054AH,1100AH,0029BN,1004BN,1061BN,0044BV,1072MF,3042MF,3072MF,3118MF";
+stL="01TI,02KZ,03SK,04TK,05TK,06IS,07AT,08WT,09YT,10YH,11YY";
 stL=Strsplit(stL,",");
 println(stL);
 
@@ -4237,15 +4237,15 @@ if(recflg==1,
 str=Textedit(8,"","");
 ndt=indexof(str,"[2]");
 if(ndt>0,
+  str=replace(str,":",",");
   tmp=substring(str,ndt+2,length(str));
-  tmp1=indexof(tmp,"[3]");
-  if(tmp1>0,
-    ptL=substring(tmp,0,tmp1-1);
-    ctrL=substring(tmp,tmp1+2,length(tmp)); 
-  ,
-    ptL=substring(tmp,0,length(tmp));
-    ctrL=[];
-  );
+  tmp1=indexof(tmp,"]]");
+  ptL=substring(tmp,0,tmp1+1);
+  tmp2=indexof(str,"[3]");
+  str=substring(str,tmp2+2,length(str));
+  tmp3=indexof(str,"]]");
+  ctrL=substring(str,0,tmp3+1);
+  Subsedit(6,ctrL);
   tmp=indexof(ptL,"=");
   if(tmp1>0,ptL=substring(ptL,tmp,length(ptL)));
   tmp=indexof(ctrL,"=");
@@ -4549,10 +4549,10 @@ var cdy = CindyJS({
     {name: "Text63", type: "Button", pos: [4.0, -2.500000000000001, 0.8333333333333336], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.29, 0.29], fillalpha: 0.905982905982906, script: "resetflg=1;", text: "Rset", textsize: 18.0}
   ],
   ports: [{
-    width: 867,
-    height: 646,
+    width: 878,
+    height: 642,
     id: "CSCanvas",
-    transform: [{visibleRect: [-2.399214364615644, 3.601505231895072, 6.907805116913499, -3.3331367347344854]}],
+    transform: [{visibleRect: [-2.399214364615644, 3.601505231895072, 7.0258872556641565, -3.2901977751887914]}],
     grid: 0.2,
     background: "rgb(247,247,247)"
   }],
