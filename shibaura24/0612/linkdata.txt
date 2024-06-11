@@ -1,8 +1,11 @@
-縮約版
+スライド
 https://s-takato.github.io/specialclass/shibaura24/0612/presen240612.pdf
 
+ketcindy home
+https://s-takato.github.io/ketcindyorg/indexj.html
+
 質問
-問 0612-1 cdyファイルを１つ作ってみよ
+問 0612-1 Cinderellaとketcindyのインストール状況
 https://s-takato.github.io/specialclass/shibaura24/0612/kettaskv0612-1.html
-問 0612-2 Cinderellaとketcindyのインストール状況
+問 0612-2 cdyファイルを１つ作ってみよ
 https://s-takato.github.io/specialclass/shibaura24/0612/kettaskv0612-2.html
