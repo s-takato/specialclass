@@ -1,0 +1,147 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\newcommand{\monthday}{0612}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+%%%%%%%%%%%%
+main::KeTCindyJS
+
+%%%%%%%%%%%%
+new::インストール状況
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{KeTCindyの留意点(Windows)}
+\addtext{16}{}{解凍したKeTCindy-4.4.85の-をとる}
+\addtext{16}{}{C:\yen(直下)におく}
+\addtext{8}{問}{\monbannoadd インストールの状況}
+\addtext{16}{[1]}{Cinderellaは動いたか}
+\addtext{24}{}{y:はい，n:まだ}
+\addtext{16}{[2]}{KeTCindy4.4.85をC:\yen においたか}
+\addtext{24}{}{y:はい，n:まだ}
+end
+\addban
+
+%%%%%%%%%%%%
+new::quickketcindy
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{KeTCindyJSだけでHTMLを作る}
+\addtext{8}{\ten}{ketcindy8.8.85/quickketcindy/01figure.cdy}
+\addtext{16}{(1)}{cdyファイルをクリックして立ち上げる}
+\addtext{16}{(2)}{スクリプト画面に行き，ギアマークを押す}
+\addtext{16}{(3)}{メニュー＞ファイル＞HTMLに書き出す}
+\addtext{16}{(4)}{表示画面のKetjsoffを押す}
+\addtext{16}{(5)}{01figureoffL.htmlができる}
+end
+
+
+%%%%%%%%%%%%
+new::KeTTeXのインストール
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{R}
+\addtext{8}{\ten}{Sumatra(Windows)}
+\addtext{16}{}{管理者として実行}
+\addtext{16}{}{インストール先をC:\yen program filesにする}
+\addtext{8}{\ten}{KeTTeX(Windows)}
+\addtext{16}{}{解凍して中身をC:\yen におく}
+\addtext{16}{}{インストーラを実行，終了するまでじっと待つ}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyの\TeX への組み込み
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{docにあるketcindysettings.cdyを実行}
+\addtext{8}{\ten}{メニューのkettexを選ぶ}
+\addtext{8}{\ten}{Mkinitを実行}
+\addtext{16}{}{初期設定ファイルがユーザホームにできる}
+\addtext{8}{\ten}{Updateを実行}
+\addtext{16}{}{KeTCindyがKeTTeXに組み込まれる}
+\addtext{8}{\ten}{Workを実行}
+\addtext{16}{}{ketcindy+日付のフォルダがユーザホームにできる}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyの動作確認
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{ketcindy/work/templates/01figure.cdy をクリック}
+\addtext[8]{8}{\ten}{ボタンFigureを押す}
+\addtext{16}{}{CommandPromptが実行されて図が表示}
+\addtext{8}{\ten}{画面上の点を動かして再度Figureを押す}
+\addtext{8}{\ten}{メニュー／スクリプト／CindyScriptを選ぶ}
+\addtext{16}{}{スクリプトを変更して再実行}
+end
+
+%%%%%%%%%%%%
+new::読み込み用PDFの作成
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{どれかのcdyファイルを立ち上げる}
+\addtext{8}{\ten}{スクリプト画面のketinit()の直後に以下を書いてギア}
+\addtext[8]{16}{}{Setparent="ファイル名";}
+\addtext{24}{}{たとえば　Setparent=Cdyname()+"p";}
+\addtext{8}{\ten}{表示画面のParentを押す}
+\addtext{16}{}{範囲が限定されたPDFがfig内にできる}
+end
+
+%%%%%%%%%%%%
+new::\TeX のエディタ(TeXWorks)
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{\TeX の文書自体(.tex)は単にテキスト}
+\addtext{8}{\ten}{\TeX 文書編集，コンパイル，PDF表示，を統合的に行うソフトがある}
+\addtext[8]{8}{\ten}{TeXWorksはその１つ}
+\addtext{8}{\ten}{「ketcindy home」「エディタ設定」にインストールの仕方を説明している}
+end
+
+%%%%%%%%%%%%
+new::授業終了アンケート
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{問\monbannoadd}{cdyファイルを１つ作れ}
+\addtext{16}{[1]}{スクリプトをコピーして提出せよ}
+\addtext{16}{[2]}{授業について感想や要望を自由に書け}
+end
+\addban

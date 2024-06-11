@@ -1,0 +1,11 @@
+Q
+Cinderellaとketcindyのインストール状況
+[1]Cinderellaは動いたか　y: はい，n: まだ
+[2]ketcindy4.4.85をC:¥においたか　y: はい，n: まだ
+Sheet
+[1]=  ::2::-1
+[2]=  ::2::-1
+Ans
+[1]
+[2]
+

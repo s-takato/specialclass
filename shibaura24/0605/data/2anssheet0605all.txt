@@ -1,0 +1,365 @@
+AKIYAMA Makoto
+昨日
+26;;262024060539965;;Q01---;;[]=  2
+
+ANZAI Mitsuki
+昨日
+29;;292024060539999;;Q01---;;[]=  2
+
+ESHIMA Yusuke
+昨日
+5;;52024060539933;;Q01---;;[]=  2
+
+KANAI Kantaro
+昨日
+2;;22024060539919;;Q01---;;[]=  2
+
+KATO Hideki
+昨日
+18;;182024060539907;;Q01---;;[]=  2
+
+KATSUUMI Arisa
+昨日
+22;;222024060540559;;Q01---できない;;[]=  
+
+KITAHARA Chihiro
+昨日
+33;;332024060553102;;Q01---;;[]=  2
+
+MARU Kouhei
+昨日
+24;;242024060540038;;Q01---;;[]=  2
+
+MEGURO Teruhiko
+昨日
+21;;212024060539789;;Q01---;;[]=  2
+
+Mikoto Hirosugi
+昨日
+14;;142024060539822;;Q01---;;[]=  2
+
+MORITA Kouhei
+昨日
+8;;82024060540705;;Q01---;;[]=  2
+
+MUROTA Daisuke
+昨日
+15;;152024060539929;;Q01---;;[]=  1
+
+NAITO Yuya
+昨日
+9;;92024060540054;;Q01---;;[]=  2
+
+NAKANO Ryusuke
+昨日
+3;;32024060540247;;Q01---;;[]=  2
+
+OOTANI Naoki
+昨日
+1;;12024060539890;;Q01---;;[]=  1
+
+SHINOMURA Ao
+昨日
+27;;272024060539823;;Q01ー;;[]=　2
+
+SONODA Shohei
+昨日
+23;;232024060539978;;Q01---;;[]=  2
+
+SUDO Shunta
+昨日
+2;;22024060539929;;Q01---;;[]=2
+
+SUGIHARA Tomoki
+昨日
+16;;162024060539913;;Q01---;;[]=  2
+
+SUGIYAMA Shunsei
+昨日
+31;;312024060539921;;Q01---;;[]=  2
+
+SUZUKI Nagi
+昨日
+36;;362024060540027;;Q01---;;[]=  2
+
+SUZUKI Seisho
+昨日
+13;;132024060540775;;Q01---２;;[]=  ２
+
+TAKANE Shota
+昨日
+7;;72024060540000;;Q01---;;[]=  1
+
+TAKEIRI Youta
+昨日
+12;;122024060540028;;Q01---;;[]=  2
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024060539978;;Q01---;;[]=  2
+
+TOKI Kei
+昨日
+25;;252024060540332;;Q01---;;[]=  2
+
+WATANABE Kosei
+昨日
+4;;42024060539861;;Q01---;;[]=  2
+
+YAMAGUCHI Rin
+昨日
+37;;372024060539968;;Q01---;;[]=  2
+
+吉村将
+昨日
+19;;192024060540136;;Q01---;;[]=  1
+
+諸田歩美
+昨日
+11;;112024060540020;;Q01---;;[]=  2
+
+KISHI Ryotaro
+
+KOSHIDA Yuto
+
+MINAMIMOTO Takumi
+
+Miu KANAGAWA
+
+OOHIRA Kazuki
+
+QIAN JINGWEN
+
+SHIKAKURA Mizuki
+
+AKIYAMA Makoto
+昨日
+26;;262024060541200;;Q02---;;[]=  1
+
+ANZAI Mitsuki
+昨日
+29;;292024060540784;;Q02---;;[]=  1
+
+ESHIMA Yusuke
+昨日
+5;;52024060540893;;Q02---;;[]=  1
+
+KANAI Kantaro
+昨日
+2;;22024060540911;;Q02---;;[]=  1
+
+KATO Hideki
+昨日
+18;;182024060540793;;Q02---;;[]=  1
+
+KATSUUMI Arisa
+昨日
+22;;222024060541235;;Q02---;;[]=  1
+
+KITAHARA Chihiro
+昨日
+$\tau=10\pi,T = 20, N=100$
+
+MARU Kouhei
+昨日
+24;;242024060542257;;Q02---;;[]=  1
+
+MEGURO Teruhiko
+昨日
+21;;212024060540786;;Q02---;;[]=  1
+
+Mikoto Hirosugi
+昨日
+14;;142024060540799;;Q02---;;[]=  1
+
+MORITA Kouhei
+昨日
+8;;82024060541008;;Q02---;;[]=  2
+
+MUROTA Daisuke
+昨日
+15;;152024060544529;;Q02---;;[]=  1
+
+NAITO Yuya
+昨日
+9;;92024060541057;;Q02---;;[]=  1
+
+NAKANO Ryusuke
+昨日
+3;;32024060541120;;Q02---;;[]=  2
+
+OOTANI Naoki
+昨日
+1;;12024060543427;;Q02---;;[]=  1
+
+SHINOMURA Ao
+昨日
+27;;272024060541120;;Q01---;;[]=  1
+
+SONODA Shohei
+昨日
+23;;232024060541082;;Q02---;;[]=  2
+
+SUDO Shunta
+昨日
+32;;322024060541382;;Q02---;;[]=１
+
+SUGIHARA Tomoki
+昨日
+16;;162024060540821;;Q02---;;[]=  1
+
+SUGIYAMA Shunsei
+昨日
+31;;312024060540850;;Q02---;;[]=  2
+
+SUZUKI Nagi
+昨日
+36;;362024060540807;;Q02---;;[]=  1
+
+SUZUKI Seisho
+昨日
+13;;132024060541075;;Q02---1;;[]=  1
+
+TAKANE Shota
+昨日
+7;;72024060540880;;Q02---;;[]=  1
+
+TAKEIRI Youta
+昨日
+12;;122024060540834;;Q02---;;[]=  1
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024060540901;;Q02---;;[]=  1
+
+TOKI Kei
+昨日
+25;;252024060541429;;Q02---;;[]=1
+
+WATANABE Kosei
+昨日
+4;;42024060540991;;Q02---;;[]=  1
+
+YAMAGUCHI Rin
+昨日
+37;;372024060540849;;Q02---;;[]=  2
+
+諸田歩美
+昨日
+11;;112024060541072;;Q02---;;[]=  1
+
+KISHI Ryotaro
+
+KOSHIDA Yuto
+
+MINAMIMOTO Takumi
+
+Miu KANAGAWA
+
+OOHIRA Kazuki
+
+QIAN JINGWEN
+
+SHIKAKURA Mizuki
+
+吉村将
+
+ESHIMA Yusuke
+昨日
+5;;52024060547376;;Q03---;;[]=  1
+
+KANAI Kantaro
+昨日
+2;;22024060548698;;Q03---;;[]=  2
+
+KITAHARA Chihiro
+昨日
+33;;332024060553060;;Q03---;;[]=  2
+
+Mikoto Hirosugi
+昨日
+14;;142024060557683;;Q03---;;[]=  2
+
+MORITA Kouhei
+昨日
+8;;82024060558209;;Q03---;;[]=  2
+
+MUROTA Daisuke
+昨日
+15;;152024060562188;;Q03---;;[]=  1
+
+SONODA Shohei
+昨日
+23;;232024060546462;;Q03---;;[]=  1
+
+SUGIHARA Tomoki
+昨日
+16;;162024060548794;;Q03---;;[]=  1
+
+SUZUKI Seisho
+昨日
+13;;132024060548901;;Q03---いいえ;;[]=  2
+
+TAKANE Shota
+昨日
+7;;72024060547514;;Q03---;;[]=  1
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024060548084;;Q03---;;[]=  2
+
+TOKI Kei
+昨日
+25;;252024060585659;;Q03---;;[]=  2
+
+YAMAGUCHI Rin
+昨日
+37;;372024060546456;;Q03---;;[]=  2
+
+AKIYAMA Makoto
+
+ANZAI Mitsuki
+
+KATO Hideki
+
+KATSUUMI Arisa
+
+KISHI Ryotaro
+
+KOSHIDA Yuto
+
+MARU Kouhei
+
+MEGURO Teruhiko
+
+MINAMIMOTO Takumi
+
+Miu KANAGAWA
+
+NAITO Yuya
+
+NAKANO Ryusuke
+
+OOHIRA Kazuki
+
+OOTANI Naoki
+
+QIAN JINGWEN
+
+SHIKAKURA Mizuki
+
+SHINOMURA Ao
+
+SUDO Shunta
+
+SUGIYAMA Shunsei
+
+SUZUKI Nagi
+
+TAKEIRI Youta
+
+WATANABE Kosei
+
+吉村将
+
+諸田歩美
