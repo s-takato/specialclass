@@ -1,0 +1,10 @@
+Ketinit();
+  Listplot("1",[A,D,B,C,A],["dr,2"]);
+ Circledata("1",[A,E]);
+ Bezier("1",[A,D],[F]);
+  Letter([B,"w5","B"]);
+ Expr(C,"ne3","y=x^2");
+ Windispg();
+  Help("Bez");
+ //Help("Option");
+;

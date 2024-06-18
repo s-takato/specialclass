@@ -1,0 +1,12 @@
+Ketinit();
+  Bezier("1",[A,B,C,D,A],[G,H,K,F]);
+ Listplot("1",[E,NE]);
+ pts=Intersectcrvs("bz1","sg1");
+ np=length(pts);
+ if(mod(np,2)==0, 	Letter([NE.x,SW.y],"e","外部");
+ 	Letter([NE.x,SW.y],"e","内部");
+ );
+  Windispg();
+  //Help("Intersect");
+ //Help("Option");
+;

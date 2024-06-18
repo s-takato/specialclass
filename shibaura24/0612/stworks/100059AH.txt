@@ -1,0 +1,9 @@
+Ketinit();
+  Bezier("1",[A,B,C,D,A],[G,H,K,F]);
+ Listplot("1",[E,NE]);
+ pts=Intersectcrvs("bz1","sg1");
+ print(pts);
+  Windispg();
+  //Help("List");
+ //Help("Option");
+;

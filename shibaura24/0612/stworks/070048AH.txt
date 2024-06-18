@@ -1,0 +1,6 @@
+Ketinit();
+  Listplot("1",[A,B,C,A],["dr,2"]);
+  Windispg();
+  //Help("List");
+ //Help("Option");
+;

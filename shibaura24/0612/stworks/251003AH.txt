@@ -1,0 +1,8 @@
+Ketinit();
+ Setparent("figurex");
+  Listplot("1",[A,B,C,D,A],["dr,2"]);
+ Figpdf();
+ Windispg();
+  //Help("Figpdf");
+ //Help("Option");
+;

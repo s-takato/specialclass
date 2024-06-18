@@ -1,0 +1,8 @@
+Ketinit();
+  Listplot("1",[A,C,B,D,A],["dr,2"]);
+ Circledata("1",[A,E]);
+ Letter([B,"n","B"]);
+ Windispg();
+  //Help("List");
+ //Help("Option");
+;

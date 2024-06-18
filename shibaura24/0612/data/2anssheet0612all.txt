@@ -1,0 +1,272 @@
+AKIYAMA Makoto
+10:54
+26;;262024061239280;;Q01---;;[1]  y;;[2]  y
+
+ANZAI Mitsuki
+10:55
+29;;292024061239327;;Q01---;;[1]  y;;[2]  n
+
+ESHIMA Yusuke
+10:56
+5;;52024061239374;;Q01---;;[1]  y;;[2]  y
+
+KANAI Kantaro
+10:56
+2;;22024061239351;;Q01---;;[1]  y;;[2]  y
+
+KATO Hideki
+10:55
+18;;182024061239307;;Q01---;;[1]  y;;[2]  y
+
+KATSUUMI Arisa
+10:56
+22;;222024061239381;;Q01---;;[1]  y;;[2]  y
+
+KITAHARA Chihiro
+10:56
+33;;332024061239366;;Q01---;;[1]  1;;[2]  1
+
+KOSHIDA Yuto
+10:57
+17;;172024061239412;;Q01---;;[1]  n;;[2]  y
+
+MARU Kouhei
+12:00
+24;;242024061243194;;Q01---;;[1]  y;;[2]  y
+
+MEGURO Teruhiko
+10:55
+21;;212024061239244;;Q01---;;[1]  y;;[2]  y
+
+Mikoto Hirosugi
+10:56
+14;;142024061239225;;Q01---;;[1]  y;;[2]  y
+
+MINAMIMOTO Takumi
+10:57
+30;;302024061239444;;Q01---;;[1]  y;;[2]  n
+
+Miu KANAGAWA
+11:01
+28;;282024061239688;;Q01---;;[1]  y;;[2]  y
+
+MORITA Kouhei
+10:59
+8;;82024061239558;;Q01---;;[1]  y;;[2]  y
+
+MUROTA Daisuke
+10:55
+15;;152024061239339;;Q01---;;[1]  y;;[2]  n
+
+NAITO Yuya
+10:56
+9;;92024061239360;;Q01---;;[1]  y;;[2]  y
+
+NAKANO Ryusuke
+10:57
+3;;32024061239416;;Q01---;;[1]  y;;[2]  n
+
+OOHIRA Kazuki
+10:56
+20;;202024061239376;;Q01---;;[1]  y;;[2]  y
+
+OOTANI Naoki
+11:12
+1;;12024061240374;;Q01---;;[1]  y;;[2]  y
+
+SHIKAKURA Mizuki
+10:54
+6;;62024061239242;;Q01---;;[1]  n;;[2]  y
+
+SHINOMURA Ao
+10:56
+y, y
+
+SONODA Shohei
+10:57
+23;;232024061239411;;Q01---;;[1]  y;;[2]  y
+
+SUGIHARA Tomoki
+10:55
+16;;162024061239333;;Q01---;;[1]  y;;[2]  y
+
+SUGIYAMA Shunsei
+10:58
+31;;312024061239477;;Q01---;;[1]  y;;[2]  n
+
+TAKANE Shota
+10:58
+7;;72024061239494;;Q01---;;[1]  y;;[2]  y
+
+TAKEIRI Youta
+10:54
+12;;122024061239287;;Q01---;;[1]  y;;[2]  y
+
+TAKEMURA Kunitoshi
+10:55
+10;;102024061239315;;Q01---;;[1]  1;;[2]  1
+
+TOKI Kei
+10:53
+25;;252024061239214;;Q01---;;[1]  y;;[2]  y
+
+WATANABE Kosei
+10:55
+4;;42024061239301;;Q01---;;[1]  y;;[2]  y
+
+YAMAGUCHI Rin
+11:27
+37;;372024061241240;;Q01---;;[1]  y;;[2]  y
+
+吉村将
+10:59
+19;;192024061239552;;Q01---;;[1]  y;;[2]  y
+
+諸田歩美
+10:56
+11;;112024061239332;;Q01---;;[1]  y;;[2]  y
+
+KISHI Ryotaro
+
+QIAN JINGWEN
+
+SUDO Shunta
+
+SUZUKI Nagi
+
+SUZUKI Seisho
+
+AKIYAMA Makoto
+12:30
+26;;262024061244953;;Q02---;;[1]  Ketinit();  Listplot("1",[A,B,C,D,A],["dr,2"]); Circledata("1",[A,E]); Bezier("1",[A,D],[F]); Letter([B,"n3","B"]); Expr([C,"ne","y=x^2"]); Windispg();   //Help("Ex"); //Help("Option");　
+Ketinit();  Bezier("1",[A,B,C,D,A],[K,F,G,H]); Listplot("1",[E,NE],["nodisp"]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0,   Letter([NE.x,SW.y],"e","外部"); ,   Letter([NE.x,SW.y],"e","内部"); );  Windispg();   //Help("Intersect"); Help("List");;;
+[2]  内部外部の判定方法が興味深かったです。説明も丁寧でとても分かりやすく助かりました。
+
+ESHIMA Yusuke
+12:26
+5;;52024061244774;;Q02---;;[1]  Ketinit(); //Setfiles("");  Bezier("1",[A,B,C,D,A],[G,H,K,F]);  Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if (mod(np,2)==0, 	Letter([NE.x,SW.y],"e","外部"); , 	Letter([NE.x,SW.y],"e","内部"); );	  Windispg();  Help("List"); //Help("Option");;;[2]  cdyファイルの作り方わかった。kettexの使い方がわからなかった
+
+KANAI Kantaro
+12:29
+2;;22024061244977;;Q02---;;[1]  Ketinit(); //Setfiles("");  Bezier("1",[A,B,C,D,A],[G,H,K,F]);  Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if (mod(np,2)==0,  Letter([NE.x,SW.y],"e","外部"); ,  Letter([NE.x,SW.y],"e","内部"); );   Windispg();  Help("List"); //Help("Option");;;[2]  いろいろな図形を作ることができた．シンデレラが重くなるのでちょっと困った．
+
+KATO Hideki
+12:23
+18;;182024061244584;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); println(np);  Windispg();  //Help("Intersect"); //Help("Option");;;[2]  なし
+
+KOSHIDA Yuto
+12:27
+17;;172024061244720;;Q02---;;[1]  ;;[2]  お忙しい中授業をしていただきありがとうございました。
+
+MEGURO Teruhiko
+12:24
+21;;212024061244651;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[L,NE],["nodisp"]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0, 	Letter([NE.x,SW.y],"e","外部"); , 	Letter([NE.x,SW.y],"e","内部"); ); Windispg();  //Help("Intersect"); //Help("Option");;;[2]  勉強になりました
+
+Mikoto Hirosugi
+12:26
+14;;142024061244744;;Q02---;;[1]  Ketinit();  Listplot("1",[A,D,B,C,A],["dr,2"]); Circledata("1",[A,E]); Bezier("1",[A,D],[F]);  Letter([B,"w5","B"]); Expr(C,"ne3","y=x^2"); Windispg();  Help("Bez"); //Help("Option");;;[2]  はじめてのプログラミングで難しいが、楽しい。できるなら、授業動画を毎回配信してほしい。
+
+MINAMIMOTO Takumi
+12:26
+30;;302024061244765;;Q02---;;[1]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");;;[2]  何も理解することができず、何をすればいいのかわからないまま授業が終わってしまいました。
+
+Miu KANAGAWA
+12:36
+28;;282024061245385;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0, 	Letter([NE.x,SW.y],"e","外部"); 	Letter([NE.x,SW.y],"e","内部"); );  Windispg();  //Help("Intersect"); //Help("Option");;;[2]  普段触れることのないソフトを使えるので面白い
+
+MUROTA Daisuke
+12:39
+(1)script
+Ketinit();
+//Setparent(Cdyname()+"fig");
+Setketcindyjs(["Color=0.1*[0,0,0,1]"]);
+
+Ch=[1];
+if(contains(Ch,1), //no ketjs on
+ PlotdataR("1","dnorm(x)","x",["","Num=100","nodisp"]);
+ Ketcindyjsdata(["grR1",grR1]);
+); //no ketjs off
+
+Setscaling(8);
+Listplot("",grR1);
+Htickmark([1,"1"]);
+Vtickmark([0.5,"0.5"]);
+
+Windispg();
+15;;152024061245488;;Q02---;;[1]  ;;[2]  とてもわかり易く、将来的に使う機会がある時はいつでも活用できるようになりました。
+
+NAITO Yuya
+12:29
+9;;92024061244947;;Q02---;;[1]  Ketinit();  Addax(0);  Listplot("1",[A,B,C,A]); Circledata("1",[D,E]); Shade(["sg1"],["Color=green"]); Shade(["cr1"],["Color=0.4*[1,1,0,0]"]);  Pointdata("I",D,["Size=4"]); Letter([A,"sw","A",B,"ne","B",C,"se","C",D,"se","I"]);  Windispg();  //Help("Shade");;;[2]  少し難しかった
+
+OOHIRA Kazuki
+12:26
+20;;202024061244766;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,D,C,A],[E,F,G,H]); Listplot("1",[L,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0,   Letter([NE.x,SW.y],"e","外部"); ,   Letter([NE.x,SW.y],"e","内部"); );  Windispg();  //Help("Be"); //Help("Option);;;[2]  ketcindyでいろいろできることが分かって興味深かった。
+
+SUGIHARA Tomoki
+12:27
+16;;162024061244843;;Q02---;;[1]  ;;[2]  シンデレラのスクリプトの使い方が少し難しかった
+
+SUGIYAMA Shunsei
+12:37
+31;;312024061245410;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0;   Letter([NE,x,SW.y],"e","外部"); ,   Letter([NE,x,SW.y],"e","内部"); );  Windispg();  //Help("List"); //Help("Option");;;[2]  難しくてよくわかりませんでした。
+
+TAKANE Shota
+12:33
+7;;72024061245132;;Q02---;;[1]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");;;[2]  kettexのセットアップがうまくいかないので、そこを説明してほしい。
+
+TAKEIRI Youta
+12:25
+12;;122024061244702;;Q02---;;[1]  Ketinit();   Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE],[nodisp]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0, Letter([NE.x,SW.y],"e","外部"); , Letter([NE.x,SW.y],"e","内部"); );  Windispg();  //Help("Intersect"); //Help("Option");;;[2]  説明のスピードが少し早く，1回詰まってしまうとついていけなくなることがある
+
+TAKEMURA Kunitoshi
+12:29
+10;;102024061244987;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE]); pts=Intersectcrvs("bz1","sg1"); print(pts);  Windispg();  //Help("List"); //Help("Option");;;[2]  授業中はスクリプトは常に表示したまま進めてほしい。
+
+TOKI Kei
+13:05
+25;;252024061247093;;Q02---;;[1]  Ketinit(); Setparent("figurex");  Listplot("1",[A,B,C,D,A],["dr,2"]); Figpdf(); Windispg();  //Help("Figpdf"); //Help("Option");;;[2]  授業外の時間でKeTTeXなどのインストール方法などを指導していただきまして、ありがとうございました。その時は3人という少人数で行ったため、自分のペースに沿ってインストールを行えたためとてもわかりやすく、理解しながら出来ました。KeTTeXなどのインストールが少し難しいソフトは、学生を何グループかに分けて、少人数で説明して進めていくとスムーズに授業が進むと思います。ソフト内で簡単に自由な図形を作れることに面白さを感じ、これから作図をしたいときなどに活用していこうと考えました。
+
+WATANABE Kosei
+12:45
+4;;42024061245923;;Q02---;;[1]  Ketinit();  Bezier("1",[A,B,C,D,A],[G,H,K,F]); Listplot("1",[E,NE],["nodisp"]); pts=Intersectcrvs("bz1","sg1"); np=length(pts); if(mod(np,2)==0,  Letter([NE.x,SW.y],"e","外部"); ,  Letter([NE.x,SW.y],"e","内部"); );  Windispg();  //Help("Intersect"); Help("List");;;[2]  非常にわかりやすかったです．実際にやってみると面白く今後も活用していきたいなと思いました．ありがとうございました．
+
+吉村将
+12:32
+19;;192024061245148;;Q02---;;[1]  Ketinit();  Listplot("1",[A,C,B,D,A],["dr,2"]); Circledata("1",[A,E]); Letter([B,"n","B"]); Windispg();  //Help("List"); //Help("Option");;;[2]  シンデレラの使い方がより一層クリアになりました。要望は特にありません、現行で問題ありません。今後ともよろしくお願いいたします。
+
+諸田歩美
+16:04
+11;;112024061257865;;Q02---;;[1]  Ketinit();  Listplot("1",[A,B,C,A],["da,3,1"]);  Windispg();  //Help("List"); //Help("Option");;;[2]  作業スピードがとても速いため、定期的に講義を止めて学生が作業する時間を設けてほしいです。先生が話すのみでは学生は手を動かすことができません。よろしくお願いいたします。
+
+ANZAI Mitsuki
+
+KATSUUMI Arisa
+
+KISHI Ryotaro
+
+KITAHARA Chihiro
+
+MARU Kouhei
+
+MORITA Kouhei
+
+NAKANO Ryusuke
+
+OOTANI Naoki
+
+QIAN JINGWEN
+
+SHIKAKURA Mizuki
+
+SHINOMURA Ao
+
+SONODA Shohei
+
+SUDO Shunta
+
+SUZUKI Nagi
+
+SUZUKI Seisho
+
+YAMAGUCHI Rin
