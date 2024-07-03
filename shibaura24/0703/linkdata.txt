@@ -1,0 +1,15 @@
+スライド
+https://s-takato.github.io/specialclass/shibaura24/0703/presen240703.pdf
+
+
+質問
+問 0703-1 TeXWorksのインストールができたか
+https://s-takato.github.io/specialclass/shibaura24/0703/kettaskv0703-1.html
+問 0703-2 TeX で図の読み込みができたか
+https://s-takato.github.io/specialclass/shibaura24/0703/kettaskv0703-2.html
+問 0703-3 figureのスクリプトを提出せよ
+https://s-takato.github.io/specialclass/shibaura24/0703/kettaskv0703-3.html
+問 0703-4 graphのスクリプトを提出せよ
+https://s-takato.github.io/specialclass/shibaura24/0703/kettaskv0703-4.html
+問 0703-5 作表のスクリプトを提出せよ
+https://s-takato.github.io/specialclass/shibaura24/0703/kettaskv0703-5.html

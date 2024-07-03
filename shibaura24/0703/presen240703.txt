@@ -1,0 +1,97 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\newcommand{\monthday}{0703}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+%%%%%%%%%%%%
+main::\ketcindy のいろいろ
+
+%%%%%%%%%%%%
+new::一括インストール(Windows)
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{沼津高専の学生が作ってくれた}
+\addtext{8}{\ten}{「ketcindy home」の一括インストールを参照}
+end
+
+
+%%%%%%%%%%%%
+new::TeXWorksの設定
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{\TeX でドキュメントを作成するための統合環境}
+\addtext[8]{12}{}{テキストエディタ，コンパイル，表示}
+\addtext{8}{\ten}{「ketcindy home」から「エディタ設定」}
+\addtext{4}{質問\monbannoadd}{TeXWorksが使えるようになったか}
+end
+\addban
+
+%%%%%%%%%%%%
+new::図ファイルの読み込み
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{$\backslash$includegraphics}
+\addtext{18}{}{png,pdfなどの読み込み}
+\addtext{8}{\ten}{$\backslash$input}
+\addtext{18}{}{KeTCindyで作った図の読み込み}
+\addtext{4}{質問\monbannoadd}{TeXで図の読み込みができたか}
+end
+\addban
+
+%%%%%%%%%%%%
+new::ketcindyサンプル figure
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{4}{質問\monbannoadd}{自分で使ったスクリプトを提出せよ}
+end
+\addban
+
+%%%%%%%%%%%%
+new::ketcindyサンプル graph
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{4}{質問\monbannoadd}{自分で使ったスクリプトを提出せよ}
+end
+\addban
+
+%%%%%%%%%%%%
+new::ketcindyサンプル 作表
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{4}{質問\monbannoadd}{自分で使ったスクリプトを提出せよ}
+end
+\addban

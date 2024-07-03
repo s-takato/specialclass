@@ -1,6 +1,10 @@
 スライド
 https://s-takato.github.io/specialclass/shibaura24/0619/presen240619.pdf
 
+実践例
+https://s-takato.github.io/specialclass/shibaura24/0619/presen240619a.pdf
+
+
 質問
-問 0612-1 インストールの状況
+問 0619-1 インストールの状況
 https://s-takato.github.io/specialclass/shibaura24/0619/kettaskv0619-1.html

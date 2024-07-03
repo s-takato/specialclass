@@ -1,0 +1,171 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\newcommand{\monthday}{0619a}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+%%%%%%%%%%%%
+main::KeTCindyの実践例
+
+%%%%%%%%%%%%
+new::全般
+%repeat=1
+\slidepage
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{「ketcindy home」からインストール先に行く}
+\addtext{8}{\ten}{主にWindowsの場合を説明,(W)}
+end
+
+
+%%%%%%%%%%%%
+new::Cinderella
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{CinderellaをDL(ダウンロード)}
+\addtext{16}{}{先週末にDLの不具合があったが，復旧した}
+\addtext{8}{\ten}{管理者権限でインストール(W)}
+\addtext{8}{\ten}{Program FilesのCinderellaを確認}
+\addtext{8}{\ten}{Cinderellaが立ち上がることを確認}
+end
+
+
+%%%%%%%%%%%%
+new::\ketcindy
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{ketcindyをDL}
+\addtext{8}{\ten}{解凍するとketcindy-4.4.85ができる}
+\addtext{16}{(1)}{- をとりketcindy4.4.85とする(W)}
+\addtext{16}{(2)}{C:\yen(直下)におく(W)}
+end
+
+%%%%%%%%%%%%
+new::ketcindyJS
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{KeTCindyJSだけでHTMLを作る}
+\addtext{8}{\ten}{ketcindy8.8.85/quickketcindy/04bezier.cdy}
+\addtext{8}{(1)}{cdyファイルをクリックして立ち上げる}
+\addtext{8}{(2)}{スクリプト画面に行き，ギアマークを押す}
+\addtext{8}{(3)}{メニュー＞ファイル＞HTMLに書き出す}
+\addtext{8}{(4)}{表示画面のKetjsoffを押す}
+\addtext{8}{(5)}{04bezieroffL.htmlができる}
+\addtext{8}{(6)}{04bezieroffL.htmlをクリックして確認}
+end
+
+
+%%%%%%%%%%%%
+new::RとSumatraのインストール
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{R}
+\addtext{8}{\ten}{Sumatra(Windowsのみ)}
+\addtext{16}{}{管理者として実行}
+\addtext{16}{}{Optionを選択}
+\addtext{16}{}{\color{red}インストール先をC:\yen program filesにする}
+\addtext{8}{\ten}{R,\ SumatraがC:\yen program filesにあることを確認(W)}
+end
+
+%%%%%%%%%%%%
+new::KeTTeXのインストール
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{KeTTeX.zip(W),KeTTeX.dmg(M)をDL}
+\addtext{8}{\ten}{解凍して中身をC:\yen におく(W)}
+\addtext{8}{\ten}{インストーラを実行，終了するまでじっと待つ(W)}
+\addtext[8]{8}{\ten}{C:\yen にkettexフォルダがあることを確認(W)}
+\addtext{8}{\ten}{kettexにbin,texmf-localなどがあることを確認(W)}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyの\TeX への組み込み
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{docにあるketcindysettings.cdyを実行}
+\addtext{8}{\ten}{メニューのkettexを選ぶ}
+\addtext{8}{\ten}{Mkinitを実行}
+\addtext{16}{}{初期設定ファイルがユーザホームにできる}
+\addtext{8}{\ten}{Updateを実行}
+\addtext{16}{}{KeTCindyがKeTTeXに組み込まれる}
+\addtext{8}{\ten}{Workを実行}
+\addtext{16}{}{ketcindy+日付のフォルダがユーザホームにできる}
+end
+
+%%%%%%%%%%%%
+new::KeTCindyでのPDF作成
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{ketcindy/work/templates/01figure.cdy をクリック}
+\addtext[8]{8}{\ten}{ボタンFigureを押す}
+\addtext{16}{}{コマンドプロンプト(W)が実行,PDFが表示}
+\addtext{8}{\ten}{画面上の点を動かして再度Figureを押す}
+\addtext{8}{\ten}{メニュー／スクリプト／CindyScriptを選ぶ}
+\addtext{16}{}{スクリプトを変更して再実行}
+end
+
+%%%%%%%%%%%%
+new::読み込み用PDFの作成
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{どれかのcdyファイルを立ち上げる}
+\addtext{8}{\ten}{スクリプト画面のketinit()の直後に以下を書いてギア}
+\addtext[8]{16}{}{Setparent="ファイル名";}
+\addtext{24}{}{たとえば　Setparent=Cdyname()+"p";}
+\addtext{30}{}{cdyname()はCinderellaのファイル名を返す}
+\addtext{8}{\ten}{表示画面のParentを押す}
+\addtext{16}{}{範囲が限定されたPDFがfig内にできる}
+end
+
+%%%%%%%%%%%%
+new::\TeX のエディタ(TeXWorks)
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{\TeX の文書自体(.tex)は単にテキスト}
+\addtext{8}{\ten}{\TeX 文書編集，コンパイル，PDF表示，を統合的に行うソフトがある}
+\addtext[8]{8}{\ten}{TeXWorksはその１つ}
+\addtext{8}{\ten}{「ketcindy home」「エディタ設定」にインストールの仕方を説明している}
+end
+
