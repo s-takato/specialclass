@@ -1,0 +1,2 @@
+Expr(Mvpt(0,0.7),"e",Totexform("sin(0)=0"),["Size=2"]);
+Expr(Mvpt(0,0),"e",Totexform("cos(0)=1"),["Size=2"]);

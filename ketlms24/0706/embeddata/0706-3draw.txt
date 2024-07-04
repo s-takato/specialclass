@@ -1,0 +1,26 @@
+// create(A,B)
+Setwindow([-3.2,3.2],[-2.1,2,1]);
+if(ketlibflg==1,
+  Putpoint("A",[95,-3]);
+  Putpoint("B",[95,-7]);
+  ketlibflg=0;
+);
+Slider("A",[85,-5],[105,-5]);
+Slider("B",[85,-10],[105,-10]);
+a=((A.x-95)/5+2)/2;
+b=((B.x-95)/5+2)/2;
+tmp1=[-pi,-pi/2,pi/2,pi];
+tmp2=["-pi","-fr(pi,2)","fr(pi,2)","pi"];
+tmp3=[-2,-1,1,2];
+tmp4=["-2","-1","1","2"];
+forall(1..4,nn,
+  Expr(Mvpt([tmp1_nn,0]),"s1",Totexform(tmp2_nn));
+  Expr(Mvpt([0,tmp3_nn]),"w1",Totexform(tmp4_nn));
+);
+Mvplotdata("1","sin(x)","x",["Color=red"]);
+tmp1="Asin(bx)";
+tmp2=Assign(Tocindyform(tmp1),["A",a,"b",b]);
+tmp3=Totexform(tmp1);
+Expr([90,-15],"e","y="+tmp3,["Size=1.5"]);
+Mvplotdata("2",tmp2,"x",["dr,2"]);
+Mvdrwxy();
