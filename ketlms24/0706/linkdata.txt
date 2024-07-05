@@ -1,41 +1,31 @@
 
 縮約版
-https://s-takato.github.io/polytech/polytech24/202-0626/presen24202digest.pdf
+https://s-takato.git.github.io/specialclass/ketlms240706/presen24202digest.pdf
 
 
 質問
-問 0626-1 微分係数の定義式
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-1.html
+問 0706-1 次の三角比を求めよ．
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-1.html
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-1i.html
 
-問 0626-2 導関数の定義式
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-2.html
+問 0706-2 加法定理の応用
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-2.html
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-2d.html
 
-問 0626-3 z^4-x^4=(z^2-x^2)(z^2+x^2)を用いよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-3.html
+問 0706-3 振幅と周期
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-3.html
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-3d.html
 
-問 0626-4 微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/derivativev5jsoffL.html
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-4.html
+問 0706-4 y=fr(x^2-4,x-2)=fr((x-2)(x+2),x-2)のグラフ
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-4.html
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-4i.html
 
-問 0626-5 積の微分公式で微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-5.html
+問 0706-5 y = x^2 のグラフをどう移動（変形）したか
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-5.html
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-5d.html
 
-問 0626-6 微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-6.html
+問 0706-6 導関数
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-6.html
 
-問 0626-7 微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-7.html
-
-問 0626-8 微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-8.html
-
-問 0626-9 アプリを動かしてsin(x),cos(x)の導関数を求めよ
-https://s-takato.github.io/polytech/polytech24/202-0626/drawgraphv6.html
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-9i.html
-
-問 0626-10 アプリを動かしてf'(x)を求めよ
-https://s-takato.github.io/polytech/polytech24/202-0626/derivativev5jsoffL.html
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-10.html
-
-問 0626-11 微分せよ
-https://s-takato.github.io/polytech/polytech24/202-0626/kettaskv0626-11.html
+問 0706-7 授業後アンケート
+https://s-takato.github.io/specialclass/ketlms24/0706/kettaskv0706-7.html
