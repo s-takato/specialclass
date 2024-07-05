@@ -1,26 +1,34 @@
 // create(A,B)
 Setwindow([-3.2,3.2],[-2.1,2,1]);
 if(ketlibflg==1,
-  Putpoint("A",[95,-3]);
-  Putpoint("B",[95,-7]);
+  Putpoint("A",[90,0]);
+  Putpoint("B",[90,-5]);
   ketlibflg=0;
 );
-Slider("A",[85,-5],[105,-5]);
-Slider("B",[85,-10],[105,-10]);
-a=((A.x-95)/5+2)/2;
-b=((B.x-95)/5+2)/2;
-tmp1=[-pi,-pi/2,pi/2,pi];
-tmp2=["-pi","-fr(pi,2)","fr(pi,2)","pi"];
-tmp3=[-2,-1,1,2];
-tmp4=["-2","-1","1","2"];
-forall(1..4,nn,
-  Expr(Mvpt([tmp1_nn,0]),"s1",Totexform(tmp2_nn));
-  Expr(Mvpt([0,tmp3_nn]),"w1",Totexform(tmp4_nn));
+Slider("A",[80,0],[100,0]);
+Slider("B",[80,-5],[100,-5]);
+a=((A.x-90)/5+2)/2;
+b=((B.x-90)/5+2)/2;
+tmp1=apply([-pi,-pi/2,pi/2,pi],Mvpt(#,0));
+tmp2=apply(["-pi","-fr(pi,2)","fr(pi,2)","pi"],Totexform(#));
+tmp3=apply([-2,-1,1,2],Mvpt(0,#));
+tmp4=apply(["-2","-1","1","2"],Totexform(#));
+  Expr(tmp1_1,"s1",tmp2_1);
+  Expr(tmp1_2,"s1",tmp2_2);
+  Expr(tmp1_3,"s1",tmp2_3);
+  Expr(tmp1_4,"s1",tmp2_4);
+  Expr(tmp3_1,"w1",tmp4_1);
+  Expr(tmp3_2,"w1",tmp4_2);
+  Expr(tmp3_3,"w1",tmp4_3);
+  Expr(tmp3_4,"w1",tmp4_4);
+forall(1..4,
+//  Expr(tmp1_#,"s1",tmp2_#);
+//  Expr(tmp3_#,"w1",tmp4_#);
 );
 Mvplotdata("1","sin(x)","x",["Color=red"]);
 tmp1="Asin(bx)";
-tmp2=Assign(Tocindyform(tmp1),["A",a,"b",b]);
-tmp3=Totexform(tmp1);
-Expr([90,-15],"e","y="+tmp3,["Size=1.5"]);
+tmp2=Assign(Tocindyform(tmp1),["A",text(a),"b",text(b)]);
+tmp3=Totexform(tmp2);
+Expr([90,-10],"e","y="+tmp3,["Size=1.5"]);
 Mvplotdata("2",tmp2,"x",["dr,2"]);
 Mvdrwxy();
