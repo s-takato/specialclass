@@ -1,0 +1,7 @@
+quline="Q04::y=fr(x^2-4,x-2)=fr((x-2)(x+2),x-2)のグラフとして図は正しくない	[ ]:: 理由を述べよ";
+shline="Q04---	[ ]  ";
+caline="Q04::	[ ]::";
+mrkline="0	4";
+mxscline="0	1";
+sqline="01AA	2	2CR02BB	2	2CR03CC	2	2CR04DD	2	2CR05EE	2	2CR06FF	2	2CR07GG	2	2CR08HH	2	2CR09II	2	2CR10JJ	2	2CR11KK	2	2CR12LL	2	2CR13MM	2	2CR14NN	2	2CR15OO	2	2CR16PP	2	2CR17QQ	2	2CR18RR	2	2CR19SS	2	2CR20TT	2	2";
+ansline="1	01AA	07069:53:19	Q04---	[ ]  分子と分母をx-2で割ると，y=x+2となる．これは，傾き1，切片2の直線のグラフになるはずであるため．CR2	02BB	07069:46:38	Q04---	[ ]  この関数は x=2 のときには定義できないはずCR3	03CC	07069:47:26	Q04---	[ ]  x=2のところを空けていない。CR4	04DD	未提出CR5	05EE	07069:44:18	Q04---	[ ]  x=2のときは定義されないから(2,3)は白丸になる．CR6	06FF	未提出CR7	07GG	未提出CR8	08HH	未提出CR9	09II	未提出CR10	10JJ	未提出CR11	11KK	未提出CR12	12LL	未提出CR13	13MM	未提出CR14	14NN	未提出CR15	15OO	未提出CR16	16PP	未提出CR17	17QQ	未提出CR18	18RR	未提出CR19	19SS	未提出CR20	20TT	未提出";

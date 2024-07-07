@@ -1,0 +1,4 @@
+1;;12024070636153;;Q06---;;[1] f'(x)=lim(z,x,fr(f(z)-f(x),z-x))  ;;[2] y'=lim(z,x,fr(f(z)-f(x),z-x))=2x
+2;;22024070635977;;Q06---;;[1] f'(x)=lim(z,x,fr(f(z)-f(x),z-x))  ;;[2] y'=lim(z,x,fr(z^(2)-x^(2),z-x))=lim(z,x)(z+x)=2x  
+3;;32024070636520;;Q06---;;[1] f'(x)=lim(z,x,fr(f(z)-f(x),z-x))  ;;[2] y'=lim(z,x,fr(z^(2)-x^(2),z-x))=lim(z,x,z+x)=2x
+5;;52024070635656;;Q06---;;[1] f'(x)=lim(z,x,fr(f(z)-f(x),z-x))  ;;[2] y'=lim(z,x,fr(z^(2)-x^(2),z-x))=  lim(z,x,z+x)=2x

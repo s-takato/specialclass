@@ -4,6 +4,7 @@
 //if(nqu>=2, //add embed
     fn=Textedit(2,"");
 	fn=Removespace(fn);
+	fn=Tocindyform(fn);
 //); //add embed
   if(length(fn)>0,
     if(indexof(fn,"?")==0,

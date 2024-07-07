@@ -13,16 +13,8 @@ tmp1=apply([-pi,-pi/2,pi/2,pi],Mvpt(#,0));
 tmp2=apply(["-pi","-fr(pi,2)","fr(pi,2)","pi"],Totexform(#));
 tmp3=apply([-2,-1,1,2],Mvpt(0,#));
 tmp4=apply(["-2","-1","1","2"],Totexform(#));
-  Expr(tmp1_1,"s1",tmp2_1);
-  Expr(tmp1_2,"s1",tmp2_2);
-  Expr(tmp1_3,"s1",tmp2_3);
-  Expr(tmp1_4,"s1",tmp2_4);
-  Expr(tmp3_1,"w1",tmp4_1);
-  Expr(tmp3_2,"w1",tmp4_2);
-  Expr(tmp3_3,"w1",tmp4_3);
-  Expr(tmp3_4,"w1",tmp4_4);
-forall(1..4,
-//  Expr(tmp1_#,"s1",tmp2_#);
+forall(1..4,tmp,
+  drawtext(tmp1_tmp,tmp2_tmp);
 //  Expr(tmp3_#,"w1",tmp4_#);
 );
 Mvplotdata("1","sin(x)","x",["Color=red"]);

@@ -1,0 +1,7 @@
+quline="Q01::次の三角比を求めよ．	[1]:: cos(30(deg))	[2]:: sin(45(deg))	[3]:: tan(60(deg))";
+shline="Q01---	[1]=  	[2]=  	[3]=  ";
+caline="Q01::	[1]::fr(sq(3),2)	[2]::fr(1,sq(2))	[3]::sq(3)";
+mrkline="0	2	2	2";
+mxscline="0	1	1	1";
+sqline="01AA	2	2	2	2CR02BB	2	2	2	2CR03CC	2	2	2	2CR04DD	2	2	2	2CR05EE	2	2	2	2CR06FF	2	2	2	2CR07GG	2	2	2	2CR08HH	2	2	2	2CR09II	2	2	2	2CR10JJ	2	2	2	2CR11KK	2	2	2	2CR12LL	2	2	2	2CR13MM	2	2	2	2CR14NN	2	2	2	2CR15OO	2	2	2	2CR16PP	2	2	2	2CR17QQ	2	2	2	2CR18RR	2	2	2	2CR19SS	2	2	2	2CR20TT	2	2	2	2";
+ansline="1	01AA	07069:13:24	Q01---	[1]=  fr(sq(3),2)	[2]=  fr(1,sq(2))	[3]=  sq(3)CR2	02BB	070610:3:58	Q01---	[1]=  fr(sq(3),2)	[2]=  fr(1,sq(2))	[3]=  sq(3)CR3	03CC	07069:16:59	Q01---	[1]=  fr(sq(3),2)	[2]=  fr(sq(2),2)	[3]=  sq(3)CR4	04DD	07069:36:36	Q01---	[1]=  fr(sq(3),2)	[2]=  fr(1,sq(2))	[3]=  fr(sq(3),2)CR5	05EE	07069:11:6	Q01---	[1]=  fr(sq(3),2)	[2]=  fr(1,sq(2))	[3]=  sq(3)CR6	06FF	未提出CR7	07GG	未提出CR8	08HH	未提出CR9	09II	未提出CR10	10JJ	未提出CR11	11KK	未提出CR12	12LL	未提出CR13	13MM	未提出CR14	14NN	未提出CR15	15OO	未提出CR16	16PP	未提出CR17	17QQ	未提出CR18	18RR	未提出CR19	19SS	未提出CR20	20TT	未提出";

@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>kettask0706-3</title>
+    <title>kettask0706-5</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -3129,9 +3129,9 @@ Lettermove(dir,str):=(
 Ketcindyjsfigure=0;
 Ketcindyjsscale=1;
 aalinestart=1;
-quline="Q03::振幅と周期を求めよ	[1]:: y=fr(1,2)sin(x)	[2]:: y=sin(2x)";
-shline="Q03---	[1] [振幅,周期]=[?,]  	[2] [振幅,周期]=[?,]  ";
-sqline="01AA	2	2	2CR02BB	2	2	2CR03CC	2	2	2CR04DD	2	2	2CR05EE	2	2	2CR06FF	2	2	2CR07GG	2	2	2CR08HH	2	2	2CR09II	2	2	2CR10JJ	2	2	2CR11KK	2	2	2CR12LL	2	2	2CR13MM	2	2	2CR14NN	2	2	2CR15OO	2	2	2CR16PP	2	2	2CR17QQ	2	2	2CR18RR	2	2	2CR19SS	2	2	2CR20TT	2	2	2";
+quline="Q05::y = x^2 のグラフをどう移動（変形）したかを調べよう	[1]:: y = x^2 + 1のグラフをかけ	[2]:: y=x^2をどう移動したか	[3]:: y = (x − 2)^2のグラフをかけ	[4]:: y=x^2をどう移動したか";
+shline="Q05---	[1] y=x^(2)+? 	[2]   	[3] y=? 	[4]   ";
+sqline="01AA	2	2	2	2	2CR02BB	2	2	2	2	2CR03CC	2	2	2	2	2CR04DD	2	2	2	2	2CR05EE	2	2	2	2	2CR06FF	2	2	2	2	2CR07GG	2	2	2	2	2CR08HH	2	2	2	2	2CR09II	2	2	2	2	2CR10JJ	2	2	2	2	2CR11KK	2	2	2	2	2CR12LL	2	2	2	2	2CR13MM	2	2	2	2	2CR14NN	2	2	2	2	2CR15OO	2	2	2	2	2CR16PP	2	2	2	2	2CR17QQ	2	2	2	2	2CR18RR	2	2	2	2	2CR19SS	2	2	2	2	2CR20TT	2	2	2	2	2";
 quLL=Line2list(quline);
 shL=Line2list(shline);
 sqLL=Line2list(sqline);
@@ -4277,40 +4277,6 @@ dtpyL=dtpy0/22*size;
 ch=2;
 ;
 
-Addasterisk(strorg):=(
-//help:Addasterisk("ax^2+bx+c");
-  regional(str,out,sgnL,numL,alphaL,numalpha,ctr,
-      pre,now,tmp,tmp1,tmp2);
-  str=Removespace(strorg);
-  str=replace(str,"  ","*");
-  sgnL=["+","-","*","/","^"];
-  numL=append(apply(0..9,text(#)),"."); //210226
-  tmp1=32..126;
-  tmp=(65..90)++(97..122);
-  tmp1=remove(tmp1,tmp);
-  alphaL=apply(tmp,unicode(text(#),base->10));
-  numalpha=numL++alphaL;
-  out=""; pre="@";
-  while(length(str)>0,
-    now=str_1;
-    str=substring(str,1,length(str));
-    if(now=="#",
-      if(contains(numalpha++[")"],pre),out=out+"*");
-      tmp=indexof(str,"#");
-      out=out+"#"+substring(str,0,tmp-1);
-      str=substring(str,tmp,length(str));
-    );    
-    if(contains(numL,now),
-      if(contains(alphaL++[")"],pre),out=out+"*");
-    );
-    if(contains(alphaL++["("],now),
-      if(contains(numalpha++[")"],pre),out=out+"*");
-    );
-    out=out+now;
-    pre=now;
-  );
-  out;
-);
 Mvdrwxy():=(
 //help:Mvdrwxy();
   regional(org,tmp);
@@ -4606,103 +4572,45 @@ Plotdata(name1,func,variable,options):=(
     );
   );
 );
-Putonseg(name,sgstr):=(
-  regional(seg,p1,p2);
-  if(isstring(sgstr),seg=parse(sgstr),seg=sgstr);
-  Putonseg(name,LLcrd(seg_1),LLcrd(seg_2));
-);
-Putonseg(name,p1,p2):=Putonseg(name,p1,p2,[]);
-Putonseg(name,p1org,p2org,options):=(
-//help:Putonseg("C","sgAB");
-//help:Putonseg("C",pA,pB);
-  regional(Eps,par,p1,p2,dx,dy,p,tmp,tmp1,tmp2);
-  Eps=10^(-5);
-  par=0.5;
-  tmp=Divoptions(options);
-  if(length(tmp_6)>0,
-    par=tmp_6_1;
-  );
-  p1=Lcrd(p1org);//16.10.11from
-  p2=Lcrd(p2org);
-  Putpoint(name,(p1+p2)/2,parse(name+".xy")); //190216 //no ketjs
-  p1=Pcrd(p1); p2=Pcrd(p2); //190120
-  dx=p2_1-p1_1;
-  dy=p2_2-p1_2;
-  p=parse(name+".xy");
-  if(abs(dx)>abs(dy), //190120from
-    if(p1_1>p2_1,tmp=p1;p1=p2;p2=tmp);
-    if(p_1<p1_1,parse(name+".xy="+Textformat(p1,10));p=p1);
-    if(p_1>p2_1,parse(name+".xy="+Textformat(p2,10));p=p2);
-    tmp=(p2_2-p1_2)/(p2_1-p1_1)*(p_1-p1_1)+p1_2;
-    parse(name+".y="+tmp+";"); //190415
-  ,
-    if(p1_2>p2_2,tmp=p1;p1=p2;p2=tmp);
-    if(p_2<p1_2,parse(name+".xy="+Textformat(p1,10));p=p1);
-    if(p_2>p2_2,parse(name+".xy="+Textformat(p2,10));p=p2);
-    tmp=(p2_1-p1_1)/(p2_2-p1_2)*(p_2-p1_2)+p1_1;
-    parse(name+".x="+tmp+";"); //190415
-  ); //190120to
-);
 RSslash(str):=(  //17.09.24
   regional(tmp);
   tmp=replace(str,"\","\\");
 //  tmp=replace(tmp,"\\\\","\\");
   tmp;
 );
-Slider(ptstr,p1,p2):=Slider(ptstr,p1,p2,[]);
-Slider(ptstr,p1,p2,optionsorg):=(//220903
-//help:Slider("A-C-B",[-3,0],[3,0]);
-//help:Slider("C",[-3,0],[3,0]);
-//help:Slider(options=["Color=[0,0,0.6]","Thick=2"]);
-//help:Slider(options2=["Sep=0.3"]); //190824
-  regional(pA,pB,pC,options,color,thick,sep,
-        tmp,tmp1,tmp2);
-  options=optionsorg;
-  color="Color=0.6*[0,0,1]"; //190120from
-  thick="size->2";
-  sep=0.3; //190824
-  forall(options,
-    tmp=Toupper(substring(#,0,1));
-    if(tmp=="C",
-      color=#;
-      options=remove(options,[tmp]);//220903
+Addasterisk(strorg):=(
+//help:Addasterisk("ax^2+bx+c");
+  regional(str,out,sgnL,numL,alphaL,numalpha,ctr,
+      pre,now,tmp,tmp1,tmp2);
+  str=Removespace(strorg);
+  str=replace(str,"  ","*");
+  sgnL=["+","-","*","/","^"];
+  numL=append(apply(0..9,text(#)),"."); //210226
+  tmp1=32..126;
+  tmp=(65..90)++(97..122);
+  tmp1=remove(tmp1,tmp);
+  alphaL=apply(tmp,unicode(text(#),base->10));
+  numalpha=numL++alphaL;
+  out=""; pre="@";
+  while(length(str)>0,
+    now=str_1;
+    str=substring(str,1,length(str));
+    if(now=="#",
+      if(contains(numalpha++[")"],pre),out=out+"*");
+      tmp=indexof(str,"#");
+      out=out+"#"+substring(str,0,tmp-1);
+      str=substring(str,tmp,length(str));
+    );    
+    if(contains(numL,now),
+      if(contains(alphaL++[")"],pre),out=out+"*");
     );
-    if(tmp=="T",
-      tmp=Strsplit(#,"=");
-      thick="size->"+tmp_2;
-      options=remove(options,[tmp]);//220903
+    if(contains(alphaL++["("],now),
+      if(contains(numalpha++[")"],pre),out=out+"*");
     );
-    if(tmp=="S",//190824from
-      tmp=Strsplit(#,"=");
-      sep=parse(tmp_2);
-      options=remove(options,[tmp]);//220903
-    ); //190824to
+    out=out+now;
+    pre=now;
   );
-  tmp=Indexall(ptstr,"-");
-  if(length(tmp)>0,
-    pA=substring(ptstr,0,tmp_1-1); //190824from
-    pC=substring(ptstr,tmp_1,tmp_2-1);
-    pB=substring(ptstr,tmp_2,length(ptstr));
-    parse(pA).xy=p1;
-    parse(pB).xy=p2; //190824to
-    tmp1=pC+"position"; //190827from
-    if(!islist(parse(tmp1)),
-      tmp2=parse(pC).xy;
-      if(|tmp2-p1|<0.1,tmp2=p1+0.1*(p2-p1)/|p2-p1|);
-      if(|tmp2-p2|<0.1,tmp2=p2+0.1*(p1-p2)/|p1-p2|);
-      tmp=tmp1+"="+textformat(tmp2,10)+";";
-      parse(tmp);
-      parse(pC).xy=tmp2;
-    ); //190827to
-    PTEXCEPTION=concat(TEXCEPTION,[pA,pC,pB]);
-  ,
-    pC=ptstr; pA=pC+"l"; pB=pC+"r"; 
-    PTEXCEPTION=concat(PTEXCEPTION,[pC]);
-  );
-  options=concat(options,["Msg=n",color,thick]); //220903[2lines]
-  if(!contains(options,"nodisp"),options=append(options,"notex"));
-  Listplot(pA+pB,[p1,p2],options);
-  Putonseg(pC,parse("sg"+pA+pB));
+  out;
 );
 Tocindyform(str):=(
 //help:Tocindyform("fr(2,3)");
@@ -5087,40 +4995,54 @@ Scale=4.456;
 Rbound=[114.071,0];
 tmp1=screenbounds();tmp1=[tmp1_2_1,0];
 Center=Center-Rbound+tmp1;
-// create(A,B)
-Setwindow([-3.2,3.2],[-2.1,2,1]);
-if(ketlibflg==1,
-  Putpoint("A",[90,0]);
-  Putpoint("B",[90,-5]);
-  ketlibflg=0;
-);
-Slider("A",[80,0],[100,0]);
-Slider("B",[80,-5],[100,-5]);
-a=((A.x-90)/5+2)/2;
-b=((B.x-90)/5+2)/2;
-tmp1=apply([-pi,-pi/2,pi/2,pi],Mvpt(#,0));
-tmp2=apply(["-pi","-fr(pi,2)","fr(pi,2)","pi"],Totexform(#));
-tmp3=apply([-2,-1,1,2],Mvpt(0,#));
-tmp4=apply(["-2","-1","1","2"],Totexform(#));
-//  Expr(tmp1_1,"s1",tmp2_1);
-//  Expr(tmp1_2,"s1",tmp2_2);
-//  Expr(tmp1_3,"s1",tmp2_3);
-//  Expr(tmp1_4,"s1",tmp2_4);
-//  Expr(tmp3_1,"w1",tmp4_1);
-//  Expr(tmp3_2,"w1",tmp4_2);
-//  Expr(tmp3_3,"w1",tmp4_3);
-//  Expr(tmp3_4,"w1",tmp4_4);
-forall(1..4,
-  Expr(tmp1_#,"s1",tmp2_#);
-  Expr(tmp3_#,"w1",tmp4_#);
-);
-Mvplotdata("1","sin(x)","x",["Color=red"]);
-tmp1="Asin(bx)";
-tmp2=Assign(Tocindyform(tmp1),["A",text(a),"b",text(b)]);
-tmp3=Totexform(tmp2);
-Expr([90,-10],"e","y="+tmp3,["Size=1.5"]);
-Mvplotdata("2",tmp2,"x",["dr,2"]);
-Mvdrwxy();
+  Setwindow([-3,3],[-3,3]);
+  Mvplotdata("0","x^2","x",["Color=red"]);
+  fn="";
+if(nqu>=2, //add embed
+    fn=Textedit(2,"");
+	fn=Removespace(fn);
+); //add embed
+  if(length(fn)>0,
+    if(indexof(fn,"?")==0,
+      Mvplotdata("1",fn,"x",["dr,2"]);
+    );
+  );
+  Expr(Mvpt(1,0),"s","1");
+  Expr(Mvpt(0,1),"w","1");
+  ctr=1;
+  forall((-3)..3,
+    Mvlist("h"+ctr,[[-3,#],[3,#]],["dr,0.5"]);
+    Mvlist("v"+ctr,[[#,-3],[#,3]],["dr,0.5"]);
+    ctr=ctr+1;
+  );
+  Mvdrwxy();
+Center=[91.343,10.772];
+Scale=4.456;
+Rbound=[114.071,0];
+tmp1=screenbounds();tmp1=[tmp1_2_1,0];
+Center=Center-Rbound+tmp1;
+  Setwindow([-3,3],[-3,3]);
+  Mvplotdata("0","x^2","x",["Color=red"]);
+  fn="";
+if(nqu>=2, //add embed
+    fn=Textedit(2,"");
+	fn=Tocindyform(fn);
+	fn=Removespace(fn);
+); //add embed
+  if(length(fn)>0,
+    if(indexof(fn,"?")==0,
+      Mvplotdata("1",fn,"x",["dr,2"]);
+    );
+  );
+  Expr(Mvpt(1,0),"s","1");
+  Expr(Mvpt(0,1),"w","1");
+  ctr=1;
+  forall((-3)..3,
+    Mvlist("h"+ctr,[[-3,#],[3,#]],["dr,0.5"]);
+    Mvlist("v"+ctr,[[#,-3],[#,3]],["dr,0.5"]);
+    ctr=ctr+1;
+  );
+  Mvdrwxy();
 Windispg();
 ;
 
@@ -5138,8 +5060,6 @@ var cdy = CindyJS({
   },
   angleUnit: "°",
   geometry: [
-{name: "A", type: "Free", pos: [1,1,1]},
-{name: "B", type: "Free", pos: [1,1,1]},
     {name: "Text1", type: "EditableText", pos: [4.0, 3.9148936170212765, 0.1702127659574468], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 500, textsize: 24.0},
     {name: "NE", type: "Free", pos: [4.0, 1.0067746650167269, 0.05318084682256492], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
     {name: "Text2", type: "EditableText", pos: [4.0, -0.8516129032258064, 0.25806451612903225], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 580, textsize: 24.0},
@@ -5278,7 +5198,7 @@ var cdy = CindyJS({
 </head>
 <body>
 <header><p><font size="6">
-KeTTask0706-3
+KeTTask0706-5
 </font></p></header>
     <div id="CSCanvas"></div>
 <div style="padding: 50px">
