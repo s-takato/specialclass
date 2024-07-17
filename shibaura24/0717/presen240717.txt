@@ -1,0 +1,101 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\newcommand{\monthday}{0717}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+\newcommand{\bs}{$\backslash$}
+
+%%%%%%%%%%%%
+main::\TeX の利用
+%\slidepage[m]
+
+%%%%%%%%%%%%
+new::授業前アンケート
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{問}{\monbannoadd 現在の状況を書いて下さい}
+end
+\addban
+
+
+
+%%%%%%%%%%%%
+new::図の入った表の作成
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{0717table.cdyをChatで配付}
+\addtext{8}{\ten}{0717table.cdyを立ち上げる}
+\addtext{16}{}{作り方の説明}
+\addtext{8}{問}{\monbannoadd 思った通りの表ができましたか}
+end
+\addban
+
+%%%%%%%%%%%%
+new::\TeX 文書作成（TeXWorks）
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\boxframee{103}{30}{26}{8}{\color{red}Preamble}
+\addtext{8}{\ten}{基本形}
+\addtext{12}{}{\bs documentclass[a4j,10pt]\{jarticle\}}
+\addtext{16}{}{\bs usepackage\{pict2e\}}
+\addtext{16}{}{\bs usepackage\{ketpic2e,ketlayer2e\}}
+\addtext{12}{}{\bs begin\{document\}}
+\addtext{20}{}{・・・}
+\boxframee{103}{50}{14}{9}{\color{red}本文}
+\addtext{12}{}{\bs end\{document\}}
+\addtext{8}{問}{\monbannoadd 簡単な\TeX 文書を作って送って下さい}
+end
+\addban
+
+%%%%%%%%%%%%
+new::\bs inputと\bs includegraphics
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{$\backslash$input}
+\addtext{18}{}{描画コードファイルの読み込み}
+\addtext{8}{\ten}{$\backslash$includegraphics}
+\addtext{18}{}{png,pdfなどの読み込み}
+\addtext{18}{}{\ketcindy で描画領域を制限したPDF作成}
+\addtext{18}{}{bounding boxのエラーが出た時の対応}
+\addtext{8}{問}{\monbannoadd 図表の読み込みができましたか}
+end
+\addban
+
+%%%%%%%%%%%%
+new::授業後アンケート
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{8}{問}{\monbannoadd 今日の授業について自由に}
+end
+\addban

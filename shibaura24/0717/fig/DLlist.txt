@@ -1,0 +1,6 @@
+%%Title: DLlist.png
+%%Creator: extractbb 20220710
+%%BoundingBox: 0 0 485 119
+%%HiResBoundingBox: 0.000000 0.000000 485.000000 119.000000
+%%CreationDate: Wed Jun  5 08:57:28 2024
+

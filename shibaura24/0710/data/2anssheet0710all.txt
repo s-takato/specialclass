@@ -1,0 +1,392 @@
+MUROTA Daisuke
+昨日
+Ketinit();
+
+Plotdata("1","sin(x)","x",["Num=200","Color=red"]);
+Plotdata("2","cos(x)","x",[]);
+Plotdata("3","tan(x)","x",[]);
+
+Windispg();
+
+//Help("Plotdata");
+
+KATO Hideki
+昨日
+18;;182024071042014;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]); Slider("B",[-5,5],[5,5]);  Plotdata("1","sin(x)","x",["Color=red"]); Plotdata("2","cos(x)","x",[]); Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); Rotatedata("2","gr1",B.x,["dr,3"]); Listplot("1",{[0,0],[2,2]}); Windispg();  //Help("Rotate");
+
+Mikoto Hirosugi
+昨日
+14;;142024071041866;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("1","sin(x)","x",["Color=orange"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,5","Color=green"]); //Listplot("1",[[0,0],[2,2]]);  Windispg();  //Help("Plotdata");
+
+KANAI Kantaro
+昨日
+2;;22024071041740;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("1","sin(x)","x",["Num=200","Color=blu"]); //Translatedata("1","gr1",A.xy); //Plotdata("2","cos(x)","x",[]); //Listplot("1",[[0,0],[2,2]]); Rotatedata("1","gr1",pi/4,["dr,2"]); //Plotdata("3","tan(x)","x",["Num=200","Color=red"]);  Windispg();  //Help("Rotate");
+
+OOHIRA Kazuki
+10:45
+2;;22024071041740;;Q01---;;[] Ketinit(); Slider("A",[-5,-5],[5,-5]); Plotdata("1","sin(x)","x",["Num=200","Color=blu"]); //Translatedata("1","gr1",A.xy); //Plotdata("2","cos(x)","x",[]); //Listplot("1",[[0,0],[2,2]]); Rotatedata("1","gr1",pi/6,["dr,2"]); Windispg(); //Help("Rotate");
+
+TOKI Kei
+昨日
+25;;252024071041706;;Q01---;;[]  Ketinit(); Slider("A",[-5,-5],[5,-5]); Slider("B",[-5,-6],[5,-6]); Plotdata("1","sin(x)","x",["Num=200","Color=red"]); Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); Rotatedata("2","gr2",B.x,["dr,2"]); //Listplot("1",[[0,0],[2,2]]);  Windispg();  //Help("Slider");
+
+WATANABE Kosei
+昨日
+4;;42024071041969;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("3","sin(x)","x",["Color=red"]);  Plotdata("1","cos(x)","x",["Color=green"]); //Plotdata("2","sinx","x"[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],2,2]]); Windispg();  //Help("Plotdata");
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071043977;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("1","sin(x)","x",["Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],[1,1]]); Windispg();  //Help("Rotate");
+
+AKIYAMA Makoto
+昨日
+26;;262024071041958;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("1","cos(x)","x",["Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],[2,2]]); Windispg();  Help("Rotate");
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071042074;;Q01---;;[]  Ketinit();  Slider("A",[-5,-6],[5,-6]); Slider("B",[-5,5],[-5,-5]); Plotdata("1","sin(x)","x",["Num=200","Color=red"]); Plotdata("2","cos(x)","x",["Num=200","Color=green"]); //Translatedata("1","gr1",A,xy); Rotatedata("1","gr1",A.x,["dr,2"]); Rotatedata("2","gr2",B.y,["dr,2"]); Windispg();
+
+SUZUKI Nagi
+昨日
+36;;362024071041565;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("1","sin(x)","x",["Num=200","Color=red"]); Plotdata("2","cos(x)","x",["Num=200"]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Trans");
+
+NAKANO Ryusuke
+昨日
+Ketinit();
+
+Plotdata("1","cos(x)","x",["Num=200","Color=red"]);
+
+Windispg();
+
+//Help("Plotdata");
+
+SUZUKI Seisho
+昨日
+13;;132024071041738;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]); Plotdata("1","sin(x)","x",["Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A,xy); Rotatedata("1","gr1",pi/4,["dr,2"]); //Listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Rotate");
+
+SONODA Shohei
+昨日
+23;;232024071041648;;Q01---;;[]  Ketinit();  Slider("A",[6,4],[6,-4]);  Plotdata("1","tan(x)","x=[-pi,pi]",["Num=200","Color=red"]); //Plotdata("2","cos(x)","x",["Num=200","Color=black"]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.y,["Color=green","dr,3"]); //listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Rotate");
+
+TAKANE Shota
+昨日
+7;;72024071041883;;Q01---;;[]  Ketinit();  Plotdata("1","sin(x)","x",["Num=200","Color=blue"]);  Windispg();  //Help("Plotdata");
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071042836;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,5]);  Plotdata("1","cos(x)","x",["Color=red"]); //Plotdata("2","sin(x)","x",[1]); //Traslatedara("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],[2,2]]);  Windispg();  //Help("Rotate");
+
+MEGURO Teruhiko
+昨日
+21;;212024071041681;;Q01---;;[]  Ketinit();  Slider("A",[-5,-6],[5,-5]); Plotdata("1","tan(x)","x",["Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Rotate");
+
+SUGIHARA Tomoki
+昨日
+16;;162024071041661;;Q01---;;[]  Ketinit();  Slider("A",[-4,-5],[4,-5]);  Plotdata("1","arcsin(x)","x",["Color=blue"]); //Plotdata("2","sin(x)","x",[]); //Translatedata("1","gr1,A.xy); Rotatedata("1","gr1",A.x,["dr,2"]);  //Listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Plotdata");
+
+TAKEIRI Youta
+昨日
+12;;122024071041690;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]); Slider("B",[-5,5],[5,5]);  Plotdata("1","sin(x)","x",["Color=red"]); Plotdata("2","cos(x)","x",[]); Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); Rotatedata("2","gr1",B.x,["dr,3"]); Listplot("1",{[0,0],[2,2]}); Windispg();  //Help("Rotate");
+
+ESHIMA Yusuke
+昨日
+5;;52024071041863;;Q01---;;[]  Ketinit();  slider("A",[-5,-5],[5,-5]); Plotdata("1","sin(x)","x",["Num=200","Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr11",A.xy); Rotatedata("1","gr1",pi/3,[[1,5],"dr,1"]); //Listplot("1", [[0,0],[2,2]]); Windispg();  //Help("Plotdata");
+
+KOSHIDA YUTO
+昨日
+17;;172024071044182;;Q01---;;[]  
+
+NAITO Yuya
+昨日
+9;;92024071041725;;Q01---;;[]  Ketinit();  Slider("A",[-5,-5],[5,-5]); Slider("B",[-5,5],[5,5]);  Plotdata("1","sin(x)","x",["Color=red"]); Plotdata("2","cos(x)","x",[]); Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); Rotatedata("2","gr1",B.x,["dr,3"]); Listplot("1",{[0,0],[2,2]}); Windispg();  //Help("Rotate");
+
+吉村将
+昨日
+19;;192024071041705;;Q01---yes;;[]  Ketinit();  Plotdata("1","sin(x)","x",["Num=200","Color=red"]); //Plotdata("2","cos(x)","x",[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",pi/3,["dr,2"]); //Listplot("1",[[0,0],[2,2]]); Windispg();  //Help("Plotdata");
+
+諸田歩美
+昨日
+11;;112024071041669;;Q01---;;[]  Ketinit();  Plotdata("1","cos(x)","x",["Num=200","Color=red"]);  Windispg();
+
+MUROTA Daisuke
+昨日
+Ketinit();
+
+xL=[10,10,10];
+yL=[8,8];
+rmL=["b2r0r1];
+
+Tabledata("",xL,yL,rmL);
+Putrowexpr(1,"c",["a","b","c"]);
+Putrow(2,"r2",[100,200,300]);
+
+Windispg();
+
+//Help("TList");
+
+KATO Hideki
+昨日
+18;;182024071043617;;Q02---;;[]  Ketinit(); 
+XL=[10,10,10]; 
+yL=[8,8]; rmL=["c2r0r1"];
+ Tabledata ("", XL, YL, rmL); //Putrowrcpr(1,”c”, ["a"]); Putrow(2, “r2”, [10,20,300]);
+//Putcellexpr(“c1r0,”c3r1”,”c”,”abc”);
+Tlistplot(“1”,[”c1r0”,”c3r1”],[“do”]);
+Tlistplot(“2”,[”c3r1”,”c1r1”],[“da”]);
+ Windispg();
+ //Help(“Putrow” ) ;
+
+Mikoto Hirosugi
+昨日
+14;;142024071044348;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答",["Color=red"]); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("1",["c0r2","c3r0"],["da","Color=blue"]);   Windispg();  //Help("Tlist");
+
+KANAI Kantaro
+昨日
+2;;22024071044047;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,300]); Putcell("c1r0","c3r1","it","問"); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]); Tlistplot("2",["c0r1","c1r2"],["da"]); Tlistplot("2",["c1r1","c0r2"],["da"]);  Windispg();  //Help("Tlist");
+
+OOHIRA Kazuki
+10:50
+2;;22024071044047;;Q02---;;[] Ketinit(); xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"]; Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","A"); Putrow(2,"r2",[10,20,300]); Putcell("c1r0","c3r1","it","Q"); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c1r1","c0r2"],["da"]); Windispg(); //Help("Tlist"); 
+
+TOKI Kei
+昨日
+25;;252024071044102;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","問"); Putcell("c1r0","c3r1","lt","解答"); Putrow(2,"r2",[100,200,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["do"]);  Windispg();  //Help("Tlist");
+
+WATANABE Kosei
+昨日
+4;;42024071043754;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a","b","c"]); Putcell(,"c0r0","c1r1","c","答"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"]); Tlistplot("2",["c3r0","c1r1"]);  Windispg();  Help("Putcell");
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071044044;;Q02---;;[]  Ketinit();  xL=[9,9,9]; yL=[7,7]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,200]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();
+
+AKIYAMA Makoto
+昨日
+26;;262024071043929;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,500]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]); Windispg();  //Help("Tabledata");
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071044063;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[10,10]; rmL=["c2r0r1","c1r1r2"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","it","問題"); Putcell("c0r1","c2r2","it","解"); Putcell("c2r1","c3r2","it","abc"); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);  Windispg();
+
+SUZUKI Nagi
+昨日
+36;;362024071043794;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10, ,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]); Tlistplot("3",["c1r1","c2r2"],["do"]); Tlistplot("4",["c2r1","c1r2"],["da"]);   Windispg();  Help("Putrow");
+
+NAKANO Ryusuke
+昨日
+Ketinit();
+
+xL=[10,10,10];
+yL=[8,8];
+rmL=["c2r0r1"];
+
+Tabledata("",xL,yL,rmL);
+//Putrowexpr(1,"c",["a"]);
+Putcell("c0r0","c1r1","lt","答");
+Putrow(2,"r2",[10,20,300]);
+//Putcellexpr("c1r0","c3r1","c","abc");
+Tlistplot("1",["c1r0","c3r1"],["do"]);
+Tlistplot("2",["c3r0","c1r1"],["da"]);
+
+
+Windispg();
+
+SUZUKI Seisho
+昨日
+13;;132024071043799;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答え"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r2"],["do"]); Tlistplot("2",["c3r0","c1r2"],["da"]);   Windispg();
+
+SONODA Shohei
+昨日
+23;;232024071043813;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","ll10","答"); Putrow(2,"r2",["x","y","z"]); Putcellexpr("c1r0","c3r1","cl3","abc");  Tlistplot("1",["c1r0","c3r1"],["da"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();
+
+TAKANE Shota
+昨日
+7;;72024071043835;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); Putrowexpr(1,"c",["a"]); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"]);  Windispg();  //Help("Tlist");
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071043942;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();
+
+MEGURO Teruhiko
+昨日
+21;;212024071043898;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); Putrowexpr(1,"c",["a"]); //Putcell("c0r0","c1r1","lt","答") Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["da"]);  Windispg();
+
+SUGIHARA Tomoki
+昨日
+16;;162024071043757;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r2","r1c1c3"]; //rmL=["r1c1c3"];  Tabledata("",xL,yL,rmL); Putrowexpr(1,"c",["a"]); Putrow(2,"r2",[10,20,300]); Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r2"],["do"]); Tlistplot("2",["c3r0","c1r2"],["da"]);  Windispg();
+
+TAKEIRI Youta
+昨日
+12;;122024071043844;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","解答"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();  Help("Putcell");
+
+ESHIMA Yusuke
+昨日
+5;;52024071043878;;Q02---;;[]  Ketinit(); xL=[20,20,20]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r22",[10,20,300]); //Putcellxpr("c1r0","c3r1","c","1bc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistploot("2",["c3r0","c1r1"],["da"]); Windispg();  //Help("Plotdata");
+
+KOSHIDA YUTO
+昨日
+17;;172024071044210;;Q02---;;[]  
+
+NAITO Yuya
+昨日
+9;;92024071043916;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","解答"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();  Help("Putcell");
+
+吉村将
+昨日
+19;;192024071044013;;Q02---;;[]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a","b","c"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,300]); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]); Windispg();  //Help("Tabledata");
+
+MUROTA Daisuke
+昨日
+15;;152024071044899;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(5,6))= 1;;[4] =br(,0,1)= 
+
+Mikoto Hirosugi
+昨日
+14;;142024071044695;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1 ;;[4] =br(,0,1)= 
+
+KANAI Kantaro
+昨日
+2;;22024071044627;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1;;[4] =br(,0,1)= 
+
+OOHIRA Kazuki
+10:51
+2;;22024071044627;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1;;[4] =br(,0,1)= 
+
+TOKI Kei
+昨日
+25;;252024071044586;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= 1;;[4] =br(,0,1)= 
+
+WATANABE Kosei
+昨日
+4;;42024071044588;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= 1;;[4] =br(,0,1)= 
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071044559;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,)= log(2,fr(10,5))=log(2,2)=1;;[4] =br(,0,1)= 
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071044840;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1 ;;[4] =br(,0,1)= 
+
+SUZUKI Nagi
+昨日
+36;;362024071044643;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1;;[4] =br(,0,1)=
+
+NAKANO Ryusuke
+昨日
+3;;32024071044994;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=log(2,2) =1;;[4] =br(,0,1)= 
+
+SUZUKI Seisho
+昨日
+13;;132024071044601;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1 ;;[4] =br(,0,1)= 
+
+SONODA Shohei
+昨日
+23;;232024071044501;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= log(2,2)=1;;[4] =br(,0,1)= 
+
+TAKANE Shota
+昨日
+7;;72024071044654;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= 1;;[4] =br(,0,1)= 
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071044524;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1 ;;[4] =br(,0,1)= 
+
+MEGURO Teruhiko
+昨日
+21;;212024071044418;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1 ;;[4] =br(int(x,0,1))
+
+SUGIHARA Tomoki
+昨日
+16;;162024071044424;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= 1;;[4] =br(,0,1)= 
+
+TAKEIRI Youta
+昨日
+12;;122024071044812;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1 ;;[4] =br(,0,1)= 
+
+ESHIMA Yusuke
+昨日
+5;;52024071044747;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=1;;[4] =br(,0,1)= 
+
+KOSHIDA YUTO
+昨日
+17;;172024071044401;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))= 1;;[4] =br(,0,1)= 
+
+NAITO Yuya
+昨日
+9;;92024071044703;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1 ;;[4] =br(,0,1)= 
+
+吉村将
+昨日
+19;;192024071044812;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,2)=1;;[4] =br(x,0,1)=1 
+
+諸田歩美
+昨日
+11;;112024071044958;;Q03---;;[1] = fr(5,6);;[2] y'= cos(x);;[3] =log(2,fr(10,5))=log(2,2)=1 ;;[4] =br(,0,1)= 
+
+KATO Hideki
+昨日
+18;;182024071044738;;Q03---;;[1] = 1/2+1/3;;[2] y'= cos x;;[3] =log(2,10/5)=log(2,2)=1 ;;[4] =br(,0,1)= 
+
+Mikoto Hirosugi
+昨日
+14;;142024071044839;;Q04---;;[]  難しいが楽しい。出来たらで良いが、windowsでやっていただけるとありがたいです。
+
+KANAI Kantaro
+昨日
+2;;22024071044768;;Q04---グラフや表をコードで作るのは新鮮でした．xtmlやpdfにすぐに書き出せるのもすごい機能であると感じた．実際にやってみて思ったよりも簡単にできた．;;[]  
+
+TOKI Kei
+昨日
+25;;252024071045048;;Q04---;;[]  授業でやっているKetcindyの操作はしっかりと理解できた[] //少し前のことなのですが、Classroomの0508の課題6にあるkettask0508-5が入力しても消えてしまってその課題だけ提出できていなくて放置しているのですが、大丈夫でしょうか
+
+WATANABE Kosei
+昨日
+4;;42024071044698;;Q04---;;[]  非常にわかりやすく面白かったです。来週もよろしくお願いいたします。
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071044717;;Q04---内容は理解できている。//texの管理権限のところを開くとコマンドプロンプトが付いたり消えたりしてしまう//バグが発生している。どうすれば良いか教えていただきたい。;;[]  
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071045170;;Q04---昨日教えていただけたことで、今日の授業はわかりやすく、ketcindyはとても面白いと感じました。スクリプトをチャットに貼ってほしいです。;;[]  
+
+SUZUKI Seisho
+昨日
+13;;132024071044707;;Q04---自分で図形を作れると楽しい;;[]  
+
+SONODA Shohei
+昨日
+23;;232024071044693;;Q04---;;[]  次回の講義で再度TexWorksについて説明していただきたいです。
+
+TAKANE Shota
+昨日
+7;;72024071044853;;Q04---;;[]  ketcindyを用いると、表をきれいに書くことができることを知れた。
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071045000;;Q04---;;[]  まかには理解することができた。//来週も頑張りたい。
+
+MEGURO Teruhiko
+昨日
+21;;212024071044704;;Q04---;;[]  理解できた//頑張ります
+
+TAKEIRI Youta
+昨日
+12;;122024071044930;;Q04---;;[]  難しい//早い
+
+ESHIMA Yusuke
+昨日
+5;;52024071044801;;Q04---;;[]  全部できた、ketcindyは便利だと思った
+
+KOSHIDA YUTO
+昨日
+17;;172024071045453;;Q04---難しさはあるが、非常に便利であることが分かった。;;[]  
+
+NAITO Yuya
+昨日
+9;;92024071044791;;Q04---;;[]  問題なく課題ができた．ありがとうございました．
+
+吉村将
+昨日
+19;;192024071044859;;Q04---特になし;;[]  
