@@ -90,6 +90,23 @@ end
 \addban
 
 %%%%%%%%%%%%
+new::layer環境
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{図表を思った位置に配置する}
+\addtext{12}{}{\bs begin\{layer\}\{140\}\{70\}}
+\addtext{30}{}{単位はmm}
+\addtext{30}{}{最後の引数を0とするとグリッドが消える}
+\addtext{12}{}{\bs putnotese\{50\}\{30\}\{図\}}
+\addtext{30}{}{s,n，及びs,nとe,wの組，及びcが可能}
+\addtext{12}{}{\bs end\{layer\}}
+end
+\addban
+
+%%%%%%%%%%%%
 new::授業後アンケート
 \slidepage
 %repeat=1
