@@ -1,0 +1,504 @@
+KATSUUMI Arisa
+昨日
+22;;222024071739706;;Q01---;;[]  理解した
+
+MUROTA Daisuke
+昨日
+Ketexはインストール済み、作動しています
+
+KATO Hideki
+昨日
+18;;182024071739537;;Q01---;;[]  頑張ります
+
+Mikoto Hirosugi
+昨日
+14;;142024071739410;;Q01---;;[]  インストールも出来ており、問題無く行っています。
+
+Miu KANAGAWA
+昨日
+28;;282024071739550;;Q01---;;[]  Rエラーで止まっている。Windowsを更新していないことが原因かと思い、Windows11をインストールしている最中。
+
+KANAI Kantaro
+昨日
+2;;22024071739636;;Q01---;;[]  よくできています
+
+OOHIRA Kazuki
+昨日
+20;;202024071743150;;Q01---;;[]  問題ないです。
+
+TOKI Kei
+昨日
+25;;252024071739482;;Q01---;;[]  すべてインストールできており、これまで授業で行っていることは全て出来ている
+
+WATANABE Kosei
+昨日
+4;;42024071739454;;Q01---;;[]  正常に動いている
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071739457;;Q01---;;[]  アプリ関連は先生の手助けによりすべて導入されました。
+
+AKIYAMA Makoto
+昨日
+26;;262024071739386;;Q01---;;[]  現状特に問題ありません
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071739680;;Q01---;;[]  問題なくできています。
+
+OOTANI Naoki
+昨日
+1;;12024071739676;;Q01---;;[]  問題なし
+
+YAMAGUCHI Rin
+昨日
+37;;372024071739420;;Q01---;;[]  7/3の授業からついていけていない状況
+
+KISHI Ryotaro
+昨日
+ダウンロードがうまくいかないまま、教育実習に行っていたため、進度としては遅れてしまっている。授業収録を確認してなんとか追いつきたい。
+
+NAKANO Ryusuke
+昨日
+3;;32024071739790;;Q01---;;[]  図を作成することができています。
+
+SUZUKI Seisho
+昨日
+13;;132024071739858;;Q01---;;[]  問題なく作動します
+
+SONODA Shohei
+昨日
+23;;232024071739515;;Q01---;;[]  特に問題ない
+
+TAKANE Shota
+昨日
+7;;72024071739702;;Q01---;;[]  全てのインストールが完了して、図や表も作れています。
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071739905;;Q01---;;[]  理解することが難しい。
+
+MINAMIMOTO Takumi
+昨日
+30;;302024071739579;;Q01---;;[]  muzukasii
+
+MEGURO Teruhiko
+昨日
+21;;212024071739481;;Q01---;;[]  うまくできています
+
+SUGIHARA Tomoki
+昨日
+16;;162024071739515;;Q01---;;[]  順調です
+
+TAKEIRI Youta
+昨日
+12;;122024071739455;;Q01---;;[]  問題なし
+
+ESHIMA Yusuke
+昨日
+5;;52024071739611;;Q01---;;[]  Texがダウンロードできた
+
+KOSHIDA YUTO
+昨日
+17;;172024071739690;;Q01---;;[]  もう少し頑張りたい
+
+NAITO Yuya
+昨日
+9;;92024071739817;;Q01---;;[]  特に問題なし
+
+吉村将
+昨日
+19;;192024071739568;;Q01---;;[]  普段とは別PCなので途中で詰まっちゃうかもです
+
+諸田歩美
+昨日
+11;;112024071739595;;Q01---;;[]  特に問題ありません
+
+
+MUROTA Daisuke
+昨日
+15;;152024071744446;;Q02---;;[]  できた
+
+KATO Hideki
+昨日
+18;;182024071744321;;Q02---;;[]  できました
+
+Mikoto Hirosugi
+昨日
+14;;142024071744334;;Q02---;;[]  いいえ
+
+TOKI Kei
+昨日
+25;;252024071744852;;Q02---;;[]  大体できた
+
+WATANABE Kosei
+昨日
+4;;42024071744526;;Q02---;;[]  恐らくできた
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071744562;;Q02---;;[]  できた
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071744593;;Q02---;;[]  文字の挿入には成功しましたが、図が出てきませんでした。
+
+OOTANI Naoki
+昨日
+1;;12024071744460;;Q02---;;[]  スクリプトは作成しましたが、texworksからプレビューを行うに至っていません。
+
+SUZUKI Seisho
+昨日
+13;;132024071744420;;Q02---;;[]  できなかった
+
+SONODA Shohei
+昨日
+23;;232024071744589;;Q02---;;[]  できませんでした
+
+TAKANE Shota
+昨日
+7;;72024071744547;;Q02---;;[]  作ることができた
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071744615;;Q02---;;[]  できた。
+
+MINAMIMOTO Takumi
+昨日
+30;;302024071744468;;Q02---;;[]  はい
+
+MEGURO Teruhiko
+昨日
+21;;212024071744502;;Q02---;;[]  できた
+
+SUGIHARA Tomoki
+昨日
+16;;162024071744368;;Q02---;;[]  出来た
+
+TAKEIRI Youta
+昨日
+12;;122024071744371;;Q02---;;[]  yes
+
+ESHIMA Yusuke
+昨日
+5;;52024071744508;;Q02---;;[]  できました
+
+KOSHIDA YUTO
+昨日
+17;;172024071744426;;Q02---;;[]  できなかった
+
+NAITO Yuya
+昨日
+9;;92024071744709;;Q02---;;[]  できた
+
+吉村将
+昨日
+19;;192024071744735;;Q02---;;[]  エラーメッセージが出て、できませんでした。
+
+MUROTA Daisuke
+昨日
+\documentclass{ujarticle}
+\usepackage[dvipdfmx]{pict2e}
+\usepackage{ketpic2e}
+\usepackage{ketlayer2e}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+
+\setmargin{20}{20}{20}{20}
+
+\begin{document}
+
+AH20085 室田大輔
+
+
+
+\begin{layer}{130}{0}
+
+\putnotes{100}{10}{\input{graphtable.tex}}
+
+\end{layer}
+
+\vspace{5mm}
+
+\begin{minipage}[t]{20mm}
+
+Big fly! Ootanisaaaaaaaaannnn!!!!!!!
+\end{minipage}
+
+
+\end{document}
+
+KATO Hideki
+昨日
+18;;182024071743025;;Q03---;;[]  cumentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm}  \end{minipage}
+
+Mikoto Hirosugi
+昨日
+14;;142024071742389;;Q03---;;[]  \documentclass{jarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  7月17日の最初の例  \verb|graphtable| by \ketcindy  \vspace{5mm}  \begin{layer}{130}{80}  \putnotes{50}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 今日は晴れです  \end{minipage}  \end{document}
+
+KANAI Kantaro
+昨日
+2;;22024071743009;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} ルックバック：興収9.9億円突破 58万人動員のヒット 藤本タツキの人気マンガ原作の劇場版アニメ \end{minipage}   \end{document}
+
+OOHIRA Kazuki
+昨日
+20;;202024071743068;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} パドレス ダルビッシュ有 日米通算200勝達成 史上3人目\end{minipage}   \end{document}
+
+TOKI Kei
+昨日
+25;;252024071743745;;Q03---;;[]  \documentclass{jarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大谷スリーランホームラン、オールスターゲーム  ※Otanisan \end{minipage}   \end{document}
+
+WATANABE Kosei
+昨日
+4;;42024071744441;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大リーグ、ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。大谷選手は、第2打席で、先制のスリーランホームランを打ちました。  ※オールスターゲームに関する日本時間7月17日の動きを随時更新してお伝えします。 \end{minipage}   \end{document}
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071743088;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大リーグ、ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。  \end{minipage}   \end{document}
+
+AKIYAMA Makoto
+昨日
+26;;262024071743284;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} タイの首都、バンコク中心部のホテルで16日、外国人の男女6人が死亡しているのがみつかり、地元の警察は事件の可能性も含め死因や詳しい状況を調べています。  16日午後、タイの首都バンコク中心部にあるホテルの一室で、男女6人が死亡しているとホテルの従業員から警察に通報がありました。  警察によりますと、亡くなった6人は、30代から50代のベトナム系の男女で、うち2人はアメリカ国籍のパスポートを持っていたということです。 \end{minipage}   \end{document}
+
+Texファイルの文章をシンデレラに反映する方法が分かりませんでした。
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071744529;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  2024/7/17天気は晴れ    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} ありがとうございます。 \end{minipage}   \end{document}
+
+OOTANI Naoki
+昨日
+1;;12024071742768;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm}  texwoksのインストールに時間を盗られました。 ketcindyへのコンパイルは後ほど行います。  \end{minipage}   \end{document}
+
+NAKANO Ryusuke
+昨日
+\documentclass{ujarticle}
+\usepackage[dvipdfmx]{pict2e}
+\usepackage{ketpic2e}
+\usepackage{ketlayer2e}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+
+\setmargin{20}{20}{20}{20}
+
+\begin{document}
+
+７月１７日
+
+
+
+\begin{layer}{130}{0}
+
+\putnotes{100}{10}{\input{graphtable.tex}}
+
+\end{layer}
+
+\vspace{5mm}
+
+\begin{minipage}[t]{55mm}
+大リーグ、ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。大谷選手は、第2打席で、先制のグランドスラムを打ちました。
+
+\end{minipage}
+
+
+\end{document}
+
+SUZUKI Seisho
+昨日
+13;;132024071742614;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大リーグ、ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。大谷選手は、第2打席で、先制のグランドスラムを打ちました。  \end{minipage}   \end{document}
+
+SONODA Shohei
+昨日
+23;;232024071743607;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時過ぎから行われ、大谷選手は2番・指名打者で出場します。 大谷選手は、第2打席で、先制点となる満塁ホームランを打ちました。  \end{minipage}   \end{document}
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071743145;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} MLBのドジャースに所属する大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。一打席目はフォアボールに終わり、第2打席で、先制のスリーランホームランを打ちました。  ※オールスターゲームに関する日本時間7月17日の動きを随時更新してお伝えします。 \end{minipage}   \end{document}
+
+MINAMIMOTO Takumi
+昨日
+30;;302024071742999;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm}  BN20029  \end{minipage}   \end{document}
+
+MEGURO Teruhiko
+昨日
+21;;212024071742946;;Q03---;;[]  \documentclass{ujarticle}
+\usepackage[dvipdfmx]{pict2e}
+\usepackage{ketpic2e}
+\usepackage{ketlayer2e}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+
+\setmargin{20}{20}{20}{20}
+
+\begin{document}
+
+７月１７日の最初の例
+
+
+
+\begin{layer}{130}{0}
+
+\putnotes{100}{10}{\input{graphtable.tex}}
+
+\end{layer}
+
+\vspace{5mm}
+
+\begin{minipage}[t]{55mm}
+大リーグ、ドジャースの大谷翔平選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。大谷選手は、第2打席で、先制のスリーランホームランを打ちました。
+
+※オールスターゲームに関する日本時間7月17日の動きを随時更新してお伝えします。
+\end{minipage}
+
+
+\end{document}
+
+SUGIHARA Tomoki
+昨日
+16;;162024071743033;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 女性に性的暴行を加えたとして、警視庁がサッカー日本代表ＭＦの佐野海舟容疑者（２３）ら男３人を不同意性交容疑で１４日に逮捕した、と各メディアが１７日に報じたことにネット上で衝撃が走った。Ｘ（旧ツイッター）では「佐野海舟」がトレンド１位に入るなど騒然としている。 \end{minipage}   \end{document}
+
+TAKEIRI Youta
+昨日
+12;;122024071742798;;Q03---;;[]  \documentclass{jarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大リーグ、ドジャースのOHTANI選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、大谷選手は2番・指名打者で出場しています。大谷選手は、第2打席で、先制のスリーランホームランを打ちました。  ※オールスターゲームに関する日本時間7月17日の動きを随時更新してお伝えします。 \end{minipage}   \end{document}  \verb|graphtable| by \ketcindy \vspace{5mm}  \input{graphtable.tex}  \end{document}
+
+ESHIMA Yusuke
+昨日
+5;;52024071742833;;Q03---;;[]  \documentclass{ujarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}  \setmargin{20}{20}{20}{20}  \begin{document}  ７月１７日の最初の例    \begin{layer}{130}{0}  \putnotes{100}{10}{\input{graphtable.tex}}  \end{layer}  \vspace{5mm}  \begin{minipage}[t]{55mm} 大リーグ、ドジャースのotani選手が出場するオールスターゲームは日本時間の17日午前9時すぎから行われ、otani選手は2番・指名打者で出場しています。otani選手は、第2打席で、先制のスリーランホームランを打ちました。  ※オールスターゲームに関する日本時間7月17日の動きを随時更新してお伝えします。 \end{minipage}   \end{document}
+
+KOSHIDA YUTO
+昨日
+17;;172024071742394;;Q03---;;[]  できませんでしたすみません
+
+NAITO Yuya
+昨日
+\documentclass{ujarticle}
+\usepackage[dvipdfmx]{pict2e}
+\usepackage{ketpic2e}
+\usepackage{ketlayer2e}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+
+\setmargin{20}{20}{20}{20}
+
+\begin{document}
+
+
+
+
+
+\begin{layer}{130}{0}
+
+\putnotes{100}{10}{\input{graphtable.tex}}
+
+\end{layer}
+
+\vspace{5mm}
+
+\begin{minipage}[t]{55mm}
+
+
+\end{minipage}
+
+
+\end{document}
+
+吉村将
+昨日
+19;;192024071744963;;Q03---;;[]  できませんでした
+
+MUROTA Daisuke
+昨日
+15;;152024071744540;;Q05---;;[]  よく理解できた
+
+KATO Hideki
+昨日
+18;;182024071744383;;Q05---;;[]  少しわからないところもありましたが、とても面白かったです。
+
+Mikoto Hirosugi
+昨日
+14;;142024071744566;;Q05---;;[]  TEXworksは起動するが、実行しても画像がでない。インストールできていないのかもしれない
+
+KANAI Kantaro
+昨日
+2;;22024071744470;;Q05---;;[]  途中からついていくのが難しくなった
+
+TOKI Kei
+昨日
+25;;252024071744641;;Q05---;;[]  結構難しかったが出来た
+
+WATANABE Kosei
+昨日
+4;;42024071745227;;Q05---;;[]  丁寧にご指導していただきありがとうございました．
+
+TAKEMURA Kunitoshi
+昨日
+10;;102024071744615;;Q05---;;[]  先週導入していただいたおかげでスムーズに進めることができた。
+
+AKIYAMA Makoto
+昨日
+26;;262024071744926;;Q05---;;[]  Figureを押したときにプロンプト画面にEnter file nameと出てきて何を入力すればよいか分からない
+
+SHIKAKURA Mizuki
+昨日
+6;;62024071744648;;Q05---;;[]  難しくてついて行けませんでしたが、とても面白かったです。
+
+OOTANI Naoki
+昨日
+1;;12024071744673;;Q05---;;[]  スクリプトについては問題ありませんが、cinderellaの一括ダウンロードを重複してしまったからか、texworksの環境設定などに問題があるからか、いずれの理由により実行まで至っていません。前回、前々回の授業に参加できなかったため、録画などを公開していただければ幸いです。
+
+YAMAGUCHI Rin
+昨日
+37;;372024071744621;;Q05---;;[]  WARNING Unknown function: Ch WARNING Unknown function: Windispg Further warning output will be suppressed!このエラーが出ているため授業についていけませんでした。
+
+SUZUKI Seisho
+昨日
+13;;132024071744495;;Q05---;;[]  難しかった//やりたいことはわかるけどついていくので精一杯だった
+
+SONODA Shohei
+昨日
+23;;232024071744991;;Q05---;;[]  もう少しゆっくり話していただきたいです。テンポが速いと，途中からわからなくなります。
+
+TAKANE Shota
+昨日
+7;;72024071744740;;Q05---;;[]  バグが多い部分は少し気になったが、図や表が作りやすい点は良いと感じた。
+
+SUGIYAMA Shunsei
+昨日
+31;;312024071744720;;Q05---;;[]  なんとなく理解できた。//[]  難しかった。//
+
+MINAMIMOTO Takumi
+昨日
+30;;302024071744522;;Q05---;;[]  非常に難しかったため、先生のものをなぞるので精いっぱいだった。
+
+MEGURO Teruhiko
+昨日
+21;;212024071744534;;Q05---;;[]  難しかった
+
+SUGIHARA Tomoki
+昨日
+16;;162024071744456;;Q05---;;[]  大体わかった//kettworksの部分が難しかった
+
+TAKEIRI Youta
+昨日
+12;;122024071744457;;Q05---;;[]  何となく理解した//難しいところもあった
+
+ESHIMA Yusuke
+昨日
+5;;52024071744544;;Q05---;;[]  Tex文書作るのが難しいと感じた
+
+KOSHIDA YUTO
+昨日
+17;;172024071744464;;Q05---;;[]  非常に難しかった次回は頑張りたい
+
+NAITO Yuya
+昨日
+9;;92024071744754;;Q05---;;[]  少し難しかったが，なんとかできた
+
+吉村将
+昨日
+19;;192024071744677;;Q05---;;[]  エラーメッセージがでて、できませんでした
+

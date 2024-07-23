@@ -1,0 +1,94 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\newcommand{\monthday}{0724}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+\newcommand{\bs}{$\backslash$}
+
+%%%%%%%%%%%%
+main::補足
+%\slidepage[m]
+
+%%%%%%%%%%%%
+new::\ketcindy JSによるアニメーション
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{06animationjs.cdyを用いる}
+end
+
+%%%%%%%%%%%%
+new::\bs inputと\bs includegraphics
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{$\backslash$input}
+\addtext{18}{}{描画コードファイルの読み込み}
+\addtext{8}{\ten}{$\backslash$includegraphics}
+\addtext{18}{}{png,pdfなどの読み込み}
+\addtext{18}{}{\ketcindy で描画領域を制限したPDF作成}
+\addtext{18}{}{bounding boxのエラーが出た時の対応}
+end
+
+%%%%%%%%%%%%
+new::layer環境
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{図表を思った位置に配置する}
+\addtext{12}{}{\bs begin\{layer\}\{140\}\{70\}}
+\addtext{30}{}{単位はmm}
+\addtext{30}{}{最後の引数を0とするとグリッドが消える}
+\addtext{12}{}{\bs putnotese\{50\}\{30\}\{図\}}
+\addtext{30}{}{s,n，及びs,nとe,wの組，及びcが可能}
+\addtext{12}{}{\bs end\{layer\}}
+end
+
+%%%%%%%%%%%%
+new::自由課題
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{幾何点をスクリプトでとる方法}
+\addtext{16}{}{Putpoint("A",[1,2],A.xy)}
+\addtext{8}{問\monbannoadd}{\ketcindy JSか\ketcindy で１つの作品を作れ}
+end
+\addban
+
+%%%%%%%%%%%%
+new::授業後アンケート
+\slidepage
+%repeat=1
+
+\textinit
+layer::{120}{0}
+\addtext{8}{問\monbannoadd}{今年度の授業について}
+\addtext{16}{[1]}{自分の到達度}
+\addtext{16}{[2]}{授業についての感想}
+\addtext{16}{[3]}{授業についての要望など}
+end
+\addban
