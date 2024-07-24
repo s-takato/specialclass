@@ -1,7 +1,7 @@
 Q
-@KeTCindyJS@か@KeTCindy@で１つの作品を作れ
-[1] どちらを用いたか
-[2] スクリプトをコピーせよ
+Answer questions
+[1] 
+[2] 
 Sheet
 [1]  ::0:-1
 [2]  ::5::-1

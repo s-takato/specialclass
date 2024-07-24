@@ -69,15 +69,17 @@ end
 %%%%%%%%%%%%
 new::自由課題
 \slidepage
-%repeat=1
+%repeat=2
 
 \textinit
 layer::{120}{0}
-\addtext{8}{\ten}{幾何点をスクリプトでとる方法}
-\addtext{16}{}{Putpoint("A",[1,2],A.xy)}
-\addtext{8}{問\monbannoadd}{\ketcindy JSか\ketcindy で１つの作品を作れ}
+\addtext{8}{問\monbannoadd}{Answer the question}
+%[2]::\addban
+%[2]::\addtext{8}{\ten}{幾何点をスクリプトでとる方法}
+%[2]::\addtext{16}{}{Putpoint("A",[1,2],A.xy)}
+%[2]::\addtext{8}{問\monbannoadd}{\ketcindy JSか\ketcindy で１つの作品を作れ}
+%[2]::\addban
 end
-\addban
 
 %%%%%%%%%%%%
 new::授業後アンケート
