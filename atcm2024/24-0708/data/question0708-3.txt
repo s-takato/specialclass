@@ -1,0 +1,7 @@
+Q
+Differentiate
+[]y=2sin(x)-3cos(x)
+Sheet
+[] y'=  ::4
+Ans
+[]

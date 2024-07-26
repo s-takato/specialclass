@@ -1,0 +1,7 @@
+Q
+Differentiate
+[]y=fr(x,x+1)
+Sheet
+[] y'=  ::4
+Ans
+[]

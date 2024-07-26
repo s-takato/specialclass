@@ -1,0 +1,29 @@
+
+縮約版
+https://s-takato.github.io/polytech/polytech24/203-0708/presen24203digest.pdf
+
+
+質問
+問 0708-1 y=xsq(x)=x^(tfr(3,2))の微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-1.html
+
+問 0708-2 y=fr(x,x+1)の微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-2.html
+
+問 0708-3 sin,cosの微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-3.html
+
+問 0708-4 sin,cos,tanの微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-4.html
+
+問 0708-5 f(ax+b)の微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-5.html
+
+問 0708-6 y=a^xの(0,1)での接線の傾きが1
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-6d.html
+
+問 0708-7 指数関数の微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-7.html
+
+問 0708-8 対数関数の微分
+https://s-takato.github.io/polytech/polytech24/203-0708/kettaskv0708-8.html
