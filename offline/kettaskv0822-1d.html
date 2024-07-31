@@ -3131,7 +3131,7 @@ Ketcindyjsscale=1;
 aalinestart=1;
 quline="Q01::元高専教員のT氏は，教科書執筆や教育ソフトの開発を//　してきた経緯を高専関係の雑誌に書いた	[1]:: T氏が絶対につけないであろうタイトルはどれか	[2]:: T氏が実際につけたタイトルはどれか．";
 shline="Q01---	[1]番号= 	[2]番号= ";
-sqline="01AA	2	2	2CR02BB	2	2	2CR03CC	2	2	2CR04DD	2	2	2CR05EE	2	2	2";
+sqline="01AA	2	2	2CR02BB	2	2	2CR03CC	2	2	2CR04DD	2	2	2CR05EE	2	2	2CR06FF	2	2	2CR07GG	2	2	2CR08HH	2	2	2CR09II	2	2	2CR10JJ	2	2	2CR11KK	2	2	2CR12LL	2	2	2CR13MM	2	2	2CR14NN	2	2	2CR15OO	2	2	2CR16PP	2	2	2CR17QQ	2	2	2CR18RR	2	2	2CR19SS	2	2	2CR20TT	2	2	2";
 quLL=Line2list(quline);
 shL=Line2list(shline);
 sqLL=Line2list(sqline);
@@ -4569,9 +4569,11 @@ Scale=16;
 Rbound=[115.364,0];
 tmp1=screenbounds();tmp1=[tmp1_2_1,0];
 Center=Center-Rbound+tmp1;
+if(nqu>1, //add embed
 drawtext(Mvpt(0,0.6),"1.高専教育は常に新しく創造的",size->16);
 drawtext(Mvpt(0,0.3),"2.数学教育は常に新しく創造的",size->16);
 drawtext(Mvpt(0,0),"3.学校教育は常に新しく創造的",size->16);
+); //add embed
 Windispg();
 ;
 
