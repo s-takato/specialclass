@@ -1,8 +1,3 @@
-
-縮約版
-https://s-takato.github.io/polytech/polytech24/204-0822/presen24204digest.pdf
-
-
 質問
-問 0822-0 微分せよ（べき関数）
+問 0822-0 図の直角三角形ABCで
 https://s-takato.github.io/specialclass/rims2408/kettaskv0828-0d.html
