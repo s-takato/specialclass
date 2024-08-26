@@ -1,0 +1,303 @@
+KITAHARA Chihiro
+7月3日
+33;;332024070341652;;Q01---;;[]  y
+
+MUROTA Daisuke
+7月3日
+15;;152024070344115;;Q01---;;[]  s
+
+KATO Hideki
+7月3日
+18;;182024070341476;;Q01---;;[]  y
+
+Mikoto Hirosugi
+7月3日
+14;;142024070341432;;Q01---;;[]  y
+
+Miu KANAGAWA
+7月3日
+28;;282024070342011;;Q01---;;[]  s
+
+KANAI Kantaro
+7月3日
+2;;22024070341511;;Q01---;;[]  y
+
+OOHIRA Kazuki
+7月3日
+20;;202024070341947;;Q01---;;[]  n
+
+TOKI Kei
+7月3日
+25;;252024070342000;;Q01---;;[]  y
+
+WATANABE Kosei
+7月3日
+4;;42024070341776;;Q01---y;;[]  
+
+MARU Kouhei
+7月3日
+24;;242024070345174;;Q01---;;[]  s
+
+TAKEMURA Kunitoshi
+7月3日
+10;;102024070341874;;Q01---;;[]  s
+
+ANZAI Mitsuki
+7月3日
+29;;292024070342029;;Q01---s;;[]  n
+
+SHIKAKURA Mizuki
+7月9日
+6;;62024070973569;;Q01---ｙ;;[]  y
+
+SUZUKI Nagi
+7月3日
+36;;362024070341412;;Q01---;;[]  y
+
+OOTANI Naoki
+7月3日
+1;;12024070382308;;Q01---;;[]  y
+
+YAMAGUCHI Rin
+7月3日
+37;;372024070341588;;Q01---;;[]  s
+
+KISHI Ryotaro
+7月3日
+本日PCにて参加できなかったため、まだできていないです。申し訳ありません。
+
+NAKANO Ryusuke
+7月3日
+3;;32024070344157;;Q01---;;[]  2
+
+SUZUKI Seisho
+7月3日
+13;;132024070342740;;Q01---;;[]  はい
+
+SONODA Shohei
+7月3日
+23;;232024070341828;;Q01---;;[]  s
+
+TAKANE Shota
+7月3日
+7;;72024070341651;;Q01---;;[]  y
+
+SUGIYAMA Shunsei
+7月3日
+31;;312024070342026;;Q01---;;[]  s
+
+MINAMIMOTO Takumi
+7月3日
+30;;302024070358023;;Q01---;;[]  y
+
+MEGURO Teruhiko
+7月3日
+21;;212024070341389;;Q01---y;;[]  y
+
+SUGIHARA Tomoki
+7月3日
+16;;162024070341707;;Q01---;;[]  s
+
+TAKEIRI Youta
+7月3日
+12;;122024070341519;;Q01---;;[]  n
+
+ESHIMA Yusuke
+7月3日
+5;;52024070341592;;Q01---;;[]  n
+
+KOSHIDA YUTO
+7月3日
+17;;172024070341522;;Q01---n;;[]  n
+
+NAITO Yuya
+7月3日
+9;;92024070341870;;Q01---;;[]  y
+
+吉村将
+7月3日
+19;;192024070341657;;Q01---;;[]  y
+
+諸田歩美
+7月3日
+11;;112024070341524;;Q01---;;[]  n
+
+MUROTA Daisuke
+7月3日
+15;;152024070344207;;Q02---;;[]  s
+
+Mikoto Hirosugi
+7月3日
+14;;142024070344191;;Q02---;;[]  y
+
+Miu KANAGAWA
+7月3日
+28;;282024070344354;;Q02---;;[]  s
+
+KANAI Kantaro
+7月3日
+2;;22024070344338;;Q02---;;[]  s
+
+OOHIRA Kazuki
+7月3日
+20;;202024070345026;;Q02---;;[]  y
+
+TOKI Kei
+7月3日
+25;;252024070345213;;Q02---;;[]  y
+
+WATANABE Kosei
+7月3日
+4;;42024070345430;;Q02---y;;[]  n
+
+MARU Kouhei
+7月3日
+24;;242024070345228;;Q02---;;[]  n
+
+TAKEMURA Kunitoshi
+7月3日
+10;;102024070344250;;Q02---;;[]  y
+
+ANZAI Mitsuki
+7月24日
+29;;292024072443784;;Q02---;;[]  y
+
+SHIKAKURA Mizuki
+7月9日
+6;;62024070973618;;Q02---ｙ;;[]  y
+
+SUZUKI Nagi
+7月3日
+36;;362024070344300;;Q02---;;[]  y
+
+OOTANI Naoki
+7月3日
+1;;12024070382357;;Q02---;;[]  y
+
+YAMAGUCHI Rin
+7月3日
+37;;372024070344248;;Q02---;;[]  n
+
+SUZUKI Seisho
+7月3日
+13;;132024070344478;;Q02---;;[]  はい
+
+SONODA Shohei
+7月3日
+23;;232024070344910;;Q02---;;[]  y
+
+TAKANE Shota
+7月3日
+7;;72024070344315;;Q02---;;[]  y
+
+SUGIYAMA Shunsei
+7月3日
+31;;312024070345132;;Q02---;;[]  s
+
+MINAMIMOTO Takumi
+7月3日
+30;;302024070358079;;Q02---;;[]  s
+
+MEGURO Teruhiko
+7月3日
+21;;212024070344140;;Q02---;;[]  y
+
+SUGIHARA Tomoki
+7月3日
+16;;162024070344161;;Q02---;;[]  y
+
+TAKEIRI Youta
+7月3日
+12;;122024070344227;;Q02---;;[]  y
+
+ESHIMA Yusuke
+7月3日
+5;;52024070344991;;Q02---;;[]  y
+
+KOSHIDA YUTO
+7月3日
+17;;172024070344347;;Q02---n;;[]  n
+
+NAITO Yuya
+7月3日
+9;;92024070345047;;Q02---;;[]  y
+
+吉村将
+7月3日
+19;;192024070345674;;Q02---;;[]  n
+
+諸田歩美
+7月3日
+11;;112024070344892;;Q02---;;[]  n
+
+Mikoto Hirosugi
+7月3日
+14;;142024070344335;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+Miu KANAGAWA
+7月18日
+28;;282024071868581;;Q03---\documentclass{jarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}   \setmargin{20}{20}{20}{20}   \begin{document};;[]  
+
+KANAI Kantaro
+7月3日
+2;;22024070345198;;Q03---;;[]  Ketinit();  Implicitplot("1","x^2+y^2=1","x=[-2,2]","y=[-2,2]"); Listplot("1",[A,B,C,A]); Windispg();  //Help("List"); //Help("Option");
+
+OOHIRA Kazuki
+7月3日
+20;;202024070344969;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,D,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+
+TOKI Kei
+7月3日
+25;;252024070345765;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0]; Listplot("1",[A,p0,B,C,D,A],[]); //Circledata("1",[A,B,C]);  //Letter([A,"sw","A",B,"se","B",C,"n2","C"]); Circledata("2",[A,|A-p0|]); Circledata("3",[D,|D-C|]);  Windispg(); //Help("Circle");
+
+TAKEMURA Kunitoshi
+7月3日
+10;;102024070348457;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+ANZAI Mitsuki
+7月24日
+29;;292024072444383;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+
+SHIKAKURA Mizuki
+7月9日
+6;;62024070973704;;Q03---Ketinit();  Listplot("1",[A,C,B,D,A],["dr,2"]);  Windispg();;;[]  
+
+SUZUKI Nagi
+7月3日
+36;;362024070345568;;Q03---;;[]  Ketinit(); //Setfiles("s0101figure.tex");  //Addax(0); Listplot("1",[A,B,C,(0,0),A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+OOTANI Naoki
+7月3日
+1;;12024070384185;;Q03---Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();;;[]  
+
+TAKANE Shota
+7月3日
+7;;72024070345196;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+
+MEGURO Teruhiko
+7月3日
+21;;212024070344446;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+SUGIHARA Tomoki
+7月3日
+16;;162024070344293;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,D,B,C,A],[]); r=1.5; Circledata("1",[A,|A-p0|]);  //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+TAKEIRI Youta
+7月3日
+12;;122024070344317;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg(); //Help("Circle");
+
+ESHIMA Yusuke
+7月3日
+5;;52024070344947;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,D,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+
+KOSHIDA YUTO
+7月3日
+17;;172024070344855;;Q03---;;[]  
+
+NAITO Yuya
+7月3日
+9;;92024070345206;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+
+吉村将
+7月3日
+19;;192024070345740;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();

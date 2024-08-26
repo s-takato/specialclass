@@ -1,0 +1,3 @@
+quline="Q00::図の直角三角形ABCで	[1]::sin(A)の値	[2]::cos(A)の値";
+shline="Q00---	[1] =fr(?,?)  	[2] =fr(?,?)  ";
+sqline="01HS	2	2	2CR02KE	2	2	2CR03KF	2	2	2CR04NK	2	2	2CR05OJ	2	2	2CR06RO	2	2	2CR07YK	2	2	2";

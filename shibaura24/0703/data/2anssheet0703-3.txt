@@ -1,0 +1,18 @@
+1;;12024070384185;;Q03---Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();;;[]  
+2;;22024070345198;;Q03---;;[]  Ketinit();  Implicitplot("1","x^2+y^2=1","x=[-2,2]","y=[-2,2]"); Listplot("1",[A,B,C,A]); Windispg();  //Help("List"); //Help("Option");
+5;;52024070344947;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,D,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+6;;62024070973704;;Q03---Ketinit();  Listplot("1",[A,C,B,D,A],["dr,2"]);  Windispg();;;[]  
+7;;72024070345196;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+9;;92024070345206;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+10;;102024070348457;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+12;;122024070344317;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg(); //Help("Circle");
+14;;142024070344335;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,B,C,A],[]); //Circledata("1",[A,B,C]);  r=1.5; Circledata("2",[A,|A-p0|]); //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+16;;162024070344293;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0];  Listplot("1",[A,p0,D,B,C,A],[]); r=1.5; Circledata("1",[A,|A-p0|]);  //Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+17;;172024070344855;;Q03---;;[]  
+19;;192024070345740;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+20;;202024070344969;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,D,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+21;;212024070344446;;Q03---;;[]  Ketinit(); //Setfiles("");  Addax(0); Listplot("1",[A,B,C,A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();
+25;;252024070345765;;Q03---;;[]  Ketinit(); //Setfiles("");  //Addax(0); p0=[0,0]; Listplot("1",[A,p0,B,C,D,A],[]); //Circledata("1",[A,B,C]);  //Letter([A,"sw","A",B,"se","B",C,"n2","C"]); Circledata("2",[A,|A-p0|]); Circledata("3",[D,|D-C|]);  Windispg(); //Help("Circle");
+28;;282024071868581;;Q03---\documentclass{jarticle} \usepackage[dvipdfmx]{pict2e} \usepackage{ketpic2e} \usepackage{ketlayer2e} \usepackage{amsmath,amssymb} \usepackage{graphicx} \usepackage{color}   \setmargin{20}{20}{20}{20}   \begin{document};;[]  
+29;;292024072444383;;Q03---;;[]  Ketinit();  Listplot("1",[A,B,C,A],["dr,2"]);  Windispg();  //Help("List"); //Help("Option");
+36;;362024070345568;;Q03---;;[]  Ketinit(); //Setfiles("s0101figure.tex");  //Addax(0); Listplot("1",[A,B,C,(0,0),A],[]); Circledata("1",[A,B,C]);  Letter([A,"sw","A",B,"se","B",C,"n2","C"]);  Windispg();

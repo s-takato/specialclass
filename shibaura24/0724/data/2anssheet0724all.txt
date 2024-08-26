@@ -42,9 +42,21 @@ SUGIYAMA Shunsei
 7月24日
 31;;312024072442352;;Q01---;;[1] M_2=1; M_2が上に上がり、M_1が下に下がる。;;[2] M_2=1.1; M_1は振られながら上に上がり、M_2は下に下がる。;;[3] M_2=1.05;M_1は振られながら上に上がったり下がったりを繰り返し、M_2はゆっくり下に下がったり上に上がったりを繰り返す。
 
+MEGURO Teruhiko
+7月30日
+21;;212024073060722;;Q01---;;[1] M_2=1; 上がる;;[2] M_2=1.1; 下がる;;[3] M_2=1.05;上下運動
+
+SUGIHARA Tomoki
+7月30日
+16;;162024073063584;;Q01---;;[1] M_2=1; 上がった;;[2] M_2=1.1; 下がった;;[3] M_2=1.05;上下運動した
+
 TAKEIRI Youta
 7月24日
 12;;122024072442152;;Q01---;;[1] M_2=1; 上に上がる;;[2] M_2=1.1; 下に下がる;;[3] M_2=1.05;ゆっくり下に下がる
+
+ESHIMA Yusuke
+7月30日
+5;;52024073062930;;Q01---;;[1] M_2=1; 上がる;;[2] M_2=1.1; 下がる;;[3] M_2=1.05;下がったり戻ったりを繰り返す
 
 KOSHIDA YUTO
 7月24日
@@ -57,6 +69,10 @@ NAITO Yuya
 吉村将
 7月24日
 19;;192024072442167;;Q01---;;[1] M_2=1; UP;;[2] M_2=1.1; DOWN;;[3] M_2=1.05;振動する
+
+KITAHARA Chihiro
+7月29日
+33;;332024072947943;;Q02---;;[1]  1;;[2]  Ketinit();  Plotdata("1","y=sin(x)","x"); Plotdata("2","y=x","x");  Ellipseplot("1",[A,B,C]); Listplot([A,C,B]); Listplot([A,D,B]); Listplot([A,E,B]); Expr([A,"s2","F_1",B,"s2","F_2"]);  Windispg();
 
 MUROTA Daisuke
 7月24日
@@ -92,8 +108,12 @@ KANAI Kantaro
 7月24日
 2;;22024072449060;;Q02---;;[1]  KeTCindy;;[2]  Ketinit(); setparent("testclock"); Setketcindyjs(["Label=[]","Color=offwhite"]);//no ketjs  pO=[0,0]; p1=[0,2]; Circledata("1",[pO,4]); Circledata("4",[p1,2]); Listplot("2",[A,B,C,A],["Color=red"]); Listplot("3",[D,B,C,D],["Color=blue"]); ss=Animationparam(0,1,6*pi); st=Animationparam(0,4,6*pi); println([15,ss]);  //Arrowdata("1",[[0,0],4*[sin(ss),cos(ss)]],["dr,2",2]); Arrowdata("1",[[0,0],4*[cos(ss),sin(ss)]],["dr,2",4]); Arrowdata("4",[[0,2],4*[sin(st),cos(st)]],["dr,2",2]); Windispg();
 
+TOKI Kei
+7月28日
+25;;252024072866285;;Q02---;;[1]  ketcindy;;[2]  Ketinit(); Setparent("testclock"); Setketcindyjs(["Label=[]","Color=yellow"]);//no ketjs  Putpoint("A",[-4,0.8],A.xy); Putpoint("B",[-4.5,0.6],B.xy); Putpoint("C",[-4.5,-0.6],C.xy); Putpoint("D",[-4.25,-0.4],D.xy); Putpoint("E",[-4,-0.6],E.xy); Putpoint("F",[-3.75,-0.4],F.xy); Putpoint("G",[-3.5,-0.6],G.xy); Putpoint("H",[-3.5,0.6],H.xy); Listplot("1",[A,B,C,D,E,F,G,H,A],[dr,2]); pO=[0,0]; p1=[2.5,0]; p2=[3.5,0]; p3=[4.5,0]; Circledata("1",[pO,2]); //Circledata("2",[pO,2]); //Circledata("3",[pO,1]); Circledata("4",[p1,0.25]); Circledata("5",[p2,0.25]); Circledata("6",[p3,0.35]); Circledata("7",[[-3.7,0.3],0.2]); Circledata("8",[[-4.15,0.3],0.2]); Circledata("9",[[-3.6,0.3],0.1]); Circledata("10",[[-4.05,0.3],0.1]);  Letter([[0,2.1],n,"パックパック食べるマン"]); Letter([[4.5,0.37],n,"パワー!"]); ss=Animationparam(1/4*pi,1,3/4*pi); //println([8,ss]); Arrowdata("1",[[0,0],2*[sin(ss),cos(ss)]],["dr,2",0]); Arrowdata("2",[[0,0],2*[sin(ss),-cos(ss)]],["dr,2",0]); //Arrowdata("3",[[0,0],1*[cos(ss),tan(ss)]],["dr,2",4]); Figpdf();  Windispg(); //Help("Windispg");
+
 WATANABE Kosei
-昨日
+7月25日
 4;;42024072501371;;Q02---;;[1]  Ketcindy;;[2]  Ketinit();  Slider("A",[-5,-5],[5,-5]);  Plotdata("3","sin(x)","x",["Color=red"]);  Plotdata("1","cos(x)","x",["Color=green"]); //Plotdata("2","sinx","x"[]); //Translatedata("1","gr1",A.xy); Rotatedata("1","gr1",A.x,["dr,2"]); //Listplot("1",[[0,0],2,2]]);  Windispg();  //Help("Plotdata");
 
 TAKEMURA Kunitoshi
@@ -112,9 +132,21 @@ OOTANI Naoki
 7月24日
 1;;12024072444641;;Q02---;;[1]  KetCindy;;[2]  Ketinit();  Setketcindyjs(["Label=[]","Color=white"]);//no ketjs  pO = [0, 0]; Circledata("1", [pO, 4]);  ss = Animationparam(0, 2, 6 * pi); //println([8, ss]); if(ss<2*pi,  Arrowdata("1", [[0, 0], 4 * [sin(ss), cos(ss)]], ["dr,2", 2]); ); if((ss>=2*pi)&(ss<4*pi), 	 Arrowdata("1", [[0, 0], 4 * [sin(2*ss), cos(2*ss)]], ["dr,2", 2]); ); if((ss>=4*pi)&(ss<=6*pi), 	 Arrowdata("1", [[0, 0], 4 * [sin(0.5*ss), cos(0.5*ss)]], ["dr,2", 2]); ); // 新しい円のアニメーションパラメータを設定 innerSS = Animationparam(0, 2, 6 * pi);  // 新しい円のデータを定義 innerRadius = 2; // 内側の円の半径 innerCenter = [innerRadius * sin(innerSS), innerRadius * cos(innerSS)]; Circledata("2", [innerCenter, innerRadius]);  Windispg(); //Help("Circledata");
 
+SUGIYAMA Shunsei
+7月28日
+31;;312024072804093;;Q02---;;[1]  KetCindy;;[2]  Ketinit();  xL=[10,10,10]; yL=[8,8]; rmL=["c2r0r1"];  Tabledata("",xL,yL,rmL); //Putrowexpr(1,"c",["a"]); Putcell("c0r0","c1r1","lt","答"); Putrow(2,"r2",[10,20,300]); //Putcellexpr("c1r0","c3r1","c","abc"); Tlistplot("1",["c1r0","c3r1"],["do"]); Tlistplot("2",["c3r0","c1r1"],["da"]);   Windispg();
+
+MINAMIMOTO Takumi
+7月28日
+30;;302024072773100;;Q02---;;[1]  KeTCindy;;[2]  function drawSquare(x, y, size) {     var square = new Path();     square.add(x, y);      square.add(x + size, y);     square.add(x + size, y + size);     square.add(x, y + size);     square.close();     square.strokeColor = Color.BLACK;     square.strokeWidth = 2;     add(square);  }   var largeSquareSize = 100; var smallSquareSize = 50;  drawSquare(100, 100, largeSquareSize);  drawSquare(125, 125, smallSquareSize);
+
 MEGURO Teruhiko
 7月24日
 21;;212024072443089;;Q02---;;[1]  KeTCindy;;[2]  Ketinit(); Setketcindyjs(["Label=[]","Color=offwhite"]);//no ketjs  pO=[0,0]; Circledata("1",[pO,4]);  ss=Animationparam(0,2,6*pi);  Arrowdata("1",[[0,0],4*[cos(ss),sin(ss)]],["dr,2",2]);  Windispg();
+
+SUGIHARA Tomoki
+7月30日
+16;;162024073063734;;Q02---;;[1]  KeTCindy;;[2]  Ketinit(); setparent("testclock"); Setketcindyjs(["Label=[]","Color=offwhite"]);//no ketjs  pO=[0,0]; p1=[0,2]; Circledata("1",[pO,4]); Circledata("4",[p1,2]); Listplot("2",[A,B,C,A],["Color=red"]); Listplot("3",[D,B,C,D],["Color=blue"]); ss=Animationparam(0,1,6*pi); st=Animationparam(0,4,6*pi); println([15,ss]);  //Arrowdata("1",[[0,0],4*[sin(ss),cos(ss)]],["dr,2",2]); Arrowdata("1",[[0,0],4*[cos(ss),sin(ss)]],["dr,2",4]); Arrowdata("4",[[0,2],4*[sin(st),cos(st)]],["dr,2",2]); Windispg();
 
 TAKEIRI Youta
 7月24日
@@ -143,6 +175,10 @@ Circledata("4", [[0, 0], 1], ["Num=400"]); // 中央に小さな円
 
 // 描画を更新
 Windispg();
+
+ESHIMA Yusuke
+7月30日
+5;;52024073062807;;Q02---;;[1]  KeTCindy;;[2]  Ketinit(); setparent("testclock"); Setketcindyjs(["Label=[]","Color=offwhite"]);//no ketjs  pO=[0,0]; p1=[0,2]; Circledata("1",[pO,4]); Circledata("4",[p1,2]); Listplot("2",[A,B,C,A],["Color=red"]); Listplot("3",[D,B,C,D],["Color=blue"]); ss=Animationparam(0,1,6*pi); st=Animationparam(0,4,6*pi); println([15,ss]);  //Arrowdata("1",[[0,0],4*[sin(ss),cos(ss)]],["dr,2",2]); Arrowdata("1",[[0,0],4*[cos(ss),sin(ss)]],["dr,2",4]); Arrowdata("4",[[0,2],4*[sin(st),cos(st)]],["dr,2",2]); Windispg();
 
 KOSHIDA YUTO
 7月24日
@@ -190,12 +226,16 @@ KANAI Kantaro
 7月24日
 2;;22024072443372;;Q03---;;[1]  環境構築から実際に作図するところまでしっかりと行うことができた;;[2]  初めてKeTCindyなどを使ったが、図をコードで書いてボタンひとつでpdfやhtmlに出力できてとてもすごいし便利なものだと思った。;;[3]  説明が早かったりするところがあって着いていくのが大変な部分もあった。
 
+OOHIRA Kazuki
+7月31日
+20;;202024073177275;;Q03---;;[1]  新しいソフトウェアに臆することなくいじることができた;;[2]  論文執筆等で扱うTeXの扱いに慣れることができたので有意義だった;;[3]  特にありません
+
 TOKI Kei
 7月24日
 25;;252024072443362;;Q03---;;[1]  理解できた;;[2]  最初難しかったが、インストール方法などを個別で対応してもらい、使い方を教えていただいたため、しっかりと理解できた。;;[3]  インストールが一番最初の壁であると思うので、まず最初にインストールを個別に全員完全にできるまで対応してもらうことが、授業を効率よく進めるために必要であると思う。個別に対応してもらってからは、理解の円滑度が相当違うと思う。
 
 WATANABE Kosei
-昨日
+7月25日
 4;;42024072500794;;Q03---新しいことにチャレンジすることができ，同時に非常にやりがいを感じました．;;[1]  集中して課題に取り組むことができ，授業もわかりやすかったので非常に満足した時間を過ごすことができました．;;[2]  わからないところも丁寧に教えていただきありがとうございました．今後も使える場面がありましたら積極的に活用していきたいと思います．半期という短い時間ではありましたがありがとうございました．;;[3]  特になし
 
 TAKEMURA Kunitoshi
@@ -222,6 +262,10 @@ YAMAGUCHI Rin
 7月24日
 37;;372024072443256;;Q03---;;[1]  まだ問0703以降が達成できていないので、7割くらいです。;;[2]  とても有用なことを学ぶことができ、嬉しかったです。;;[3]  授業動画をすべて載せていただけると嬉しいです。
 
+KISHI Ryotaro
+7月28日
+35;;352024072851420;;Q03---授業の中盤、教育実習で欠席していたため、高遠先生のket関係の内容があまり理解できていない。;;[1]  前半に行った、問題に対する生徒と教師の理解度についてはよくやっていたと思うが、後半のket関係の内容についてはあまり理解が進まないまま終わってしまった。;;[2]  研究活動や今後教壇に立つ機会に役立つ知識を得られる良い授業だった。;;[3]  ket関係のソフトがそれぞれ何のためにあり、何を良くしてくれるのかを理解できなかったので、意義の説明がスライド等でまとめられていて欲しかった。
+
 SUGIYAMA Shunsei
 7月24日
 31;;312024072444883;;Q03---;;[1]  理解するのが難しかった。;;[2]  生命科学の分野を普段勉強しているので、毎回の授業を理解するのが難しかった。;;[3]  とくにないです。
@@ -234,9 +278,17 @@ MEGURO Teruhiko
 7月24日
 21;;212024072443137;;Q03---;;[1]  まあまあできた;;[2]  勉強になった;;[3]  特になし
 
+SUGIHARA Tomoki
+7月30日
+16;;162024073063997;;Q03---;;[1]  自分で進めるワークは難しかったが、なんとか理解できた;;[2]  個人的に分からないことも対応してくれて優しかった;;[3]  特になし
+
 TAKEIRI Youta
 7月24日
 12;;122024072445588;;Q03---;;[1]  ソフトの使い方を理解できるようになった;;[2]  使ったことがないソフトを使い，やり方を学ぶことができ良い機会になった;;[3]  特になし
+
+ESHIMA Yusuke
+7月30日
+5;;52024073063215;;Q03---;;[1]  KetCindyやKettexの基礎の使い方を学べたが、応用は難しいと思ったので達成度では７割くらいです;;[2]  KetcindyやKettexで図形を簡単に作ることができるので便利なソフトウェアだと思った;;[3]  特になし
 
 KOSHIDA YUTO
 7月24日
@@ -249,3 +301,4 @@ NAITO Yuya
 吉村将
 7月24日
 19;;192024072447900;;Q03---;;[1]  20%くらいです。使いこなすことができなかった。;;[2]  前半の指導案作成がとても楽しかった。ご教授頂きありがとうございました。;;[3]  特にありません。
+
