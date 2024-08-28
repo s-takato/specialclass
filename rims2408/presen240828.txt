@@ -1,0 +1,224 @@
+title::slide0
+::\usepackage{emath,emathE,emathMw}
+::\def\deg#1{#1^{\circ}}
+::\newcommand{\monthday}{}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+
+\def\dint{\displaystyle\int}
+\def\bs#1{\textbackslash #1}
+
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\if#1m \setcounter{ketpicctra}{1}\fi
+\hypersetup{linkcolor=black}%
+
+\begin{layer}{118}{0}
+%\putnotee{122}{-\theketpicctra.05}{\small\monthday\thepage/\pageref{pageend}}
+\putnotee{125}{-\theketpicctra.05}{\small\monthday\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+
+}
+
+%%%%%%%%%%%%
+main::KeTHistory
+\slidepage[m]
+
+%%%%%%%%%%%%%
+new::\ketpic
+%repeat=6
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{}{2006}
+%[2,-]::\addtext{12}{\ten}{Mapleの関数データからTpicコードを生成}
+%[3,-]::\addtext{12}{\ten}{Kisarazu Educational Tpic}
+%[4,-]::\addtext{12}{\ten}{Mathematica, Scilab, Rバージョン}
+%[5,-]::\addtext{12}{\ten}{ライブラリの行数は約15000}
+%[6,-]::\addtext{12}{\ten}{\TeX のマクロライブラリも作成}
+end
+
+%%%%%%%%%%%%%
+new::\ketcindy
+%repeat=7
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{}{2014}
+%[2,-]::\addtext{12}{\ten}{CinderellaでRの\ketpic コードを生成}
+%[3,-]::\addtext{12}{\ten}{CinderellaのJavaで一連の作業を実行}
+%[3,-]::\addtext{20}{}{Rのコード作成$\Rightarrow$R$\Rightarrow$TeX$\Rightarrow$PDFビューア}
+%[4,-]::\addtext{12}{\ten}{インタラクティブに図が作成できる}
+%[5,-]::\addtext{12}{\ten}{曲面描画ではGCCによる高速化}
+%[6,-]::\addtext{12}{\ten}{pict2e,Tikzコードもサポートした}
+%[7,-]::\addtext{12}{\ten}{ライブラリの総行数は約30000}
+end
+
+%%%%%%%%%%%%%
+new::\ketcindy JS
+%repeat=7
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{}{2016}
+%[2,-]::\addtext{12}{\ten}{CindyJSでHTMLをエクスポート}
+%[3,-]::\addtext{12}{\ten}{使用されている\ketcindy の関数を再帰的に追加}
+%[4,-]::\addtext[8]{12}{\ten}{教材HTMLを簡単に作成できる}
+%[5,-]::\addtext{12}{\ten}{全体の行数は2000行から5000行程度}
+%[6,-]::\addtext{12}{\ten}{他は使わないので，数１０KB}
+%[7,-]::\addtext{12}{\ten}{offlineでも使えるが，CindyJSとKaTeXのライブラリが必要}
+end
+
+%%%%%%%%%%%%%
+new::Asked ChatGPT4 about KeTCindy
+%repeat=2
+\slidepage
+
+\begin{center}
+%[2,-]::\includegraphics[width=100mm]{fig/chatgptketcindy.png}
+\end{center}
+
+%%%%%%%%%%%%%
+main::KeTLMS
+\slidepage[m]
+
+%%%%%%%%%%%%%
+new::KeTLMSの開発
+%repeat=6
+\slidepage
+
+\textinit
+layer::{120}{0}
+%[2,-]::\addtext{12}{\ten}{コロナ禍で開発を開始(2020)}
+%[3,-]::\addtext{12}{\ten}{教員と学生が課題の送受をするためのもの}
+%[4,-]::\addtext{12}{\ten}{数式の送受が難しい}
+%[5,-]::\addtext{20}{・}{簡易数式ルール(KeTMathルール)を設定}
+%[5,-]::\addtext{30}{}{\small str="fr(sin(x),cos(x))"}
+%[5,-]::\addtext[-3]{30}{}{\small Totexform(str)=\bs{dfrac{\bs{sin}x}{\bs{cos}x}}}
+%[5,-]::\addtext[-3]{30}{}{\small Tocindyform(str)="((sin(x))/(cos(x)))"}
+%[5,-]::\addtext[-3]{30}{}{\small Tomaxform(str)="((sin(x))/(cos(x)))"}
+%[6,-]::\addtext{12}{\ten}{\ketcindy JSを利用して雛形HTMLを作成}
+end
+
+%%%%%%%%%%%%%
+new::コロナ後のKeTLMSの利用
+%repeat=7
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{通常の授業形態で利用}
+\addtext{16}{・}{自習システムでない}
+%[2,-]::\addtext{8}{\ten}{オンラインでも対面でもよい}
+%[3,-]::\addtext{8}{\ten}{授業の途中で適宜質問を配付(ブレンド型授業)}
+%[4,-]::\addtext{16}{・}{学生の進捗状況や理解度を見る}
+%[5,-]::\addtext{16}{・}{報告者の場合，200分授業で5−8回}
+%[6,-]::\addtext{8}{\ten}{多様な出題形式に対応}
+%[7,-]::\addtext{8}{\ten}{成績処理は授業後}
+end
+
+%%%%%%%%%%%%%
+new::kettask.htmlの作成(準備)
+%repeat=3
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{`ketcindy home'で検索，KeT-LMSのファイル１式(ketmath)をDL,Unzip}
+%[2,-]::\addtext[8]{8}{\ten}{subject01を用いる}
+%[2,-]::\addtext{16}{・}{\ketcindy のライブラリも同梱しているので，Cinderellaだけあれば，そのまま使える}
+%[3,-]::\addtext[8]{8}{\ten}{dataにあるstudent.txtに学生リストを書く}
+%[3,-]::\addtext{20}{}{\small 01AA}
+%[3,-]::\addtext[-3]{20}{}{\small 02BB}
+%[3,-]::\addtext[-3]{20}{}{\small ...}
+end
+
+%%%%%%%%%%%%%
+new::問題ファイルの作成
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{question(id).txtをdataに作成}
+\addtext{16}{}{\small y = a$\;\hat{}\;$(x)について，a$>$0, a(neq)1とする}
+\addtext[-3]{16}{}{\small [1] aの値を入力してOKを押せ}
+\addtext[-3]{16}{}{\small [2] グラフとy軸との交点を入力してOKを押せ}
+\addtext[-3]{16}{}{\small Sheet}
+\addtext[-3]{16}{}{\small [1] a=? :{}:2:{}:-1}
+\addtext[-3]{16}{}{\small [2] (0,?) :{}:2}
+\addtext[-3]{16}{}{\small Ans}
+\addtext[-3]{16}{}{\small [1]}
+\addtext[-3]{16}{}{\small [2]}
+end
+
+%%%%%%%%%%%%%
+new::kettask.htmlの作成
+%repeat=3
+\slidepage
+
+\vspace{-2mm}
+...
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{toolketmath.cdyを立ち上げる}
+\putnotes{68}{15}{\includegraphics[height=46mm]{fig/toolketmath.png}}
+%[2,-]::\addtext[48]{8}{\ten}{1.taskline　を実行}
+%[3,-]::\addtext{8}{\ten}{3.Kettaskに組込　を実行}
+
+end
+
+%%%%%%%%%%%%%
+new::KeTLMSの実際(デモ)
+%repeat=5
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{沼津高専の学生さんに手伝ってもらいます}
+%[2,-]::\addtext{8}{\ten}{kettask.htmlをGitHub/Pagesにアップ}
+%[3,-]::\addtext{8}{\ten}{GoogleClassroom(GC)でURLを配付}
+%[4,-]::\addtext{8}{\ten}{学生は回答を作り，GCで提出}
+%[5,-]::\addtext{8}{\ten}{集積した回答により成績処理}
+end
+
+%%%%%%%%%%%%%
+new::まとめ
+%repeat=2
+\slidepage
+
+\vspace{-2mm}
+...
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{？による入力位置の指定}
+\addtext{16}{}{学生のミスが激減}
+\addtext{16}{}{多様な出題形式}
+%[2,-]::\addtext{8}{\ten}{中間試験ですべての学生がKeTLMSを希望}
+%[2,-]::\putnotes{68}{39}{\includegraphics[height=40mm]{fig/2024-1res.png}}
+end
+
+%%%%%%%%%%%%%
+same
+%repeat=5
+\slidepage
+
+\textinit
+layer::{120}{0}
+\addtext{8}{\ten}{学生は喜んで取り組んでいる}
+%[2,-]::\addtext{8}{\ten}{1期9回で73問}
+%[3,-]::\addtext{8}{\ten}{ペーパーレス}
+%[3,-]::\addtext{16}{}{配付プリントは事務作成のシラバス}
+%[4,-]::\addtext{8}{\ten}{データはすべてテキストファイル}
+%[4,-]::\addtext{16}{・}{加工が容易}
+%[4,-]::\addtext{16}{・}{長期間有効}
+%[4,-]::\addtext{24}{}{\TeX\ 1976，Word 1983，Appleworks 1993}
+end

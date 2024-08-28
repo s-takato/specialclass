@@ -1,3 +1,9 @@
 質問
-問 0822-0 図の直角三角形ABCで
-https://s-takato.github.io/specialclass/rims2408/kettaskv0828-0d.html
+問 0828-1 出席
+https://s-takato.github.io/specialclass/rims2408/kettaskv0828-1.html
+問 0828-2 y=a^xのグラフ
+https://s-takato.github.io/specialclass/rims2408/kettaskv0828-2.html
+問 0828-3 y=a^xの接線
+https://s-takato.github.io/specialclass/rims2408/kettaskv0828-3.html
+問 0828-1 授業後アンケート
+https://s-takato.github.io/specialclass/rims2408/kettaskv0828-4.html

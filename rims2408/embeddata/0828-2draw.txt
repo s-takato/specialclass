@@ -1,0 +1,20 @@
+Setwindow([-4,4],[-0.2,6]);
+op=["do"];
+forall((-4)..(4),
+  Mvlist("v"+(#+4),[[#,0],[#,YMAX]],op);
+);
+forall(1..6,
+  Mvlist("h"+(#+4),[[XMIN,#],[XMAX,#]],op);
+);
+if(nqu==2,
+  mvaa=Textedit(2,"");
+);
+if(length(mvaa)>0,
+  if(indexof(mvaa,"?")==0,
+    tmp=Removespace(mvaa);
+    fun=Assign("(a)^(x)",["a",tmp]);
+    Mvplotdata("1",fun,"x",["dr,1.5","Color=blue"]);
+	Expr(Mvpt(1,YMAX+1),"e","y="+mvaa+"^x",["Size=1.5"]);
+  );
+);
+Mvdrwxy();

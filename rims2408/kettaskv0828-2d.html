@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>kettask0828-1</title>
+    <title>kettask0828-2</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -3129,9 +3129,9 @@ Lettermove(dir,str):=(
 Ketcindyjsfigure=0;
 Ketcindyjsscale=1;
 aalinestart=1;
-quline="Q01::出席をとります	[]::出席の場合はyと答えてください";
-shline="Q01---	[1] (y,n)= ";
-sqline="01HS	2	2CR02KE	2	2CR03KF	2	2CR04NK	2	2CR05OJ	2	2CR06RO	2	2CR07YK	2	2";
+quline="Q02::y = a^(x)について，a>0, a(neq)1とする	[1]:: aの値を入力してOKを押せ	[2]:: グラフとy軸との交点を入力してOKを押せ	[3]:: グラフと直線x=1との交点を入力してOKを押せ";
+shline="Q02---	[1] a=? 	[2] (0,?) 	[3] (1,?) ";
+sqline="01HS	2	2	2	2CR02KE	2	2	2	2CR03KF	2	2	2	2CR04NK	2	2	2	2CR05OJ	2	2	2	2CR06RO	2	2	2	2CR07YK	2	2	2	2";
 quLL=Line2list(quline);
 shL=Line2list(shline);
 sqLL=Line2list(sqline);
@@ -4278,6 +4278,307 @@ dtpyL=dtpy0/22*size;
 ch=2;
 ;
 
+Mvdrwxy():=(
+//help:Mvdrwxy();
+  regional(org,tmp);
+  org=GENTEN; 
+  Mvlist("axx",[[XMIN,org_2],[XMAX,org_2]],AXSTYLE_2);
+  Mvlist("axy",[[org_1,YMIN],[org_1,YMAX]],AXSTYLE_2);
+  tmp=AXSTYLE_1;
+  if(tmp_1=="a",
+    Arrowhead(Mvpt(XMAX,org_2),[1,0],AXSTYLE_2);
+    Arrowhead(Mvpt(org_1,YMAX),[0,1],AXSTYLE_2);
+  );
+  Expr(Mvpt(XMAX,org_2),tmp_3,tmp_2,AXSTYLE_3); 
+  Expr(Mvpt(org_1,YMAX),tmp_5,tmp_4,AXSTYLE_3); 
+  Letter(Mvpt(org),tmp_7,tmp_6,AXSTYLE_3);
+);
+Mvlist(pdatastr):=Mvlist(pdatastr,pdatastr,[]);
+Mvlist(Arg1,Arg2):=(
+ regional(tmp);
+ if(islist(Arg2),
+   tmp=select(Arg2,isstring(#));
+   if(length(tmp)==0,
+     Mvlist(Arg1,Arg2,[]);
+   ,
+     Mvlist(Arg1,Arg1,Arg2);
+   );
+ ,
+   Mvlist(Arg1,Arg2,[]);
+ );
+);
+Mvlist(num,pdataorg,opt):=(
+//help:Mvlist(num,"cr1");
+  regional(name,pdata,tmp);
+  pdata=pdataorg;
+  if(isstring(pdataorg),
+    name="m"+pdata;
+    pdata=parse(pdata);
+  ,
+    name="m"+num;
+  );
+  tmp=apply(pdata,Mvpt(#));
+  Listplot("-"+name,tmp,opt);
+);
+Mvplotdata(num,fun,rng):=Mvplotdata(num,fun,rng,[]);
+Mvplotdata(num,fun,rng,op):=(
+  //help:Mvplotdata("1","sin(x)","x",["Num=200","dr,2"]);
+  regional(op1,op2,tmp1,tmp2,tmp3);
+  tmp1=select(op,substring(#,0,1)=="N");
+  tmp2=select(op,substring(#,0,1)=="E");
+  tmp3=select(op,substring(#,0,1)=="M");
+  op1=concat(tmp1,tmp2);
+  op1=concat(op1,tmp3);
+  op2=remove(op,op1);
+  Plotdata(num,fun,rng,concat(op2,["nodisp"]));
+  Mvlist("gr"+num,"gr"+num,op2);
+);
+Mvpt(pt):=(
+  Scale*pt+Center;  //Scale,Center grobal
+);
+Mvpt(x,y):=Mvpt([x,y]);
+PaO():=PaO("");
+PaO(Arg):=(
+  regional(out);
+  if(isstring(Arg),
+    out="("+Arg;
+  ,
+    out="";
+    repeat(Arg,
+      out=out+"(";
+    );
+  );
+  out;
+);
+Plotdata(name1,func,variable):=Plotdata(name1,func,variable,[]);
+Plotdata(name1,func,variable,options):=(
+//help:Plotdata("1","sin(x)","x",["Num=100"]);
+//help:Plotdata("2","x^2","x=[-1,1]");
+//help:Plotdata("3","sin(y)","y");
+//help:Plotdata("Options=[Num,Exc,Dis]");
+  regional(Fn,Va,tmp,tmp1,tmp2,eqL,name,Vname,x1,x2,dx,
+         PdL,Num,Ec,Dc,Fun,Exfun,x,Ke,Eps,Pa,Msg,yflg,
+         Ltype,Noflg,Inflg,Outflg,opstr,opcindy,color,color4);
+  if(substring(name1,0,1)!="-",  //190420from
+    name="gr"+name1;
+  ,
+    name=substring(name1,1,length(name1));
+  ); //190420to
+  tmp=Divoptions(options);
+  Ltype=tmp_1;
+  Noflg=tmp_2;
+  Inflg=tmp_3;
+  Outflg=tmp_4;
+  opstr=tmp_(length(tmp)-1);
+  color=tmp_(length(tmp)-2); color4=Colorrgb2cmyk(color); //200629
+  opcindy=tmp_(length(tmp));
+  eqL=tmp_5;
+  Num=50;
+  yflg=0; //220910
+  Ec=[];
+  Exfun="";
+  Dc=1000;
+  Msg="Y";
+  // Msg="N"; //only ketjs
+  forall(eqL,
+    tmp=Strsplit(#,"=");
+    tmp1=Toupper(substring(#,0,1));
+    if(tmp1=="N",
+      Num=parse(tmp_2);
+      opstr=opstr+","+Dqq(#);
+    );
+    if(tmp1=="E",
+      if(substring(tmp_2,0,1)=="[", //180817from
+        Ec=parse(tmp_2);
+        tmp1=replace(tmp_2,"[","c"+PaO());
+        tmp1=replace(tmp1,",",".0,");
+        tmp1=replace(tmp1,"]",".0)");
+        opstr=opstr+","+Dqq("Exc="+tmp1); //180817to
+      ,
+        Exfun=tmp_2; //200716
+        opstr=opstr+","+Dqq(#);
+      );
+    );
+    if(substring(#,0,1)=="D",
+      Dc=parse(tmp_2);
+      opstr=opstr+","+Dqq(#);
+    );
+    if(tmp1=="M", //190206from
+      Msg=Toupper(substring(tmp_2,0,1));
+    ); //190206to
+  );
+  if(Inflg==0 & Outflg==0,
+    Eps=10^(-3);
+    tmp=replace(func,LFmark,"");
+    tmp=tokenize(variable,"=");
+    Vname=tmp_1;
+    if(Vname=="y",yflg=1); //220910
+    if(length(tmp)>1,
+      tmp=tmp_2;
+      tmp=parse(tmp);
+      x1=tmp_1;
+      x2=tmp_2;
+      ,
+        if(yflg==0, //220910from
+          x1=XMIN;
+          x2=XMAX;
+        ,
+          x1=YMIN;
+          x2=YMAX;
+        ); //220910to
+    );
+  //  dx=(x2-x2)/Num;  
+    Ec=append(sort(Ec),10000);
+    Fun=Assign(func,Vname, "xx");
+    Exfun=Assign(Exfun,Vname, "xx");
+    PdL=[];
+    Ke=1;
+    forall(0..Num, 
+      xx=x1+#*(x2-x1)/Num; // differs from Scilab [ / Num-1]
+      if(length(Exfun)>0,
+        tmp=parse(Exfun);
+        if(abs(tmp)<Eps,
+          if(length(PdL)>0, //180817from
+            PdL=concat(PdL,["inf"]);
+          );
+        ,
+          tmp=[xx,parse(Fun)];
+          if(length(PdL)>0,
+            tmp1=PdL_(length(PdL));
+            if(Norm(tmp,tmp1)<Dc,
+              PdL=append(PdL,tmp);
+            ,
+              if(tmp1=="inf",
+                PdL=append(PdL,tmp);
+              ,
+                PdL=concat(PdL,[["inf"],tmp]);
+              );
+          );
+          ,
+            PdL=[tmp];
+          );
+        ); //180817to
+      ,
+        Pa=[];
+        if(xx-Ec_Ke<-Eps,
+          Pa=[xx,parse(Fun)];
+        );
+        if(abs(xx-Ec_Ke)<=Eps,
+          if(length(PdL)>0,
+            if(PdL_(length(PdL))_1!="inf",
+              Pa=["inf"];
+            );
+          );
+        );
+        if(xx-Ec_Ke>Eps,
+          Pa=[xx,parse(Fun)];
+          Ke=Ke+1;
+        );
+        if(length(Pa)>0,
+          if(Pa_1=="inf",
+            PdL=concat(PdL,[Pa]);
+          ,
+            if(length(PdL)==0,
+              PdL=[Pa];
+            ,
+              tmp=PdL_(length(PdL));
+              if(tmp_1=="inf",
+                PdL=concat(PdL,[Pa]);
+              ,
+                if(dist(tmp,Pa)<Dc,
+                  PdL=concat(PdL,[Pa]);
+                ,
+                  PdL=concat(PdL,[["inf"],Pa]);
+                );
+              );
+            );
+          );
+        );
+      );
+    );
+    tmp1=[];
+    tmp2=select(1..(length(PdL)),PdL_#==["inf"]);
+    tmp=1;
+    forall(tmp2,
+      if(#>tmp,
+        tmp1=concat(tmp1,[PdL_(tmp..(#-1))])
+      );
+      tmp=#+1;
+    );
+    if(tmp<length(PdL),
+      tmp1=concat(tmp1,[PdL_(tmp..(length(PdL)))]);
+    );
+    PdL=tmp1;
+    if(length(PdL)==1,
+      PdL=PdL_1;
+    );
+    if(Noflg<3,
+      if(Msg=="Y", //190206
+        println("generate Plotdata "+name);
+      );
+      if(Measuredepth(PdL)==1,
+        if(yflg==0, //220910from
+          tmp1=apply(PdL,Pcrd(#));
+        ,
+          tmp1=apply(PdL,Pcrd([#_2,#_1]));
+        ); //220910to
+      ,
+        tmp1=[];
+        forall(PdL,tmp2,
+          if(yflg==0, //220910from
+            tmp1=append(tmp1,apply(tmp2,Pcrd(#)));
+          ,
+            tmp1=append(tmp1,apply(tmp2,Pcrd([#_2,#_1])));
+          ); //220910to
+        );
+      );
+      tmp=name+"="+Textformat(tmp1,5)+";";
+      parse(tmp);
+      tmp1=replace(func,LFmark,""); //no ketjs on
+      tmp2=replace(variable,LFmark,"");
+      tmp=name+"=Plotdata('"+tmp1+"','"+tmp2+"'"+opstr+")";
+      GLIST=append(GLIST,tmp); //no ketjs off
+    );
+    if(Noflg<3, //190818
+      if(isstring(Ltype),
+        if((Noflg==0)&(color4!=KCOLOR), //181020 //no ketjs on
+          Texcom("{");Com2nd("Setcolor("+color4+")");//180722
+        ); //no ketjs off
+        Ltype=Getlinestyle(text(Noflg)+Ltype,name);
+        if((Noflg==0)&(color4!=KCOLOR), //181020 //no ketjs on
+          Texcom("}");//180722
+        ); //no ketjs off
+     ,
+        if(Noflg==1,Ltype=0);
+      );
+      GCLIST=append(GCLIST,[name,Ltype,opcindy]);
+    );
+    PdL;
+  , 
+    if(Noflg<3, //190818
+      if(isstring(Ltype),
+        if((Noflg==0)&(color4!=KCOLOR), //181020 //no ketjs on
+          Texcom("{");Com2nd("Setcolor("+color4+")");//180722
+        ); //no ketjs off
+        Ltype=Getlinestyle(text(Noflg)+Ltype,name);
+        if((Noflg==0)&(color4!=KCOLOR), //181020 //no ketjs on
+          Texcom("}");//180722
+        ); //no ketjs off
+      ,
+        if(Noflg==1,Ltype=0);
+      );
+      if(Inflg==1,
+        GCLIST=append(GCLIST,[name,Ltype,opcindy]);
+      );
+    );
+  );
+);
+RSslash(str):=(  //17.09.24
+  regional(tmp);
+  tmp=replace(str,"\","\\");
+//  tmp=replace(tmp,"\\\\","\\");
+  tmp;
+);
 </script>
 <script id="csdraw" type="text/x-cindyscript">
 Ketinit(1);
@@ -4570,6 +4871,31 @@ if((recflg==1)&(stoknow==2),
   recflg=0;
 );
 
+Center=[81.972,3.77];
+Scale=2.682;
+Rbound=[115.687,0];
+tmp1=screenbounds();tmp1=[tmp1_2_1,0];
+Center=Center-Rbound+tmp1;
+Setwindow([-4,4],[-0.2,6]);
+op=["do"];
+forall((-4)..(4),
+  Mvlist("v"+(#+4),[[#,0],[#,YMAX]],op);
+);
+forall(1..6,
+  Mvlist("h"+(#+4),[[XMIN,#],[XMAX,#]],op);
+);
+if(nqu==2,
+  mvaa=Textedit(2,"");
+);
+if(length(mvaa)>0,
+  if(indexof(mvaa,"?")==0,
+    tmp=Removespace(mvaa);
+    fun=Assign("(a)^(x)",["a",tmp]);
+    Mvplotdata("1",fun,"x",["dr,1.5","Color=blue"]);
+	Expr(Mvpt(1,YMAX+1),"e","y="+mvaa+"^x",["Size=1.5"]);
+  );
+);
+Mvdrwxy();
 Windispg();
 ;
 
@@ -4725,7 +5051,7 @@ var cdy = CindyJS({
 </head>
 <body>
 <header><p><font size="6">
-KeTTask0828-1
+KeTTask0828-2
 </font></p></header>
     <div id="CSCanvas"></div>
 <div style="padding: 50px">

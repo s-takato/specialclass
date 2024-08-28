@@ -1,0 +1,5 @@
+Center=[81.972,3.77];
+Scale=2.682;
+Rbound=[115.687,0];
+Putpoint("O",Center);
+Putpoint("S",Sc2pt(Scale));
