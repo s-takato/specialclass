@@ -176,6 +176,17 @@ layer::{120}{0}
 end
 
 %%%%%%%%%%%%%
+same
+%repeat=1
+\slidepage
+
+\textinit
+layer::{120}{0}
+\putnotes{68}{0}{\includegraphics[height=70mm]{fig/kettask.png}}
+
+end
+
+%%%%%%%%%%%%%
 new::KeTLMSの実際(デモ)
 %repeat=5
 \slidepage
