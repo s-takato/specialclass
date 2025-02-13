@@ -1,0 +1,19 @@
+writefile("/Users/takatoosetsuo/specialclass.git/numazu250214/fig/ioujians1mxans1.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(1,n,r)$/*##*/
+eq:edgL-kou$/*##*/
+sol:solve(eq,r)$/*##*/
+fL:frevL([edgB,edgR,vtxT,vtxL,vtxR],sol)$/*##*/
+ko:fL[1]; zgen:fL[2]$/*##*/
+A:fL[3]; B:fL[4]; C:fL[5]$/*##*/
+end$/*##*/
+disp(ko)$/*##*/
+disp(zgen)$/*##*/
+disp(A)$/*##*/
+disp(B)$/*##*/
+disp(C)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

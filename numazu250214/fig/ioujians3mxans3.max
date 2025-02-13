@@ -1,0 +1,37 @@
+writefile("/Users/takatoosetsuo/specialclass.git/numazu250214/fig/ioujians3mxans3.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(1,n,r)$/*##*/
+eq:edgL-kou$/*##*/
+sol:solve(eq,r)$/*##*/
+fL:frevL([edgB,edgR,vtxT,vtxL,vtxR],sol)$/*##*/
+ko:fL[1]; zgen:fL[2]$/*##*/
+A:fL[3]; B:fL[4]; C:fL[5]$/*##*/
+end$/*##*/
+putT(1,n1,r1); slideT(vtxL,B)$/*##*/
+eq:edgL-kou; sol:solve(eq,r1)$/*##*/
+ko1:frev(edgB,sol)$/*##*/
+D:frev(vtxR,sol)$/*##*/
+kgen:frev(edgR,sol)$/*##*/
+fL:frevL([r1,inC],sol)$/*##*/
+r1:fL[1]; I1:fL[2]$/*##*/
+putT(supA(n1),n,r2); slideT(vtxR,C)$/*##*/
+eq:vtxT[2]-A[2]; sol:solve(eq,r2)$/*##*/
+r2:frev(r2,sol)$/*##*/
+I2:frev(inC,sol)$/*##*/
+end$/*##*/
+eq:r1-r2; sol:solve(eq,n1)$/*##*/
+n1a:frev(n1,sol[1])$/*##*/
+n1b:frev(n1,sol[2])$/*##*/
+n1:n1b$/*##*/
+end$/*##*/
+disp(sol)$/*##*/
+disp(n1a)$/*##*/
+disp(n1b)$/*##*/
+disp(n1)$/*##*/
+disp(I1)$/*##*/
+disp(r1)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/
