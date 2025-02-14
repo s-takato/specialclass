@@ -1,0 +1,141 @@
+\documentclass[a4j,12pt]{jarticle}
+
+\usepackage{otf}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+%\usepackage{emath}
+\usepackage{emath,emathE,emathMw}
+%\usepackage{xcolor}
+\usepackage{bm,enumerate}
+\usepackage{pict2e}
+\usepackage{ketpic2e,ketlayer2e}
+
+\setmargin{20}{20}{20}{20}
+
+\begin{document}
+
+\begin{center}
+{\bf \large MNR法の使い方}
+\end{center}
+\hfill \today
+
+MNR法は，三角形について2底角の半角の正接$m,n$と内接円の半径$r$で諸量を$m,n,r$の有理式で表す方法である．%和算に現れる問題を解く方法として相当に有効である．
+すなわち，$m=\tan\frac{B}{2},n=\tan\frac{C}{2}$%
+および内接円の半径を$r$とおく．
+
+\begin{center}
+\input{fig/putT.tex}
+\end{center}
+
+このとき，$\mathrm{B}(-\frac{r}{m},\ -r),\ \mathrm{C}(\frac{r}{n},\ -r)$となる．
+頂角$A$については
+
+$$\tan\frac{A}{2}=\tan\frac{\pi-B-C}{2}=\cot\frac{B+C}{2}=\dfrac{1-mn}{m+n}$$
+
+\noindent
+となる．また，頂点Aの座標も直線AB,\ ACの交点としてやはり$m,\ n$の有理式で求められる．
+$$\left(\frac{r(n-m)}{1-mn},\frac{1+mn}{1-mn}\right)$$
+なお，通常は底辺を下側にとるが，その場合は$1-mn>0$となる．\vspace{1mm}
+
+辺BCの長さは$\frac{r}{m}+\frac{r}{n}$\vspace{1mm}であり，他の辺も同様に計算される．
+ $$\mathrm{AB}=\frac{r(1 + m^2)}{(m(1 - mn)},\ \mathrm{AC}=\frac{r(1 + n^2)}{(n(1 - mn)}$$
+%\vspace{1mm}
+
+\noindent
+外心，外接円，重心，垂心，傍心，傍接円，三角形の面積なども$m,\ n$の有理式で表される．
+
+MNR法では半角の正接が重要となる．
+そこで，$\alpha$\ ($-\pi<\alpha<\pi$)について，
+$\tan\frac{\alpha}{2}=t$
+となる$\alpha$を$(t)$と表すことにする．
+すなわち，$\alpha=2\tan^{-1}t$である．
+例えば，
+$$(1)=\dfrac{\pi}{2},\ (\sqrt{3})=\dfrac{2\pi}{3},\ (\sqrt{2})=$$
+
+\section{MNR法のライブラリ}
+
+\subsection{3つの基本関数と大域変数}
+
+\noindent
+\hspace*{2zw}\Ltab{10zw}{putT(m,n,r)}角$B,\ C$がそれぞれ$(m),\ (n)$で内心が原点の三角形をおく．\\
+\hspace*{2zw}\Ltab{10zw}{slideT(pt1,pt2)}pt1がpt2に一致するように平行移動する．\\
+\hspace*{2zw}\Ltab{10zw}{rotateT(m,pt)}ptを中心に(m)だけ回転する．\vspace{2mm}
+
+これらを実行すると，頂点，辺の長さ，５心などが次の大域変数に代入または変更される．\vspace{2mm}\\
+\hspace*{2zw}\Ltab{8zw}{頂点}vtxT,\ vtxL,\ vtxR\\
+\hspace*{2zw}\Ltab{8zw}{辺}edgB,\ edgL,\ edgR\\
+\hspace*{2zw}\Ltab{8zw}{内心,\ 外心}inC,\ inR,\ cirC,\ cirR\\
+\hspace*{2zw}\Ltab{8zw}{垂心,\ 重心}ortC,\ barC\\
+\hspace*{2zw}\Ltab{8zw}{傍心,\ 傍接円}exCa,exRa,exCb,exRb,exCc,exRc\\
+\hspace*{2zw}\Ltab{8zw}{面積Sとs}area,\ halfPer ($s=\frac{a+b+c}{2})$\vspace{2mm}
+
+
+これらのうち，頂点以外はputTだけによって決定される．
+\subsection{汎用変数}
+$\alpha=(t)$の補角$\pi-\alpha$は
+$\tan\frac{\pi-\alpha}{2}=\cot\frac{\alpha}{2}=\frac{1}{t}$\vspace{1mm}より
+$(\frac{1}{t})$と表される．同様に．加法定理によって，余角$\frac{\pi}{2}-\alpha$は
+$\tan(\frac{\pi}{4}-\frac{\alpha}{2})=\frac{1-t}{1+t}$\vspace{1mm}となることなどから，
+次の関数を定義する．\\
+\hspace*{2zw}\Ltab{8zw}{補角}supA(t) (:=1/t)\\
+\hspace*{2zw}\Ltab{8zw}{余角}comA(t) (:=(1-t)/(1+t)\\
+\hspace*{2zw}\Ltab{8zw}{角の和}plusA(t1,t2) (:=(t1+t2)/(1-t1*t2))\\
+\hspace*{2zw}\Ltab{8zw}{角の差}minusA(t1,t2) (:=(t1-t2)/(1+t1*t2))\\
+
+\noindent
+それ以外にも，以下のような汎用的な関数が定義されている．\vspace{2mm}\\
+\hspace*{2zw}\Ltab{12zw}{頂角}angT(m,n)\\
+\hspace*{2zw}\Ltab{12zw}{numer(f)}方程式(=0)の分子を因数分解 :=factor(num(ratsimp(f)))\\
+\hspace*{2zw}\Ltab{12zw}{frev(eq,rep)}eqにrepを代入して分数式を簡単化\\
+\hspace*{2zw}\Ltab{12zw}{frevL(eqL,rep)}リストeqLにrepを代入して分数式を簡単化\\
+\hspace*{2zw}\Ltab{12zw}{frfactor(eq,rep)}eqにrepを代入して分数式を因数分解して簡単化)\\
+\hspace*{2zw}\Ltab{12zw}{nthfactor(pol,k)}多項式のk番目の因子を返す(望む結果にならない場合も)\\
+\hspace*{2zw}\Ltab{12zw}{dotProd(v1,v2)}内積\\
+\hspace*{2zw}\Ltab{12zw}{crossProd(v1,v2)}外積\\
+\hspace*{2zw}\Ltab{12zw}{lenSeg2(p1,[p2])}p1 [p2-p1]の長さの平方\\
+\hspace*{2zw}\Ltab{12zw}{meetLine(pts1,pts2)}2線分の交点 (ptsは2点のリスト)\\
+\hspace*{2zw}\Ltab{12zw}{edge(A,B)}辺AB(frfactorで簡単化)\\
+\hspace*{2zw}\Ltab{12zw}{edg2m(c,a,b)}三角形ABCにおいて，頂点Cのmの値\\
+\hspace*{2zw}\Ltab{12zw}{cos2m(c)}cosの値が$c$である角のmの値
+
+\section{Maximaのコマンドと関数}
+
+\begin{itemize}
+\item 代入はコロン($=$ではない)　(ex) A:vtxT\vspace{-2mm}
+\item リストは[ ]で囲む．(ex) eqL:[s1,s2];  eqL[1] (=s1)\vspace{-2mm}
+\item  方程式を解く\\
+　単独の方程式　solve(eq,x)　(注)方程式に=はつけない\\
+　連立方程式　algsys(eqL,[x,y])　(solveでも解けることもある）\\
+　解は　sol:[x=a1, x=a2],\ [[x=a, y=b]など\\
+　解を代入するには，frevやfrevLを用いる\\
+　　eq:x-a; sol:solve(eq,x); x:frev(sol)\vspace{-2mm}
+\item  partfrec　部分分数分解  \vspace{-2mm}
+\end{itemize}
+
+\section{Cindyのスクリプト例}
+
+\begin{verbatim}
+ cmdL1=concat(Mxbatch("mnr"),[ //mnrライブラリを読み込む
+　　　//以前のスクリプト，例えば，cmdL1に追加する場合は，concat(cmdL1,[
+ "putT(m,n,r); slideT(cirC,[0,0])",
+ "aA:angT(m,n)", //頂角 (これが定数であることを示す)
+ "eq1:edgB-a; eq2:cirR-R",
+ "sol:solve([eq1,eq2],[n,r])",
+ "v:frevL([vtxT,vtxL,vtxR,n,aA],sol[2])",
+ "A:v[1]; B:v[2]; C:v[3]; n:v[4]; aA:v[5]",
+ "end"
+]);
+var1="sol::A::B::C::n::aA"; //値が返される変数文字列(リストに変換される)
+if(contains(Ch,1), //Ch=[1]の場合(画面のボタンで選択)
+ Nchoice(1,0..4);Setfiles(Namecdy+"1"); // 画面に進行のボタンをおいた場合
+ CalcbyMset(var1,"mxans1",cmdL1,[""]); // Maximaを実行
+ 　　　//var1の各変数に結果の数式(文字列)が代入される
+ R=3; a=4; m=tanhalf(80); //仮の値
+ v=Parsev("A::B::C"); //A,B,Cを評価して，リストにする
+ Listplot("1",v_[1,2,3,1]); //三角形を描く
+ Circledata("1",[[0,0],R]); //外接円を描く
+);
+\end{verbatim}
+  
+\end{document}

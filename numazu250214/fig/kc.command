@@ -1,5 +1,5 @@
 #!/bin/sh
 cd "/Users/takatoosetsuo/specialclass.git/numazu250214/fig"
-rm ioujians3mxans3.txt
-"/usr/local/bin/maxima" -b "ioujians3mxans3.max"
+rm 1circumferenceangle1mxans1.txt
+"/usr/local/bin/maxima" -b "1circumferenceangle1mxans1.max"
 exit 0
