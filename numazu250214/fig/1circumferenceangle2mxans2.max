@@ -1,0 +1,17 @@
+writefile("/Users/takatoosetsuo/specialclass.git/numazu250214/fig/1circumferenceangle2mxans2.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(m,n,r); slideT(cirC,[0,0])$/*##*/
+aA:angT(m,n)$/*##*/
+eq1:edgB-a; eq2:cirR-R$/*##*/
+sol:solve([eq1,eq2],[n,r]);print(sol)$/*##*/
+v:frev([vtxT,vtxL,vtxR,n,aA],sol[2])$/*##*/
+A:v[1]; B:v[2]; C:v[3]; n:v[4]; aA:v[5]$/*##*/
+end$/*##*/
+aAp:partfrac(aA,m)$/*##*/
+end$/*##*/
+disp(aAp)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/
