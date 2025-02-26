@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>1circumferenceangle.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+Ch=[];
+nch=0;
+
+Nchoice(no,nlist):=(
+  forall(nlist,
+    inspect(parse("Text"+#),"colorfill",0);
+    inspect(parse("Text"+no),"colorfill",2);
+  );
+);
+Nchoice(0,0..4);
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+if(key()=="?" % keydownlist()==[32],
+  if(!isreal(NumTyped),NumTyped=0);
+  if(NumTyped==0,
+    DispStr=
+     "Figure(1) Parent(2) Parapara(3) Movie(4) Surf(5)";
+  );
+  if(NumTyped==1,
+    DispStr=
+     "Shift+ Title(T) Para(P) Slide(S) Digest(D)";
+  );
+  if(NumTyped==2,
+    DispStr="Shift+ Meshlab(M)";
+  );
+  if(NumTyped==3,
+    DispStr=
+     "Ch : disp(0) chg(9) N(+,-) add(<) rmv(>)";
+  );
+  drawtext(mouse().xy,DispStr,size->24);
+  NumTyped=mod(NumTyped+1,4);
+,
+  NumTyped=0;  
+);
+if(key()=="1",//Mkfigure
+  Viewtex();
+  kc();
+);
+if(key()=="2",//Mkparent
+  Viewparent();
+);
+if(key()=="3",//Flipbook(Parapara)
+  Flipbook();
+);
+if(key()=="4",//Texmovie
+  Texmovie();
+  kc();
+);
+if(key()=="5",//Surface
+  Cheader();
+  Cmain();
+  kcC();
+  if(ChNum>0,
+    Ch=[ChNum];
+  ,
+    Ch=[1];
+  );
+  ChNum=0;
+);
+if(key()=="T",//Title
+  Maketitle();
+);
+if(key()=="P",//ParaF
+  Parafolder();
+);
+if(key()=="S",//Slide 
+  Mkslides();
+);
+if(key()=="D",//Digest(Summary)
+  Mkslidesummary();
+);
+if(key()=="M",//Meshlab
+  Mkviewobj(OCNAME,OBJCMD,OCOPTION);
+);
+
+if(key()=="0",
+  Dispchoice();
+);
+if(key()=="9",
+  if(length(Ch)==0,
+    Ch=[ChNum];
+  ,
+    if(!contains(Ch,ChNum),
+      Ch=append(Ch,ChNum);
+      ChNum=Ch_(length(Ch)-1);
+      Ch=remove(Ch,[ChNum]);
+      Ch=sort(Ch);
+    );
+  );
+  Dispchoice();
+);
+if(key()=="+",
+  ChNum=ChNum+1;
+  Dispchoice();
+);
+if(key()=="-",
+  ChNum=ChNum-1;
+  Dispchoice();
+);
+if(key()=="<",
+  if(length(select(Ch,#==ChNum))==0,
+    Ch=append(Ch,ChNum);
+    Ch=sort(Ch);
+    ChNum=ChNum+1;
+  );
+  Dispchoice();
+);
+if(key()=="^",
+  if(length(Ch)==0,
+    Ch=[ChNum];
+  ,
+    if(!contains(Ch,ChNum),
+      Ch=Ch_(1..(length(Ch)-1));
+      Ch=append(Ch,ChNum);
+      Ch=sort(Ch);
+    );
+  );
+  ChNum=ChNum+1;
+  Dispchoice();
+);
+if(key()=="~",
+  if(length(Ch)==0,
+    Ch=[ChNum];
+  ,
+    if(!contains(Ch,ChNum),
+      Ch=Ch_(1..(length(Ch)-1));
+      Ch=append(Ch,ChNum);
+      Ch=sort(Ch);
+    );
+  );
+  ChNum=max(ChNum-1,1);
+  Dispchoice();
+);
+if(key()==">",
+  if(length(Ch)>0,
+    ChNum=Ch_(length(Ch));
+    Ch=Remove(Ch,[ChNum]);
+  );
+  Dispchoice();
+);
+
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit();
+Addax(1);
+Setax([6," "]);
+Setwindow([-4,4],[-4,4]);
+Slider("M",[-4+0.1,-4],[4,-4]);
+
+Nchoice(0,0..4);
+red=["Color=red"];
+blue=["Color=blue"];
+Pos=NE+[1,-0.5];
+Dy=1.2;
+
+R=3;a=4;
+//m=tanhalf(80);
+
+
+//1
+cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r); slideT(cirC,[0,0])",
+ "aA:angT(m,n)",
+ "eq1:edgB-a; eq2:cirR-R",
+ "sol:solve([eq1,eq2],[n,r]);print(sol)",
+ "v:frev([vtxT,vtxL,vtxR,n,aA],sol[2])",
+ "A:v[1]; B:v[2]; C:v[3]; n:v[4]; aA:v[5]",
+ "end"
+]);
+var1="sol::A::B::C::n::aA";
+if(contains(Ch,1),
+ Nchoice(1,0..4);//Setfiles(Namecdy+"1");
+ CalcbyMset(var1,"mxans1",cmdL1,[""]);
+ m=(M.x+4)/4;
+ v=Parsev("A::B::C::aA");
+ Listplot("1",v_[1,2,3,1]);
+ Circledata("1",[[0,0],R]);
+ angA=round(2*arctan(v_4)*180/pi);
+ Anglemark("1",v_[2,1,3],["E="+angA]);
+ tmp1=v_[1,2,3];
+ tmp2=Strsplit("n2::w3::e3","::");
+ tmp3=Strsplit("A::B::C","::");
+ forall(1..3,
+   Letter(tmp1_#,tmp2_#,tmp3_#);
+ );
+ if(Ch_(-1)==1,
+   Disptex(Pos,Dy,var1);
+ );
+);
+//1
+
+//2
+cmdL2=concat(cmdL1,[
+ "aAp:partfrac(aA,m)",
+ "end"
+]);
+var2="aAp";
+if(contains(Ch,2),
+ Nchoice(2,0..4);Setfiles(Namecdy+"2");
+ CalcbyMset(var2,"mxans2",cmdL2,[""]);
+ Disptex(Pos,Dy,"aA::"+var2);
+);//2
+
+Windispg();
+
+
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "SW", type: "Free", pos: [4.0, 4.0, -1.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "NE", type: "Free", pos: [4.0, 4.0, 1.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [296.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [356.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [425.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "Text3'", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "nch=3;\nCh=[1,2,3];", text: "1,2,3", textsize: 24.0, dock: {corner: "UL", offset: [631.0, -20.0]}},
+    {name: "Text2", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "nch=2;\nCh=[1,2];", text: "1,2", textsize: 24.0, dock: {corner: "UL", offset: [572.0, -20.0]}},
+    {name: "Text1'", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "nch=1;\nCh=[1];", text: "1", textsize: 24.0, dock: {corner: "UL", offset: [536.0, -20.0]}},
+    {name: "Text0'", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.27272728085517883, script: "nch=0;\nCh=[];\n", text: "[]", textsize: 24.0, dock: {corner: "UL", offset: [495.0, -20.0]}},
+    {name: "Text4'", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "nch=4;\nCh=[1,2,3,4];", text: "1,2,3,4", textsize: 24.0, dock: {corner: "UL", offset: [711.0, -20.0]}},
+    {name: "M", type: "Free", pos: [-2.109294256922, -4.0, 1.0], color: [1.0, 0.0, 0.0], labeled: true}
+  ],
+  ports: [{
+    width: 1002,
+    height: 523,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-4.281687059990264, 4.750419117083935, 13.782525294158134, -4.678306492915678]}],
+    grid: 1.0,
+    background: "rgb(204,204,204)"
+  }],
+  csconsole: false,
+  cinderella: {build: 2089, version: [3, 0, 2089]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>
