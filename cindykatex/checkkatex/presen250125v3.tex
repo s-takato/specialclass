@@ -1,0 +1,3488 @@
+%%% title presen250125v3
+\documentclass[landscape,10pt]{jarticle}
+\usepackage{pict2e}
+\usepackage{ketpic2e,ketlayer2e}
+\special{papersize=\the\paperwidth,\the\paperheight}
+\usepackage{ketslide}
+\usepackage{amsmath,amssymb}
+\usepackage{bm,enumerate}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{color}
+\usepackage[dvipdfmx,colorlinks=false]{hyperref}
+\usepackage{qrcode}
+\usepackage{setspace}
+
+\def\deg#1{#1^{\circ}}
+\def\bs{$\backslash$}
+\newcommand{\monthday}{0125}
+
+\definecolor{slidecolora}{cmyk}{0.98,0.13,0,0.43}
+\definecolor{slidecolorb}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolorc}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolord}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolore}{cmyk}{0,0,0,0.5}
+\definecolor{slidecolorf}{cmyk}{0,0,0,0.5}
+\definecolor{slidecolori}{cmyk}{0.98,0.13,0,0.43}
+\def\setthin#1{\def\thin{#1}}
+\setthin{0}
+\newcounter{pagectr}
+\setcounter{pagectr}{1}
+\newcommand{\slidepage}[1][\monthday-]{%
+\setcounter{ketpicctra}{18}%
+
+\begin{layer}{118}{0}
+\putnotew{130}{-\theketpicctra.05}{\small#1\thepage/\pageref{pageend}}
+\end{layer}
+
+}
+
+\setmargin{25}{145}{15}{100}
+
+\ketslideinit
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{layer}{120}{0}
+\putnotese{0}{0}{\input{fig/slide0sdg.tex}}
+\end{layer}
+
+\def\mainslidetitley{22}
+\def\ketcletter{slidecolora}
+\def\ketcbox{slidecolorb}
+\def\ketdbox{slidecolorc}
+\def\ketcframe{slidecolord}
+\def\ketcshadow{slidecolore}
+\def\ketdshadow{slidecolorf}
+\def\slidetitlex{6}
+\def\slidetitlesize{1.3}
+\def\mketcletter{slidecolori}
+\def\mketcbox{yellow}
+\def\mketdbox{yellow}
+\def\mketcframe{yellow}
+\def\mslidetitlex{62}
+\def\mslidetitlesize{2}
+
+\color{black}
+\Large\bf\boldmath
+\addtocounter{page}{-1}
+
+\renewcommand{\eda}[2][\theedactr]{%
+\Ltab{\theedawidth mm}{[#1]\ #2}%
+\addtocounter{edactr}{1}%
+}
+\setthin{0.1}
+\def\colorthin{\color[cmyk]{\thin,\thin,\thin,\thin}}
+\def\dint{\displaystyle\int}
+\newcommand{\dpar}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\dps}{\displaystyle}
+\newcommand{\dpint}{\displaystyle\int}
+\renewcommand{\slidepage}[1][s]{%
+\setcounter{ketpicctra}{18}%
+\hypersetup{linkcolor=black}%
+\begin{layer}{118}{0}
+\putnotee{115}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}
+\end{layer}\hypersetup{linkcolor=blue}
+}
+\newcommand{\setwidth}[1]{\setcounter{txtLiii}{#1}}
+\newcommand{\adde}{\addtocounter{enm}{1}}
+%%\newcommand{enminit}{\setcounter{enm}{1}}
+\newcommand\pnp{(\theenm)}
+\newcommand\pt{・}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{今日の内容}
+
+\vspace*{18mm}
+
+\slidepage
+\ifnum 1=1
+\enminit
+\textinit
+
+\begin{layer}{120}{0}
+\putnotese{80}{-13}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/presen250125v3digest2.pdf}}}
+\addtext[6]{8}{\pnp}{序論}\adde
+\addtext[2]{8}{\pnp}{\ketpic の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy JS の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy による和算問題の解法}\adde
+\addtext[2]{8}{\pnp}{結論}\adde
+{\color{blue}
+}
+\end{layer}
+
+\end{document}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\ifnum 1=1
+\enminit
+\textinit
+
+\begin{layer}{120}{0}
+\putnotese{80}{-13}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/presen250125v3digest2.pdf}}}
+\addtext[6]{8}{\pnp}{序論}\adde
+\addtext[2]{8}{\pnp}{\ketpic の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy JS の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy による和算問題の解法}\adde
+\addtext[2]{8}{\pnp}{結論}\adde
+{\color{blue}
+\putnotese{40}{14}{\fbox{KeT=Kisarazu Educational Tpic}}
+}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\ifnum 1=1
+\enminit
+\textinit
+
+\begin{layer}{120}{0}
+\putnotese{80}{-13}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/presen250125v3digest2.pdf}}}
+\addtext[6]{8}{\pnp}{序論}\adde
+\addtext[2]{8}{\pnp}{\ketpic の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy JS の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy による和算問題の解法}\adde
+\addtext[2]{8}{\pnp}{結論}\adde
+{\color{blue}
+\putnotese{40}{14}{\fbox{KeT=Kisarazu Educational Takato}}
+}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\ifnum 1=1
+\enminit
+\textinit
+
+\begin{layer}{120}{0}
+\putnotese{80}{-13}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/presen250125v3digest2.pdf}}}
+\addtext[6]{8}{\pnp}{序論}\adde
+\addtext[2]{8}{\pnp}{\ketpic の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy JS の開発}\adde
+\addtext[2]{8}{\pnp}{\ketcindy による和算問題の解法}\adde
+\addtext[2]{8}{\pnp}{結論}\adde
+{\color{blue}
+\putnotese{40}{14}{\fbox{KeT=Kisarazu Educational Takato}}
+\putnotese{73}{21}{\fbox{and his happy friends}}
+}
+\end{layer}
+
+
+\mainslide{序論}
+
+
+\slidepage[m]
+%%\fi \ifnum 1=0
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{数学ソフトウェアの利用}
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[112]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数式処理システム}\adde
+\addtext{16}{\pt}{数式をそのまま計算処理}
+\addtext{16}{\pt}{Maple,Mathematica,Maxima,Risa/Asirなど}
+\addtext{16}{\pt}{当初はMapleをセミナー形式の授業で利用}
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{その他の数学ソフトウェア}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{Scilab(行列計算),R(統計),Cinderella(動的幾何)}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{これらはいずれも構造化プログラミングとリスト処理(+再帰呼び出し)に対応}
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[112]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数式処理システム}\adde
+\addtext{16}{\pt}{数式をそのまま計算処理}
+\addtext{16}{\pt}{Maple,Mathematica,Maxima,Risa/Asirなど}
+\addtext{16}{\pt}{当初はMapleをセミナー形式の授業で利用}
+\addtext{8}{\pnp}{その他の数学ソフトウェア}%
+\addtext{16}{\pt}{Scilab(行列計算),R(統計),Cinderella(動的幾何)}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{これらはいずれも構造化プログラミングとリスト処理(+再帰呼び出し)に対応}
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[112]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数式処理システム}\adde
+\addtext{16}{\pt}{数式をそのまま計算処理}
+\addtext{16}{\pt}{Maple,Mathematica,Maxima,Risa/Asirなど}
+\addtext{16}{\pt}{当初はMapleをセミナー形式の授業で利用}
+\addtext{8}{\pnp}{その他の数学ソフトウェア}%
+\addtext{16}{\pt}{Scilab(行列計算),R(統計),Cinderella(動的幾何)}%
+\addtext{8}{\pnp}{これらはいずれも構造化プログラミングとリスト処理(+再帰呼び出し)に対応}
+\end{layer}
+
+
+\newslide{構造化プログラミング}
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\fbox{エンドユーザ}}
+\arrowlineseg{63}{20}{8}{90}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\fbox{エンドユーザ}}
+\putnotene{94}{12}{{\color{blue}\fbox{順接}}}
+\arrowlineseg{63}{20}{8}{90}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\fbox{エンドユーザ}}
+\putnotene{94}{12}{{\color{blue}\fbox{順接}}}
+\arrowlineseg{63}{20}{8}{90}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\putnotene{94}{27}{{\color{blue}\fbox{分岐,反復,関数}}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\fbox{エンドユーザ}}
+\putnotene{94}{12}{{\color{blue}\fbox{順接}}}
+\arrowlineseg{63}{20}{8}{90}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\putnotene{94}{27}{{\color{blue}\fbox{分岐,反復,関数}}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\putnotene{94}{42}{{\color{blue}\fbox{汎用関数追加}}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\fbox{エンドユーザ}}
+\putnotene{94}{12}{{\color{blue}\fbox{順接}}}
+\arrowlineseg{63}{20}{8}{90}
+\putnotes{63}{20}{\fbox{プログラミング}}
+\putnotene{94}{27}{{\color{blue}\fbox{分岐,反復,関数}}}
+\arrowlineseg{63}{35}{8}{90}
+\putnotes{63}{35}{\fbox{KeTの関数ライブラリ}}
+\putnotene{94}{42}{{\color{blue}\fbox{汎用関数追加}}}
+\arrowlineseg{63}{50}{8}{90}
+\putnotes{67}{50}{\fbox{数学ソフトウェアのシステム関数}}
+\putnotene{107}{57}{{\color{blue}\fbox{追加も}}}
+\end{layer}
+
+
+\newslide{プログラミング力の伸長}
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{1980代まで　}{BASICを使用}\adde
+\addtext{16}{\pt}{構造化されていないので1000行程度が上限}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{1990代前半　}{Turbo Pascal 5.0を使用}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{構造化されていて関数定義が可能}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{1990代後半　}{Mapleを購入}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{セミナーで千葉県算額の問題解法を試みた}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{三角形だと無理式の連立方程式となり解けない}%
+}%
+\setwidth{105}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{そこでMNR法という解法のMapleライブラリを作成}%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi \ifnum 1=0
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{1980代まで　}{BASICを使用}\adde
+\addtext{16}{\pt}{構造化されていないので1000行程度が上限}%
+\addtext{8}{1990代前半　}{Turbo Pascal 5.0を使用}%
+\addtext{16}{\pt}{構造化されていて関数定義が可能}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{1990代後半　}{Mapleを購入}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{セミナーで千葉県算額の問題解法を試みた}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{三角形だと無理式の連立方程式となり解けない}%
+}%
+\setwidth{105}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{そこでMNR法という解法のMapleライブラリを作成}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{1980代まで　}{BASICを使用}\adde
+\addtext{16}{\pt}{構造化されていないので1000行程度が上限}%
+\addtext{8}{1990代前半　}{Turbo Pascal 5.0を使用}%
+\addtext{16}{\pt}{構造化されていて関数定義が可能}%
+\addtext{8}{1990代後半　}{Mapleを購入}%
+\addtext{16}{\pt}{セミナーで千葉県算額の問題解法を試みた}%
+\addtext{16}{\pt}{三角形だと無理式の連立方程式となり解けない}%
+\setwidth{105}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{そこでMNR法という解法のMapleライブラリを作成}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{1980代まで　}{BASICを使用}\adde
+\addtext{16}{\pt}{構造化されていないので1000行程度が上限}%
+\addtext{8}{1990代前半　}{Turbo Pascal 5.0を使用}%
+\addtext{16}{\pt}{構造化されていて関数定義が可能}%
+\addtext{8}{1990代後半　}{Mapleを購入}%
+\addtext{16}{\pt}{セミナーで千葉県算額の問題解法を試みた}%
+\addtext{16}{\pt}{三角形だと無理式の連立方程式となり解けない}%
+\setwidth{105}%
+\addtext{16}{\pt}{そこでMNR法という解法のMapleライブラリを作成}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{1980代まで　}{BASICを使用}\adde
+\addtext{16}{\pt}{構造化されていないので1000行程度が上限}%
+\addtext{8}{1990代前半　}{Turbo Pascal 5.0を使用}%
+\addtext{16}{\pt}{構造化されていて関数定義が可能}%
+\addtext{8}{1990代後半　}{Mapleを購入}%
+\addtext{16}{\pt}{セミナーで千葉県算額の問題解法を試みた}%
+\addtext{16}{\pt}{三角形だと無理式の連立方程式となり解けない}%
+\setwidth{105}%
+\addtext{16}{\pt}{そこでMNR法という解法のMapleライブラリを作成}%
+\shadeboxse[1]{90}{45}{38}{16}{yellow}{blue}
+\putnotese{90}{46}{{\color{blue}\begin{minipage}[t]{36mm}構造化プログラミング力を向上\end{minipage}}}%
+\end{layer}
+
+
+\mainslide{\ketpic の開発と利用}
+
+
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{\TeX とMapleの利用}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+\putnotee{85}{-2}{{\color{blue}\small tpicはpicを元にした}}
+\putnotee{85}{2}{{\color{blue}\small \TeX 用図形プリプロセッサ}}
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{高専教科書シリーズの編集に継続して参加}\adde%
+\addtext{8}{\pnp}{2003年からのシリーズで\TeX を使用}\adde%
+\addtext{8}{\pnp}{当初は図をWinTpicで作成}\adde%
+\addtext{8}{\pnp}{しかし空間図形などは正確に描けなかった}\adde%
+\addtext{8}{\pnp}{Mapleでtpicコードを書き出すことを考えた}\adde%%\cite{LGC}}
+\addtext{16}{\pt}{Mapleのplotデータを取得}%
+\addtext{16}{\pt}{tpicコードに変換して出力}%
+\addtext{8}{\pnp}{ICMS2006で発表[14]}%%\cite{icms2006}}
+\putnotee{85}{-2}{{\color{blue}\small International Congress  on}}
+\putnotee{85}{2}{{\color{blue}\small Mathematical Software}}
+\end{layer}
+
+
+\newslide{\ketpic による作図の流れ}
+
+\vspace*{18mm}
+
+\slidepage
+%%\enminit
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{7}{\scalebox{0.8}{\input{fig/ketpiccycle.tex}}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{描画データの作成例}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+{\large\tt
+\addtext{16}{}{with(plots):}
+\addtext[-3]{16}{}{read cat(folder,`ketpic.m`):}
+\addtext[-3]{16}{}{setwindow(-2..2,-1.1..1.1):}
+\addtext[-3]{16}{}{g1:=plotdata(sin(1/x),}
+\addtext[-3]{20}{}{     x=XMIN..XMAX,numpoints=200):}
+\addtext[-3]{16}{}{windisp(g1):}
+}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+{\large\tt
+\addtext{16}{}{with(plots):}
+\addtext[-3]{16}{}{read cat(folder,`ketpic.m`):}
+\addtext[-3]{16}{}{setwindow(-2..2,-1.1..1.1):}
+\addtext[-3]{16}{}{g1:=plotdata(sin(1/x),}
+\addtext[-3]{20}{}{     x=XMIN..XMAX,numpoints=200):}
+\addtext[-3]{16}{}{windisp(g1):}
+}
+\putnotes{66}{36}{\includegraphics[bb=0.00 0.00 496.02 286.01,width=75mm]{fig/ketpicmaple.png}}
+\end{layer}
+
+
+\newslide{図コードと図の作成例}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[-3]{-3}{}{Mapleの続き}
+{\large\tt
+\addtext[-2]{1}{}{openfile("f1.tex"):}
+\addtext[-3]{1}{}{beginpicture("1cm"):}
+\addtext[-3]{1}{}{dashline(g1,0.5,0.5):}
+\addtext[-3]{1}{}{endpicture():}
+\addtext[-3]{1}{}{closefile():}
+}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[-3]{-3}{}{Mapleの続き}
+{\large\tt
+\addtext[-2]{1}{}{openfile("f1.tex"):}
+\addtext[-3]{1}{}{beginpicture("1cm"):}
+\addtext[-3]{1}{}{dashline(g1,0.5,0.5):}
+\addtext[-3]{1}{}{endpicture():}
+\addtext[-3]{1}{}{closefile():}
+}
+\addtext{-3}{}{\TeX コード}
+{\large\tt
+\addtext[-2]{1}{}{\bs documentclass[a4]\{article\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs width\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs Height\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs Depth\}}
+\addtext[-3]{1}{}{\bs begin\{document\}}
+\addtext[-3]{1}{}{\bs input\{f1.tex\}}
+\addtext[-3]{1}{}{\bs end\{document\}}
+}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[-3]{-3}{}{Mapleの続き}
+{\large\tt
+\addtext[-2]{1}{}{openfile("f1.tex"):}
+\addtext[-3]{1}{}{beginpicture("1cm"):}
+\addtext[-3]{1}{}{dashline(g1,0.5,0.5):}
+\addtext[-3]{1}{}{endpicture():}
+\addtext[-3]{1}{}{closefile():}
+}
+\addtext{-3}{}{\TeX コード}
+{\large\tt
+\addtext[-2]{1}{}{\bs documentclass[a4]\{article\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs width\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs Height\}}
+\addtext[-3]{1}{}{\bs newlength\{\bs Depth\}}
+\addtext[-3]{1}{}{\bs begin\{document\}}
+\addtext[-3]{1}{}{\bs input\{f1.tex\}}
+\addtext[-3]{1}{}{\bs end\{document\}}
+}
+\putnotese{44}{32}{\input{fig/ketpicmapletpic.tex}}
+\end{layer}
+
+
+\newslide{\ketpic の教材例(1)内積の意味}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{3}{\includegraphics[bb=0.00 0.00 568.02 380.01,width=95mm]{fig/naisekisakuzu.png}}
+\putnotes{63}{66}{$\vec{\mathstrut a}\cdot\vec{b}=|\vec{\mathstrut a}||\vec{b}|\cos\theta=|\vec{\mathstrut a}|\times \vec{b}\text{の正射影}$}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketpic の教材例(2)フーリエ級数}
+
+\vspace*{18mm}
+
+\slidepage
+
+\begin{layer}{120}{0}
+\putnotes{63}{3}{\includegraphics[bb=0.00 0.00 682.03 358.01,width=95mm]{fig/fourier.png}}
+\putnotes{63}{60}{Gibbs現象}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketpic の教材例(3)空間図形}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotee{20}{5}{{\color{red}モノクロ線画で描きたい}}
+\putnotes{63}{10}{\includegraphics[bb=0.00 0.00 671.03 337.01,width=105mm]{fig/skeleton.png}}
+\putnotec{13}{58}{\small O}
+\putnotes{35}{65}{全微分の意味}
+\putnotes{85}{65}{Viviani曲線}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotee{20}{5}{{\color{red}モノクロ線画で描きたい}}
+\putnotes{63}{10}{\includegraphics[bb=0.00 0.00 671.03 337.01,width=105mm]{fig/skeleton.png}}
+\putnotec{13}{58}{\small O}
+\putnotes{35}{65}{全微分の意味}
+\putnotes{85}{65}{Viviani曲線}
+{\color{red}\arrowlineseg{85}{29}{10}{30}}
+\putnotee{94}{24}{\color{red}スケルトン処理}
+\end{layer}
+
+
+\newslide{\ketpic の教材例(3)空間曲面(トーラス)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{18}{\includegraphics[bb=0.00 0.00 310.01 170.00,width=60mm]{fig/torus1.png}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{18}{\includegraphics[bb=0.00 0.00 310.01 170.00,width=60mm]{fig/torus2.png}}
+\putnotes{63}{62}{包絡線(輪郭線)$\dfrac{\partial X}{\partial u}\dfrac{\partial Y}{\partial v}-\dfrac{\partial X}{\partial v}\dfrac{\partial Y}{\partial u}=0$}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{63}{18}{\includegraphics[bb=0.00 0.00 313.01 172.00,width=60mm]{fig/torus3.png}}
+\putnotes{63}{65}{陰線処理}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{65}{2}{\includegraphics[bb=0.00 0.00 404.02 310.01,width=80mm]{fig/torus4.png}}
+\putnotes{63}{65}{座標軸追加}
+\end{layer}
+
+
+\newslide{\ketpic の機能追加}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Maple,Mathematica $\Rightarrow$ Scilab\cite{scilab},R\cite{Rprog}}\adde%
+\addtext{20}{}{関数渡しから文字列渡しへ}%
+\addtext{8}{\pnp}{{\colorthin\TeX マクロの作成(\TeX プログラミング})}\adde%
+%%[4]::\putnotese{24}{70}{{\color{red}反復のメタコマンドを作成}}%
+\end{layer}
+
+\vspace{37mm}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Maple,Mathematica $\Rightarrow$ Scilab\cite{scilab},R\cite{Rprog}}\adde%
+\addtext{20}{}{関数渡しから文字列渡しへ}%
+\addtext{8}{\pnp}{\TeX マクロの作成({\colorthin\TeX プログラミング})\cite{fujita}\cite{ikuta}\cite{okumura}}\adde%
+\addtext{20}{}{特にlayer環境 (紙面上の自由配置)}%
+\end{layer}
+
+\vspace{37mm}
+
+\begin{layer}{130}{40}
+\putnotese{75}{5}{\input{fig/figtorus_2_2}}
+\end{layer}
+ \\
+\hspace{10mm}\textbackslash begin\{layer\}\{130\}\{40\}\\
+\hspace{10mm}\textbackslash putnotese\{75\}\{5\}\{\\
+\hspace{15mm}\textbackslash input\{fig/figtorus\_2\_2\}\}\\
+\hspace{10mm}\textbackslash end\{layer\}
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Maple,Mathematica $\Rightarrow$ Scilab\cite{scilab},R\cite{Rprog}}\adde%
+\addtext{20}{}{関数渡しから文字列渡しへ}%
+\addtext{8}{\pnp}{\TeX マクロの作成({\colorthin\TeX プログラミング})\cite{fujita}\cite{ikuta}\cite{okumura}}\adde%
+\addtext{20}{}{特にlayer環境 (紙面上の自由配置)}%
+\end{layer}
+
+\vspace{37mm}
+
+\begin{layer}{130}{0}
+\putnotese{75}{5}{\input{fig/figtorus_2_2}}
+\end{layer}
+ \\
+\hspace{10mm}\textbackslash begin\{layer\}\{130\}\{0\}\\
+\hspace{10mm}\textbackslash putnotese\{75\}\{5\}\{\\
+\hspace{15mm}\textbackslash input\{fig/figtorus\_2\_2\}\}\\
+\hspace{10mm}\textbackslash end\{layer\}
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Maple,Mathematica $\Rightarrow$ Scilab\cite{scilab},R\cite{Rprog}}\adde%
+\addtext{20}{}{関数渡しから文字列渡しへ}%
+\addtext{8}{\pnp}{\TeX マクロの作成({\color{red}\TeX プログラミング})\cite{fujita}\cite{ikuta}\cite{okumura}}\adde%
+\addtext{20}{}{特にlayer環境 (紙面上の自由配置)}%
+\putnotese{24}{70}{{\href{https://s-takato.github.io/specialclass/shibaura25/texforendfor.pdf}{{\color{red}反復のメタコマンドを作成}}}}%
+\end{layer}
+
+\vspace{37mm}
+
+\begin{layer}{130}{0}
+\putnotese{75}{5}{\input{fig/figtorus_2_2}}
+\end{layer}
+ \\
+\hspace{10mm}\textbackslash begin\{layer\}\{130\}\{0\}\\
+\hspace{10mm}\textbackslash putnotese\{75\}\{5\}\{\\
+\hspace{15mm}\textbackslash input\{fig/figtorus\_2\_2\}\}\\
+\hspace{10mm}\textbackslash end\{layer\}
+
+\newslide{授業での配付教材}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{モノクロ線画で美しい図}%
+\addtext{16}{\pt}{印刷コストを軽減}%
+\addtext{16}{\pt}{正確な図は学生の想像力を刺激}%
+\addtext{16}{\pt}{空きスペースにコメントや計算などが書き込める}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{文と図を紙面上に自由に配置することが重要}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{\TeX のスタイルファイルketpic,ketlayerは不可欠なツール}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\ten}{ほぼ毎回の授業でプリントを配付}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{モノクロ線画で美しい図}%
+\addtext{16}{\pt}{印刷コストを軽減}%
+\addtext{16}{\pt}{正確な図は学生の想像力を刺激}%
+\addtext{16}{\pt}{空きスペースにコメントや計算などが書き込める}%
+\addtext{8}{\ten}{文と図を紙面上に自由に配置することが重要}%
+\addtext{16}{\pt}{\TeX のスタイルファイルketpic,ketlayerは不可欠なツール}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\ten}{ほぼ毎回の授業でプリントを配付}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{モノクロ線画で美しい図}%
+\addtext{16}{\pt}{印刷コストを軽減}%
+\addtext{16}{\pt}{正確な図は学生の想像力を刺激}%
+\addtext{16}{\pt}{空きスペースにコメントや計算などが書き込める}%
+\addtext{8}{\ten}{文と図を紙面上に自由に配置することが重要}%
+\addtext{16}{\pt}{\TeX のスタイルファイルketpic,ketlayerは不可欠なツール}%
+\addtext[8]{8}{\ten}{ほぼ毎回の授業でプリントを配付}%
+\end{layer}
+
+
+\newslide{配付教材例(2012微積分)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 1074.05 660.03,width=120mm]{fig/classmat1.png}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 930.04 500.02,width=120mm]{fig/classmat2.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 914.04 669.03,width=100mm]{fig/classmat3a.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 928.04 667.03,width=100mm]{fig/classmat3b.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 881.04 412.02,width=120mm]{fig/classmat4.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 854.04 647.03,width=100mm]{fig/classmat5.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{0}{\includegraphics[bb=0.00 0.00 715.03 655.03,width=87mm]{fig/classmat6.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 980.05 674.03,width=110mm]{fig/classmat7.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 599.03 540.02,width=87mm]{fig/classmat8.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{2}{\includegraphics[bb=0.00 0.00 958.04 621.03,width=110mm]{fig/classmat9.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{66}{1}{\includegraphics[bb=0.00 0.00 727.03 819.04,height=76mm]{fig/classmat10.png}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\putnotes{69}{1}{\includegraphics[bb=0.00 0.00 710.03 764.03,width=80mm]{fig/classmat11.png}}
+\end{layer}
+
+
+\newslide{\ketpic のまとめ}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit%
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{高専や大学等の授業担当者がいろいろな利用法について発表(\cite{nissuu06},\cite{nissuu07},\cite{icms08},\cite{iccsa08},\cite{rims09},\cite{nissuu09},\cite{atcm10},\cite{ejm11})}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\ten}{図を修正する場合には少し手間がかかる}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pnp}{ソースコードを修正して実行}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pnp}{表示された図を確認してファイルを書き出す}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pnp}{\TeX 文書をコンパイルして図を確認}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{一連の作業をより対話的にかつ容易に実行できないかを模索するようになった}%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi\ifnum 1=0
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit%
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{高専や大学等の授業担当者がいろいろな利用法について発表(\cite{nissuu06},\cite{nissuu07},\cite{icms08},\cite{iccsa08},\cite{rims09},\cite{nissuu09},\cite{atcm10},\cite{ejm11})}%
+\addtext[8]{8}{\ten}{図を修正する場合には少し手間がかかる}%
+\addtext{16}{\pnp}{ソースコードを修正して実行}\adde%
+\addtext{16}{\pnp}{表示された図を確認してファイルを書き出す}\adde%
+\addtext{16}{\pnp}{\TeX 文書をコンパイルして図を確認}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{一連の作業をより対話的にかつ容易に実行できないかを模索するようになった}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit%
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{高専や大学等の授業担当者がいろいろな利用法について発表(\cite{nissuu06},\cite{nissuu07},\cite{icms08},\cite{iccsa08},\cite{rims09},\cite{nissuu09},\cite{atcm10},\cite{ejm11})}%
+\addtext[8]{8}{\ten}{図を修正する場合には少し手間がかかる}%
+\addtext{16}{\pnp}{ソースコードを修正して実行}\adde%
+\addtext{16}{\pnp}{表示された図を確認してファイルを書き出す}\adde%
+\addtext{16}{\pnp}{\TeX 文書をコンパイルして図を確認}\adde%
+\addtext{8}{\ten}{一連の作業をより対話的にかつ容易に実行できないかを模索するようになった}%
+\end{layer}
+
+
+\mainslide{\ketcindy の開発と利用}
+
+
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{\ketcindy の開発経緯}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[1]{8}{\ten}{簡単にかつ対話的に\TeX の図を作りたい}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[1]{8}{\ten}{2006年動的幾何Cinderella2がリリースされた}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{汎用的なプログラム言語CindyScriptを追加}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2007年から毎回{CADGME}に参加発表}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{KortenkampのWS(CADGME2012)に参加}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{24}{\pt}{Cinderellaの主開発者の一人}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2014年に彼を日本に招聘}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{東邦大でセミナー，\ketcindy が誕生}%
+}%
+\end{layer}
+
+%% CADGME:Computer Algebra and Dynamic Geometry in Mathematics Education
+%% DGS:Dynamic Geometry Sofware, IGSともいう
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[1]{8}{\ten}{簡単にかつ対話的に\TeX の図を作りたい}%
+\addtext[1]{8}{\ten}{2006年動的幾何Cinderella2がリリースされた}%
+\addtext{16}{}{汎用的なプログラム言語CindyScriptを追加}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2007年から毎回{CADGME}に参加発表}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{KortenkampのWS(CADGME2012)に参加}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{24}{\pt}{Cinderellaの主開発者の一人}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2014年に彼を日本に招聘}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{東邦大でセミナー，\ketcindy が誕生}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{12}{2}{\color{blue}\fbox{\small Computer Algebra and Dynamic Geometry in Mathematics Education﻿}}
+\addtext[1]{8}{\ten}{簡単にかつ対話的に\TeX の図を作りたい}%
+\addtext[1]{8}{\ten}{2006年動的幾何Cinderella2がリリースされた}%
+\addtext{16}{}{汎用的なプログラム言語CindyScriptを追加}%
+\addtext{8}{\ten}{2007年から毎回{\color{blue}CADGME}に参加発表}%
+\addtext{16}{}{KortenkampのWS(CADGME2012)に参加}%
+\addtext{24}{\pt}{Cinderellaの主開発者の一人}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2014年に彼を日本に招聘}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{東邦大でセミナー，\ketcindy が誕生}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{12}{2}{\color{blue}\fbox{\small Computer Algebra and Dynamic Geometry in Mathematics Education﻿}}
+\addtext[1]{8}{\ten}{簡単にかつ対話的に\TeX の図を作りたい}%
+\addtext[1]{8}{\ten}{2006年動的幾何Cinderella2がリリースされた}%
+\addtext{16}{}{汎用的なプログラム言語CindyScriptを追加}%
+\addtext{8}{\ten}{2007年から毎回{\color{blue}CADGME}に参加発表}%
+\addtext{16}{}{KortenkampのWS(CADGME2012)に参加}%
+\addtext{24}{\pt}{Cinderellaの主開発者の一人}%
+\addtext{8}{\ten}{2014年に彼を日本に招聘}%
+\addtext{16}{}{東邦大でセミナー，\ketcindy が誕生}%
+\end{layer}
+
+
+\newslide{\ketcindy による作図の流れ}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\putnotes{63}{0}{\input{fig/ketcindycycle}}
+%%[2,-]::\putnotew{48}{13}{\color{red}\ketcindy のコマンド列}
+%%[3,-]::\putnotec{63}{34}{\color{red}\ketcindy のバッチ(kc)で一括処理}
+%%[4,-]::\putnotee{74}{74}{\color{red}デモ}
+\end{layer}
+
+%%layer::{120}{60}
+%%end
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy (デモ)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index1.html}}\adde%
+\putnotese{85}{30}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index1.html}}}
+%%1:40
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy の特徴と機能拡張}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{対話的に作図できる}%
+\addtext{16}{・}{動的幾何の幾何要素を利用}%
+\addtext{16}{・}{ボタンを押すだけで図コードファイル作成}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{ketcindyplugin.jarを最初に読み込み}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{バッチ処理により外部プログラムが実行可能}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{いろいろなベジェ曲線をサポート}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{描画コードTpic$\Rightarrow$pict2e,TikZもサポート}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{TikZについてはTexcomでも使用可能}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{対話的に作図できる}%
+\addtext{16}{・}{動的幾何の幾何要素を利用}%
+\addtext{16}{・}{ボタンを押すだけで図コードファイル作成}%
+\addtext{8}{\ten}{ketcindyplugin.jarを最初に読み込み}%
+\addtext{16}{\pt}{バッチ処理により外部プログラムが実行可能}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{いろいろなベジェ曲線をサポート}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{描画コードTpic$\Rightarrow$pict2e,TikZもサポート}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{TikZについてはTexcomでも使用可能}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{対話的に作図できる}%
+\addtext{16}{・}{動的幾何の幾何要素を利用}%
+\addtext{16}{・}{ボタンを押すだけで図コードファイル作成}%
+\addtext{8}{\ten}{ketcindyplugin.jarを最初に読み込み}%
+\addtext{16}{\pt}{バッチ処理により外部プログラムが実行可能}%
+\addtext{8}{\ten}{いろいろなベジェ曲線をサポート}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{描画コードTpic$\Rightarrow$pict2e,TikZもサポート}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{TikZについてはTexcomでも使用可能}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{対話的に作図できる}%
+\addtext{16}{・}{動的幾何の幾何要素を利用}%
+\addtext{16}{・}{ボタンを押すだけで図コードファイル作成}%
+\addtext{8}{\ten}{ketcindyplugin.jarを最初に読み込み}%
+\addtext{16}{\pt}{バッチ処理により外部プログラムが実行可能}%
+\addtext{8}{\ten}{いろいろなベジェ曲線をサポート}%
+\addtext{8}{\ten}{描画コードTpic$\Rightarrow$pict2e,TikZもサポート}%
+\addtext{16}{}{TikZについてはTexcomでも使用可能}%
+\end{layer}
+
+
+\newslide{ベジェ曲線(3次)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{節点$\text{P}_j,\text{P}_{j+1}$,制御点$\text{Q}_j,\text{R}_j$}
+\addtext{12}{}{$\text{P}(t)=\text{P}_j(1-t)^3+
+3\text{Q}_jt(1-t)^2\\
+\hspace{35mm}+3\text{R}_jt^2(1-t)
++\text{P}_{j+1}t^3$}
+\putnotes{63}{35}{\input{fig/bezier1.tex}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{節点だけを指定する滑らかなベジェ曲線}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{90}{3}{楕円を近似}
+\putnotes{90}{25}{\input{fig/bezier2ell.tex}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{90}{3}{楕円を近似}
+\putnotes{90}{25}{\input{fig/bezier2ell.tex}}
+\addtext{8}{\ten}{Catmul-Romスプライン(黒)}%
+\putnotes{90}{25}{\input{fig/bezier2c.tex}}
+\putnotee{81}{18.1}{\color{red}変化が大きい所でずれる}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{90}{3}{楕円を近似}
+\putnotes{90}{25}{\input{fig/bezier2ell.tex}}
+\addtext{8}{\ten}{Catmul-Romスプライン(黒)}%
+\putnotes{90}{25}{\input{fig/bezier2c.tex}}
+\addtext{8}{\ten}{大島スプライン(赤)}%
+\addtext{16}{}{文献\cite{oshima2054},\cite{oshima2016}}%
+\putnotes{90}{25}{\input{fig/bezier2o.tex}}
+\end{layer}
+
+
+\newslide{大島スプラインの利用}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotee{77}{-6}{文献\cite{20mcs}}
+\addtext[-3]{8}{(1)}{自由曲線}%
+{\normalsize%
+\addtext[-2]{16}{}{Ospline({\bf\tt"1",[A,B,C,D],["Num=30"]);}}%
+\addtext[-3]{16}{}{{\bf\tt m=Derivative("bzo1","x=C.x");}}%
+\addtext[-3]{16}{}{{\bf\tt fun=Assign("m*(x-C.x)+C.y",["m",m]);}}%
+\addtext[-3]{16}{}{{\bf\tt Plotdata("2",fun,"x",["Num=1"]);}}%
+\putnotese{73}{10}{\scalebox{0.6}{\input{fig/ospline.tex}}}
+}%
+\addtext[-2]{8}{(2)}{曲線の交点と数値積分}%
+{\normalsize
+\addtext[-2]{16}{}{{\bf\tt pt=Intersectcrvs("bzo1","gr2");}}%
+%%[1..4]::\addtext[-3]{20}{}{{\colorthin pt=[[-2.13,-1.76]];左側だけ}				}%
+\addtext[-3]{20}{}{pt=[[-2.13,-1.76]];{\color{red}左側だけ}}%
+\addtext{16}{}{pt={\color{red}Intersectcurves}{\bf\tt("bzo1","gr2");}}%
+\addtext[-3]{20}{}{pt=[-2.13,-1.76],[1.43,-0.88],[1.45,-0.88]}%
+\addtext[-3]{16}{}{ptx=pt\_1\_1;}%
+\addtext[-3]{16}{}{{\bf\tt S1=Integrate("bzo1",[ptx,C.x]);}}%
+\addtext[-3]{16}{}{S2=Integrate("gr2",[ptx,C.x]);}%
+\addtext[-3]{16}{}{S1-S2=4.15;}%
+\putnotese{80}{65}{\color{red}$\displaystyle\int y dx=\int y\frac{dx}{dt}dt$}%
+}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{大島スプラインの利用(デモ)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{自由曲線}%
+\addtext{8}{\ten}{曲線の交点}%
+\addtext{8}{\ten}{数値積分}%
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index2.html}}
+\putnotese{85}{40}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index2.html}}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy の外部呼び出し機能}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{ソースファイル(スクリプト)を引数とするバッチ処理}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{4}{\ten}{結果をテキストとして書き出して\ketcindy で利用}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(1)}{R}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{確率分布,ヒストグラム,箱ひげ図}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(2)}{Maxima\cite{17mcs}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{数式処理,解答のチェック,和算の解法}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(3)}{gcc\cite{17castr}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{曲面の陰線処理を高速化}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{ソースファイル(スクリプト)を引数とするバッチ処理}%
+\addtext{4}{\ten}{結果をテキストとして書き出して\ketcindy で利用}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(1)}{R}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{確率分布,ヒストグラム,箱ひげ図}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(2)}{Maxima\cite{17mcs}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{数式処理,解答のチェック,和算の解法}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(3)}{gcc\cite{17castr}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{曲面の陰線処理を高速化}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{ソースファイル(スクリプト)を引数とするバッチ処理}%
+\addtext{4}{\ten}{結果をテキストとして書き出して\ketcindy で利用}%
+\addtext{8}{(1)}{R}%
+\addtext{16}{・}{確率分布,ヒストグラム,箱ひげ図}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(2)}{Maxima\cite{17mcs}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{数式処理,解答のチェック,和算の解法}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(3)}{gcc\cite{17castr}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{曲面の陰線処理を高速化}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{ソースファイル(スクリプト)を引数とするバッチ処理}%
+\addtext{4}{\ten}{結果をテキストとして書き出して\ketcindy で利用}%
+\addtext{8}{(1)}{R}%
+\addtext{16}{・}{確率分布,ヒストグラム,箱ひげ図}%
+\addtext{8}{(2)}{Maxima\cite{17mcs}}%
+\addtext{16}{・}{数式処理,解答のチェック,和算の解法}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{(3)}{gcc\cite{17castr}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{曲面の陰線処理を高速化}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{ソースファイル(スクリプト)を引数とするバッチ処理}%
+\addtext{4}{\ten}{結果をテキストとして書き出して\ketcindy で利用}%
+\addtext{8}{(1)}{R}%
+\addtext{16}{・}{確率分布,ヒストグラム,箱ひげ図}%
+\addtext{8}{(2)}{Maxima\cite{17mcs}}%
+\addtext{16}{・}{数式処理,解答のチェック,和算の解法}%
+\addtext{8}{(3)}{gcc\cite{17castr}}%
+\addtext{16}{・}{曲面の陰線処理を高速化}%
+\end{layer}
+
+
+\newslide{Cによる曲面描画の高速化(デモ)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index3.html}}
+\putnotese{85}{30}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index3.html}}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy のまとめ(1)}
+
+\vspace*{18mm}
+
+\slidepage
+\begin{spacing}{0.5}
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy は\ketpic とCinderellaの連携ツール}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{Githubのページから無償でダウンロードできる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{大学や高専などの教員がいろいろな教材を作成}\adde%
+}%
+\setwidth{100}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{{\large 「KeTCindyは、Cinderella2を利用して図版を作るプラグインです。私はKeTpicの熱狂的なファンでしたが、とうとうKeTCindyに乗り換えることになりました」(矢野,奈良高専)}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[12]{16}{\pt}{{\large 立体図形についてOBJビューアのデータや3Dプリンタで実体モデルを作成(濱口,長野高専)}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[3]{16}{\pt}{{\large C呼び出し機能を用いて曲線・曲面論の教材を作成(野田,東邦大)}}%
+}%
+\end{layer}
+
+\end{spacing}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\begin{spacing}{0.5}
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy は\ketpic とCinderellaの連携ツール}\adde%
+\addtext{8}{\pnp}{Githubのページから無償でダウンロードできる}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{大学や高専などの教員がいろいろな教材を作成}\adde%
+}%
+\setwidth{100}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{{\large 「KeTCindyは、Cinderella2を利用して図版を作るプラグインです。私はKeTpicの熱狂的なファンでしたが、とうとうKeTCindyに乗り換えることになりました」(矢野,奈良高専)}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[12]{16}{\pt}{{\large 立体図形についてOBJビューアのデータや3Dプリンタで実体モデルを作成(濱口,長野高専)}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[3]{16}{\pt}{{\large C呼び出し機能を用いて曲線・曲面論の教材を作成(野田,東邦大)}}%
+}%
+\end{layer}
+
+\end{spacing}
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\begin{spacing}{0.5}
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy は\ketpic とCinderellaの連携ツール}\adde%
+\addtext{8}{\pnp}{Githubのページから無償でダウンロードできる}\adde%
+\addtext{8}{\pnp}{大学や高専などの教員がいろいろな教材を作成}\adde%
+\setwidth{100}%
+\addtext{16}{\pt}{{\large 「KeTCindyは、Cinderella2を利用して図版を作るプラグインです。私はKeTpicの熱狂的なファンでしたが、とうとうKeTCindyに乗り換えることになりました」(矢野,奈良高専)}}%
+\addtext[12]{16}{\pt}{{\large 立体図形についてOBJビューアのデータや3Dプリンタで実体モデルを作成(濱口,長野高専)}}%
+\addtext[3]{16}{\pt}{{\large C呼び出し機能を用いて曲線・曲面論の教材を作成(野田,東邦大)}}%
+\end{layer}
+
+\end{spacing}
+
+\newslide{\ketcindy のまとめ(2)}
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\TeX を日常的に利用している教員にとっては，プリント教材やスライドを容易に作成できるツール}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{しかし，\TeX をあまり用いないが，教育経験を活かした教材の作成に意欲的な教員も少なくない}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{また，学生にとっては配付プリントの利用(書き込みなど)はできるがやや受動的}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{(5)の教員や学生自身が教材を主体的に作成できるためのアプリの開発を模索するようになった}\adde%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi \ifnum 1=0
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\TeX を日常的に利用している教員にとっては，プリント教材やスライドを容易に作成できるツール}\adde%
+\addtext[8]{8}{\pnp}{しかし，\TeX をあまり用いないが，教育経験を活かした教材の作成に意欲的な教員も少なくない}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{また，学生にとっては配付プリントの利用(書き込みなど)はできるがやや受動的}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{(5)の教員や学生自身が教材を主体的に作成できるためのアプリの開発を模索するようになった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\TeX を日常的に利用している教員にとっては，プリント教材やスライドを容易に作成できるツール}\adde%
+\addtext[8]{8}{\pnp}{しかし，\TeX をあまり用いないが，教育経験を活かした教材の作成に意欲的な教員も少なくない}\adde%
+\addtext[8]{8}{\pnp}{また，学生にとっては配付プリントの利用(書き込みなど)はできるがやや受動的}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{(5)の教員や学生自身が教材を主体的に作成できるためのアプリの開発を模索するようになった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\TeX を日常的に利用している教員にとっては，プリント教材やスライドを容易に作成できるツール}\adde%
+\addtext[8]{8}{\pnp}{しかし，\TeX をあまり用いないが，教育経験を活かした教材の作成に意欲的な教員も少なくない}\adde%
+\addtext[8]{8}{\pnp}{また，学生にとっては配付プリントの利用(書き込みなど)はできるがやや受動的}\adde%
+\addtext[8]{8}{\pnp}{(5)の教員や学生自身が教材を主体的に作成できるためのアプリの開発を模索するようになった}\adde%
+\end{layer}
+
+
+\mainslide{\ketcindy JSの開発}
+
+
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{開発経緯}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{学生自身が対話的に動かせる教材もほしい}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{2016年Cindy開発グループがCindyJSを公開[26]}%%\cite{cindyjs}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{Cindyにほぼ互換なWebフレームワーク}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{幾何要素やアニメーションも利用可}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{テキスト入出力も可能(Editable text)}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{\ketcindy コマンドが使えるようにした\cite{19rims7}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{CindyJSのHTMLファイルを読み込む}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{\ketcindy の関数を探し再帰的に埋め込む}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{学生自身が対話的に動かせる教材もほしい}%
+\addtext{8}{\ten}{2016年Cindy開発グループがCindyJSを公開[26]}%%\cite{cindyjs}}%
+\addtext{16}{・}{Cindyにほぼ互換なWebフレームワーク}%
+\addtext{16}{・}{幾何要素やアニメーションも利用可}%
+\addtext{16}{・}{テキスト入出力も可能(Editable text)}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{\ketcindy コマンドが使えるようにした\cite{19rims7}}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{CindyJSのHTMLファイルを読み込む}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{\ketcindy の関数を探し再帰的に埋め込む}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{学生自身が対話的に動かせる教材もほしい}%
+\addtext{8}{\ten}{2016年Cindy開発グループがCindyJSを公開[26]}%%\cite{cindyjs}}%
+\addtext{16}{・}{Cindyにほぼ互換なWebフレームワーク}%
+\addtext{16}{・}{幾何要素やアニメーションも利用可}%
+\addtext{16}{・}{テキスト入出力も可能(Editable text)}%
+\addtext{8}{\ten}{\ketcindy コマンドが使えるようにした\cite{19rims7}}%
+\addtext{16}{・}{CindyJSのHTMLファイルを読み込む}%
+\addtext{16}{・}{\ketcindy の関数を探し再帰的に埋め込む}%
+\end{layer}
+
+
+\newslide{\ketcindy JSによる作図の流れ}
+
+\vspace*{18mm}
+
+\slidepage
+
+\begin{layer}{120}{0}
+\putnotes{63}{5}{\small\input{fig/ketcindyjscycle}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy JS(デモ)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index4.html}}%
+\putnotese{85}{30}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index4.html}}}
+%%1:40
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{\ketcindy JSの作成例}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[-2]{8}{\ten}{\TeX コンパイラは不要}%
+\addtext{16}{・}{CindyJSはKaTeX v0.8をサポート}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{ketcindy home(ketcindy sample)に多くのサンプルがある}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{・}{最速降下線\cite{17iccsa1}}%
+}%
+\addtext{20}{}{\small }%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{・}{バーゼル問題{\normalsize $\displaystyle \sum_{n=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}\Rightarrow \sum_{n=1}^{\infty}\frac{1}{\pi k^2}=\frac{\pi}{6}$}\cite{basel}}%
+}%
+%%[1,2]::\addtext{20}{}{\small }%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[-2]{8}{\ten}{\TeX コンパイラは不要}%
+\addtext{16}{・}{CindyJSはKaTeX v0.8をサポート}%
+\addtext{8}{\ten}{ketcindy home(ketcindy sample)に多くのサンプルがある}%
+\addtext[8]{16}{・}{最速降下線\cite{17iccsa1}}%
+\addtext{20}{}{\small \url{https://s-takato.github.io/ketcindysample/s16ketjsmisc/offline/s1611brachistchrone2jsoffL.html}}%
+\addtext{16}{・}{バーゼル問題{\normalsize $\displaystyle \sum_{n=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}\Rightarrow \sum_{n=1}^{\infty}\frac{1}{\pi k^2}=\frac{\pi}{6}$}\cite{basel}}%
+\addtext[4]{20}{}{\small \url{https://s-takato.github.io/ketcindysample/misc/offline/basel4mainoff.html}}%
+\end{layer}
+
+
+\newslide{\ketcindy JSのまとめ}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy の主目的は\TeX 文書の挿図の作成}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{\ketcindy JSはHTMLを作成することが目的}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{\TeX に慣れていない教員や学生でも面白い教材を作成することができる}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{\ten}{沼津高専生のKeTCindy 研究会が自主的に活動}%
+}%
+\setwidth{100}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{24}{}{中谷財団主催の国際学会で，KETCindy(JS)で作成したHTML教材について発表，最優秀賞を受賞(2024年11月)}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy の主目的は\TeX 文書の挿図の作成}\adde%
+\addtext{8}{\pnp}{\ketcindy JSはHTMLを作成することが目的}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{\TeX に慣れていない教員や学生でも面白い教材を作成することができる}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{\ten}{沼津高専生のKeTCindy 研究会が自主的に活動}%
+}%
+\setwidth{100}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{24}{}{中谷財団主催の国際学会で，KETCindy(JS)で作成したHTML教材について発表，最優秀賞を受賞(2024年11月)}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy の主目的は\TeX 文書の挿図の作成}\adde%
+\addtext{8}{\pnp}{\ketcindy JSはHTMLを作成することが目的}\adde%
+\addtext{8}{\pnp}{\TeX に慣れていない教員や学生でも面白い教材を作成することができる}%
+\addtext[8]{16}{\ten}{沼津高専生のKeTCindy 研究会が自主的に活動}%
+\setwidth{100}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{24}{}{中谷財団主催の国際学会で，KETCindy(JS)で作成したHTML教材について発表，最優秀賞を受賞(2024年11月)}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{\ketcindy の主目的は\TeX 文書の挿図の作成}\adde%
+\addtext{8}{\pnp}{\ketcindy JSはHTMLを作成することが目的}\adde%
+\addtext{8}{\pnp}{\TeX に慣れていない教員や学生でも面白い教材を作成することができる}%
+\addtext[8]{16}{\ten}{沼津高専生のKeTCindy 研究会が自主的に活動}%
+\setwidth{100}%
+\addtext{24}{}{中谷財団主催の国際学会で，KETCindy(JS)で作成したHTML教材について発表，最優秀賞を受賞(2024年11月)}%
+\end{layer}
+
+
+\newslide{\ketcindy JSのまとめ}
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{現在のところ，数式処理を用いることはできない}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\ten}{\ketcindy のMaxima呼び出しで計算された結果をHTMLに埋め込むことは可能}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{\ten}{JavaScriptで動くAlgebriteなどの利用が考えられる(今後の課題)}%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi \ifnum 1=1
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{現在のところ，数式処理を用いることはできない}\adde%
+\addtext{16}{\ten}{\ketcindy のMaxima呼び出しで計算された結果をHTMLに埋め込むことは可能}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{\ten}{JavaScriptで動くAlgebriteなどの利用が考えられる(今後の課題)}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\setcounter{enm}{4}
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{現在のところ，数式処理を用いることはできない}\adde%
+\addtext{16}{\ten}{\ketcindy のMaxima呼び出しで計算された結果をHTMLに埋め込むことは可能}%
+\addtext[8]{16}{\ten}{JavaScriptで動くAlgebriteなどの利用が考えられる(今後の課題)}%
+\end{layer}
+
+
+\mainslide{\ketcindy による和算の解法}
+
+
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{MNR法}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{和算(算額)の問題は，結果は美しいが
+計算が複雑なものも多い}%
+\settext{24}{8}{70}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{数式処理で解くことを試みた}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{三角形が含まれる問題については，根号が入る連立方程式になって，数式処理ではまず解けない}%
+}%
+%%\settext{48}{8}{115}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[16]{8}{\ten}{そこで，MNR法を考案した}%%\cite{24scss}}%
+}%
+\setwidth{110}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{Maximaと\ketcindy を用いて，より対話的にした\cite{24scss}}%
+}%
+\putnotese{83}{22}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{和算(算額)の問題は，結果は美しいが
+計算が複雑なものも多い}%
+\settext{24}{8}{70}%
+\addtext{8}{\ten}{数式処理で解くことを試みた}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{三角形が含まれる問題については，根号が入る連立方程式になって，数式処理ではまず解けない}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[16]{8}{\ten}{そこで，MNR法を考案した}%%\cite{24scss}}%
+}%
+\setwidth{110}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{Maximaと\ketcindy を用いて，より対話的にした\cite{24scss}}%
+}%
+\putnotese{83}{22}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{和算(算額)の問題は，結果は美しいが
+計算が複雑なものも多い}%
+\settext{24}{8}{70}%
+\addtext{8}{\ten}{数式処理で解くことを試みた}%
+\addtext{8}{\ten}{三角形が含まれる問題については，根号が入る連立方程式になって，数式処理ではまず解けない}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[16]{8}{\ten}{そこで，MNR法を考案した}%%\cite{24scss}}%
+}%
+\setwidth{110}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{Maximaと\ketcindy を用いて，より対話的にした\cite{24scss}}%
+}%
+\putnotese{83}{22}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{和算(算額)の問題は，結果は美しいが
+計算が複雑なものも多い}%
+\settext{24}{8}{70}%
+\addtext{8}{\ten}{数式処理で解くことを試みた}%
+\addtext{8}{\ten}{三角形が含まれる問題については，根号が入る連立方程式になって，数式処理ではまず解けない}%
+\addtext[16]{8}{\ten}{そこで，MNR法を考案した}%%\cite{24scss}}%
+\setwidth{110}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{Maximaと\ketcindy を用いて，より対話的にした\cite{24scss}}%
+}%
+\putnotese{83}{22}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext[2]{8}{\ten}{和算(算額)の問題は，結果は美しいが
+計算が複雑なものも多い}%
+\settext{24}{8}{70}%
+\addtext{8}{\ten}{数式処理で解くことを試みた}%
+\addtext{8}{\ten}{三角形が含まれる問題については，根号が入る連立方程式になって，数式処理ではまず解けない}%
+\addtext[16]{8}{\ten}{そこで，MNR法を考案した}%%\cite{24scss}}%
+\setwidth{110}%
+\addtext{8}{\ten}{Maximaと\ketcindy を用いて，より対話的にした\cite{24scss}}%
+\putnotese{83}{22}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\end{layer}
+
+
+\newslide{MNR法による諸量の表現}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{83}{25}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\addtext[-2]{8}{\ten}{$m=\tan\frac{B}{2},n=\tan\frac{C}{2}$,内接円の半径$r$}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{三角形の諸量は$m,n,r$の有理式で表される}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{vtxL$=\mathrm{B}(-\frac{r}{m},\ -r)$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{vtxR$=\mathrm{C}(\frac{r}{n},\ -r)$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{edgB$=\mathrm{BC}=\frac{r}{m}+\frac{r}{n}$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{edgL$=\mathrm{AB}=\frac{r(1 + m^2)}{m(1-nm)}$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{角の演算}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{補角supA(t)$=\tan\frac{\pi-\alpha}{2}=\frac{1}{t}$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{和plusA(t1,t2)$=\frac{t1+t2}{1-t1\cdot t2}$}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{83}{25}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\addtext[-2]{8}{\ten}{$m=\tan\frac{B}{2},n=\tan\frac{C}{2}$,内接円の半径$r$}%
+\addtext{8}{\ten}{三角形の諸量は$m,n,r$の有理式で表される}%
+\addtext{16}{}{vtxL$=\mathrm{B}(-\frac{r}{m},\ -r)$}%
+\addtext{16}{}{vtxR$=\mathrm{C}(\frac{r}{n},\ -r)$}%
+\addtext{16}{}{edgB$=\mathrm{BC}=\frac{r}{m}+\frac{r}{n}$}%
+\addtext{16}{}{edgL$=\mathrm{AB}=\frac{r(1 + m^2)}{m(1-nm)}$}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\ten}{角の演算}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{補角supA(t)$=\tan\frac{\pi-\alpha}{2}=\frac{1}{t}$}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{}{和plusA(t1,t2)$=\frac{t1+t2}{1-t1\cdot t2}$}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{83}{25}{\scalebox{0.75}{\input{fig/putT.tex}}}
+\addtext[-2]{8}{\ten}{$m=\tan\frac{B}{2},n=\tan\frac{C}{2}$,内接円の半径$r$}%
+\addtext{8}{\ten}{三角形の諸量は$m,n,r$の有理式で表される}%
+\addtext{16}{}{vtxL$=\mathrm{B}(-\frac{r}{m},\ -r)$}%
+\addtext{16}{}{vtxR$=\mathrm{C}(\frac{r}{n},\ -r)$}%
+\addtext{16}{}{edgB$=\mathrm{BC}=\frac{r}{m}+\frac{r}{n}$}%
+\addtext{16}{}{edgL$=\mathrm{AB}=\frac{r(1 + m^2)}{m(1-nm)}$}%
+\addtext{8}{\ten}{角の演算}%
+\addtext{16}{}{補角supA(t)$=\tan\frac{\pi-\alpha}{2}=\frac{1}{t}$}%
+\addtext{16}{}{和plusA(t1,t2)$=\frac{t1+t2}{1-t1\cdot t2}$}%
+\end{layer}
+
+
+\newslide{MaximaのMNRパッケージ}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{基本コマンド}
+\addtext{12}{}{\Ltab{37mm}{putT(m,n,r)}三角形をおく}
+\addtext{12}{}{\Ltab{37mm}{slideT(p1,p2)}p1がp2に一致するように平行移動}
+\addtext{12}{}{\Ltab{37mm}{rotateT(m,p)}pを中心に (m)だけ回転}
+%%\settext{36}{8}{105}
+%%\settext{44}{8}{115}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{基本コマンド}
+\addtext{12}{}{\Ltab{37mm}{putT(m,n,r)}三角形をおく}
+\addtext{12}{}{\Ltab{37mm}{slideT(p1,p2)}p1がp2に一致するように平行移動}
+\addtext{12}{}{\Ltab{37mm}{rotateT(m,p)}pを中心に (m)だけ回転}
+\addtext{20}{}{\color{blue}回転は$\theta$の正弦と余弦，よって$\tan\frac{\theta}{2}$で表される}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{基本コマンド}
+\addtext{12}{}{\Ltab{37mm}{putT(m,n,r)}三角形をおく}
+\addtext{12}{}{\Ltab{37mm}{slideT(p1,p2)}p1がp2に一致するように平行移動}
+\addtext{12}{}{\Ltab{37mm}{rotateT(m,p)}pを中心に (m)だけ回転}
+\addtext{20}{}{\color{blue}回転は$\theta$の正弦と余弦，よって$\tan\frac{\theta}{2}$で表される}
+\addtext{4}{\ten}{その他の汎用関数，式の簡単化の関数などを組み込み}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{基本コマンド}
+\addtext{12}{}{\Ltab{37mm}{putT(m,n,r)}三角形をおく}
+\addtext{12}{}{\Ltab{37mm}{slideT(p1,p2)}p1がp2に一致するように平行移動}
+\addtext{12}{}{\Ltab{37mm}{rotateT(m,p)}pを中心に (m)だけ回転}
+\addtext{20}{}{\color{blue}回転は$\theta$の正弦と余弦，よって$\tan\frac{\theta}{2}$で表される}
+\addtext{4}{\ten}{その他の汎用関数，式の簡単化の関数などを組み込み}
+\addtext{4}{\ten}{Maximaのコマンド列の最初にMxbatch({\bf\tt"mnr"})をおく}
+\addtext{30}{}{文献\cite{24scss}}
+\end{layer}
+
+
+\newslide{Japanese Theorem (II)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotes{65}{12}{\includegraphics[bb=0.00 0.00 1482.00 548.00,width=110mm]{fig/hakusan.png}}
+\putnotese{20}{55}{享和3年$=1803$年$=$癸亥}
+\putnotese{8}{2}{\color{blue}\small 上垣渉,Japanese Theoremの起源と歴史,三重大学教育学部研究紀要52,23-45, 2001}
+\putnotese{8}{7}{\color{blue}\small 涌田和芳,外川一仁,新潟白山神社の紛失算額,長岡高専研究紀要,47,7-16,2011}
+\setwidth{56}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{3}{3}{\includegraphics[bb=0.00 0.00 377.01 449.02,height=75mm]{fig/jpnth2org.png}}
+\setwidth{56}
+\addtext{67}{問}{\normalsize 図のように三角形の中に全円，及び3線を隔てて4円(元,利,貞,亨)を入れる．ここで全は三角形に接し，元,利,貞は三角形の2辺と3線に接し，亨は3線に接する．全径が1寸のとき元,亨,利,貞の円径の和はいくらか}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{3}{3}{\includegraphics[bb=0.00 0.00 377.01 449.02,height=75mm]{fig/jpnth2org.png}}
+\setwidth{56}
+\addtext{67}{問}{\normalsize 図のように三角形の中に全円，及び3線を隔てて4円(元,利,貞,亨)を入れる．ここで全は三角形に接し，元,利,貞は三角形の2辺と3線に接し，亨は3線に接する．全径が1寸のとき元,亨,利,貞の円径の和はいくらか}
+\addtext[26]{67}{答}{\normalsize 4円径の和は2寸}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[115]
+
+\begin{layer}{120}{0}
+\putnotese{3}{3}{\includegraphics[bb=0.00 0.00 377.01 449.02,height=75mm]{fig/jpnth2org.png}}
+\setwidth{56}
+\addtext{67}{問}{\normalsize 図のように三角形の中に全円，及び3線を隔てて4円(元,利,貞,亨)を入れる．ここで全は三角形に接し，元,利,貞は三角形の2辺と3線に接し，亨は3線に接する．全径が1寸のとき元,亨,利,貞の円径の和はいくらか}
+\addtext[26]{67}{答}{\normalsize 4円径の和は2寸}
+\addtext{67}{術}{\normalsize 全を2倍すると4円径の和を得る}
+\end{layer}
+
+
+\newslide{Japanese Theorem IIの証明(デモ)}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index5.html}}\adde%
+\putnotese{85}{15}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index5.html}}}
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index5.html}}\adde%
+\putnotese{85}{15}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index5.html}}}
+\putnotese{0}{25}{\includegraphics[bb=0.00 0.00 377.01 449.02,height=50mm]{fig/jpnth2org.png}}
+\setwidth{85}
+\addtext[28]{40}{\pt}{3線を隔てて4円(元,利,貞,亨)を入れる．ここで元,利,貞は三角形の2辺と3線に接し，亨は3線に接する}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\ten}{\url{https://s-takato.github.io/specialclass/shibaura25/index5.html}}\adde%
+\putnotese{85}{15}{\scalebox{1.25}{\qrcode{https://s-takato.github.io/specialclass/shibaura25/index5.html}}}
+\putnotese{0}{25}{\includegraphics[bb=0.00 0.00 377.01 449.02,height=50mm]{fig/jpnth2org.png}}
+\setwidth{85}
+\addtext[28]{40}{\pt}{3線を隔てて4円(元,利,貞,亨)を入れる．ここで元,利,貞は三角形の2辺と3線に接し，亨は3線に接する}
+\addtext[16]{40}{\pt}{{\color{red}5角形に接する条件が要る}}
+\end{layer}
+
+
+\newslide{MNR法のまとめ}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi \ifnum 1=1
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{MaximaのMNRライブラリは，\ketcindy との組み合わせで対話性を向上}\adde%
+\addtext[8]{8}{\pnp}{和算は，日本の数学史を語る上で不可欠の話題}\adde%
+\addtext{8}{\pnp}{実際に解くには相当の知識と計算力が必要}\adde%
+\addtext{8}{\pnp}{数式処理の助けを借りたとしても，立式は必要}\adde%
+\addtext{8}{\pnp}{自力で解くことで興味と関心の向上が期待される}\adde%
+\addtext{8}{\pnp}{授業等においてMNR法を用いるとき，導入として，例えば円周角の定理の証明なども考えられる}\adde%
+\addtext[8]{8}{\pnp}{空間図形(四面体など)は今後の課題}\adde%
+\end{layer}
+
+
+\mainslide{結論}
+
+
+\slidepage[m]
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{\ketcindy}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{再利用が容易}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{再利用が容易}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{再利用が容易}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+\addtext{16}{\pt}{再利用が容易}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+\addtext{16}{\pt}{再利用が容易}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{Cindyの幾何要素とCindyScriptを利用}\adde%
+\addtext{8}{\pnp}{\TeX 文書(教材)に挿入する図を対話的に作成}\adde%
+\addtext{8}{\pnp}{バッチ処理でCindyから\TeX コンパイラ，確認用PDF作成までを連続的に実行}\adde%
+\addtext[8]{8}{\pnp}{図のCindyと\TeX ファイルは本体と別に保存}\adde%
+\addtext{16}{\pt}{再利用が容易}%
+\addtext{8}{\pnp}{外部呼び出しが利用できる(MNR法など)}\adde%
+\addtext{8}{\pnp}{フォルダ構成の整備(Preining)やTeXLiveのサブセット版KeTTeXをリリース(山本)してもらった}\adde%
+\end{layer}
+
+
+\newslide{\ketcindy JS}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{対話的なHTML教材作成に有用}\adde%
+\addtext{16}{\pt}{\TeX に不慣れでも多様な教材を作成できる}%
+\addtext{16}{\pt}{高専用教科書のWebコンテンツ}%
+\addtext[-1]{24}{}{\small\url{https://www.dainippon-tosho.co.jp/college_math/index.html}}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{\ketcindy JSにより，数式を含む課題データの送受システムKeTLTSを開発している\cite{24scss}}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{16}{\pt}{\TeX をベースとした簡易数式表現ルールで送信}%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{16}{\pt}{受信データをKaTeXで2次元数式に直し画面表示}%
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{対話的なHTML教材作成に有用}\adde%
+\addtext{16}{\pt}{\TeX に不慣れでも多様な教材を作成できる}%
+\addtext{16}{\pt}{高専用教科書のWebコンテンツ}%
+\addtext[-1]{24}{}{\small\url{https://www.dainippon-tosho.co.jp/college_math/index.html}}%
+\addtext{8}{\pnp}{\ketcindy JSにより，数式を含む課題データの送受システムKeTLTSを開発している\cite{24scss}}\adde%
+\addtext[8]{16}{\pt}{\TeX をベースとした簡易数式表現ルールで送信}%
+\addtext{16}{\pt}{受信データをKaTeXで2次元数式に直し画面表示}%
+\end{layer}
+
+
+\newslide{プログラミングと教育利用}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数学ソフトウェアはプログラミングによってより強力な教育ツールとなる}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{ライブラリ化することで汎用性が高められる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{{分岐・反復(・関数定義)}が使えるようになれば，作りたい図をいろいろ作成することができる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{動的幾何は独特な動きをする(画面の状態変化があると自動的に最初に戻って変数が初期化される)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{生成AIの応用によりプログラミングをより簡単にする可能性もあるが，今後の課題である}%
+}%
+\end{layer}
+
+%%new::main end
+%%\fi \ifnum 1=0
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数学ソフトウェアはプログラミングによってより強力な教育ツールとなる}\adde%
+\addtext[8]{8}{\pnp}{ライブラリ化することで汎用性が高められる}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\pnp}{{分岐・反復(・関数定義)}が使えるようになれば，作りたい図をいろいろ作成することができる}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{動的幾何は独特な動きをする(画面の状態変化があると自動的に最初に戻って変数が初期化される)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{生成AIの応用によりプログラミングをより簡単にする可能性もあるが，今後の課題である}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数学ソフトウェアはプログラミングによってより強力な教育ツールとなる}\adde%
+\addtext[8]{8}{\pnp}{ライブラリ化することで汎用性が高められる}\adde%
+\addtext{8}{\pnp}{{\color{red}分岐・反復(・関数定義)}が使えるようになれば，作りたい図をいろいろ作成することができる}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{動的幾何は独特な動きをする(画面の状態変化があると自動的に最初に戻って変数が初期化される)}\adde%
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{生成AIの応用によりプログラミングをより簡単にする可能性もあるが，今後の課題である}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数学ソフトウェアはプログラミングによってより強力な教育ツールとなる}\adde%
+\addtext[8]{8}{\pnp}{ライブラリ化することで汎用性が高められる}\adde%
+\addtext{8}{\pnp}{{\color{red}分岐・反復(・関数定義)}が使えるようになれば，作りたい図をいろいろ作成することができる}\adde%
+\addtext[8]{8}{\pnp}{動的幾何は独特な動きをする(画面の状態変化があると自動的に最初に戻って変数が初期化される)}\adde%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext[8]{8}{\pnp}{生成AIの応用によりプログラミングをより簡単にする可能性もあるが，今後の課題である}%
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{8}{\pnp}{数学ソフトウェアはプログラミングによってより強力な教育ツールとなる}\adde%
+\addtext[8]{8}{\pnp}{ライブラリ化することで汎用性が高められる}\adde%
+\addtext{8}{\pnp}{{\color{red}分岐・反復(・関数定義)}が使えるようになれば，作りたい図をいろいろ作成することができる}\adde%
+\addtext[8]{8}{\pnp}{動的幾何は独特な動きをする(画面の状態変化があると自動的に最初に戻って変数が初期化される)}\adde%
+\addtext[8]{8}{\pnp}{生成AIの応用によりプログラミングをより簡単にする可能性もあるが，今後の課題である}%
+\end{layer}
+
+
+\newslide{謝辞}
+
+\vspace*{18mm}
+
+\slidepage
+\vspace{3mm}
+
+\begin{spacing}{0.72}
+{\normalsize
+工学部土木工学課程教授の牧下英世先生，工学部情報・通信工学課程教授の井尻敬先生，システム理工学部数理科学科教授の竹内慎吾先生，工学部電気電子工学課程教授の小池義和先生，日本大学生物資源科学部教授の濱田龍義先生，羽衣国際大学客員教授の高橋正先生には，本論文を執筆する上で並々ならぬご指導とご助言をいただいた．名古屋大学教養教育院教授の中村泰之先生，Cantabria大学教授のAkemi Galvez先生とAndres Iglesias先生には，KeTpicの開発当初よりMapleをはじめ関連ソフトなどについて多くのことを教えていただいた．東京大学大学院数理科学研究科名誉教授の大島利雄先生には，大島ベジェ曲線やその数値積分での利用，及び日本の定理などに関連して，多くの有意義なご助言をいただいた．日本大学理工学部特任教授の平田典子先生には，数学特に数論の深い内容に関して教えていただくとともに，図に適している題材についての貴重な示唆をいただいた．
+Potsdam大学教授のUlrich Kortenkamp先生には，Cinderellaの利用について多くのサポートとご助言をいただいた．
+}
+\end{spacing}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{謝辞}
+
+\vspace*{18mm}
+
+\slidepage
+\vspace{3mm}
+
+\begin{spacing}{0.72}
+{\normalsize
+山口大学教育学部教授の北本卓也先生には，\ketcindy JSのオフラインでの利用法などを教えていただいた．
+TeXLive開発グループのNorbert Preining氏とGreen Cherry 代表の山本宗宏氏には，\ketcindy のライブラリ整理，CTANへの登録，Githubへの登録など，枚挙にいとまないご助力をいただいた
+Cinderella Japanの入谷昭先生には，\ketcindy の開発にあたって， Cinderellaについての
+ご教授と\ketcindy のマニュアル作成の多大なご協力をいただいた．
+\ketcindy 開発グループの下関市立大学名誉教授の大内俊二先生，東邦大学薬学部教授の金子真隆先生，元工学院大学准教授の北原清志先生，弓削商船高専准教授の久保康幸先生，
+長野高専名誉教授の小林茂樹先生，沼津高専准教授の鈴木正樹先生，福島高専教授の西浦孝治先生，都城高専名誉教授の野町俊文先生，長野高専教授の濱口直樹先生，長野高専名誉教授の前田善文先生，明石高専教授の松宮篤先生，木更津高専教授の山下哲先生，群馬高専教授の碓氷久先生には，プログラムやマニュアルの作成およびバグ修正など
+で多くの協力をしていただいた．
+\noindent
+これらの方々に深甚なる感謝を申し上げる．
+}
+\end{spacing}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{}
+
+\vspace*{18mm}
+
+\slidepage
+\textinit[110]
+
+\begin{layer}{120}{0}
+\addtext[5]{16}{}{\huge ご清聴ありがとうございました}
+\addtext[25]{40}{}{\includegraphics[bb=0.00 0.00 310.01 48.00,width=80mm]{fig/sdgexp.png}}
+\eraser[0]{55}{56}{60}{5}
+\end{layer}
+
+\newpage
+\begin{thebibliography}{999}
+{\small
+\bibitem{scilab}Scilab \url{https://www.scilab.org}
+\bibitem{Rprog}
+U.リゲス, Rの基礎とプログラミング技法, シュプリンガージャパン, 2006
+\bibitem{LGC}
+M.Goossens, LATEXグラフィックスコンパニオン, アスキーアジソンウェスレイ, 2000
+\bibitem{fujita}藤田眞作, LATEX2$\epsilon$コマンドブック, ＳＢクリエイティブ, 2003
+\bibitem{ikuta}生田誠三, LATEX2e文典, 朝倉書店, 1996
+\bibitem{okumura}奥村晴彦, LaTeX美文書作成入門, 技術評論社, 1991
+\bibitem{maple}Maple V Learning Guide: for Release 5, Waterloo Maple Incorporated, 1997
+\bibitem{cindy2}J R-Gebert, U Kortenkamp, The Cinderella.2 Manual, 2006
+\bibitem{matuzaki}松崎利雄, 栃木県算額集, 1969
+\bibitem{hirayama}平山諦, 千葉県の算額, 成田山資料館, 1970
+\bibitem{fukagawa}深川英俊,ダン・ペドー , 日本の幾何---何題解けますか, 1991
+\bibitem{uegaki}上垣渉, Japanese Theoremの起源と歴史, 三重大学教育学部研究紀要.自然科学/三重大学教育学部編52, 23-45, 2001
+\bibitem{wakuta2011}涌田和芳, 外川一仁, 新潟白山神社の紛失算額, 長岡高専研究紀要, 47巻, 2011
+\bibitem{icms2006}M.Sekiguchi, S.Yamashita, S.Takato, Development of a Maple Macro Package Suitable for Drawing Fine KETPIC-Pictures, Lecture Notes in Computer Science 2006, 24-34, Springer
+\bibitem{nissuu06}山下哲, 関口昌由, 高遠節夫, Mapleによる図形描画用TEXファイルの作成について, 日本数学教育学会高専大学部会論文誌 13巻1号, 31-40, 2006
+\bibitem{nissuu07}山下哲, 阿部孝之, 金子真隆, 関口昌由, 田所勇樹, 深澤謙次, 高遠節夫, KETpicの改良と教育利用, 日本数学教育学会高専大学部会論文誌 14巻1号, 51-60, 2007
+\bibitem{icms08}M.Sekiguchi, K.Kitahara, K.Fukazawa, S.Takato, A simple method of the TeX surface drawing suitable for teaching materials with the aid of CAS, Lecture Notes in Computer Science 5102, 35-45, Springer, 2008
+\bibitem{iccsa08}M.Sekiguchi, T.Abe, H.Izumi, M.Kaneko, S.Yamashita, K.Fukazawa, K. Kitahara, S.Takato, A simple method of the TeX surface drawing suitable for teaching materials with the aid of CAS, Selected Papers of 6 International Conference on Computational Science and Application, IEEE, 277-283, 2008
+\bibitem{rims09}金子真隆, 阿部孝之, 関口昌由, 山下哲, 高遠節夫, KETpicによる曲面描画と教育利用, 数理解析研究所講究録1624, 1-10, 2009
+\bibitem{nissuu09}Abe Takayuki, K.Fukazawa, M.Kaneko, K.Kitahara,
+H.Koshikawa, S.Yamashita, S.Takato, Migration of KETpic to Scilab and Comparison of Scilab with other CASs, 日本数学教育学会高専大学部会論文誌 16巻1号, 97-106, 2009
+\bibitem{atcm10}S.Ouchi, S.Takato, High-Quality Statistical Plots in LaTeX for Mathematics Education Using an R-based Ketpic Plug-Ins, Proceeding of the 15th ATCM Conference-Kuala Lumpur, 265-275, 2010
+\bibitem{ejm11}M,Kaneko,,S.Takato, The effective use of LATEX drawing in linear algebra,
+The Electronic Journal of Mathematics and Technology, vol.5-2, 129-148, 2011
+\bibitem{15rims1}高遠節夫, KETCindyの開発について, 数理解析研究所講究録1978,　173-182, 2015
+\bibitem{oshima2054}大島利雄, ベジェ曲線による曲線近似とその応用,数理解析研究所講究録2054, 96-104, 2017
+\bibitem{oshima2016}
+Oshima T., Drawing Curves, Mathematical Progress in Expressive Image Synthesis III,
+edited by Y. Dobashi and H. Ochiai,
+Mathematics for Industry, 24, 95-106, Springer, 2016
+\bibitem{cindyjs} Gagern M., Kortenkamp U., Gebart J., Strobel M., CindyJS--Mathematical Vsisualization on Modern Devices--, ICMS 2016, LNCS 9725, 319--334, Springer, 2016
+\bibitem{19rims7}高遠節夫, KeTCindyJSの開発と教育利用, 数理解析研究所講究録 2142, 123-132, 2019
+\bibitem{19castr}S.Takato, A.Vallejo, A.Prokopenya, KeTCindy/KeTCindyJS -- a bridge between teachers and students, Computer Algebra Systems in Teaching and Research,ISSN 2300-7397.VIII,132-146, 2019
+\bibitem{20mcs}S.Takato, J.Vallejo, Using Oshima Splines to Produce Accurate Numerical Results and High Quality Graphical Output, Mathematics in Computer Science 14 (2), 399--413, Springer, 2020
+\bibitem{16icms2}S.Takato, What is and How to Use KeTCindy-Linkage Between Dynamic Geometry Software and Graphics Capabilities-, Mathematical Software-ICMS2016, 371--379, 2016
+\bibitem{17iccsa1}S.Takato, Brachistochrone Problem as Teaching Material-Application of KeTCindy with Maxima-, ICCSA, 251-261, Springer, 2017
+\bibitem{17rims2}高遠節夫, TEXによる教材作成環境の充実, 数理解析研究所講究録2022, 118-127, 2017
+\bibitem{17mcs}S.Takato, A.McAndrew, J.Vallejo, M.Kaneko, Collaborative Use of KeTCindy and Free Computer Algebra Systems,Mathematics in Computer Science 11 (3-4), 503-514,Springer,2017
+\bibitem{17castr}S.Takato, A.Vallejo, Interfacing free computer algebra systems and C with KETCindy, Computer Algebra Systems in Teaching and Research, ISSN 2300-7397.VI, 172-185, 2017
+\bibitem{18rims1}西浦孝治,高遠節夫, KetCindyによる数学教材の作成とその教育効果の検証,数理解析研究所講究録2067 177-182, 2018
+\bibitem{18rims2}野田健夫, 高遠節夫, KeTCindyのC呼び出し機能と曲線・曲面論の教材の作成, 数理解析研究所講究録2067, 132-141, 2018
+\bibitem{21rims3}高遠節夫, 北本卓也, 濱口直樹, テキストをベースとしたLMSの利用とHTML教材の作成, 数理解析研究所講究録2208, 58-67, 2021
+\bibitem{basel}細谷大輔, 岡田裕紀, 鈴木雄大, Basel problem visualized by GeoGebra, 城西大学数学科数学教育紀要2巻, 1-7, 2021
+\bibitem{21rims2}高遠節夫, 濱口直樹, Web利用の理数教育に役立つ数式送受システム開発, 数理解析研究所講究録 2178, 67-76, 2021
+\bibitem{22rims1}高遠節夫, 濱口直樹, 北本卓也, KeTMathによる課題送受・採点処理・結果分析と授業実践, 数理解析研究所講究録2236, 90-99, 2022
+\bibitem{22josai}高遠節夫, 濱口直樹, 北本卓也, 1 次元表現ルールに基づいた数式の送受と授業実践, 城西大学数学科数学教育紀要4, 23-34, 2022
+\newpage
+\bibitem{23rims}西浦孝治, 高遠節夫, 数学教育におけるKeT-LMSの効果的活用 , 数理解析研究所講究録 2273, 192-201, 2023
+\bibitem{24scss}
+S. Takato, Hideyo Makishita, A Method to Prove Japanese Theorems and Others Appeared in Wasan Using Maxima, SCSS 2024, LNAI 14991, 57-78, 2024
+\bibitem{24atcm}S. Takato, H. Makishita, Development of a Question Distribution and Answer Collection System for Mathematics Classes Using Only One Line of Text, ATCM2024, Invited paper, 67-78, 2024
+\bibitem{24rims}高遠節夫, 牧下英世, ブレンド型授業におけるKeTLMSの利用
+--–多様で柔軟な出題形式を可能とするシステムの模索–--, 2024 (数理解析研究所講究録に掲載予定)
+}
+\end{thebibliography}
+%%main::終わり
+%%\fi
+\label{pageend}\mbox{}
+
+\end{document}
