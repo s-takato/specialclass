@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>rikuteru04v2.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+kL=keydownlist();
+if(length(kL)>0,
+  if(kL==[17,70], //Ctr+f (Figures)
+    Viewtex();
+    kc();
+  );
+  if(kL==[16,17,80], //Ctr+Shift+p (Parent)
+    if(length(Shellparent)>0,
+      Makeshell(),Makebat();
+    );
+    WritetoSci(2);
+    kc();
+  );
+  if(kL==[17,74], //Ctr+j (Ketjsoff)
+    Mkketcindyjs(append(KETJSOP,"Web=n"));
+  );
+  if(kL==[16,17,74], //Ctr+Shift+j (Ketjson)
+    Mkketcindyjs(append(KETJSOP,"Web=yj"));
+  );
+);
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit();
+//Setparent(Cdyname()+"p");
+//Setunitlen("1cm");
+//Fontsize("n");
+
+Seteditable(0,["頭数=","Size=18","Width=99"]);
+Seteditable(2,["日数=","Size=18","Width=99"]);
+Seteditable(6,["頭数=20","Size=18","Width=99"]);
+Seteditable(7,["日数=8","Size=18","Width=99"]);
+Seteditable(8,["頭数=","Size=18","Width=99"]);
+
+
+Letter([1,8],"e","牛(黒)");
+Letter([1,7.5],"e","牛(青)");
+Letter([1,7],"e","緑は牛が食べなかったときの草の量");
+//Letter([1,6.5],"e","Aは最初の草の量");
+Letter([1,6.5],"e","緑との交点は食べ終わる日数");
+Letter([1,6],"e","問題(赤)");
+
+Letter([8,0],"s","8");
+
+N1=Textedit(6,"20");
+D1=Textedit(7,"8");
+if(length(N1)*length(D1)>0,
+ N1=parse(N1);
+ D1=parse(D1);
+ P1=[8,4/20*N1];
+ Listplot("1",[[0,0],P1],["dr,1.5"]);
+ Listplot("4",[[8,YMAX],[8,0]],["da"]);
+ Pointdata("1",P1,["Size=5"]);
+);
+
+N2=Textedit(0,"");
+D2=Textedit(2,"");
+//    N2="40"; D2="3";
+if(length(N2)*length(D2)>0,
+ N2=parse(N2);
+ D2=parse(D2);
+ P2a=[N2,D2/20*N2];
+ P2b=[8,4/20*N2];
+ Listplot("2",[[0,0],P2b],["nodisp"]);
+ Listplot("2v",[[D2,0],[D2,YMAX]],["nodisp"]);
+ pt=Intersectcrvs("sg2","sg2v");
+ P2i=pt_1;
+ Listplot("2i",[[0,0],P2i],["Color=blue","dr,1.5"]);
+ Pointdata("2i",P2i,["Size=5"]);
+ Listplot("y",[[0,0],[0,YMAX]],["nodisp"]);
+ Lineplot("2",[P2i,P1],["nodisp"]);
+ Pointdata("2a",[P2a,P1],["Size=5"]);
+ pt=Intersectcrvs("sgy","ln2");
+ P0=pt_1;
+ Pointdata("2",P0,["Size=4"]);
+ Listplot("2b",[P0,P1],["Color=green","dr,1.5"]);
+);
+
+N3=Textedit(8,"");
+//  N3="30";
+if(length(N3)>0,
+ N3=parse(N3);
+ P3a=[N3,D2/20*N3];
+ P3b=[8,4/20*N3];
+ Listplot("3",[[0,0],P3b],["nodisp"]);
+ pt=Intersectcrvs("sg2b","sg3");
+ Pa=pt_1;
+ Listplot("3i",[[0,0],Pa],["Color=red","dr,1.5"]);
+ Pointdata("3",Pa,["Color=red","Size=4"]);
+ Listplot("3a",[Pa,[Pa_1,0]],["da"]);
+ tmp=Fracform(Pa_1,100);
+ Expr([Pa_1,0],"s2",Totexform(tmp_1));
+);
+
+//Letter([pt_1,0],"s",format(pt_1,2));
+
+//Figpdf();
+//BBdata();
+Windispg();
+//Help("Fr");
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "SW", type: "Free", pos: [4.0, -0.0, -4.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "NE", type: "Free", pos: [4.0, 3.7770792815859537, 0.44555551174600666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "Text0", type: "EditableText", pos: [-1.1889596602972399, -4.0, -0.5425277206856957], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 99, text: "頭数=", textsize: 18.0},
+    {name: "Text2", type: "EditableText", pos: [-2.2796610169491527, -4.0, -0.5413782975486497], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 99, text: "日数=", textsize: 18.0},
+    {name: "Text6", type: "EditableText", pos: [-1.1045364891518739, -4.0, -0.504005042293812], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 99, text: "頭数=20", textsize: 18.0},
+    {name: "Text7", type: "EditableText", pos: [-2.1538461538461537, -4.0, -0.504005042293812], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 99, text: "日数=8", textsize: 18.0},
+    {name: "Text8", type: "EditableText", pos: [-1.4881266490765173, -4.0, -0.6742231040711417], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 99, text: "頭数=", textsize: 18.0}
+  ],
+  ports: [{
+    width: 877,
+    height: 642,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-2.5280733897051353, 9.227859215053728, 11.200226070179717, -0.8218195229691616]}],
+    grid: 1.0,
+    background: "rgb(168,176,192)"
+  }],
+  csconsole: false,
+  use: ["katex"],
+  cinderella: {build: 2091, version: [3, 0, 2091]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>00start.cdy</title>
+    <title>rikuteru04.cdy</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -81,11 +81,14 @@ Letter([1,6.5],"e","Aは最初の草の量");
 Letter([1,6],"e","赤と緑の交点は食べ終わる日数");
 
 Letter([8,0],"s","8");
-Letter([pt_1,0],"s",format(pt_1,2));
-
+tmp=Fracform(pt_1,100);
+tmp=Totexform(tmp_1);
+println(tmp);
+Expr([pt_1,0],"s3",tmp);
 //Figpdf();
 //BBdata();
 Windispg();
+//Help("Fr");
 
 ;
 
@@ -104,20 +107,20 @@ var cdy = CindyJS({
   geometry: [
     {name: "SW", type: "Free", pos: [4.0, -0.0, -4.0], color: [1.0, 0.0, 0.0], labeled: true},
     {name: "NE", type: "Free", pos: [4.0, 3.7770792815859537, 0.44555551174600666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "A", type: "Free", pos: [-0.0, -4.0, -1.3333333333333333], color: [1.0, 0.0, 0.0], labeled: true, size: 9.0},
     {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
     {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
     {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
     {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
     {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
     {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
-    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
-    {name: "A", type: "Free", pos: [-0.0, -4.0, -1.3333333333333333], color: [1.0, 0.0, 0.0], labeled: true, size: 9.0}
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}}
   ],
   ports: [{
     width: 877,
-    height: 659,
+    height: 642,
     id: "CSCanvas",
-    transform: [{visibleRect: [-2.520089476518145, 8.970327842641208, 11.208209983366705, -1.3454638837716961]}],
+    transform: [{visibleRect: [-2.5124196845057223, 8.961746226663713, 11.215879775379129, -1.0879325113591758]}],
     axes: true,
     grid: 1.0,
     snap: true,
