@@ -1,0 +1,21 @@
+Ketinit();
+Pos=NE.xy+[0.5,-0.5]; Dy=1;
+Nchoice(max(Ch));
+
+mkcmd1();
+if(contains(Ch,1),
+ Setfiles(Namecdy+"1");
+ var=var1;
+ //CalcbyMset(var,"mxans1",cmdL1,["m","Wait=5"]);
+ Disptex(Pos,Dy,1,var);
+);
+
+mkcmd2();
+if(contains(Ch,2),
+ Setfiles(Namecdy+"2");
+ var=var1+"::"+var2;
+ //CalcbyMset(var,"mxans2",cmdL2,["m","Wait=5"]);
+ Disptex(Pos,Dy,2,var);
+);
+
+Windispg();
