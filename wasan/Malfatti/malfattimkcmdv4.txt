@@ -1,0 +1,147 @@
+dispfigure():=(
+  Circledata("0",[I,r],["Color=red"]);
+  Listplot("1",[D,B,E,D],["Color=blue"]);
+  Circledata("1",[I1,r1],["Color=blue"]);
+  Listplot("2",[F,G,C,F],["Color=cyan"]);
+  Circledata("2",[I2,r2],["Color=cyan"]);
+  Listplot("3",[A,H,J,A],["Color=green"]);
+  Circledata("3",[I3,r3],["Color=green"]);
+  Listplot("0",[A,B,C,A]);
+);
+
+mkcmd1():=(
+ cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r)",
+ "A:vtxT; B:vtxL; C:vtxR; I:inC",
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s2*r); slideT(vtxR,C)",
+ "F:vtxT; G:vtxL; I2:inC", 
+ "putT(m,n,s3*r); slideT(vtxT,A)",
+ "H:vtxL; J:vtxR; I3:inC", 
+// "eq1:numer(lenSeg2(I1,I2)-(r1+r2)^2)",
+ "end"
+ ]);
+);
+var1="A::B::C::D::E::F::G::H::J::I::I1::I2::I3";
+dispfig1():=(
+  m=tanhalf(40); n=tanhalf(55); r=2;
+  s1=0.8; s2=0.55; s3=0.5;
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv(var1);
+  dispfigure();
+);
+
+mkcmd2():=(
+ cmdL2=concat(cmdL1,[
+ "rearr(eq,t):=block(
+    [out,temp],
+    temp:expand(eq),
+    out:0,
+    for j from 4 thru 0 step -1 do
+      out:out+factor(coeff(temp,t,j))*t^j,
+    return(out)
+  )",
+ "eq1:lenSeg2(I1,I2)-(s1*r+s2*r)^2",
+ "eq2:lenSeg2(I1,I3)-(s1*r+s3*r)^2",
+ "eq3:lenSeg2(I2,I3)-(s2*r+s3*r)^2",
+ "eq1:numer(eq1)/r^2",
+ "eq2:numer(eq2)/r^2",
+ "eq3:numer(eq3)/r^2",
+ "eq1s1:rearr(eq1,s1)",
+ "eq1s2:rearr(eq1,s2)",
+ "eq2s1:rearr(eq2,s1)",
+ "eq2s3:rearr(eq2,s3)",
+ "eq3s2:rearr(eq3,s2)",
+ "eq3s3:rearr(eq3,s3)",
+// "sols2:solve(eq1,s2)",
+// "sols3:solve(eq2,s3)",
+// "sol:solve(eq1s2,s2)",
+// "s2ans1:frev(s2,sol[1])",
+// "s2ans2:frev(s2,sol[2])",
+// "sol:solve(eq2s3,s3)",
+// "s3ans1:frev(s3,sol[1])",
+// "s3ans2:frev(s3,sol[2])",
+ "end"
+ ]);
+);
+var2="eq1::eq2::eq3::eq1s1::eq1s2::eq2s1::eq2s3::eq3s2::eq3s3";
+
+dispfig2():=(
+  m=tanhalf(40); n=tanhalf(55);
+  r=2;
+  s1=0.7;
+  s2=parse(s2ans1);
+  s3=parse(s3ans2);
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv("I::I1::I2::I3");
+  dispfigure();
+);
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "out:reduceD([eq2s3,eq3s3],s3,10)",
+ "temp1:remainder(out[2],eq1s2,s2)",
+ "temp1:factor(temp1)",
+ "eq23s12:nthfactor(temp1,6)",
+ "out:reduceD([eq1s2,eq23s12],s2,10)",
+ "temp2:factor(out[2])",
+ "eqs1n1:nthfactor(temp2,2)",
+ "eqs1n1:rearr(eqs1n1,s1)",
+ "eqs1n2:nthfactor(temp2,3)",
+ "eqs1n2:rearr(eqs1n2,s1)",
+ "end"
+ ]);
+);
+var3="eqs1n1::eqs1n2";
+
+dispfig3():=(
+//  dispfigure();
+);
+
+mkcmd4():=(
+ cmdL4=concat(cmdL3,[
+ "sols1n1:solve(eqs1n1,s1)",
+ "sols1n2:solve(eqs1n2,s1)",
+ "len1:length(sols1n1)",
+ "len2:length(sols1n2)",
+ "s1aL:[]",
+ "for j from 1 thru len1 do block(
+   temp:frev(s1,sols1n1[j]),
+   s1aL:endcons(temp,s1aL)
+  )",
+ "for j from 1 thru len2 do block(
+   temp:frev(s1,sols1n2[j]),
+   s1aL:endcons(temp,s1aL)
+  )", 
+ "sols2:solve(eq1s2,s2)", 
+ "s2aL:[]",
+ "for j from 1 thru length(sols2) do block(
+   temp:frev(s2,sols2[j]),
+   s2aL:endcons(temp,s2aL)
+  )",
+ "lens2:length(s2aL)",
+ "sols3:solve(eq2s3,s3)", 
+ "s3aL:[]",
+ "for j from 1 thru length(sols3) do block(
+   temp:frev(s3,sols3[j]),
+   s3aL:endcons(temp,s3aL)
+  )", 
+ "lens3:length(s3aL)",
+ "end"
+ ]);
+);
+var4="s1aL::lens2::lens3::s2aL::s3aL";
+
+dispfig4():=(
+//  dispfigure();
+);
+
+mkcmd5():=(
+ cmdL5=concat(Mxbatch("mnr"),[
+
+ "end"
+ ]);
+);
+var5="eqs1::sol::s1a1::s1a2::s1a3::s1a4";
+
