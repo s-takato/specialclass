@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>jpn2outdg.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+setmnR(Mv,Nv):=(
+ m=2*Mv/(1-Mv^2);
+ n=2*Nv/(1-Nv^2);
+ m1=sqrt(n^2+1)-n;
+ n1=sqrt(m^2+1)-m;
+);
+
+//startflg=1;
+okflg=0;
+
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+kL=keydownlist();
+if(length(kL)>0,
+  if(kL==[17,70], //Ctr+f (Figures)
+    Viewtex();
+    kc();
+  );
+  if(kL==[16,17,80], //Ctr+Shift+p (Parent)
+    if(length(Shellparent)>0,
+      Makeshell(),Makebat();
+    );
+    WritetoSci(2);
+    kc();
+  );
+  if(kL==[17,74], //Ctr+j (Ketjsoff)
+    Mkketcindyjs(append(KETJSOP,"Web=n"));
+  );
+  if(kL==[16,17,74], //Ctr+Shift+j (Ketjson)
+    Mkketcindyjs(append(KETJSOP,"Web=yj"));
+  );
+);
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit(0.6);
+
+Pos=NE.xy+[0.5,-0.5]; Dy=0.9;
+Addax(0);
+
+if(okflg==0,
+ Putpoint("M",[-1,-3.5]);
+ Putpoint("N",[1,-4]);
+ inspect(M,"ptsize",6);
+ inspect(N,"ptsize",6);
+ R=2.5;
+ m=tanhalf(50);
+ n=tanhalf(60);
+ Putpoint("A",[0,3]);
+ Putpoint("B",[-3,-2.5]);
+ Putpoint("C",[3,-2.5]);
+ okflg=1;
+);
+
+if(okflg>=1,
+ R=2.5;
+ Slider("M",[-3.8,-3.5],[4,-3.5]);
+ Slider("N",[-3.8,-4],[4,-4]);
+ setmnR((M.x+4)/16,(N.x+4)/16);
+ A.xy=[-((R*(n-m))/(m*n-1)),-((R*(m*n+1))/(m*n-1))];
+ B.xy=[-(R/m),-R];
+ C.xy=[R/n,-R];
+ Listplot("0",[A,B,C,A],["Msg=n"]);
+ Circledata("i",[[0,0],R],["Color=blue"]);
+ Letter([A,"ne","A",B,"w","B",C,"e","C"],["Size=1.5"]);
+);
+
+if(okflg>=2,
+ ptD=[-((R*(m*m1*n*n1^2+n*n1^2-m1*n*n1+m*m1*n1-m^2*n1+n1-n-m1))/((m*n1-1)*(m*m1*n*n1+n*n1+m*n+m*m1))),-((R*(m^2*m1*n*n1^2+m*n*n1^2-m*m1*n*n1+m^2*n*n1+n*n1+m^2*m1*n1+2*m*n1-m*n-m*m1))/((m*n1-1)*(m*m1*n*n1+n*n1+m*n+m*m1)))];
+ ptE=[-((R*(m1*n*n1-n1+m1-m))/(m*m1*n*n1+n*n1+m*n+m*m1)),-R];
+// Putpoint("D",ptD);
+// Putpoint("E",ptE);
+ Listplot("1",[ptD,ptE],["Msg=n"]);
+ ptF=[(R*(m*m1*n1+n1-n-m1))/(m*m1*n*n1+n*n1+m*n+m*m1),-R];
+ ptK=[(R*(m*m1^2*n*n1+m1*n*n1-m*m1*n1-n1-m1*n^2+m*m1^2+m1-m))/((m1*n-1)*(m*m1*n*n1+n*n1+m*n+m*m1)),-((R*(m*m1^2*n^2*n1+m1*n^2*n1-m*m1*n*n1-n*n1+m*m1*n^2+m*m1^2*n+2*m1*n-m*n+m*m1))/((m1*n-1)*(m*m1*n*n1+n*n1+m*n+m*m1)))];
+// Putpoint("F",ptF);
+// Putpoint("K",ptK);
+ Listplot("2",[ptF,ptK],["Msg=n"]);
+ ptH=[-((R*(m1^2*n*n1^2-n*n1^2+m^2*m1*n1^2-m1*n1^2+m*m1^2*n*n1+3*m1*n*n1+m1^2*n1-m*m1*n1+m^2*n1-n1+m*m1*n+n+m*m1^2+m1))/((m1*n1-m*n1+m*m1+1)*(m*m1*n*n1+n*n1+m*n+m*m1))),-((R*(m*m1^2*n*n1^2-m^2*m1*n*n1^2-m1*n*n1^2-m*n*n1^2-2*m*m1*n1^2+m^2*m1^2*n*n1+3*m*m1*n*n1-m^2*n*n1-n*n1+m*m1^2*n1-m^2*m1*n1-2*m*n1+m^2*m1*n+m*n+m^2*m1^2+m*m1))/((m1*n1-m*n1+m*m1+1)*(m*m1*n*n1+n*n1+m*n+m*m1)))];
+ ptL=[(R*(m*m1*n*n1^2+n*n1^2+m*m1^2*n1^2+m1*n1^2+m1^2*n^2*n1-m1*n*n1+m*n*n1-m1^2*n1+3*m*m1*n1+n1+m1*n^2-m*m1^2-m1+m))/((n*n1+m1*n1-m1*n+1)*(m*m1*n*n1+n*n1+m*n+m*m1)),-((R*(m*m1*n^2*n1^2+n^2*n1^2+m*m1^2*n*n1^2+m1*n*n1^2-m*m1^2*n^2*n1-m1*n^2*n1+m*n^2*n1-2*m1^2*n*n1+3*m*m1*n*n1+n*n1-m*m1^2*n1-m*m1*n^2-m*m1^2*n-2*m1*n+m*n-m*m1))/((n*n1+m1*n1-m1*n+1)*(m*m1*n*n1+n*n1+m*n+m*m1)))];
+// Putpoint("H",ptH);
+// Putpoint("L",ptL);
+ Listplot("3",[ptH,ptL],["Msg=n"]);
+);
+
+if(okflg>=3,
+ ptI0=[(R*(m1*n*n1^2+2*m*m1*n1^2+n1^2-2*m1^2*n*n1-m*m1^2*n1+m*n1-m1*n-m1^2))/((n1+m1)*(m*m1*n*n1+n*n1+m*n+m*m1)),(R*(m1^2*n*n1^2-m*m1*n*n1^2-n*n1^2+m*m1^2*n1^2-m*m1^2*n*n1+2*m1*n*n1-m*n*n1+2*m*m1*n1-m*m1*n-m*m1^2))/((n1+m1)*(m*m1*n*n1+n*n1+m*n+m*m1))];
+ ptI1=[-((R*(m1*n*n1-n1+n+m1))/(m*m1*n*n1+n*n1+m*n+m*m1)),-((R*m*(m1*n*n1-n1+n+m1))/(m*m1*n*n1+n*n1+m*n+m*m1))];
+ ptI2=[(R*(m*m1*n1+n1-m1+m))/(m*m1*n*n1+n*n1+m*n+m*m1),-((R*n*(m*m1*n1+n1-m1+m))/(m*m1*n*n1+n*n1+m*n+m*m1))];
+ ptI3=[(R*(n-m)*(m*m1*n*n1^3+n*n1^3+m*m1^2*n1^3+m1*n1^3+m1^3*n*n1^2-2*m*m1^2*n*n1^2-2*m1*n*n1^2+m*n*n1^2-2*m1^2*n1^2+3*m*m1*n1^2+n1^2+m*m1^3*n*n1+3*m1^2*n*n1-2*m*m1*n*n1+m1^3*n1-2*m*m1^2*n1-2*m1*n1+m*n1+m*m1^2*n+m1*n+m*m1^3+m1^2))/((m1*n1-m*n1+m*m1+1)*(n*n1+m1*n1-m1*n+1)*(m*m1*n*n1+n*n1+m*n+m*m1)),(R*(m*n+1)*(m*m1*n*n1^3+n*n1^3+m*m1^2*n1^3+m1*n1^3+m1^3*n*n1^2-2*m*m1^2*n*n1^2-2*m1*n*n1^2+m*n*n1^2-2*m1^2*n1^2+3*m*m1*n1^2+n1^2+m*m1^3*n*n1+3*m1^2*n*n1-2*m*m1*n*n1+m1^3*n1-2*m*m1^2*n1-2*m1*n1+m*n1+m*m1^2*n+m1*n+m*m1^3+m1^2))/((m1*n1-m*n1+m*m1+1)*(n*n1+m1*n1-m1*n+1)*(m*m1*n*n1+n*n1+m*n+m*m1))];
+ r0=-((R*m1*(n+m)*n1*(m1*n1-1))/((n1+m1)*(m*m1*n*n1+n*n1+m*n+m*m1)));
+ r1=(R*(n+m)*n1)/(m*m1*n*n1+n*n1+m*n+m*m1);
+ r2=(R*m1*(n+m))/(m*m1*n*n1+n*n1+m*n+m*m1);
+ r3=(R*(m*m1*n1+n1-m1+m)*(n*n1+m1*n1+m*m1+1)*(m1*n*n1-n1+n+m1))/((m1*n1-m*n1+m*m1+1)*(n*n1+m1*n1-m1*n+1)*(m*m1*n*n1+n*n1+m*n+m*m1));
+
+ Circledata("0",[ptI0,r0]);
+ Circledata("1",[ptI1,r1]);
+ Circledata("2",[ptI2,r2]);
+ Circledata("3",[ptI3,r3]);
+);
+
+
+if(okflg>=4,
+  Expr(Pos,"e","R="+format(R,4),["Size=1.5"]);Pos_2=Pos_2-Dy;
+  Expr(Pos,"e","r1="+Sprintf(r1,4),["Size=1.5"]);Pos_2=Pos_2-Dy;
+  Expr(Pos,"e","r2="+Sprintf(r2,4),["Size=1.5"]);Pos_2=Pos_2-Dy;
+  Expr(Pos,"e","r3="+Sprintf(r3,4),["Size=1.5"]);Pos_2=Pos_2-Dy;
+  Expr(Pos,"e","r0="+Sprintf(r0,4),["Size=1.5"]);Pos_2=Pos_2-Dy;
+  Expr(Pos,"e","r0+r1+r2+r3="+format(r0+r1+r2+r3,4),["Size=1.5"]);
+  Pos_2=Pos_2-Dy;
+);
+
+Windispg();
+
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "NE", type: "Free", pos: [4.0, 4.0, 0.6666666666666666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "M", type: "Free", pos: [-1.1428571428571428, -4.0, 1.1428571428571428], color: [1.0, 0.0, 0.0], labeled: true, size: 6.0},
+    {name: "N", type: "Free", pos: [1.0, -4.0, 1.0], color: [1.0, 0.0, 0.0], labeled: true, size: 6.0},
+    {name: "A", type: "Free", pos: [-0.9580070977809078, -4.0, -0.9212643440076226], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "B", type: "Free", pos: [4.0, 1.5546558704453441, -0.6218623481781376], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "C", type: "Free", pos: [4.0, -2.7705627705627704, 1.108225108225108], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "SW", type: "Free", pos: [4.0, 2.974874371859081, -0.5883174797230428], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "Text0", type: "Button", pos: [4.0, -2.9006622516556293, 0.7753323077145271], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "okflg=okflg+1;", text: "Next", textsize: 24.0},
+    {name: "Text2", type: "Button", pos: [4.0, -2.2782152230971127, 0.6145678659574466], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "okflg=0;", text: "Reset", textsize: 24.0}
+  ],
+  ports: [{
+    width: 1124,
+    height: 719,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-8.05465353429096, 6.978421991002879, 11.146683841197989, -5.304284034776974]}],
+    axes: true,
+    grid: 1.0,
+    snap: true,
+    background: "rgb(204,204,204)"
+  }],
+  csconsole: false,
+  use: ["katex"],
+  cinderella: {build: 2091, version: [3, 0, 2091]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>
