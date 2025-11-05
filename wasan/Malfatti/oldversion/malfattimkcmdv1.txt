@@ -1,0 +1,154 @@
+mkcmd1():=(
+ cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r)",
+ "A:vtxT; B:vtxL; C:vtxR; I:inC",
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s2*r); slideT(vtxR,C)",
+ "F:vtxT; G:vtxL; I2:inC", 
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s3*r); slideT(vtxT,A)",
+ "H:vtxL; J:vtxR; I3:inC", 
+// "eq1:numer(lenSeg2(I1,I2)-(r1+r2)^2)",
+ "end"
+ ]);
+);
+var1="A::B::C::D::E::F::G::H::J::I::I1::I2::I3";
+dispfig1():=(
+  m=tanhalf(40); n=tanhalf(55); r=2;
+  s1=0.8; s2=0.55; s3=0.5;
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv(var1);
+  Circledata("0",[I,r],["Color=red"]);
+  Listplot("0",[A,B,C,A]);
+  Listplot("1",[D,B,E,D]);
+  Listplot("2",[F,G,C,F]);
+  Listplot("3",[A,H,J,A]);
+  Circledata("1",[I1,r1]);
+  Circledata("2",[I2,r2]);
+  Circledata("3",[I3,r3]);
+);
+
+mkcmd2():=(
+ cmdL2=concat(cmdL1,[
+ "eq1:lenSeg2(I1,I2)-(s1*r+s2*r)^2",
+ "eq2:lenSeg2(I1,I3)-(s1*r+s3*r)^2",
+ "eq3:lenSeg2(I2,I3)-(s2*r+s3*r)^2",
+ "eq1:numer(eq1)/r^2",
+ "eq2:numer(eq2)/r^2",
+ "eq3:numer(eq3)/r^2",
+ "end"
+ ]);
+);
+var2="eq1::eq2::eq3";
+
+if(1==0,//skip
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+// "sol:algsys([eq1,eq2,eq3],[s1,s2,s3])",
+ "end"
+ ]);
+);
+var3="sol";
+var=var2+"::"+var3;// cannot be solved
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "load(grobner)",
+ "gb:poly_buchberger([eq1,eq2,eq3], [s1,s2,s3])",
+ "end"
+ ]);
+);
+var3="gb";// cannot be solved
+
+);//skipend
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "c2:factor(coeff(eq1,s2,2))",
+ "c1:factor(coeff(eq1,s2,1))",
+ "c0:factor(coeff(eq1,s2,0))",
+ "eq1s2:c2*s2^2+c1*s2+c0",
+ 
+ "c2:factor(coeff(eq1,s1,2))",
+ "c1:factor(coeff(eq1,s1,1))",
+ "c0:factor(coeff(eq1,s1,0))",
+ "eq1s1:c2*s1^2+c1*s1+c0",
+ 
+ "c2:factor(coeff(eq2,s3,2))",
+ "c1:factor(coeff(eq2,s3,1))",
+ "c0:factor(coeff(eq2,s3,0))",
+ "eq2s3:c2*s3^2+c1*s3+c0",
+
+ "c2:factor(coeff(eq2,s1,2))",
+ "c1:factor(coeff(eq2,s1,1))",
+ "c0:factor(coeff(eq2,s1,0))",
+ "eq2s1:c2*s1^2+c1*s1+c0",
+
+ "c2:factor(coeff(eq3,s3,2))",
+ "c1:factor(coeff(eq3,s3,1))",
+ "c0:factor(coeff(eq3,s3,0))",
+ "eq3s3:c2*s3^2+c1*s3+c0",
+ 
+ "c2:factor(coeff(eq3,s2,2))",
+ "c1:factor(coeff(eq3,s2,1))",
+ "c0:factor(coeff(eq3,s2,0))",
+ "eq3s2:c2*s2^2+c1*s2+c0",
+ "end"
+ ]);
+);
+var3="eq1s2::eq1s1::eq2s3::eq2s1::eq3s3::eq3s2";
+
+if(1==0, //skip
+
+mkcmd4():=(
+ cmdL4=concat(cmdL3,[
+ "eq1:eq1s1; eq2:eq2s1; eq3:eq3s2",
+ "out1:reduceD([eq1,eq2],s1,10)",
+ "eq4:out1[2]",
+// "out2:reduceD([eq4,eq3],s3,10)",
+// "eq5:out2[2]",
+// "orgergreat(s3)",
+// "eq4:eq4/m^3",
+// "ord:[coeff(eq4,s2,5),coeff(eq4,s2,4)]",
+// "c4:factor(coeff(eq4,s2,4))",
+// "c3:factor(coeff(eq4,s2,3))",
+// "c2:factor(coeff(eq4,s2,2))",
+// "c1:factor(coeff(eq4,s2,1))",
+// "c0:factor(coeff(eq4,s2,0))",
+// "c4a:frev(c4,n=a/m)",
+// "c3a:frev(c3,n=a/m)",
+// "c2a:frev(c2,n=a/m)",
+// "c1a:frev(c1,n=a/m)",
+// "c0a:frev(c0,n=a/m)",
+// "eq4a:numer(c4*s2^4+c3*s2^3+c2*s2^2+c1*s2^1+c0)",
+// "sol:algsys([eq3,eq4],[s2,s3])",
+// "sol:algsys([eq1,eq2,eq3],[s1,s2,s3])",
+ "end"
+ ]);
+);
+//var4="eq1::eq2::eq3::eq4::c4::c4a::c3::c2::c1::c0:";
+var4="eq1::eq2::eq3::eq4::eq5";
+
+); //endskip
+
+mkcmd4():=(
+ cmdL4=concat(cmdL3,[
+ "eq1:eq1s1; eq2:eq2s1; eq3:eq3s2",
+// "eq2a:remainder(eq2,eq1,s1)",
+ "out1:reduceD([eq1,eq2],s1,10)",
+ "eq4:expand(out1[2])",
+ "eq4a:remainder(eq4,eq3,s3)",
+ "eq4a:expand(numer(eq4a))",
+ "c2:factor(coeff(eq4a,s3,2))",
+ "c1:factor(coeff(eq4a,s3,1))",
+ "c0:factor(coeff(eq4a,s3,0))",
+ "c1:c1/(-(16*m^3*n^2*(m*n-1)^3))",
+ "c0:c0/(-(16*m^3*n^2*(m*n-1)^3))",
+ "eq4b:c1*s3+c0",
+ "end"
+ ]);
+);
+var4="eq1::eq2::eq3::eq4::eq4a::eq4b";

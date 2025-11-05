@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>malfatti.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+//Readymnr(1,1,1);
+
+//Setmkcmd();
+//Checkmkcmd();
+
+setdirectory(Dircdy);
+import(Cdyname()+"mkcmd.txt");
+
+op():=["","Wait=5"];
+opm():=["m","Wait=5"];
+op(t):=["","Wait="+t];
+opm(t):=["m","Wait="+t];
+opr(tmp):=opr();
+opr():=["r"];
+Chlist=100..107;
+Ch=[0];
+Nchoice(0,Chlist);
+
+//M.x=-2;
+//N.x=-2;
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+kL=keydownlist();
+if(length(kL)>0,
+  if(kL==[17,70], //Ctr+f (Figures)
+    Viewtex();
+    kc();
+  );
+  if(kL==[16,17,80], //Ctr+Shift+p (Parent)
+    if(length(Shellparent)>0,
+      Makeshell(),Makebat();
+    );
+    WritetoSci(2);
+    kc();
+  );
+  if(kL==[17,74], //Ctr+j (Ketjsoff)
+    Mkketcindyjs(append(KETJSOP,"Web=n"));
+  );
+  if(kL==[16,17,74], //Ctr+Shift+j (Ketjson)
+    Mkketcindyjs(append(KETJSOP,"Web=yj"));
+  );
+);
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit();
+Addax(0);
+Pos=NE.xy+[0.5,-0.5]; Dy=1;
+Setparent(Namecdy+Dqq("p"));
+Seteditable(2,["","Size=24","Width=200"]);
+Slider("Mm",[-3.8,-3],[2,-3]);
+Slider("Nn",[-3.8,-4],[2,-4]);
+
+dispT(name,exstr):=dispT(name,exstr,[]);
+dispT(name,exstr,op):=(
+  Expr(Pos,"e",name+":"+Totexform(exstr),op);
+  Pos_2=Pos_2-Dy;
+);
+
+r=2; I=[0,0];
+Assignmn():=(
+ m=(Mm.x+4)/6;
+ n=(Nn.x+4)/6;
+ M=(-1+sqrt(m^2+1))/m;
+ N=(-1+sqrt(n^2+1))/n;
+);
+H2Q(m):=2*m/(1-m^2);
+Q2H(M):=(-1+sqrt(M^2+1))/M;
+
+Assignmn();
+Subsedit(2,"m="+Sprintf(m,2)+",n="+Sprintf(n,2));
+
+if(Ch==[0],Nchoice(0,Chlist));
+
+if(contains(Ch,1),
+ Setmnrstep(1);
+ Mkcmd1();
+ CalcbyMset(var1,"mxans1",cmdL1,op(5));
+ Disptex(Pos,Dy*0.8,1,var1);
+ Parsevv(var1);
+ dispfig1();
+);
+
+if(contains(Ch,2),
+ Setmnrstep(2);
+ v=var1+"::"+var2;
+ Mkcmd2();
+ CalcbyMset(v,"mxans2",cmdL2,op(5));
+ Disptex(Pos,Dy*1,2,var2);
+ dispfig1();
+);
+
+if(contains(Ch,3),
+ Setmnrstep(3);
+ v=var1+"::"+var2+"::"+var3;
+ Mkcmd3();
+ CalcbyMset(v,"mxans3",cmdL3,op(5));
+ v=var3;
+ Disptex(Pos,Dy*1.5,v,["Size=1"]);
+//println(eqs1);
+//println(Mxlen(eqs1));
+ tmp1=Mxfactor(eqs1,2);
+ tmp2=Mxfactor(eqs1,3);
+//println(tmp1);
+//println(tmp2);
+ dispfig1();
+);
+
+if(contains(Ch,4),
+ Setmnrstep(4);
+ v=var1+"::"+var2+"::"+var3+"::"+var4;
+ Mkcmd4();
+ CalcbyMset(v,"mxans4",cmdL4,op(5));
+ Disptex(Pos,Dy,4,var4);
+ dispfig1();
+);
+
+if(contains(Ch,5),
+ Setmnrstep(5);
+ v=var1+"::"+var5;
+ Mkcmd5();
+ CalcbyMset(v,"mxans5",cmdL5,op(5));
+ Disptex(Pos,Dy,5,var5);
+ s1=parse(s1);
+ Parsevv("s2::s3");
+ Parsevv(var1);
+ dispfig5();
+);
+
+if(contains(Ch,6),
+ Setmnrstep(6);
+ v=var1+"::"+var5;
+ Mkcmd5();
+ CalcbyMset(v,"mxans5",cmdL5,op(5));
+ Disptex(Pos,Dy,5,"s1::s2::s3");
+println(92);
+println(s1);
+ Dy=Dy*0.6;
+ dispT("93 s1",format(parse(s1),6));
+ s1=replace(s1,"sqrt(m^2+1)","x^2");
+ x=(m^2+1)^(1/4);
+ s1=replace(s1,"(m^2+1)^(1/4)","x");
+ s1=replace(s1,"(m^2+1)^(3/4)","x^3");
+ s1=replace(s1,"sqrt(n^2+1)","y");//dispT("97s1",s1);
+ y=sqrt(n^2+1);
+// dispT("103s1",format(parse(s1),6));
+ s1=replace(s1,"sqrt(x^2*((2*m^2+1)*n^2-2*m*n+1)+(-(2*m^3)-2*m)*n^2+(2*m^2+2)*n)","x*(x^2*n+(1-m*n))");  
+ s1=replace(s1,"sqrt(m^2*n^2-2*m*n+1)","(1-m*n)");
+ Dy=Dy*1.5;
+ dispT("111 s1",s1);
+ 
+ Mkcmd6();
+ CalcbyMset(var6,"mxans6",cmdL6,op(5));
+ dispT("118s1a",s1a);
+// dispT("s1a",format(parse(s1a),6));
+ dispT("120s1",s1);
+println(s1);
+// dispT("s1",format(parse(s1),6));
+ s1c=Mnrqua(s1,["m","M","n","N"]);
+ dispT("123s1c",s1c);
+// dispT("s1c",format(parse(s1c),6));
+
+ Mkcmd6a();
+ CalcbyMset(var6a,"mxans6a",cmdL6a,op(5));
+ dispT("118s1",s1);
+ println(s1);
+ dispT("s1",format(parse(s1),6));
+
+ println(s2);
+ //-((2*sqrt(m)*n*sqrt(s1*((m*n^2-n)*s1+n+m))-2*m*n^2*s1+n*s1-n-m)/m)
+ s2="-((2*n*sqrt(m*s1*((m*n^2-n)*s1+n+m))-2*m*n^2*s1+n*s1-n-m)/m)";
+ dispT("124s2",s2);
+ part1="s1*(m*(m*n^2-n)*s1+n+m)";
+   "m*s1*(m*(m*n^2-n)*s1+n+m))";
+ dispT("126s2p1",s2p1);
+
+ mkcmd6b();
+ CalcbyMset(var6b,"mxans6b",cmdL6b,op(5));
+ dispT("130s2p",s2p);
+
+ s1=parse(s1);
+ Parsevv("s2::s3");
+ Parsevv(var1);
+ dispfig5();
+);
+
+if(contains(Ch,7),
+ Setmnrstep(7);
+
+ Mkcmd1();
+ CalcbyMset(var1,"mxans1",cmdL1,op(5));
+// Disptex(Pos,Dy*0.8,1,var1);
+
+ s1="(m*sqrt(m^2+1)*n*sqrt(n^2+1)-m^2*n*sqrt(n^2+1)+m*sqrt(n^2+1)+m*sqrt(m^2+1)*n^2-m^2*n^2-sqrt(m^2+1)*n+m*n-n-m)/(2*n*(m*n-1))";
+ s2="(n*sqrt(n^2+1)*q*sqrt(q^2+1)-n^2*q*sqrt(q^2+1)+n*sqrt(q^2+1)+n*sqrt(n^2+1)*q^2-n^2*q^2-sqrt(n^2+1)*q+n*q-q-n)/(2*q*(n*q-1))";
+ s3="(q*sqrt(q^2+1)*m*sqrt(m^2+1)-q^2*m*sqrt(m^2+1)+q*sqrt(m^2+1)+q*sqrt(q^2+1)*m^2-q^2*m^2-sqrt(q^2+1)*m+q*m-m-q)/(2*m*(q*m-1))";
+
+ s1a=Mnrqua(s1,["m","M","n","N","q","Q"]);
+ s2a=Mnrqua(s2,["m","M","n","N","q","Q"]);
+ s3a=Mnrqua(s3,["m","M","n","N","q","Q"]);
+ Dy=1.3;
+ dispT("156s1a",s1a);
+ dispT("s2a",s2a);
+ dispT("s3a",s3a);
+ Mkcmd7();
+ CalcbyMset(var7,"mxans7",cmdL7,op(5));
+ Dy=1;
+ Disptex(Pos,Dy,7,var7);
+
+
+
+ q=(1-m*n)/(m+n);
+ Q=(-1+sqrt(1+q^2))/q;
+// dispT("149s1",s1);
+// dispT("s2",s2);
+// dispT("s3",s3);
+ Parsevv("s1::s2::s3");
+ Parsevv(var1);
+ dispfig5();
+);
+
+
+Windispg();
+//Help("Sete");
+
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "SW", type: "Free", pos: [4.0, 3.3333333333333335, -0.6666666666666666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "NE", type: "Free", pos: [4.0, 4.0, 0.8], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text2", type: "EditableText", pos: [0.9931972789115645, -4.0, 0.7107921741340186], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 200, text: "m=0.40,n=0.67", textsize: 24.0},
+    {name: "Mm", type: "Free", pos: [-2.1182970058373334, -4.0, 1.3333333333333333], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Nn", type: "Free", pos: [0.0, -4.0, 1.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "Text104", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[4];", text: "4", textsize: 24.0, dock: {corner: "UL", offset: [789.0, -20.0]}},
+    {name: "Text103", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[3];", text: "3", textsize: 24.0, dock: {corner: "UL", offset: [751.0, -20.0]}},
+    {name: "Text102", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[2];", text: "2", textsize: 24.0, dock: {corner: "UL", offset: [710.0, -20.0]}},
+    {name: "Text101", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[1];", text: "1", textsize: 24.0, dock: {corner: "UL", offset: [673.0, -20.0]}},
+    {name: "Text100", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.27272728085517883, script: "Ch=[0];", text: "0", textsize: 24.0, dock: {corner: "UL", offset: [630.0, -20.0]}},
+    {name: "Text0", type: "Button", pos: [0.2611683848797251, -4.0, 0.7181199285065343], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "okflg=1;", text: "OK", textsize: 24.0},
+    {name: "Text105", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[5];", text: "5", textsize: 24.0, dock: {corner: "UL", offset: [826.0, -20.0]}},
+    {name: "Text106", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[6];", text: "6", textsize: 24.0, dock: {corner: "UL", offset: [858.0, -20.0]}},
+    {name: "Text107", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "Ch=[7];", text: "7", textsize: 24.0, dock: {corner: "UL", offset: [895.0, -20.0]}}
+  ],
+  ports: [{
+    width: 1229,
+    height: 652,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-6.594156492567451, 6.5558740165583504, 16.93042501502441, -5.924213162408203]}],
+    grid: 1.0,
+    snap: true,
+    background: "rgb(204,204,204)"
+  }],
+  csconsole: false,
+  cinderella: {build: 2091, version: [3, 0, 2091]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>

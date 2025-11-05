@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>malfattidg.cdy</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #CSConsole {
+            background-color: #FAFAFA;
+            border-top: 1px solid #333333;
+            bottom: 0px;
+            height: 200px;
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/CindyJS.css">
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/Cindy.js"></script>
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/KetCindyPlugin.js"></script>
+<script id="csinit" type="text/x-cindyscript">
+//KETlib
+use("KetCindyPlugin");
+Dircdy=loaddirectory;
+setdirectory(gethome());
+import("ketcindy.ini");
+
+////%Totexform start////
+Totexform(strorg):=( //250726
+//help:Totexform("fr(2,3)");
+  regional(str,plv,funL,repL,parL,out,head,flg,rep,fun,pre,
+    post,ctr,clv,nn,tmp,tmp1,tmp2,tmp3,tmp4);
+  str=strorg;//250727from
+  tmp1=indexof(str,"(^(");
+  while(tmp1>0,
+    tmp=Indexall(str,")");
+    tmp=select(tmp,#>tmp1);
+    tmp2=tmp_1;
+    tmp=substring(str,tmp1-1,tmp2);
+    if(indexof(tmp,"?")==0,
+      tmp=substring(str,tmp1+2,tmp2-1)+",";
+      str=substring(str,0,tmp1)+tmp+substring(str,tmp2,length(str));
+    );
+    tmp1=indexof(str,"(^(");
+  );
+  tmp1=indexof(str,"(_(");
+  while(tmp1>0,
+    tmp=Indexall(str,")");
+    tmp=select(tmp,#>tmp1);
+    tmp2=tmp_1;
+    tmp=substring(str,tmp1-1,tmp2);
+    if(indexof(tmp,"?")==0,
+      tmp=substring(str,tmp1+2,tmp2-1)+",";
+      str=substring(str,0,tmp1)+tmp+substring(str,tmp2,length(str));
+    );
+    tmp1=indexof(str,"(_(");
+  );//250727to
+  tmp1="\displaystyle\int"; //210831from
+  tmp2="\displaystyle\lim";
+  tmp3="\displaystyle\sum"; //210831to
+  repL=[ //190515from
+    ["^(",["^{xx}"]], //210805
+    ["_(",["_{xx}"]], //210831
+    ["tx(",["\text{xx}"]], //210907
+    ["tfr(",["","\dfrac{xx}{yy}"]], //210831,220523
+    ["fr(",["","\dfrac{xx}{yy}"]], //210228from 231224
+    ["log(",["\log xx ","\log_{xx} yy"]], //210405
+    ["ln(",["\ln xx "]], //210903
+    ["sq(",["{\sqrt{xx}}","{\sqrt[xx]{yy}}"]], //250203
+    ["po(",["","{xx}^{yy}"]],
+    ["sin(",["\sin xx ","\sin^{xx}\! yy "]], //200823[3lines]  //210405
+    ["cos(",["\cos xx ","\cos^{xx}\! yy "]], //210405
+    ["tan(",["\tan xx ","\tan^{xx}\! yy "]],  //210228to  //210405
+    ["lim(", ["",tmp2+"_{xx \to yy} ",tmp2+"_{xx \to yy} zz"]], //210831from
+    ["int(", [tmp1+" ",tmp1+" xx yy ",tmp1+" yy zz ",tmp1+"_{xx}^{yy} zz ww "]],  //211027
+    ["sum(", ["",tmp3+"_{xx}^{yy} ", tmp3+"_{xx}^{yy} zz"]], //210831to
+    ["diff(", ["d ","\frac{dxx}{dyy}"]], //210913
+    ["par(", ["\partial ","\frac{\partial xx}{\partial yy}"]] ,//210913
+    ["br(", ["","","\Bigl[xx\Bigr]_{yy}^{zz}"]] //210923,1019
+  ];
+  parL=["log(","sin(","cos(","tan(","lim(","int(","sum("]; //210901
+  out=replace(str,"pi","{\pi}"); //210805
+  out=replace(out,"frac(","fr(");//231227
+  out=replace(out,"sqrt(","sq(");//231215 from
+  tmp=indexof(out,")/(");
+  ctr=1;
+  while((tmp>0)&(ctr<20),
+    tmp1=substring(out,0,tmp);
+    tmp2=substring(out,tmp+1,length(out));
+    tmp=Bracket(tmp1);
+    tmp3=tmp_(-1)_2;
+    tmp=select(tmp,#_2==-tmp3);
+    tmp=tmp_(-1)_1;
+    tmp1=substring(tmp1,0,tmp-1)+"fr("+
+           substring(tmp1,tmp,length(tmp1)-1)+",";
+    tmp=Bracket(tmp2);
+    tmp=select(tmp,#_2==-1);
+    tmp=tmp_1_1;
+    tmp2=substring(tmp2,1,length(tmp2));
+    out=tmp1+tmp2;
+    tmp=indexof(out,")/(");
+    ctr=ctr+1;
+  );//231215 to
+  head="";
+  flg=0;
+  plv=Bracket(out,"()");
+  if(length(plv)>0,
+    if(plv_1_2==0,
+      head=substring(out,0,plv_1_1);
+      out=substring(out,plv_1_1,length(out));
+      if(substring(out,0,1)=="*",out=substring(out,1,length(out)));
+      plv=Bracket(out,"()");
+    );
+    if(length(plv)>0, //210806
+      tmp=plv_(-1);
+      if(tmp_2!=-1,
+        out=str;
+        flg=1;
+      );
+    );  //210806
+  );
+  if(flg==0,
+    forall(repL,rep,
+      fun=rep_1;
+      ctr=1;
+      tmp=indexof(out,fun);
+      while((tmp>0)&(ctr<40),
+        pre=substring(out,0,tmp-1);
+        out=substring(out,tmp-1,length(out));
+        plv=Bracket(out,"()");
+        tmp=select(plv,#_2==-1);
+        tmp=tmp_1;
+        post=substring(out,tmp_1,length(out));
+        out=substring(out,0,tmp_1);
+        clv=Getlevel(out);
+        clv=select(clv,#_2==1);
+        nn=length(clv)+1;
+        if(nn==1,
+          tmp1=substring(out,plv_1_1,length(out)-1);
+          if(contains(parL,fun), //210901from
+            tmp1=Addpar(tmp1); //211029
+          ); //210901to
+          out=replace(rep_2_1,"xx",tmp1);
+        );
+       if(nn==2,
+          tmp1=substring(out,plv_1_1,clv_1_1-1);
+          tmp2=substring(out,clv_1_1,length(out)-1);
+		  if(indexof(out,"int(")>0, //231227from
+		    if((length(tmp2)>0)&(substring(tmp2,0,1)!="d"),
+			  tmp2="d"+tmp2;
+            );
+          ); //231227to
+          if(contains(parL,fun), //210901from
+            tmp2=Addpar(tmp2); //211029
+          ); //210901to
+          tmp=replace(rep_2_2,"xx",tmp1);
+          out=replace(tmp,"yy",tmp2);
+        );
+        if(nn==3, //210831from
+          tmp1=substring(out,plv_1_1,clv_1_1-1);
+          tmp2=substring(out,clv_1_1,clv_2_1-1);
+          tmp3=substring(out,clv_2_1,length(out)-1);
+          if(contains(parL,fun), //210901from
+            tmp3=Addpar(tmp3); //211029
+          ); //210901to
+          tmp=replace(rep_2_3,"xx",tmp1);
+          tmp=replace(tmp,"yy",tmp2);
+          out=replace(tmp,"zz",tmp3);
+        );
+        if(nn==4,
+          tmp1=substring(out,plv_1_1,clv_1_1-1);
+          tmp2=substring(out,clv_1_1,clv_2_1-1);
+          tmp3=substring(out,clv_2_1,clv_3_1-1);
+          if(contains(parL,fun), //210901from
+            tmp3=Addpar(tmp3); //211029
+          ); //210901to
+          tmp4=substring(out,clv_3_1,length(out)-1);
+		  if(indexof(out,"int(")>0, //231227from
+		    if((length(tmp4)>0)&(substring(tmp4,0,1)!="d"),
+			  tmp4="d"+tmp4;
+            );
+          );//231227to
+          tmp=replace(rep_2_4,"xx",tmp1);
+          tmp=replace(tmp,"yy",tmp2);
+          tmp=replace(tmp,"zz",tmp3);
+          out=replace(tmp,"ww",tmp4);
+        );  //210831to
+        out=pre+out+post;
+        tmp=indexof(out,fun);
+        ctr=ctr+1;
+      );
+    );
+  );
+  out=head+out;
+  out=replace(out,"*"," ");
+  out;
+);
+////%Totexform end////
+
+////%Disptex start//// 231222,240915,241106,250329
+// global Pos,Dy
+Disptex(name):=Disptex(0,name);
+Disptex(Arg1,Arg2):=Disptex(Pos,Dy,Arg1,Arg2);
+Disptex(Arg1,Arg2,Arg3):=(
+  if(isstring(Arg2),
+    Disptex(Pos,Dy,Arg1,Arg2,Arg3);
+  ,
+    Disptex(Arg1,Arg2,0,Arg3,[]);
+  );
+);
+Disptex(Arg1,Arg2,Arg3,Arg4):=(
+  if(islist(Arg4),
+    Disptex(Arg1,Arg2,0,Arg3,Arg4);
+  ,
+    Disptex(Arg1,Arg2,Arg3,Arg4,[]);
+  );
+);
+Disptex(pos,dy,lineorg,nameorg,op):=(
+//help:Disptex("pA");
+//help:Disptex(3,"pA::pB");
+//help:Disptex(2,"pA",["Size=1.2"]);
+//help:Disptex(pos,dy,"pA");
+//help:Disptex(pos,dy,"pA",["Size=1.2"]);
+//help:Disptex(pos,dy,2,"pA");
+//help:Disptex(pos,dy,2,"pA",["Size=1.2"]);
+ regional(line,nameL,name,nn,tmp);
+// global Pos,Dy
+ Pos=pos; Dy=dy;
+ line=lineorg;
+ if(line==0,line="",line=text(line));
+ if(indexof(nameorg,"::")>0,
+   nameL=Strsplit(nameorg,"::");
+ ,
+   nameL=[nameorg];
+ );
+ forall(1..(length(nameL)),nn,
+   name=nameL_nn;
+   tmp=Totexform(parse(name));
+   if(!isstring(tmp),tmp=format(tmp,12));
+   if(length(line)>0,
+     Expr(Pos,"e",line+"\;\:"+name+":"+tmp,op);//250329
+   ,
+     Expr(Pos+[0.3,0],"e",name+":"+tmp,op);//250329
+   );
+   if(nn==1,line="");
+   Pos_2=Pos_2-Dy;
+ );
+);
+////%Disptex end////
+
+Setvar1(m,n,r):=(
+ A=[((n-m)*r)/(1-m*n),((m*n+1)*r)/(1-m*n)];
+ B=[-(r/m),-r];
+ C=[r/n,-r];
+ I=[0,0];
+);
+
+Setvar2(m,n,r):=(
+ D=[((m^2-1)*r*s1+(1-m*n)*r)/(m^2*n-m),-((2*r*s1+(m*n-1)*r)/(m*n-1))];
+ E=[((n+m)*r*s1-n*r)/(m*n),-r];
+ F=[-(((n^2-1)*r*s2+(1-m*n)*r)/(m*n^2-n)),-((2*r*s2+(m*n-1)*r)/(m*n-1))];
+ G=[-(((n+m)*r*s2-m*r)/(m*n)),-r];
+ H=[-(((m^2-1)*r*s3+(m*n-m^2)*r)/(m^2*n-m)),
+    (2*r*s3+(-(m*n)-1)*r)/(m*n-1)];
+ J=[((n^2-1)*r*s3+(m*n-n^2)*r)/(m*n^2-n),(2*r*s3+(-(m*n)-1)*r)/(m*n-1)];
+ I1=[(r*s1-r)/m,r*s1-r];
+ I2=[-((r*s2-r)/n),r*s2-r];
+ I3=[((n-m)*r*s3+(m-n)*r)/(m*n-1),((m*n+1)*r*s3+(-(m*n)-1)*r)/(m*n-1)];
+);
+
+s1L="-((m*sqrt(m^2+1)*n^2*sqrt(-(2*m^2*n^3)+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)+2*m*n^2-2*m^2*n+2*m)-sqrt(m^2+1)*n*sqrt(-(2*m^2*n^3)+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)+2*m*n^2-2*m^2*n+2*m)+m^2*n*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)-m*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)-m^2*n^2*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+m*n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+m*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*n*(m*n-1)*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))),(m*sqrt(m^2+1)*n^2*sqrt(-(2*m^2*n^3)+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)+2*m*n^2-2*m^2*n+2*m)-sqrt(m^2+1)*n*sqrt(-(2*m^2*n^3)+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)+2*m*n^2-2*m^2*n+2*m)-m^2*n*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)+m*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)+m^2*n^2*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-m*n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-m*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*n*(m*n-1)*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)),-((m*sqrt(m^2+1)*n^2*sqrt(2*m^2*n^3+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)-2*m*n^2+2*m^2*n-2*m)-sqrt(m^2+1)*n*sqrt(2*m^2*n^3+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)-2*m*n^2+2*m^2*n-2*m)-m^2*n*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)+m*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)-m^2*n^2*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+m*n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)+m*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*n*(m*n-1)*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))),(m*sqrt(m^2+1)*n^2*sqrt(2*m^2*n^3+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)-2*m*n^2+2*m^2*n-2*m)-sqrt(m^2+1)*n*sqrt(2*m^2*n^3+sqrt(n^2+1)*(2*m^2*n^2-2*m*n+m^2+1)-2*m*n^2+2*m^2*n-2*m)+m^2*n*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)-m*(n^2+1)^(3/4)*sqrt(m^2*n^2-2*m*n+1)+m^2*n^2*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-m*n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-n*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)-m*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*n*(m*n-1)*(n^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1)),-((m^2*n*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(2*m^3+2*m)*n^2+(-(2*m^2)-2)*n)-m*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(2*m^3+2*m)*n^2+(-(2*m^2)-2)*n)+m*(m^2+1)^(3/4)*n^2*sqrt(m^2*n^2-2*m*n+1)+m^2*(m^2+1)^(1/4)*n^2*sqrt(m^2*n^2-2*m*n+1)-(m^2+1)^(3/4)*n*sqrt(m^2*n^2-2*m*n+1)-m*(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)+(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)+m*(m^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*(m^2+1)^(1/4)*n*(m*n-1)*sqrt(m^2*n^2-2*m*n+1))),(m^2*n*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(2*m^3+2*m)*n^2+(-(2*m^2)-2)*n)-m*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(2*m^3+2*m)*n^2+(-(2*m^2)-2)*n)-m*(m^2+1)^(3/4)*n^2*sqrt(m^2*n^2-2*m*n+1)-m^2*(m^2+1)^(1/4)*n^2*sqrt(m^2*n^2-2*m*n+1)+(m^2+1)^(3/4)*n*sqrt(m^2*n^2-2*m*n+1)+m*(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)-(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)-m*(m^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*(m^2+1)^(1/4)*n*(m*n-1)*sqrt(m^2*n^2-2*m*n+1)),-((m^2*n*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(-(2*m^3)-2*m)*n^2+(2*m^2+2)*n)-m*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(-(2*m^3)-2*m)*n^2+(2*m^2+2)*n)-m*(m^2+1)^(3/4)*n^2*sqrt(m^2*n^2-2*m*n+1)+m^2*(m^2+1)^(1/4)*n^2*sqrt(m^2*n^2-2*m*n+1)+(m^2+1)^(3/4)*n*sqrt(m^2*n^2-2*m*n+1)-m*(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)+(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)+m*(m^2+1)^(1/4)*sqrt(m^2*n^2-2*m*n+1))/(2*(m^2+1)^(1/4)*n*(m*n-1)*sqrt(m^2*n^2-2*m*n+1))),(m^2*n*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(-(2*m^3)-2*m)*n^2+(2*m^2+2)*n)-m*sqrt(n^2+1)*sqrt(sqrt(m^2+1)*((2*m^2+1)*n^2-2*m*n+1)+(-(2*m^3)-2*m)*n^2+(2*m^2+2)*n)+m*(m^2+1)^(3/4)*n^2*sqrt(m^2*n^2-2*m*n+1)-m^2*(m^2+1)^(1/4)*n^2*sqrt(m^2*n^2-2*m*n+1)-(m^2+1)^(3/4)*n*sqrt(m^2*n^2-2*m*n+1)+m*(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)-(m^2+1)^(1/4)*n*sqrt(m^2*n^2-2*m*n+1)-m*(m^2+1)^(1/4)*sqrt(m^2*n^2-
+2*m*n+1))/(2*(m^2+1)^(1/4)*n*(m*n-1)*sqrt(m^2*n^2-2*m*n+1))";
+
+s2L="-((2*sqrt(m)*n*sqrt(s1*((m*n^2-n)*s1+n+m))-2*m*n^2*s1+n*s1-n-m)/m),(2*sqrt(m)*n*sqrt(s1*((m*n^2-n)*s1+n+m))+2*m*n^2*s1-n*s1+n+m)/m";
+
+s3L="-((2*m^(3/2)*sqrt(m^2+1)*n*sqrt(s1*((m*n^2-n)*s1+n+m))-2*sqrt(m)*sqrt(m^2+1)*sqrt(s1*((m*n^2-n)*s1+n+m))-2*m^3*n^2*s1-m*n^2*s1+3*m^2*n*s1+n*s1-m*s1-m^2*n-n-m^3-m)/(m*(n+m)^2)),(2*m^(3/2)*sqrt(m^2+1)*n*sqrt(s1*((m*n^2-n)*s1+n+m))-2*sqrt(m)*sqrt(m^2+1)*sqrt(s1*((m*n^2-n)*s1+n+m))+2*m^3*n^2*s1+m*n^2*s1-3*m^2*n*s1-n*s1+m*s1+m^2*n+n+m^3+m)/(m*(n+m)^2)";
+
+s1L=Strsplit(s1L,",");
+s2L=Strsplit(s2L,",");
+s3L=Strsplit(s3L,",");
+tx1L=apply(1..(length(s1L)),Totexform(s1L_#));
+tx2L=apply(1..(length(s2L)),Totexform(s2L_#));
+tx3L=apply(1..(length(s3L)),Totexform(s3L_#));
+
+okflg=0;
+mnow=0; nnow=0;
+nschg=0;
+s123=[];
+n123=[];
+
+;
+
+</script>
+<script id="cskeytyped" type="text/x-cindyscript">
+//Script (CindyScript)
+kL=keydownlist();
+if(length(kL)>0,
+  if(kL==[17,70], //Ctr+f (Figures)
+    Viewtex();
+    kc();
+  );
+  if(kL==[16,17,80], //Ctr+Shift+p (Parent)
+    if(length(Shellparent)>0,
+      Makeshell(),Makebat();
+    );
+    WritetoSci(2);
+    kc();
+  );
+  if(kL==[17,74], //Ctr+j (Ketjsoff)
+    Mkketcindyjs(append(KETJSOP,"Web=n"));
+  );
+  if(kL==[16,17,74], //Ctr+Shift+j (Ketjson)
+    Mkketcindyjs(append(KETJSOP,"Web=yj"));
+  );
+);
+;
+
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+//figures
+Ketinit();
+
+Pos=NE.xy+[0.5,-0.5]; Dy=0.9;
+
+Seteditable(2,["","Size=24","Width=250"]);
+Seteditable(8,["","Size=24","Width=250"]);
+
+Setwindow([-6,6],[-3,6]);
+Slider("M",[-3.8,SW.y-0.5],[0,SW.y-0.5]);
+Slider("N",[-3.8,SW.y-1],[0,SW.y-1]);
+r=2;
+
+m=(M.x+4)/4; n=(N.x+4)/4;
+if((m!=mnow)%(n!=nnow),
+  Setvar1(m,n,r);
+  mnow=m; nnow=n;
+);
+Subsedit(2,"m="+Sprintf(m,2)+",n="+Sprintf(n,2));
+
+Listplot("0",[A,B,C,A]);
+Circledata("0",[I,r],["do","Color=black"]);
+Letter([A,"n","A",B,"w","B",C,"e","C"]);
+Expr(Text2.xy+[0,1],"e","m=\tan\dfrac{B}{2},\ n=\tan\dfrac{C}{2}");
+
+
+forall(1..(length(s1L)),
+ Letter(Pos,"e","s1"+#+": $"+tx1L_#+"$");Pos_2=Pos_2-Dy;
+);
+forall(1..(length(s2L)),
+ Letter(Pos,"e","s2"+#+": $"+tx2L_#+"$");Pos_2=Pos_2-Dy;
+);
+forall(1..(length(s3L)),
+ Letter(Pos,"e","s3"+#+": $"+tx2L_#+"$");Pos_2=Pos_2-Dy;
+);
+
+if(okflg==1,
+  s123=[];
+  n123=[];
+  forall(1..(length(s1L)),n1,
+    s1=s1L_n1;
+    forall(1..(length(s2L)),n2,
+      s2=s2L_n2;
+      forall(1..(length(s3L)),n3,
+        s3=s3L_n3;
+        v1=parse(s1);
+        v2=parse(Assign(s2,["s1",v1,"m",m,"n",n]));
+        v3=parse(Assign(s3,["s1",v1,"m",m,"n",n]));
+        if((v1<1)&(v2<1)&(v3<1),
+          s123=append(s123,[v1,v2,v3]);
+          n123=append(n123,[n1,n2,n3]);
+        );
+      );
+    );
+  );
+  nmax=length(s123);
+  ns=length(n123);
+  tmp=n123_ns;
+  tmp1=text(ns)+"/"+text(nmax)+": ";
+  tmp1=tmp1+"s1="+tmp_1+","+
+         "s2="+tmp_2+","+"s3="+tmp_3;
+  Subsedit(8,tmp1);
+  okflg=0;
+);
+
+if(nschg==1,
+  tmp=n123_ns;
+  tmp1=text(ns)+"/"+text(nmax)+": ";
+  tmp1=tmp1+"s1="+tmp_1+","+
+         "s2="+tmp_2+","+"s3="+tmp_3;
+  Subsedit(8,tmp1);
+  nschg=0;
+);
+
+if(length(s123)>0,
+  tmp=s123;
+  s1=tmp_ns_1; s2=tmp_ns_2; s3=tmp_ns_3;
+  Setvar2(m,n,r);
+  r1=s1*r; r2=s2*r; r3=s3*r;
+//  Circledata("0",[I,r],["Color=blue"]);
+//  Listplot("1",[D,B,E,D]);
+  Circledata("1",[I1,r1],["Color=red"]);
+//  Listplot("2",[F,G,C,F]);
+  Circledata("2",[I2,r2],["Color=red"]);
+//  Listplot("3",[A,H,J,A]);
+  Circledata("3",[I3,r3],["Color=red"]);
+  Listplot("0",[A,B,C,A]);
+);
+
+Windispg();
+
+;
+
+</script>
+    <script type="text/javascript">
+var cdy = CindyJS({
+  scripts: "cs*",
+  defaultAppearance: {
+    dimDependent: 0.7,
+    fontFamily: "sans-serif",
+    lineSize: 1,
+    pointSize: 5.0,
+    textsize: 12.0
+  },
+  angleUnit: "°",
+  geometry: [
+    {name: "SW", type: "Free", pos: [4.0, 2.0, -0.6666666666666666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "NE", type: "Free", pos: [4.0, 4.0, 0.6666666666666666], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "M", type: "Free", pos: [-2.7332864591440003, -4.0, 1.1428571428571428], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "N", type: "Free", pos: [-1.195812825876, -4.0, 1.0], color: [1.0, 0.0, 0.0], labeled: true},
+    {name: "Text2", type: "EditableText", pos: [1.5818181818181818, -4.0, 1.0643198042263051], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 250, text: "m=0.40,n=0.70", textsize: 24.0},
+    {name: "Text8", type: "EditableText", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 250, textsize: 24.0, dock: {corner: "LL", offset: [457.0, 29.0]}},
+    {name: "Text1", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.286, 0.286], fillalpha: 0.27272728085517883, script: "Viewtex();\nkc();", text: "Figure", textsize: 18.0, dock: {corner: "UL", offset: [10.0, -20.0]}},
+    {name: "Text12", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "if(length(Shellparent)>0,\n  Makeshell(),Makebat();\n);\nif(indexof(Libname,\"sci\")>0,\n  writetosci(2),writetoRS(2)\n);\nkc();", text: "Parent", textsize: 18.0, dock: {corner: "UL", offset: [77.0, -20.0]}},
+    {name: "Text3", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.929, 0.6], fillalpha: 0.27272728085517883, script: "Parafolder();", text: "ParaF", textsize: 18.0, dock: {corner: "UL", offset: [295.0, -20.0]}},
+    {name: "Text4", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.51, 0.949, 1.0], fillalpha: 0.27272728085517883, script: "Mkanimation();", text: "Anime", textsize: 18.0, dock: {corner: "UL", offset: [355.0, -20.0]}},
+    {name: "Text5", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "Mkflipanime();", text: "Flip", textsize: 18.0, dock: {corner: "UL", offset: [423.0, -20.0]}},
+    {name: "Text21", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.5726495726495726, script: "Mkketcindyjs(append(KETJSOP,\"Web=y\"));", text: "Ketjson", textsize: 18.0, dock: {corner: "UL", offset: [144.0, -20.0]}},
+    {name: "Text22", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.4358974358974359, script: "Mkketcindyjs(append(KETJSOP,\"Web=n\"));", text: "Ketjsoff", textsize: 18.0, dock: {corner: "UL", offset: [218.0, -20.0]}},
+    {name: "Text0", type: "Button", pos: [0.5925925925925926, -4.0, 1.084029430230496], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 0.0], fillalpha: 0.27272728085517883, script: "okflg=1;", text: "OK", textsize: 24.0},
+    {name: "Text6", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "ns=min([ns+1,nmax]);\nnschg=1;\n", text: "+", textsize: 24.0, dock: {corner: "LL", offset: [376.0, 29.0]}},
+    {name: "Text7", type: "Button", color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "ns=max([ns-1,1]);\nnschg=1;", text: "-", textsize: 24.0, dock: {corner: "LL", offset: [417.0, 29.0]}}
+  ],
+  ports: [{
+    width: 746,
+    height: 689,
+    id: "CSCanvas",
+    transform: [{visibleRect: [-6.260934295477491, 6.653844223979489, 6.483013820282968, -5.116370590710801]}],
+    grid: 1.0,
+    snap: true,
+    background: "rgb(204,204,204)"
+  }],
+  csconsole: false,
+  use: ["katex"],
+  cinderella: {build: 2091, version: [3, 0, 2091]}
+});
+    </script>
+</head>
+<body>
+    <div id="CSCanvas"></div>
+</body>
+</html>

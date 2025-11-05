@@ -1,0 +1,30 @@
+writefile("/Users/takatoosetsuo/Dropbox/wasan/Malfatti/fig/malfatti7mxans1.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(m,n,r)$/*##*/
+A:vtxT; B:vtxL; C:vtxR; I:inC$/*##*/
+aT:angT$/*##*/
+putT(m,n,s1*r); slideT(vtxL,B)$/*##*/
+D:vtxT; E:vtxR; I1:inC$/*##*/
+putT(m,n,s2*r); slideT(vtxR,C)$/*##*/
+F:vtxT; G:vtxL; I2:inC$/*##*/
+putT(m,n,s3*r); slideT(vtxT,A)$/*##*/
+H:vtxL; J:vtxR; I3:inC$/*##*/
+end$/*##*/
+disp(A)$/*##*/
+disp(B)$/*##*/
+disp(C)$/*##*/
+disp(D)$/*##*/
+disp(E)$/*##*/
+disp(F)$/*##*/
+disp(G)$/*##*/
+disp(H)$/*##*/
+disp(J)$/*##*/
+disp(I1)$/*##*/
+disp(I2)$/*##*/
+disp(I3)$/*##*/
+disp(aT)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

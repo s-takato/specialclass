@@ -1,0 +1,13 @@
+writefile("/Users/takatoosetsuo/Dropbox/wasan/Malfatti/fig/malfatti7mxans6.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+s1:-((m^2*n*y*x*(x^2*n+(1-m*n))-m*y*x*(x^2*n+(1-m*n))-m*x^3*n^2*(1-m*n)+m^2*x*n^2*(1-m*n)+x^3*n*(1-m*n)-m*x*n*(1-m*n)+x*n*(1-m*n)+m*x*(1-m*n))/(2*x*n*(m*n-1)*(1-m*n)))$/*##*/
+s1a:frfactor(s1)$/*##*/
+s1:frev(s1a,[x^2=sqrt(m^2+1),y=sqrt(n^2+1)])$/*##*/
+end$/*##*/
+disp(s1a)$/*##*/
+disp(s1)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

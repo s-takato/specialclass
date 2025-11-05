@@ -1,0 +1,80 @@
+writefile("/Users/takatoosetsuo/Dropbox/wasan/Malfatti/fig/malfatti7mxans5.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(m,n,r)$/*##*/
+A:vtxT; B:vtxL; C:vtxR; I:inC$/*##*/
+aT:angT$/*##*/
+putT(m,n,s1*r); slideT(vtxL,B)$/*##*/
+D:vtxT; E:vtxR; I1:inC$/*##*/
+putT(m,n,s2*r); slideT(vtxR,C)$/*##*/
+F:vtxT; G:vtxL; I2:inC$/*##*/
+putT(m,n,s3*r); slideT(vtxT,A)$/*##*/
+H:vtxL; J:vtxR; I3:inC$/*##*/
+end$/*##*/
+rearr(eq,t):=block(    [out,temp],    temp:expand(eq),    out:0,    for j from 4 thru 0 step -1 do      out:out+factor(coeff(temp,t,j))*t^j,    return(out)  )$/*##*/
+eq1:lenSeg2(I1,I2)-(s1*r+s2*r)^2$/*##*/
+eq2:lenSeg2(I1,I3)-(s1*r+s3*r)^2$/*##*/
+eq3:lenSeg2(I2,I3)-(s2*r+s3*r)^2$/*##*/
+eq1:numer(eq1)/r^2$/*##*/
+eq2:numer(eq2)/r^2$/*##*/
+eq3:numer(eq3)/r^2$/*##*/
+eq1s1:rearr(eq1,s1)$/*##*/
+eq1s2:rearr(eq1,s2)$/*##*/
+eq2s1:rearr(eq2,s1)$/*##*/
+eq2s3:rearr(eq2,s3)$/*##*/
+eq3s2:rearr(eq3,s2)$/*##*/
+eq3s3:rearr(eq3,s3)$/*##*/
+end$/*##*/
+out1:reduceD([eq2s3,eq3s3],s3,10)$/*##*/
+out:out1[2]$/*##*/
+temp1:rearr(out,s2)$/*##*/
+out2:reduceD([eq1s2,temp1],s2,10)$/*##*/
+out:out2[2]$/*##*/
+eqs1:factor(out)$/*##*/
+len:length(eqs1)$/*##*/
+eqs1a:nthfactor(eqs1,len-1)$/*##*/
+eqs1a:rearr(eqs1a,s1)$/*##*/
+eqs1b:nthfactor(eqs1,len)$/*##*/
+eqs1b:rearr(eqs1b,s1)$/*##*/
+sol1a:solve(eqs1a,s1)$/*##*/
+lena:length(sol1a)$/*##*/
+sol1b:solve(eqs1b,s1)$/*##*/
+lenb:length(sol1b)$/*##*/
+end$/*##*/
+s1L:[]$/*##*/
+for j from 1 thru length(sol1a) do block(   temp:frev(s1,sol1a[j]),   s1L:endcons(temp,s1L)  )$/*##*/
+for j from 1 thru length(sol1b) do block(   temp:frev(s1,sol1b[j]),   s1L:endcons(temp,s1L)  )$/*##*/
+len1:length(s1L)$/*##*/
+sols2:solve(eq1s2,s2)$/*##*/
+s2L:[]$/*##*/
+for j from 1 thru length(sols2) do block(   temp:frev(s2,sols2[j]),   s2L:endcons(temp,s2L)  )$/*##*/
+len2:length(s2L)$/*##*/
+sols3:solve(eq2s3,s3)$/*##*/
+s3L:[]$/*##*/
+for j from 1 thru length(sols3) do block(   temp:frev(s3,sols3[j]),   s3L:endcons(temp,s3L)  )$/*##*/
+len3:length(s3L)$/*##*/
+end$/*##*/
+s1:s1L[7]$/*##*/
+s2:s2L[1]$/*##*/
+s3:s3L[2]$/*##*/
+end$/*##*/
+disp(A)$/*##*/
+disp(B)$/*##*/
+disp(C)$/*##*/
+disp(D)$/*##*/
+disp(E)$/*##*/
+disp(F)$/*##*/
+disp(G)$/*##*/
+disp(H)$/*##*/
+disp(J)$/*##*/
+disp(I1)$/*##*/
+disp(I2)$/*##*/
+disp(I3)$/*##*/
+disp(aT)$/*##*/
+disp(s1)$/*##*/
+disp(s2)$/*##*/
+disp(s3)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

@@ -1,0 +1,188 @@
+mkcmd1():=(
+ cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r)",
+ "A:vtxT; B:vtxL; C:vtxR; I:inC",
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s2*r); slideT(vtxR,C)",
+ "F:vtxT; G:vtxL; I2:inC", 
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s3*r); slideT(vtxT,A)",
+ "H:vtxL; J:vtxR; I3:inC", 
+// "eq1:numer(lenSeg2(I1,I2)-(r1+r2)^2)",
+ "end"
+ ]);
+);
+var1="A::B::C::D::E::F::G::H::J::I::I1::I2::I3";
+dispfig1():=(
+  m=tanhalf(40); n=tanhalf(55); r=2;
+  s1=0.8; s2=0.55; s3=0.5;
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv(var1);
+  Circledata("0",[I,r],["Color=red"]);
+  Listplot("0",[A,B,C,A]);
+  Listplot("1",[D,B,E,D]);
+  Listplot("2",[F,G,C,F]);
+  Listplot("3",[A,H,J,A]);
+  Circledata("1",[I1,r1]);
+  Circledata("2",[I2,r2]);
+  Circledata("3",[I3,r3]);
+);
+
+mkcmd2():=(
+ cmdL2=concat(cmdL1,[
+ "eq1:lenSeg2(I1,I2)-(s1*r+s2*r)^2",
+ "eq2:lenSeg2(I1,I3)-(s1*r+s3*r)^2",
+ "eq3:lenSeg2(I2,I3)-(s2*r+s3*r)^2",
+ "eq1:numer(eq1)/r^2",
+ "eq2:numer(eq2)/r^2",
+ "eq3:numer(eq3)/r^2",
+ "temp:expand(eq1)",
+ "c2:factor(coeff(temp,s2,2))",
+ "c1:factor(coeff(temp,s2,1))",
+ "c0:factor(coeff(temp,s2,0))",
+ "eq1s2:c2*s2^2+c1*s2+c0",
+ "c2:factor(coeff(temp,s1,2))",
+ "c1:factor(coeff(temp,s1,1))",
+ "c0:factor(coeff(temp,s1,0))",
+ "eq1s1:c2*s1^2+c1*s1+c0",
+
+ "temp:expand(eq2)",
+ "c2:factor(coeff(temp,s3,2))",
+ "c1:factor(coeff(temp,s3,1))",
+ "c0:factor(coeff(temp,s3,0))",
+ "eq2s3:c2*s3^2+c1*s3+c0",
+ "c2:factor(coeff(temp,s1,2))",
+ "c1:factor(coeff(temp,s1,1))",
+ "c0:factor(coeff(temp,s1,0))",
+ "eq2s1:c2*s1^2+c1*s1+c0",
+ 
+ "temp:expand(eq3)",
+ "c2:factor(coeff(temp,s3,2))",
+ "c1:factor(coeff(temp,s3,1))",
+ "c0:factor(coeff(temp,s3,0))",
+ "eq3s3:c2*s3^2+c1*s3+c0",
+ "c2:factor(coeff(temp,s2,2))",
+ "c1:factor(coeff(temp,s2,1))",
+ "c0:factor(coeff(temp,s2,0))",
+ "eq3s2:c2*s2^2+c1*s2+c0",
+// "sols2:solve(eq1,s2)",
+// "sols3:solve(eq2,s3)",
+ "sol:solve(eq1s2,s2)",
+ "s2ans1:frev(s2,sol[1])",
+ "s2ans2:frev(s2,sol[2])",
+ "sol:solve(eq2s3,s3)",
+ "s3ans1:frev(s3,sol[1])",
+ "s3ans2:frev(s3,sol[2])",
+ "end"
+ ]);
+);
+var2="eq1::eq2::eq3::";
+var2="s2ans1::s2ans2::s3ans1::s3ans2";
+
+dispfig2():=(
+  m=tanhalf(40); n=tanhalf(55); r=2;
+  s1=0.735;
+  s2=parse(s2ans1); I2=parse(I2);
+  s3=parse(s3ans2);
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv("I::I1::I2::I3");
+//  Parsevv(var2);
+  Listplot("0",[A,B,C,A]);
+  Circledata("0",[I,r]);
+  Listplot("1",[D,B,E,D],["Color=red"]);
+  Circledata("1",[I1,r1],["Color=red"]);
+  Listplot("2",[F,G,C,F],["Color=blue"]);
+  Circledata("2",[I2,r2],["Color=blue"]);
+  Listplot("3",[A,H,J,A],["Color=cyan"]);
+  Circledata("3",[I3,r3],["Color=cyan"]);
+);
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "out:reduceD([eq2s3,eq3s3],s3,10)",
+ "temp1:remainder(out[2],eq1s2,s2)",
+ "temp1:factor(temp1)",
+ "eq23s12:nthfactor(temp1,6)",
+ "out:reduceD([eq1s2,eq23s12],s2,10)",
+ "temp2:factor(out[2])",
+ "eqs1:nthfactor(temp2,2)",
+ "sol:solve(eqs1,s1)",
+ "s1a1:frev(s1,sol[1])",
+ "s1a2:frev(s1,sol[2])",
+ "s1a3:frev(s1,sol[3])",
+ "s1a4:frev(s1,sol[4])",
+ "end"
+ ]);
+);
+var3="eqs1::sol::s1a1::s1a2::s1a3::s1a4";
+
+/////////////////
+if(1==0,//skip
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+// "sol:algsys([eq1,eq2,eq3],[s1,s2,s3])",
+ "end"
+ ]);
+);
+var3="sol";
+var=var2+"::"+var3;// cannot be solved
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "load(grobner)",
+ "gb:poly_buchberger([eq1,eq2,eq3], [s1,s2,s3])",
+ "end"
+ ]);
+);
+var3="gb";// cannot be solved
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "c2:factor(coeff(eq1,s2,2))",
+ "c1:factor(coeff(eq1,s2,1))",
+ "c0:factor(coeff(eq1,s2,0))",
+ "eq1s2:c2*s2^2+c1*s2+c0",
+ 
+ "c2:factor(coeff(eq1,s1,2))",
+ "c1:factor(coeff(eq1,s1,1))",
+ "c0:factor(coeff(eq1,s1,0))",
+ "eq1s1:c2*s1^2+c1*s1+c0",
+ 
+ "c2:factor(coeff(eq2,s3,2))",
+ "c1:factor(coeff(eq2,s3,1))",
+ "c0:factor(coeff(eq2,s3,0))",
+ "eq2s3:c2*s3^2+c1*s3+c0",
+
+ "c2:factor(coeff(eq2,s1,2))",
+ "c1:factor(coeff(eq2,s1,1))",
+ "c0:factor(coeff(eq2,s1,0))",
+ "eq2s1:c2*s1^2+c1*s1+c0",
+
+ "c2:factor(coeff(eq3,s3,2))",
+ "c1:factor(coeff(eq3,s3,1))",
+ "c0:factor(coeff(eq3,s3,0))",
+ "eq3s3:c2*s3^2+c1*s3+c0",
+ 
+ "c2:factor(coeff(eq3,s2,2))",
+ "c1:factor(coeff(eq3,s2,1))",
+ "c0:factor(coeff(eq3,s2,0))",
+ "eq3s2:c2*s2^2+c1*s2+c0",
+ "end"
+ ]);
+);
+var3="eq1s2::eq1s1::eq2s3::eq2s1::eq3s3::eq3s2";
+
+);//skipend
+/////////////////
+
+mkcmd4():=(
+ cmdL4=concat(cmdL3,[
+// "s1:s1a1",
+ "sol:solve(eq1,s2)",
+ "end"
+ ]);
+);
+var4="sol";

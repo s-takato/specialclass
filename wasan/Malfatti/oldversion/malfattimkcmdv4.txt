@@ -54,32 +54,46 @@ mkcmd2():=(
  "eq2s3:rearr(eq2,s3)",
  "eq3s2:rearr(eq3,s2)",
  "eq3s3:rearr(eq3,s3)",
+// "sols2:solve(eq1,s2)",
+// "sols3:solve(eq2,s3)",
+// "sol:solve(eq1s2,s2)",
+// "s2ans1:frev(s2,sol[1])",
+// "s2ans2:frev(s2,sol[2])",
+// "sol:solve(eq2s3,s3)",
+// "s3ans1:frev(s3,sol[1])",
+// "s3ans2:frev(s3,sol[2])",
  "end"
  ]);
 );
 var2="eq1::eq2::eq3::eq1s1::eq1s2::eq2s1::eq2s3::eq3s2::eq3s3";
 
+dispfig2():=(
+  m=tanhalf(40); n=tanhalf(55);
+  r=2;
+  s1=0.7;
+  s2=parse(s2ans1);
+  s3=parse(s3ans2);
+  r1=s1*r; r2=s2*r; r3=s3*r;
+  Parsevv("I::I1::I2::I3");
+  dispfigure();
+);
+
 mkcmd3():=(
  cmdL3=concat(cmdL2,[
- "out1:reduceD([eq2s3,eq3s3],s3,10)",
- "out:out1[2]",
- "temp1:rearr(out,s2)",
- "out2:reduceD([eq1s2,temp1],s2,10)",
- "out:out2[2]",
- "temp2:factor(out)",
- "len:length(temp2)",
- "eqs1a:nthfactor(temp2,len-1)",
- "eqs1a:rearr(eqs1a,s1)",
- "eqs1b:nthfactor(temp2,len)",
- "eqs1b:rearr(eqs1b,s1)",
- "sol1a:solve(eqs1a,s1)",
- "lena:length(sol1a)",
- "sol1b:solve(eqs1b,s1)",
- "lenb:length(sol1b)",
+ "out:reduceD([eq2s3,eq3s3],s3,10)",
+ "temp1:remainder(out[2],eq1s2,s2)",
+ "temp1:factor(temp1)",
+ "eq23s12:nthfactor(temp1,6)",
+ "out:reduceD([eq1s2,eq23s12],s2,10)",
+ "temp2:factor(out[2])",
+ "eqs1n1:nthfactor(temp2,2)",
+ "eqs1n1:rearr(eqs1n1,s1)",
+ "eqs1n2:nthfactor(temp2,3)",
+ "eqs1n2:rearr(eqs1n2,s1)",
  "end"
  ]);
 );
-var3="temp2::len::eqs1a::eqs1b::sol1a::sol1b::lena::lenb";
+var3="eqs1n1::eqs1n2";
 
 dispfig3():=(
 //  dispfigure();
@@ -87,34 +101,37 @@ dispfig3():=(
 
 mkcmd4():=(
  cmdL4=concat(cmdL3,[
- "s1L:[]",
- "for j from 1 thru length(sol1a) do block(
-   temp:frev(s1,sol1a[j]),
-   s1L:endcons(temp,s1L)
+ "sols1n1:solve(eqs1n1,s1)",
+ "sols1n2:solve(eqs1n2,s1)",
+ "len1:length(sols1n1)",
+ "len2:length(sols1n2)",
+ "s1aL:[]",
+ "for j from 1 thru len1 do block(
+   temp:frev(s1,sols1n1[j]),
+   s1aL:endcons(temp,s1aL)
   )",
- "for j from 1 thru length(sol1b) do block(
-   temp:frev(s1,sol1b[j]),
-   s1L:endcons(temp,s1L)
+ "for j from 1 thru len2 do block(
+   temp:frev(s1,sols1n2[j]),
+   s1aL:endcons(temp,s1aL)
   )", 
- "len1:length(s1L)",
  "sols2:solve(eq1s2,s2)", 
- "s2L:[]",
+ "s2aL:[]",
  "for j from 1 thru length(sols2) do block(
    temp:frev(s2,sols2[j]),
-   s2L:endcons(temp,s2L)
+   s2aL:endcons(temp,s2aL)
   )",
- "len2:length(s2L)",
+ "lens2:length(s2aL)",
  "sols3:solve(eq2s3,s3)", 
- "s3L:[]",
+ "s3aL:[]",
  "for j from 1 thru length(sols3) do block(
    temp:frev(s3,sols3[j]),
-   s3L:endcons(temp,s3L)
+   s3aL:endcons(temp,s3aL)
   )", 
- "len3:length(s3L)",
+ "lens3:length(s3aL)",
  "end"
  ]);
 );
-var4="s1L::s2L::s3L::len1::len2::len3";
+var4="s1aL::lens2::lens3::s2aL::s3aL";
 
 dispfig4():=(
 //  dispfigure();
