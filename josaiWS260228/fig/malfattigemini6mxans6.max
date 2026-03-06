@@ -1,0 +1,47 @@
+writefile("/Users/takatoosetsuo/Dropbox/2026ketcindy/josaiseminar26/presen/fig/malfattigemini6mxans6.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(m,n,r)$/*##*/
+A:vtxT; B:vtxL; C:vtxR; I:inC$/*##*/
+putT(m,n,s1*r); slideT(vtxL,B)$/*##*/
+D:vtxT; Eb:vtxR; I1:inC$/*##*/
+putT(m,n,s2*r); slideT(vtxR,C)$/*##*/
+G:vtxT; Ec:vtxL; I2:inC$/*##*/
+putT(m,n,s3*r); slideT(vtxT,A)$/*##*/
+H:vtxL; J:vtxR; I3:inC$/*##*/
+eq1:numer(lenSeg2(I1,I2)-(s1*r+s2*r)^2)$/*##*/
+eq2:numer(lenSeg2(I2,I3)-(s2*r+s3*r)^2)$/*##*/
+eq3:numer(lenSeg2(I3,I1)-(s3*r+s1*r)^2)$/*##*/
+eq1:eq1/r^2$/*##*/
+eq2:eq2/r^2$/*##*/
+eq3:eq3/r^2$/*##*/
+endstep$/*##*/
+assume(M>0, M<1, N>0, N<1)$/*##*/
+s1:(M*N^2+(M-1)*N-1)/((M^2-1)*N-M^2-2*M-1)$/*##*/
+s2:(M+1)*(M*N-1)/((N+1)*(M*N-N-M-1))$/*##*/
+s3:(M+1)*(N+1)*(M*N-N-M-1)/(4*(M*N-1))$/*##*/
+eq1: numer(r1 - s1*r)$/*##*/
+eq2: numer(r2 - s2*r)$/*##*/
+eq3: numer(r3 - s3*r)$/*##*/
+out:reduceD([eq2,eq3],N,10)$/*##*/
+eqM1:out[2]$/*##*/
+out:reduceD([eq1,eq2],N,10)$/*##*/
+eqM2:out[2]$/*##*/
+eq1M:nthfactor(eqM1,5)$/*##*/
+eq2M:nthfactor(eqM2,6)$/*##*/
+eq1Mt:frev(eq1M,[r1=t1^2,r2=t2^2,r3=t3^2])$/*##*/
+eq2Mt:frev(eq2M,[r1=t1^2,r2=t2^2,r3=t3^2])$/*##*/
+eq:nthfactor(eq1Mt,1)$/*##*/
+sol:solve(eq,M)$/*##*/
+eq2Mt2:frev(eq2Mt,sol)$/*##*/
+eq2Mt2:numer(-eq2Mt2)$/*##*/
+finaleq: nthfactor(eq2Mt2, 3)$/*##*/
+solr: solve(finaleq, r)$/*##*/
+omuracheck: factor(solr)$/*##*/
+endstep$/*##*/
+disp(finaleq)$/*##*/
+disp(omuracheck)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

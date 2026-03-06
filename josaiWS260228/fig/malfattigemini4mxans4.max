@@ -1,0 +1,80 @@
+writefile("/Users/takatoosetsuo/Dropbox/2026ketcindy/josaiseminar26/presenfinal/fig/malfattigemini4mxans4.txt")$/*##*/
+powerdisp:false$/*##*/
+display2d:false$/*##*/
+linel:1000$/*##*/
+batch("/Applications/KeTTeX.app/texlive/texmf-dist/scripts/ketcindy/ketlib/maximaL/mnr.max")$/*##*/
+putT(m,n,r)$/*##*/
+A:vtxT; B:vtxL; C:vtxR; I:inC$/*##*/
+putT(m,n,s1*r); slideT(vtxL,B)$/*##*/
+D:vtxT; Eb:vtxR; I1:inC$/*##*/
+putT(m,n,s2*r); slideT(vtxR,C)$/*##*/
+G:vtxT; Ec:vtxL; I2:inC$/*##*/
+putT(m,n,s3*r); slideT(vtxT,A)$/*##*/
+H:vtxL; J:vtxR; I3:inC$/*##*/
+eq1:numer(lenSeg2(I1,I2)-(s1*r+s2*r)^2)$/*##*/
+eq2:numer(lenSeg2(I2,I3)-(s2*r+s3*r)^2)$/*##*/
+eq3:numer(lenSeg2(I3,I1)-(s3*r+s1*r)^2)$/*##*/
+eq1:eq1/r^2$/*##*/
+eq2:eq2/r^2$/*##*/
+eq3:eq3/r^2$/*##*/
+endstep$/*##*/
+eq1:numer(normsq(I1-I2)-(s1*r+s2*r)^2)$/*##*/
+eq2:numer(normsq(I2-I3)-(s2*r+s3*r)^2)$/*##*/
+eq3:numer(normsq(I3-I1)-(s3*r+s1*r)^2)$/*##*/
+eq1:eq1/r^2$/*##*/
+eq2:eq2/r^2$/*##*/
+eq3:eq3/r^2$/*##*/
+val13MN:524288*M^2*N^3*(M*N-N-M-1)^5*(M*N+N+M-1)^5*(M^2*N*s1-N*s1-M^2*s1-2*M*s1-s1-M*N^2-M*N+N+1)*(M^2*N*s1-N*s1-M^2*s1-2*M*s1-s1-M*N^2-M^2*N+M*N+M^2)*(M^2*N*s1-N*s1+M^2*s1-2*M*s1+s1-M*N^2+M*N+N-1)*(M^2*N*s1-N*s1+M^2*s1-2*M*s1+s1-M*N^2-M^2*N-M*N-M^2)*(M^2*N^2*s1-2*M*N^2*s1+N^2*s1-M^2*N*s1+N*s1-N^2-M*N-N-M)*(M^2*N^2*s1-2*M*N^2*s1+N^2*s1-M^2*N*s1+N*s1-M^2*N^2+M^2*N+M*N-M)*(M^2*N^2*s1+2*M*N^2*s1+N^2*s1+M^2*N*s1-N*s1-N^2-M*N+N+M)*(M^2*N^2*s1+2*M*N^2*s1+N^2*s1+M^2*N*s1-N*s1-M^2*N^2-M^2*N+M*N+M)*(M^10*N^12*s1^2-4*M^8*N^12*s1^2+6*M^6*N^12*s1^2-4*M^4*N^12*s1^2+M^2*N^12*s1^2+2*M^11*N^11*s1^2-18*M^9*N^11*s1^2+44*M^7*N^11*s1^2-44*M^5*N^11*s1^2+18*M^3*N^11*s1^2-2*M*N^11*s1^2+M^12*N^10*s1^2-284*M^10*N^10*s1^2+1143*M^8*N^10*s1^2-1720*M^6*N^10*s1^2+1143*M^4*N^10*s1^2-284*M^2*N^10*s1^2+N^10*s1^2-18*M^11*N^9*s1^2+4258*M^9*N^9*s1^2-12684*M^7*N^9*s1^2+12684*M^5*N^9*s1^2-4258*M^3*N^9*s1^2+18*M*N^9*s1^2-4*M^12*N^8*s1^2+1143*M^10*N^8*s1^2-29176*M^8*N^8*s1^2+56074*M^6*N^8*s1^2-29176*M^4*N^8*s1^2+1143*M^2*N^8*s1^2-4*N^8*s1^2+44*M^11*N^7*s1^2-12684*M^9*N^7*s1^2+103368*M^7*N^7*s1^2-103368*M^5*N^7*s1^2+12684*M^3*N^7*s1^2-44*M*N^7*s1^2+6*M^12*N^6*s1^2-1720*M^10*N^6*s1^2+56074*M^8*N^6*s1^2-174256*M^6*N^6*s1^2+56074*M^4*N^6*s1^2-1720*M^2*N^6*s1^2+6*N^6*s1^2-44*M^11*N^5*s1^2+12684*M^9*N^5*s1^2-103368*M^7*N^5*s1^2+103368*M^5*N^5*s1^2-12684*M^3*N^5*s1^2+44*M*N^5*s1^2-4*M^12*N^4*s1^2+1143*M^10*N^4*s1^2-29176*M^8*N^4*s1^2+56074*M^6*N^4*s1^2-29176*M^4*N^4*s1^2+1143*M^2*N^4*s1^2-4*N^4*s1^2+18*M^11*N^3*s1^2-4258*M^9*N^3*s1^2+12684*M^7*N^3*s1^2-12684*M^5*N^3*s1^2+4258*M^3*N^3*s1^2-18*M*N^3*s1^2+M^12*N^2*s1^2-284*M^10*N^2*s1^2+1143*M^8*N^2*s1^2-1720*M^6*N^2*s1^2+1143*M^4*N^2*s1^2-284*M^2*N^2*s1^2+N^2*s1^2-2*M^11*N*s1^2+18*M^9*N*s1^2-44*M^7*N*s1^2+44*M^5*N*s1^2-18*M^3*N*s1^2+2*M*N*s1^2+M^10*s1^2-4*M^8*s1^2+6*M^6*s1^2-4*M^4*s1^2+M^2*s1^2-2*M^10*N^12*s1+4*M^6*N^12*s1-2*M^2*N^12*s1-4*M^11*N^11*s1+300*M^9*N^11*s1-848*M^7*N^11*s1+848*M^5*N^11*s1-300*M^3*N^11*s1+4*M*N^11*s1-2*M^12*N^10*s1+352*M^10*N^10*s1-4606*M^8*N^10*s1+8512*M^6*N^10*s1-4606*M^4*N^10*s1+352*M^2*N^10*s1-2*N^10*s1+60*M^11*N^9*s1-5252*M^9*N^9*s1+28096*M^7*N^9*s1-28096*M^5*N^9*s1+5252*M^3*N^9*s1-60*M*N^9*s1+8*M^12*N^8*s1-1646*M^10*N^8*s1+32760*M^8*N^8*s1-78628*M^6*N^8*s1+32760*M^4*N^8*s1-1646*M^2*N^8*s1+8*N^8*s1-160*M^11*N^7*s1+14768*M^9*N^7*s1-97968*M^7*N^7*s1+97968*M^5*N^7*s1-14768*M^3*N^7*s1+160*M*N^7*s1-12*M^12*N^6*s1+2592*M^10*N^6*s1-56308*M^8*N^6*s1+140224*M^6*N^6*s1-56308*M^4*N^6*s1+2592*M^2*N^6*s1-12*N^6*s1+160*M^11*N^5*s1-14768*M^9*N^5*s1+97968*M^7*N^5*s1-97968*M^5*N^5*s1+14768*M^3*N^5*s1-160*M*N^5*s1+8*M^12*N^4*s1-1646*M^10*N^4*s1+32760*M^8*N^4*s1-78628*M^6*N^4*s1+32760*M^4*N^4*s1-1646*M^2*N^4*s1+8*N^4*s1-60*M^11*N^3*s1+5252*M^9*N^3*s1-28096*M^7*N^3*s1+28096*M^5*N^3*s1-5252*M^3*N^3*s1+60*M*N^3*s1-2*M^12*N^2*s1+352*M^10*N^2*s1-4606*M^8*N^2*s1+8512*M^6*N^2*s1-4606*M^4*N^2*s1+352*M^2*N^2*s1-2*N^2*s1+4*M^11*N*s1-300*M^9*N*s1+848*M^7*N*s1-848*M^5*N*s1+300*M^3*N*s1-4*M*N*s1-2*M^10*s1+4*M^6*s1-2*M^2*s1+M^10*N^12-28*M^8*N^12+70*M^6*N^12-28*M^4*N^12+M^2*N^12+2*M^11*N^11-90*M^9*N^11+420*M^7*N^11-420*M^5*N^11+90*M^3*N^11-2*M*N^11+M^12*N^10-100*M^10*N^10+1191*M^8*N^10-2280*M^6*N^10+1191*M^4*N^10-100*M^2*N^10+N^10-42*M^11*N^9+1506*M^9*N^9-7156*M^7*N^9+7156*M^5*N^9-1506*M^3*N^9+42*M*N^9-4*M^12*N^8+775*M^10*N^8-10144*M^8*N^8+23082*M^6*N^8-10144*M^4*N^8+775*M^2*N^8-4*N^8+116*M^11*N^7-6116*M^9*N^7+33704*M^7*N^7-33704*M^5*N^7+6116*M^3*N^7-116*M*N^7+6*M^12*N^6-1352*M^10*N^6+22058*M^8*N^6-49936*M^6*N^6+22058*M^4*N^6-1352*M^2*N^6+6*N^6-116*M^11*N^5+6116*M^9*N^5-33704*M^7*N^5+33704*M^5*N^5-6116*M^3*N^5+116*M*N^5-4*M^12*N^4+775*M^10*N^4-10144*M^8*N^4+23082*M^6*N^4-10144*M^4*N^4+775*M^2*N^4-4*N^4+42*M^11*N^3-1506*M^9*N^3+7156*M^7*N^3-7156*M^5*N^3+1506*M^3*N^3-42*M*N^3+M^12*N^2-100*M^10*N^2+1191*M^8*N^2-2280*M^6*N^2+1191*M^4*N^2-100*M^2*N^2+N^2-2*M^11*N+90*M^9*N-420*M^7*N+420*M^5*N-90*M^3*N+2*M*N+M^10-28*M^8+70*M^6-28*M^4+M^2)$/*##*/
+len:length(val13MN)$/*##*/
+endstep$/*##*/
+val13MNn: num(val13MN)$/*##*/
+fcL: args(val13MNn)$/*##*/
+lenFCL: length(fcL)$/*##*/
+linF: sublist(fcL, lambda([f], hipow(f,s1)=1))$/*##*/
+sols: map(lambda([eq], solve(eq,s1)[1]), linF)$/*##*/
+ansL: map(rhs, sols)$/*##*/
+subRule: [m=2*M/(1-M^2), n=2*N/(1-N^2)]$/*##*/
+assume(M>0, M<1, N>0, N<1)$/*##*/
+eq1MN: numer(radcan(subst(subRule, eq1)))$/*##*/
+eq3MN: numer(radcan(subst(subRule, eq3)))$/*##*/
+solveS2(valS1) := map(lambda([e], factor(rhs(e))), solve(numer(radcan(subst(s1=valS1, eq1MN))), s2))$/*##*/
+solveS3(valS1) := map(lambda([e], factor(rhs(e))), solve(numer(radcan(subst(s1=valS1, eq3MN))), s3))$/*##*/
+s2solList: map(solveS2, ansL)$/*##*/
+s3solList: map(solveS3, ansL)$/*##*/
+ans123L: []$/*##*/
+for k:1 thru length(ansL) do block(       s1v:ansL[k], list2:s2solList[k], list3:s3solList[k],       for v2 in list2 do (          for v3 in list3 do (            ans123L:endcons([s1v, v2, v3], ans123L) ) ) )$/*##*/
+len:length(ans123L)$/*##*/
+endstep$/*##*/
+len:length(ans123L)$/*##*/
+endstep$/*##*/
+disp(A)$/*##*/
+disp(B)$/*##*/
+disp(C)$/*##*/
+disp(I)$/*##*/
+disp(D)$/*##*/
+disp(Eb)$/*##*/
+disp(G)$/*##*/
+disp(Ec)$/*##*/
+disp(H)$/*##*/
+disp(J      )$/*##*/
+disp(I1)$/*##*/
+disp(I2)$/*##*/
+disp(I3)$/*##*/
+disp(eq1)$/*##*/
+disp(eq2)$/*##*/
+disp(eq3)$/*##*/
+disp(eq1)$/*##*/
+disp(eq2)$/*##*/
+disp(eq3)$/*##*/
+disp(val13MN)$/*##*/
+disp(len)$/*##*/
+disp(ansL)$/*##*/
+disp(lenFCL)$/*##*/
+disp(s2solList)$/*##*/
+disp(s3solList)$/*##*/
+disp(len)$/*##*/
+disp(ans123L)$/*##*/
+disp(len)$/*##*/
+disp(ans123L)$/*##*/
+closefile()$/*##*/
+quit()$/*##*/

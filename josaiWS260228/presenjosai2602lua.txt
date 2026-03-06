@@ -1,0 +1,476 @@
+title::slide0
+::\usepackage{qrcode}
+::\usepackage{setspace}
+::\def\deg#1{#1^{\circ}}
+::\def\bs{$\backslash$}
+::\newcommand{\monthday}{0228}
+::\newcommand{\hats}{\textasciicircum}
+
+\setthin{0.1}
+\def\colorthin{\color[cmyk]{\thin,\thin,\thin,\thin}}
+
+\setcounter{figure}{1}
+
+%%%%%%%%%%%%
+main::和算の問題とmnr法
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::mnr法とMaximaによる解法
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{8}{\ten}{和算の問題を解くのは結構大変}
+\addtext{8}{\ten}{和算家の卓越した計算力と知識が必要}
+\addtext{16}{}{算額の問題の答と術は簡単にしか書かれていない}
+\addtext{8}{\ten}{Maximaで解くことを試みた}
+\addtext{16}{}{$\Rightarrow$無理式が現れて計算は破綻}
+\addtext{8}{\ten}{mnr法}
+\addtext{16}{}{三角形の2底角の正接$m=\tan B/2,n=\tan C/2$と内接円の半径$r$を用いる}
+\addtext[8]{16}{}{$\Rightarrow$三角形の諸量は$m,n,r$の有理式となる}
+end
+
+%%%%%%%%%%%%
+new::KeTCindy
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{8}{\ten}{動的幾何Cinderella2(Cindy)のライブラリ}
+\addtext{8}{\ten}{TeXの描画コード(主にpict2e)ファイルを対話的に生成}
+\addtext[8]{16}{}{KeTCindy$=$KeTpic$+$Cindy}
+\putnotese{26}{40}{\color{blue}KeTpic$=$Kisarazu Educational Tpic(Takato)}
+\addtext[8]{8}{\ten}{Maxima(,R,GCC)をKeTCindyから実行して，結果をKeTCindyで利用できる}
+\addtext[8]{8}{\ten}{mnr法のためのコマンドとテンプレートを作成}
+end
+
+%%%%%%%%%%%%
+new::mnr法の主なコマンド
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{2}{\ten}{\color{blue}基本コマンド}
+\addtext{10}{putT(m,n,r)}{内心を原点にして三角形をおく}
+\addtext{10}{slideT(p1,p2)}{p1がp2に一致するように平行移動}
+\addtext{10}{rotateT(m,p)}{pの周りに(m)だけ回転}
+\addtext{2}{\ten}{\color{blue}式変形の主なコマンド}
+\addtext{10}{\Ltab{50mm}{numer(f),denom(f)}}{分子分母を因数分解}
+\addtext{10}{\Ltab{50mm}{frfactor(f)}}{分数を簡単化}
+\addtext{10}{\Ltab{50mm}{frev(eq,rep)}}{eqにrepを代入して簡単化}
+end
+
+%%%%%%%%%%%%
+main::Malfatti円(三斜三円術)
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::問題
+%repeat=1
+\slidepage
+
+\textinit[45]
+layer::{120}{0}
+\addtext{-2}{\ten}{安島直円}
+\addtext{4}{}{不朽算法}
+\addtext{10}{}{日下誠}
+\addtext{10}{}{1799年}
+\addtext{10}{}{写本現存}
+\putnotenw{138}{80}{\includegraphics[height=96mm]{fig/fukyu14.png}}
+end
+
+%%%%%%%%%%%%
+same
+%repeat=2
+\slidepage
+
+\textinit[70]
+layer::{120}{0}
+\putnotese{80}{-12}{\scalebox{0.6}{\input{fig/malfattifig.tex}}}
+\addtext[-4]{8}{問}{今有如三斜内容緑円及青白浅青円只浅青径若干白径若干青径若干問得緑径術如何}
+\addtext[12]{24}{}{岐阜県明星輪寺算額1865}
+\settext{42}{8}{105}%%
+%[2,-]::\addtext[-8]{8}{\ten}{大村一秀の解(聖なる数学英語版 P216-218)}
+%[2,-]::\addtext{16}{}{算法点竄手引草, 1841}
+
+%[2,-]::\putnotese{70}{43}{\includegraphics[height=25mm]{fig/malfattiomura.png}}
+%[2,-]::\putnotese{70}{73}{\href{https://s-takato.github.io/ketcindyorg/indexj.html}{ketcindy home}で検索}
+end
+
+%%%%%%%%%%%%
+new::Step1のmkcmdとcdy(Figures)
+%repeat=1
+\slidepage
+
+\textinit[115]
+layer::{120}{0}
+{\small
+\addtext[0]{-10}{}{mkcmd1():=(}
+\addtext{-10}{}{ cmdL1=concat(Mxbatch("mnr"),[}
+\addtext{-10}{}{ "putT(m,n,r)",}
+\addtext{-10}{}{ "A:vtxT; B:vtxL; C:vtxR; I:inC",}
+\addtext{-10}{}{ "putT(m,n,s1*r); slideT(vtxL,B)",}
+\addtext{-10}{}{ "D:vtxT; Eb:vtxR; I1:inC",}
+\addtext{-10}{}{ "putT(m,n,s2*r); slideT(vtxR,C)",}
+\addtext{-10}{}{ "G:vtxT; Ec:vtxL; I2:inC", }
+\addtext{-10}{}{ "putT(m,n,s3*r); slideT(vtxT,A)",}
+\addtext{-10}{}{ "H:vtxL; J:vtxR; I3:inC",}
+\addtext{-10}{}{ "eq1:numer(lenSeg2(I1,I2)-(s1*r+s2*r)\hats 2)",}
+\addtext{-10}{}{ "eq2:numer(lenSeg2(I2,I3)-(s2*r+s3*r)\hats 2)",}
+\addtext{-10}{}{ "eq3:numer(lenSeg2(I3,I1)-(s3*r+s1*r)\hats 2)",}
+\addtext{-10}{}{ "eq1:eq1/r\hats 2",}
+\addtext{-10}{}{ "eq2:eq2/r\hats 2",}
+\addtext{-10}{}{ "eq3:eq3/r\hats 2",}
+\addtext{-10}{}{ "endstep"}
+\addtext{-10}{}{ ]);}
+\addtext{-10}{}{);}
+%%\addtext[-4]{-10}{}{var1="A::B::C::I::D::Eb::G::Ec::H::J";}
+%%\addtext[-4]{-10}{}{var1=var1+"::I1::I2::I3::eq1::eq2::eq3";}
+}
+end
+
+\textinit[115]
+layer::{120}{0}
+\Line(67,-10)(67,-75)
+{\small
+\add[0]{70}{}{mkcmd1();}
+\addtext{70}{}{if(contains(Ch,1),}
+\addtext{70}{}{ Setmnrstep(1);}
+\addtext{70}{}{ CalcbyMset(var1,"mxans1",cmdL1,op(5));}
+\addtext{70}{}{ Disptex(Pos,Dy*0.75,1,var1);}
+\addtext{70}{}{ s1=0.7; s2=0.6; s3=0.8;}
+\addtext{70}{}{ Parsevv(var1);}
+\addtext{70}{}{ dispfig1();}
+\addtext{70}{}{);}
+}
+end
+
+%%%%%%%%%%%%
+new::Step1を実行したcdy画面
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\putnotes{65}{5}{\includegraphics[width=150mm]{fig/step1sreen.png}}
+end
+
+%%%%%%%%%%%%
+new::mnr解法での工夫と着想
+%repeat=2
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{8}{\ten}{最初は有理式で計算される}
+\addtext{8}{\ten}{途中で4次方程式が出る}
+\addtext{8}{\ten}{解は求まるが，根号の複雑な式(32個)}
+\addtext{8}{\ten}{よく見ると，$\sqrt{1+m^2}$の式が出ている}
+\addtext{16}{}{$\sqrt{1+m^2}=\frac{1}{\cos B/2}$}
+\addtext{24}{$\Rightarrow$}{四分角の正接$M,N$の有理式}
+\addtext{8}{\ten}{$M,N$に置き換えることで解を得ることができた}
+\addtext{24}{}{{\color{blue}RIMS202511「数式処理の理論と応用」で発表}}
+%[2,-]::\addtext{16}{$\Rightarrow$}{最初から(または早い段階で)$M,N$を使えばどうか}
+end
+
+%%%%%%%%%%%%
+new::mnr解法修正版
+%repeat=5
+\slidepage
+
+\textinit[115]
+layer::{120}{0}
+\addtext{8}{\ten}{早い段階で$M,N$で置き換えることにする}
+%[2,-]::\addtext{24}{}{{\color{blue}しかし，最初からだと式が長大になりすぎる}}
+%[3,-]::\addtext{16}{$\Rightarrow$}{式を見ながら，適切なタイミングで}
+%[4,-]::\addtext{8}{\ten}{Maximaのスクリプトが複雑になり，ミスが見つかりにくい}
+%[4,-]::\addtext[8]{16}{}{\color{red}エラーが出た時の対応に苦労する}
+%[5,-]::\addtext{24}{$\Rightarrow$}{Gemini Proとの対話で進めることにした}
+end
+
+%%%%%%%%%%%%
+main::Geminiとの対話
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::対話1 ライブラリの確認
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{5}{{\color{blue}User:}}{\color{blue}和算図形問題をKeTCindyとMaximaで解きたい}
+\addtext{12}{}{専用ライブラリ(\texttt{ketcindylib}, \texttt{mnr.max})の認知確認}
+\addtext{12}{}{未知の場合，ファイル添付の提案}
+
+%%\putnotese{110}{-5}{\includegraphics[width=3cm]{fig/ai_partner.png}}
+
+\addtext{5}{{\color{magenta}Gemini:}}{\color{magenta}協力の申し出と懸念}
+\addtext{12}{}{KeTCindyやMaximaの一般的な文法は熟知}
+\addtext{12}{}{特定ライブラリの内部定義は未学習の可能性大}
+\addtext{12}{}{具体的な関数仕様やデータ形式の確認要望}
+\addtext{16}{$\Rightarrow$}{ファイルアップロード(添付)の依頼}
+end
+
+%%%%%%%%%%%%
+new::対話2：提案された進め方
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext{5}{{\color{magenta}Gemini:}}{\color{magenta}ファイル受領後のサポート手順提案}
+
+\addtext{10}{1.}{ライブラリの解析}
+\addtext{18}{}{\texttt{mnr.max}等の定義読込，利用可能関数の特定}
+\addtext{10}{2.}{問題の定式化}
+\addtext{18}{}{和算問題をMaximaで解ける連立方程式へ定式化}
+\addtext{10}{3.}{スクリプト作成}
+\addtext{18}{}{図形描画(KeTCindy)と計算(Maxima)の連携コード提示}
+
+%%\putnotese{80}{30}{\includegraphics[width=6cm]{fig/workflow_diagram.png}}
+end
+
+%%%%%%%%%%%%
+new::最初の壁：Grobner基底
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}提案コードを実行したがうまくいかない}
+\addtext{12}{}{\texttt{gb} (Grobner基底) が計算されず変数のまま残る}
+\addtext{12}{}{リストの途中に \texttt{end} タグが含まれている}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}原因特定と方針転換}
+\addtext{16}{}{1. \texttt{end}タグがMaximaの読み込みを中断させていた}
+\addtext{16}{}{2. Malfattiの問題はGrobner基底では計算量が爆発}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}新しいアプローチ}
+\addtext{16}{}{計算コストの高いGrobner基底を諦める}
+\addtext{16}{}{確実に解ける\textbf{消去法(\texttt{reduceD})}へ切り替える}
+\addtext{16}{}{\texttt{end}タグを自動削除する処理を追加する}
+end
+
+%%%%%%%%%%%%
+new::消去法の調整
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\texttt{reduceD}の試行錯誤}
+\addtext{12}{}{変数が消えずに残存 ($s_2$など)}
+\addtext{12}{}{中間式が長大で計算終わらず}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}パラメータの調整}
+\addtext{16}{}{消去の反復回数(ステップ数)不足}
+\addtext{16}{$\Rightarrow$}{回数を $8 \to 30$ に大幅増}
+\addtext{16}{}{計算成功も，多大な時間を要す}
+end
+
+%%%%%%%%%%%%
+new::巨大な式の処理
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}巨大な式(\texttt{val13})の取得}
+\addtext{16}{}{計算時間短縮のため結果の直書きを希望}
+\addtext{16}{}{式が巨大で扱いが困難}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}実装の提案}
+\addtext{16}{}{直書き(ハードコーディング)に賛同}
+\addtext{16}{}{巨大な式(4次$\times$4次$\times$2次)の因数分解}
+\addtext{16}{}{$s_1$の解(2次式)を自動抽出するコード作成}
+end
+
+%%%%%%%%%%%%
+new::構文エラーとの戦い
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}エラーで値が出ない}
+\addtext{12}{}{KeTCindyからMaximaへの送信時パースエラー発生}
+%% 2行になるため[8]追加
+\addtext{12}{}{文字列(\texttt{"-"})の判定失敗}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}原因の特定}
+\addtext{16}{}{原因はスクリプト内の「文字列」}
+\addtext{16}{}{KeTCindy内での \texttt{"} (ダブルクォーテーション) 使用による誤動作}
+
+\addtext[8]{5}{\color{blue}User:}{\color{blue}修正もエラー継続}
+\addtext{16}{}{エスケープ処理等試行も解決せず}
+end
+
+%%%%%%%%%%%%
+new::解決策の提案と中断
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{magenta}Gemini:}{解決策 (文字列回避)}
+\addtext{16}{}{「文字列比較」自体を回避}
+\addtext{16}{}{Maximaの \texttt{args()} 関数利用}
+%% 1行に収まる場合は[8]なし、折り返されそうなら追加してください
+\addtext{16}{$\Rightarrow$}{因数リスト直接取得による符号判定・文字列操作回避}
+
+\addtext{5}{\color{blue}User:}{\color{blue}結果}
+\addtext{16}{}{提案コードを実行するもエラー継続}
+\addtext{16}{}{一旦休憩(散歩)のため作業中断}
+\addtext{16}{}{完全な解決は次回のチャットへ持ち越し}
+end
+
+%%%%%%%%%%%%
+main::大村の公式の完全導出
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::公式の検証と不一致
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}Step6: 大村の公式の検証}
+\addtext{12}{}{公式が成り立つか $checkomura$ を計算}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}結果の分析}
+\addtext{16}{}{$checkomura : 2(MN-1) \neq 0$}
+\addtext{16}{}{$MN \neq 1$ のため，厳密には一致しない}
+\addtext{16}{}{公式の適用形か符号に課題あり}
+
+\addtext{5}{\color{blue}User:}{\color{blue}方針の大転換}
+\addtext{16}{}{公式を「確かめる」のではなく\textbf{「導く(作りたい)」}}
+\addtext{16}{}{条件式から $r$ を構成するアプローチへ}
+end
+
+%%%%%%%%%%%%
+new::数式処理による導出：消去法
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{magenta}Gemini:}{\color{magenta}変数消去の戦略}
+\addtext{16}{}{Maximaの \texttt{eliminate} と \texttt{reduceD} を駆使}
+\addtext{16}{}{変数 $M, N$ を消去し，$r, r_1, r_2, r_3$ の関係式を導く}
+
+\addtext{5}{\color{blue}User:}{\color{blue}実行結果}
+\addtext{16}{}{因数分解されない\textbf{12次の斉次多項式}が出現}
+\addtext{16}{}{$r$ については \textbf{8次式}}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}次数の意味}
+\addtext{16}{}{大村の公式（二重根号）を有理化した形と次数が一致}
+\addtext{16}{$\Rightarrow$}{成功の証．$\sqrt{r}=t$ 等の置換で次数下げを提案}
+end
+
+%%%%%%%%%%%%
+new::対称性による真の解の特定
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}2つの解の出現}
+\addtext{12}{}{$t$ ($=\sqrt{r}$) への置換後，方程式から2つの解候補}
+\addtext{12}{}{1. $eq2Mt2a$: 係数に $t_2t_3 + t_1t_3 + t_1t_2$ (対称)}
+\addtext{12}{}{2. $eq2Mt2b$: 係数に $t_2t_3 - t_1t_3 - t_1t_2$ (非対称)}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}判定基準}
+\addtext{16}{}{図形の性質から\textbf{「対称性」}を重視}
+\addtext{16}{}{添字を入れ替えても不変な $eq2Mt2a$ が真の解}
+\addtext{16}{$\Rightarrow$}{これを解いて大村の公式と比較する}
+end
+
+%%%%%%%%%%%%
+new::結論：1841年の公式の再発見
+%repeat=2
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}最終確認}
+\addtext{12}{}{対称な解を $r$ について解く}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}大村の公式との一致}
+\addtext{16}{}{導出された式：}
+\addtext{24}{}{$r = \frac{t_1 t_2 t_3 (\sqrt{t_1^2 + t_2^2 + t_3^2} + t_1 + t_2 + t_3)}{t_1 t_2 + t_2 t_3 + t_3 t_1}$}
+\addtext[4]{16}{}{これは大村一秀(1841)の公式を有理化したものと一致}
+\addtext{18}{$\Rightarrow$}{検証ではなく，\textbf{計算機による公式の自動導出}に成功}
+%[2,-]::\addtext{5}{}{\color{red}Human-AI Collaborationの成果である！}
+end
+
+%%%%%%%%%%%%
+main::結論と今後の展望
+\slidepage[m]
+
+%%%%%%%%%%%%
+new::結論：Human-AI Collaborationの成果
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{blue}User:}{\color{blue}発表の価値はあるか}
+%%\addtext{12}{}{2月の国内発表，6月の国際会議(ACA2026)での発表}
+%%\addtext{12}{}{その価値はあるか？}
+
+\addtext[-2]{5}{\color{magenta}Gemini:}{\color{magenta}Automated Derivation (自動導出)}
+\addtext{16}{}{既知の公式の「検証(Verification)」ではない}
+\addtext{16}{}{初期条件から複雑な公式を\textbf{「再発見・構成」}した}
+\addtext{16}{}{数式処理による定理の自動導出の実例として高く評価される}
+
+\addtext[5]{8}{\color{magenta}Gemini:}{\color{magenta}Human-in-the-loopの実践}
+\addtext{16}{}{計算機任せにせず，人間が指針(対称性・次数下げ)を与える}
+\addtext[6]{16}{}{人間とマシン(AI)の理想的な協働モデル}
+\addtext{16}{}{最先端の\textbf{「AI支援型数学研究」}の事例}
+end
+
+
+%%%%%%%%%%%%
+new::和算と現代技術の融合・技術的知見
+%repeat=1
+\slidepage
+
+\textinit[120]
+layer::{120}{0}
+\addtext[-4]{5}{\color{magenta}Gemini:}{\color{magenta}和算(Wasan)と21世紀の現代技術の融合}
+\addtext{12}{}{1841年の公式がKeTCindy,Maxima,AIで解明}
+%%\addtext[-4]{24}{}{(KeTCindy, Maxima, AI)}
+\addtext{12}{}{数式処理の応用として聴衆の好奇心を刺激する}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}複雑な数式の処理ノウハウ}
+\addtext{16}{}{\texttt{eliminate}だけでなく自作の\texttt{reduceD}の活用}
+\addtext{16}{}{幾何学的問題の数式処理における実践的知見}
+
+\addtext{5}{\color{magenta}Gemini:}{\color{magenta}結論}
+\addtext{16}{}{単なる問題解決に留まらない\textbf{方法論の提示}}
+\addtext{16}{}{「数式処理システムを使いこなし未知の結果を導く」}
+\addtext{16}{}{自信を持って世界へ発信すべき成果である！}
+end
+
+
+%%%%%%%%%%%%
+new::謝辞
+%repeat=1
+\slidepage
+
+\textinit[130]
+layer::{120}{0}
+\addtext[-4]{2}{}{本研究の遂行にあたり，以下の方々に深く感謝の意を表します}
+\settext{8}{8}{78}%
+\addtext[8]{2}{\Ltab{58mm}{Gemini Proさん(3.0)}}{惜しげもなく全面協力し，難解な数式処理を共に解決へ導いてくれた}
+\addtext[8]{2}{\Ltab{58mm}{U.Kortenkampさん}}{Cinderella2の主要開発者}
+\addtext{2}{\Ltab{58mm}{西浦孝治さん}}{mnr法の共同研究者}
+\addtext{2}{\Ltab{58mm}{久保康幸さん}}{KeTSlideのLuaLaTeX化を共同で開発した}
+\addtext[8]{2}{\Ltab{58mm}{Mailing Listのメンバー}}{KeTCindyを長年にわたり支え続けている方々}
+end
