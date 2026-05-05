@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>solvesuudoku.cdy</title>
+    <title>solvesuudokuv6.cdy</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -25,19 +25,6 @@
 
 <script id="csinit" type="text/x-cindyscript">
 Invert(x):=reverse(x);
-Strsplit(strorg,key):=( // 210422 renewed
-  regional(str,ctr,tmp,tmp1,out);
-  str=strorg+key; 
-  out=[];
-  tmp=indexof(str,key);
-  while(tmp>0,
-    tmp1=substring(str,0,tmp-1);
-    out=append(out,tmp1);
-    str=substring(str,tmp-1+length(key),length(str));
-    tmp=indexof(str,key);
-  );
-  out;
-);
 Ketinit():=Ketinit("fig",0.3); //190831from
 Ketinit(Arg):=(//181001from
   if(isstring(Arg),
@@ -236,147 +223,35 @@ Strictmove(pCorg,sep):=(
     );
   );
 );
-Slider(ptstr,p1,p2):=Slider(ptstr,p1,p2,[]);
-Slider(ptstr,p1,p2,optionsorg):=(//220903
-  regional(pA,pB,pC,options,color,thick,sep,
-        tmp,tmp1,tmp2);
-  options=optionsorg;
-  color="Color=0.6*[0,0,1]"; //190120from
-  thick="size->2";
-  sep=0.3; //190824
-  forall(options,
-    tmp=Toupper(substring(#,0,1));
-    if(tmp=="C",
-      color=#;
-      options=remove(options,[tmp]);//220903
-    );
-    if(tmp=="T",
-      tmp=Strsplit(#,"=");
-      thick="size->"+tmp_2;
-      options=remove(options,[tmp]);//220903
-    );
-    if(tmp=="S",//190824from
-      tmp=Strsplit(#,"=");
-      sep=parse(tmp_2);
-      options=remove(options,[tmp]);//220903
-    ); //190824to
-  );
-  tmp=Indexall(ptstr,"-");
-  if(length(tmp)>0,
-    pA=substring(ptstr,0,tmp_1-1); //190824from
-    pC=substring(ptstr,tmp_1,tmp_2-1);
-    pB=substring(ptstr,tmp_2,length(ptstr));
-    parse(pA).xy=p1;
-    parse(pB).xy=p2; //190824to
-    tmp1=pC+"position"; //190827from
-    if(!islist(parse(tmp1)),
-      tmp2=parse(pC).xy;
-      if(|tmp2-p1|<0.1,tmp2=p1+0.1*(p2-p1)/|p2-p1|);
-      if(|tmp2-p2|<0.1,tmp2=p2+0.1*(p1-p2)/|p1-p2|);
-      tmp=tmp1+"="+textformat(tmp2,10)+";";
-      parse(tmp);
-      parse(pC).xy=tmp2;
-    ); //190827to
-    PTEXCEPTION=concat(TEXCEPTION,[pA,pC,pB]);
-  ,
-    pC=ptstr; pA=pC+"l"; pB=pC+"r"; 
-    PTEXCEPTION=concat(PTEXCEPTION,[pC]);
-  );
-  options=concat(options,["Msg=n",color,thick]); //220903[2lines]
-  if(!contains(options,"nodisp"),options=append(options,"notex"));
-  Listplot(pA+pB,[p1,p2],options);
-  Putonseg(pC,parse("sg"+pA+pB));
-);
-Indexall(str,key):=(
-  regional(rest,out,flg,tmp,tmp1,);
-  out=[];
-  rest=str;
-  flg=0;
-  forall(1..(length(str)),
-    if(flg==0,
-      tmp=indexof(rest,key);
-      if(tmp>0,
-        tmp1=tmp+length(str)-length(rest);
-        out=append(out,tmp1);
-        rest=substring(rest,tmp,length(rest));
-      ,
-        flg=1;
-      );
-    );
-  );
-  out;
-);
-Listplot(list):=Listplot(list,[]);
-Listplot(Arg1,Arg2):=(
-  regional(name,list,options,str);
+Tabledata(xLst,yLst,rmvL):=Tabledata("",xLst,yLst,rmvL); 
+Tabledata(Arg1,Arg2,Arg3,Arg4):=(
   if(isstring(Arg1),
-    name=Arg1;
-    list=Arg2;
-    Listplot(name,list,[]);
+    Tabledata(Arg1,Arg2,Arg3,Arg4,[]);
   ,
-    list=Arg1;
-    options=Arg2;
-    name="";
-    forall(list, // 16.10.07from
-       name=name+#.name;
-    );// 16.10.07until
-    Listplot(name,list,options);
+    Tabledata("",Arg1,Arg2,Arg3,Arg4);
   );
-);
-Listplot(nm,list,options):=(
-  regional(name,cutend,tmp,tmp1,tmp2,ptlist,Ltype,opcindy,Noflg,eqL,Msg,color,color4);
-  if(substring(nm,0,1)=="-",  // 16.01.27 from
-    name=substring(nm,1,length(nm));
-  ,
-    name="sg"+nm;
-  ); // upto
+); //190428to
+Tabledata(nm,xL,yL,rmvL,optionorg):=(
+  regional(options,rmL,Noflg,geo,tmp,tmp1,tmp2);
+  options=optionorg;
   tmp=Divoptions(options);
-  Ltype=tmp_1;
   Noflg=tmp_2;
+  if(Noflg>=1,rmL=[],rmL=rmvL); //200607
   eqL=tmp_5;
-  color=tmp_(length(tmp)-2); color4=Colorrgb2cmyk(color); //200618
-  opcindy=tmp_(length(tmp));
-  Msg="Y";  //190206
- Msg="N"; //
-  cutend=[0,0];//180719
+  geo="N"; //191008from
   forall(eqL,
-    tmp=Strsplit(#,"=");
+    tmp=Strsplit(#,"="); //191023
     tmp1=Toupper(substring(tmp_1,0,1));
-    if(tmp1=="M",
-      Msg=Toupper(substring(tmp_2,0,1));
+    if(tmp1=="G",
+      geo=Toupper(substring(tmp_2,0,1));
+      options=remove(options,#);
     );
-    if(tmp1=="C",//180719from
-      tmp2=replace(tmp_2,"[","");
-      tmp2=replace(tmp2,"]","");
-      cutend=tokenize(tmp2,",");
-      if(length(cutend)==1,cutend=[cutend_1,cutend_1]);     
-    );//180719to
   );
-  if(Noflg<3,
-    if(Msg=="Y", //190206
-      println("generate Listplot "+name);
-    );
-    if(isstring(list_1),tmp=apply(list,parse(#)),tmp=list); // 15.03.24
-    ptlist=apply(tmp,Pcrd(#));
-    if(|cutend|>0,//180719from
-      tmp=ptlist_(length(ptlist))-ptlist_1;
-      tmp=tmp/|tmp|;
-      ptlist_1=ptlist_1+tmp*cutend_1;
-      ptlist_(length(ptlist))=ptlist_(length(ptlist))-tmp*cutend_2;
-    );//180719to
-    tmp=name+"="+Textformat(ptlist,5)+";"; //190415
-    parse(tmp);
+  if(geo=="Y", //191008to
+    Tabledatageo(nm,xL,yL,rmL,options);
+  ,
+    Tabledatalight(nm,xL,yL,rmL,options);
   );
-  if(Noflg<3, //190818
-    if(isstring(Ltype),
-      Ltype=Getlinestyle(text(Noflg)+Ltype,name);
-    ,
-      if(Noflg==1,Ltype=0);
-    );
-    GCLIST=append(GCLIST,[name,Ltype,opcindy]);
-  );
-  tmp1=apply(list,Lcrd(#));
-  tmp1;
 );
 Divoptions(options):=(
   regional(Ltype,Noflg,Inflg,Outflg,eqL,realL,strL,
@@ -482,6 +357,19 @@ Divoptions(options):=(
     opcindy=opcindy+",color->"+text(tmp);
   );
   [Ltype,Noflg,Inflg,Outflg,eqL,realL,strL,color,opstr,opcindy];
+);
+Strsplit(strorg,key):=( // 210422 renewed
+  regional(str,ctr,tmp,tmp1,out);
+  str=strorg+key; 
+  out=[];
+  tmp=indexof(str,key);
+  while(tmp>0,
+    tmp1=substring(str,0,tmp-1);
+    out=append(out,tmp1);
+    str=substring(str,tmp-1+length(key),length(str));
+    tmp=indexof(str,key);
+  );
+  out;
 );
 Colorname2cmyk(name):=( //181212
   regional(dL,code,tmp);
@@ -605,159 +493,6 @@ Colorcmyk2rgb(clr):=(
     clrnew=clr;  //200618
   );
   clrnew;
-);
-Colorrgb2cmyk(clr):=(
-  regional(clrnew,tmp,black);
-  if(length(clr)==3, //200618
-    tmp=apply(clr,1-#);
-    black=min(tmp);
-    if(black!=1, //181112from
-      tmp=apply(clr,(1-#-black)/(1-black));
-      clrnew=append(tmp,black);
-    ,
-      clrnew=[0,0,0,1];  //200618
-    ); //181112to
-  ,
-    clrnew=clr;
-  );
-  clrnew;
-);
-Getlinestyle(str,name):=(
-  regional(noflg,tmp,tmp1,tmp2,Dop,Ltype,subflg);
-  Ltype=-1;
-  Dop="";
-  tmp1=indexof(str,",");
-  if(tmp1>0,
-    Dop=","+substring(str,tmp1,length(str));
-  );
-  noflg=parse(substring(str,0,1));
-  if(substring(name,0,3)=="sub",subflg=1,subflg=0);  // 16.02.29
-  if(noflg<=1, //1900818from
-    tmp1=Toupper(substring(str,1,3));
-  ,
-    tmp1="NO";
-  ); //1900818to
-  tmp2=""; //190119from
-  tmp=indexof(str,",");
-  if(tmp>0,
-    tmp2=substring(str,tmp,length(str));
-  ); //190119to
-  if(tmp1=="DR",
-    if(length(tmp2)==0,tmp2="1"); //190125
-    Ltype=[0,tmp2];  //190119
-    if(noflg==0 & subflg==0, // 16.02.29
-    );
-  );
-  if(tmp1=="DA",
-    if(length(tmp2)==0,tmp2="1,1"); //190125
-    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
-    Ltype=[1,tmp2];  //190119
-    if(noflg==0 & subflg==0, // 16.02.29
-    );
-  );
-  if(tmp1=="ID",
-    if(length(tmp2)==0,tmp2="1,1"); //190125
-    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
-    Ltype=[2,tmp2];  //190119
-    if(noflg==0 & subflg==0, // 16.02.29
-    );
-  );
-  if(tmp1=="DO",
-    if(length(tmp2)==0,tmp2="1,1"); //190125
-    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
-    Ltype=[3,tmp2];  //190119
-    if(noflg==0 & subflg==0, // 16.02.29
-    );
-  );
-  if(tmp1=="DP",
-    if(length(tmp2)==0,tmp2="1"); //190125
-    Ltype=[0,tmp2];  //190119
-    tmp1=parse(name);
-    tmp2="";
-    forall(tmp1,
-      tmp2=tmp2+Textformat(#_1,5)+",";
-    );
-    tmp2=substring(tmp2,0,length(tmp2)-1);
-    if(noflg==0,
-    );
-  );
-  if(tmp1=="NO", //190818from
-    Ltype=[-1,"0"];
-  );  //190818to
-  Ltype;
-);
-Lcrd(pt):=(
-  regional(tmp);
-  if(ispoint(pt),
-    tmp=[pt.x/SCALEX,pt.y/SCALEY];
-  ,
-    tmp=pt;
-  );
-  re(tmp); //191231
-);
-Putonseg(name,sgstr):=(
-  regional(seg,p1,p2);
-  if(isstring(sgstr),seg=parse(sgstr),seg=sgstr);
-  Putonseg(name,LLcrd(seg_1),LLcrd(seg_2));
-);
-Putonseg(name,p1,p2):=Putonseg(name,p1,p2,[]);
-Putonseg(name,p1org,p2org,options):=(
-  regional(Eps,par,p1,p2,dx,dy,p,tmp,tmp1,tmp2);
-  Eps=10^(-5);
-  par=0.5;
-  tmp=Divoptions(options);
-  if(length(tmp_6)>0,
-    par=tmp_6_1;
-  );
-  p1=Lcrd(p1org);//16.10.11from
-  p2=Lcrd(p2org);
-  p1=Pcrd(p1); p2=Pcrd(p2); //190120
-  dx=p2_1-p1_1;
-  dy=p2_2-p1_2;
-  p=parse(name+".xy");
-  if(abs(dx)>abs(dy), //190120from
-    if(p1_1>p2_1,tmp=p1;p1=p2;p2=tmp);
-    if(p_1<p1_1,parse(name+".xy="+Textformat(p1,10));p=p1);
-    if(p_1>p2_1,parse(name+".xy="+Textformat(p2,10));p=p2);
-    tmp=(p2_2-p1_2)/(p2_1-p1_1)*(p_1-p1_1)+p1_2;
-    parse(name+".y="+tmp+";"); //190415
-  ,
-    if(p1_2>p2_2,tmp=p1;p1=p2;p2=tmp);
-    if(p_2<p1_2,parse(name+".xy="+Textformat(p1,10));p=p1);
-    if(p_2>p2_2,parse(name+".xy="+Textformat(p2,10));p=p2);
-    tmp=(p2_1-p1_1)/(p2_2-p1_2)*(p_2-p1_2)+p1_1;
-    parse(name+".x="+tmp+";"); //190415
-  ); //190120to
-);
-Tabledata(xLst,yLst,rmvL):=Tabledata("",xLst,yLst,rmvL); 
-Tabledata(Arg1,Arg2,Arg3,Arg4):=(
-  if(isstring(Arg1),
-    Tabledata(Arg1,Arg2,Arg3,Arg4,[]);
-  ,
-    Tabledata("",Arg1,Arg2,Arg3,Arg4);
-  );
-); //190428to
-Tabledata(nm,xL,yL,rmvL,optionorg):=(
-  regional(options,rmL,Noflg,geo,tmp,tmp1,tmp2);
-  options=optionorg;
-  tmp=Divoptions(options);
-  Noflg=tmp_2;
-  if(Noflg>=1,rmL=[],rmL=rmvL); //200607
-  eqL=tmp_5;
-  geo="N"; //191008from
-  forall(eqL,
-    tmp=Strsplit(#,"="); //191023
-    tmp1=Toupper(substring(tmp_1,0,1));
-    if(tmp1=="G",
-      geo=Toupper(substring(tmp_2,0,1));
-      options=remove(options,#);
-    );
-  );
-  if(geo=="Y", //191008to
-    Tabledatageo(nm,xL,yL,rmL,options);
-  ,
-    Tabledatalight(nm,xL,yL,rmL,options);
-  );
 );
 Tabledatageo(nm,xLstorg,yLstorg,rmvL,options):=(
   regional(eqL,ul,n,m,Tb,xLst,yLst,
@@ -979,6 +714,167 @@ Tgrid(ptstr):=(
     [tb_1_(tmp1+1)_1,tb_2_(tmp2+1)_2]+TableMove; //190428
   );
 );
+Listplot(list):=Listplot(list,[]);
+Listplot(Arg1,Arg2):=(
+  regional(name,list,options,str);
+  if(isstring(Arg1),
+    name=Arg1;
+    list=Arg2;
+    Listplot(name,list,[]);
+  ,
+    list=Arg1;
+    options=Arg2;
+    name="";
+    forall(list, // 16.10.07from
+       name=name+#.name;
+    );// 16.10.07until
+    Listplot(name,list,options);
+  );
+);
+Listplot(nm,list,options):=(
+  regional(name,cutend,tmp,tmp1,tmp2,ptlist,Ltype,opcindy,Noflg,eqL,Msg,color,color4);
+  if(substring(nm,0,1)=="-",  // 16.01.27 from
+    name=substring(nm,1,length(nm));
+  ,
+    name="sg"+nm;
+  ); // upto
+  tmp=Divoptions(options);
+  Ltype=tmp_1;
+  Noflg=tmp_2;
+  eqL=tmp_5;
+  color=tmp_(length(tmp)-2); color4=Colorrgb2cmyk(color); //200618
+  opcindy=tmp_(length(tmp));
+  Msg="Y";  //190206
+ Msg="N"; //
+  cutend=[0,0];//180719
+  forall(eqL,
+    tmp=Strsplit(#,"=");
+    tmp1=Toupper(substring(tmp_1,0,1));
+    if(tmp1=="M",
+      Msg=Toupper(substring(tmp_2,0,1));
+    );
+    if(tmp1=="C",//180719from
+      tmp2=replace(tmp_2,"[","");
+      tmp2=replace(tmp2,"]","");
+      cutend=tokenize(tmp2,",");
+      if(length(cutend)==1,cutend=[cutend_1,cutend_1]);     
+    );//180719to
+  );
+  if(Noflg<3,
+    if(Msg=="Y", //190206
+      println("generate Listplot "+name);
+    );
+    if(isstring(list_1),tmp=apply(list,parse(#)),tmp=list); // 15.03.24
+    ptlist=apply(tmp,Pcrd(#));
+    if(|cutend|>0,//180719from
+      tmp=ptlist_(length(ptlist))-ptlist_1;
+      tmp=tmp/|tmp|;
+      ptlist_1=ptlist_1+tmp*cutend_1;
+      ptlist_(length(ptlist))=ptlist_(length(ptlist))-tmp*cutend_2;
+    );//180719to
+    tmp=name+"="+Textformat(ptlist,5)+";"; //190415
+    parse(tmp);
+  );
+  if(Noflg<3, //190818
+    if(isstring(Ltype),
+      Ltype=Getlinestyle(text(Noflg)+Ltype,name);
+    ,
+      if(Noflg==1,Ltype=0);
+    );
+    GCLIST=append(GCLIST,[name,Ltype,opcindy]);
+  );
+  tmp1=apply(list,Lcrd(#));
+  tmp1;
+);
+Colorrgb2cmyk(clr):=(
+  regional(clrnew,tmp,black);
+  if(length(clr)==3, //200618
+    tmp=apply(clr,1-#);
+    black=min(tmp);
+    if(black!=1, //181112from
+      tmp=apply(clr,(1-#-black)/(1-black));
+      clrnew=append(tmp,black);
+    ,
+      clrnew=[0,0,0,1];  //200618
+    ); //181112to
+  ,
+    clrnew=clr;
+  );
+  clrnew;
+);
+Getlinestyle(str,name):=(
+  regional(noflg,tmp,tmp1,tmp2,Dop,Ltype,subflg);
+  Ltype=-1;
+  Dop="";
+  tmp1=indexof(str,",");
+  if(tmp1>0,
+    Dop=","+substring(str,tmp1,length(str));
+  );
+  noflg=parse(substring(str,0,1));
+  if(substring(name,0,3)=="sub",subflg=1,subflg=0);  // 16.02.29
+  if(noflg<=1, //1900818from
+    tmp1=Toupper(substring(str,1,3));
+  ,
+    tmp1="NO";
+  ); //1900818to
+  tmp2=""; //190119from
+  tmp=indexof(str,",");
+  if(tmp>0,
+    tmp2=substring(str,tmp,length(str));
+  ); //190119to
+  if(tmp1=="DR",
+    if(length(tmp2)==0,tmp2="1"); //190125
+    Ltype=[0,tmp2];  //190119
+    if(noflg==0 & subflg==0, // 16.02.29
+    );
+  );
+  if(tmp1=="DA",
+    if(length(tmp2)==0,tmp2="1,1"); //190125
+    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
+    Ltype=[1,tmp2];  //190119
+    if(noflg==0 & subflg==0, // 16.02.29
+    );
+  );
+  if(tmp1=="ID",
+    if(length(tmp2)==0,tmp2="1,1"); //190125
+    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
+    Ltype=[2,tmp2];  //190119
+    if(noflg==0 & subflg==0, // 16.02.29
+    );
+  );
+  if(tmp1=="DO",
+    if(length(tmp2)==0,tmp2="1,1"); //190125
+    if(indexof(tmp2,",")==0,tmp2=tmp2+",1"); //200911
+    Ltype=[3,tmp2];  //190119
+    if(noflg==0 & subflg==0, // 16.02.29
+    );
+  );
+  if(tmp1=="DP",
+    if(length(tmp2)==0,tmp2="1"); //190125
+    Ltype=[0,tmp2];  //190119
+    tmp1=parse(name);
+    tmp2="";
+    forall(tmp1,
+      tmp2=tmp2+Textformat(#_1,5)+",";
+    );
+    tmp2=substring(tmp2,0,length(tmp2)-1);
+    if(noflg==0,
+    );
+  );
+  if(tmp1=="NO", //190818from
+    Ltype=[-1,"0"];
+  );  //190818to
+  Ltype;
+);
+Lcrd(pt):=(
+  regional(tmp);
+  if(ispoint(pt),
+    tmp=[pt.x/SCALEX,pt.y/SCALEY];
+  ,
+    tmp=pt;
+  );
+  re(tmp); //191231
+);
 Dq=unicode("0022");//250404
 Dqq(str):=DqDq(str); //18.02.11
 DqDq(str):=(
@@ -1170,6 +1066,25 @@ Changetablestyle(nameL,style):=(
     ,
     );
   );
+);
+Indexall(str,key):=(
+  regional(rest,out,flg,tmp,tmp1,);
+  out=[];
+  rest=str;
+  flg=0;
+  forall(1..(length(str)),
+    if(flg==0,
+      tmp=indexof(rest,key);
+      if(tmp>0,
+        tmp1=tmp+length(str)-length(rest);
+        out=append(out,tmp1);
+        rest=substring(rest,tmp,length(rest));
+      ,
+        flg=1;
+      );
+    );
+  );
+  out;
 );
 Changestyle(nameL,styleorg):=( //210422pt
   regional(nmL,name,style,Ltype,Noflg,color,color4,opcindy,
@@ -2892,21 +2807,6 @@ Inwindow(point,xrng,yrng):=(
 Addax(param):=(
   ADDAXES=text(param);
 );
-Putrow(nrow,dir,lttrL):=Putrow("",nrow,dir,lttrL,[]); //190228from
-Putrow(Arg1,Arg2,Arg3,Arg4):=(
-  if(islist(Arg4),
-    Putrow("",Arg1,Arg2,Arg3,Arg4);
-  ,
-    Putcellrow(Arg1,Arg2,Arg3,Arg4,[]);
-  );
-);
-Putrow(Tbdata,nrow,dir,lttrL,options):=(
-  regional(tmp,tmp1,mcol);
-  mcol=length(lttrL);
-  forall(1..mcol,
-    Putcell(Tbdata,#,nrow,dir,lttrL_#,options);
-  );
-); //190228to
 Putcell(pos1,pos2,dir,lttr):=Putcell("",pos1,pos2,dir,lttr,[]); //190228from
 Putcell(Arg1,Arg2,Arg3,Arg4,Arg5):=(
   if(islist(Arg5),
@@ -2961,6 +2861,35 @@ Findcell(Tbdata,pos1,pos2):=(
   dx=abs(posse_1-ctr_1);
   dy=abs(posnw_2-ctr_2);
   [ctr,dx,dy];
+);
+Textedit(no):=(
+  regional(tmp,tmp1,tmp2);
+  tmp="Text"+text(no)+".currenttext";
+  tmp1=parse(tmp);
+  tmp1;
+);
+Textedit(n0,str):=Textedit(n0,str,"="); //210406from
+Textedit(n0,str,sep):=( //210208from
+  regional(tmp,tmp1,tmp2,out);
+  tmp1=str;
+tmp1=Textedit(n0); //
+  tmp2=tmp1;
+  if(length(sep)>0,
+    tmp=Strsplit(sep+tmp1,sep);
+    tmp2=tmp_(-1);
+  ); //210406to
+  if(length(tmp2)==0,out=str,out=tmp2);
+  out;
+); //210208to
+Subsedit(no,str):=(
+ regional(tmp,tmp1);
+ if(isstring(str),
+   tmp1=str;
+ ,
+   tmp1=text(str);
+ );
+ tmp="Text"+text(no); //210211[2lines]
+ parse(tmp).currenttext=tmp1;
 );
 Windispg():=(
   if(ADDAXES=="1", //181215from
@@ -3562,81 +3491,179 @@ Expr(listorg,options):=( //16.10.09
 Ketcindyjsfigure=0;
 Ketcindyjsscale=1;
 
-Texteditrep(no):=(
-  regional(tmp,tmp1,tmp2);
-  tmp="Text"+text(no)+".currenttext";
-  tmp1=parse(tmp);
-  tmp1;
-);
-Texteditrep(n0,str):=Texteditrep(n0,str,"="); //210406from
-Texteditrep(n0,str,sep):=( //210208from
-  regional(tmp,tmp1,tmp2,out);
-  tmp1=str;
-//tmp1=Textedit(n0); 
-  tmp2=tmp1;
-  if(length(sep)>0,
-    tmp=Strsplit(sep+tmp1,sep);
-    tmp2=tmp_(-1);
-  ); //210406to
-  if(length(tmp2)==0,out=str,out=tmp2);
-  out;
-); //210208to
+Tab=unicode("009");
 
-Subseditrep(no,str):=(
- regional(tmp,tmp1);
- if(isstring(str),
-   tmp1=str;
- ,
-   tmp1=text(str);
- );
- tmp="Text"+text(no); //210211[2lines]
- parse(tmp).currenttext=tmp1;
+Resetall():=(
+  regional(r,c,id);
+  
+  forall(1..9, r,
+    forall(1..9, c,
+      id = 100 + r * 10 + c;
+      Subsedit(id, "");
+    );
+  );
+  Subsedit(0,"");
+  resetflg = 0;
 );
 
+InputQ() := (
+  regional(r, c, id, str, Snew, wcol, i, row, ch, tmp, maxlen, curr, curc, digits, TabMark, LFMark, CRMark);
+  
+  Snew = []; 
+  forall(1..9, r,
+    row = [];
+    forall(1..9, c, row = append(row, "")); 
+    Snew = append(Snew, row);
+  );
 
+  TabMark = unicode("009"); // タブ
+  LFMark = unicode("00a");  // 改行(LF)
+  CRMark = unicode("00d");  // 改行(CR)
+  digits = ["1","2","3","4","5","6","7","8","9"]; // 有効な数字のリスト
 
-M0raw = [
-[0,0,0,5,0,0,1,0,0],
-[0,0,0,3,0,0,0,2,0],
-[6,7,1,0,0,4,3,0,5],
-[9,6,0,1,0,0,0,0,0],
-[0,3,5,0,8,0,0,0,0],
-[0,2,0,0,4,0,5,8,0],
-[0,0,0,2,0,6,4,0,9],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,9,0,0,0,1]
-];
+  str = "";
+  maxlen = 0;
+  forall(1..9, r,
+    forall(1..9, c,
+      id = 100 + r * 10 + c;
+      tmp = Textedit(id, "", "");
+      if(length(tmp) > maxlen,
+        maxlen = length(tmp);
+        str = tmp;
+      );
+    );
+  );
+  tmp = Textedit(0, "", "");
+  if(length(tmp) > maxlen,
+    str = tmp;
+  );
 
-M0raw2=[
-[7,0,0,6,5,0,1,0,2],
-[0,0,5,0,0,0,0,6,0],
-[0,0,0,9,0,8,0,0,0],
-[3,0,0,0,0,0,0,0,0],
-[1,0,0,0,2,3,0,0,6],
-[0,0,0,0,6,0,0,5,9],
-[0,0,0,0,9,0,5,2,0],
-[0,0,0,0,0,0,7,0,0],
-[0,1,4,0,8,2,0,0,0]
-];
+  if(indexof(str, TabMark) > 0,
+    curr = 1; 
+    curc = 1; 
+    forall(1..length(str), i,
+      ch = substring(str, i-1, i); // 1文字ずつ取り出す
+      
+      if(contains(digits, ch),
+        if(curr <= 9 & curc <= 9,
+          Snew_curr_curc = ch;
+        );
+      );
+      if(ch == TabMark,
+        curc = curc + 1;
+      );
+      if((ch == " ") % (ch == LFMark) % (ch == CRMark), 
+        if(curc > 1, 
+          curr = curr + 1;
+          curc = 1;
+        );
+      );
+    );
+  ,
+    if(length(str) >= 81,
+      forall(1..81, i,
+        r = floor((i - 1) / 9) + 1; 
+        c = mod(i - 1, 9) + 1;      
+        ch = substring(str, i-1, i);
+        if(contains(digits, ch), 
+          Snew_r_c = ch;
+        , 
+          Snew_r_c = "";
+        );
+      );
+    ,
+      Snew = [];
+      forall(1..9, r,
+        row = [];
+        forall(1..9, c, row = append(row, "")); 
+        wcol = 1; 
+        forall(1..9, c,
+          id = 100 + r * 10 + c;
+          tmp = Textedit(id, "", ""); 
+          if(length(tmp) > 0 & wcol <= 9,
+            forall(1..length(tmp), i,
+              if(wcol <= 9,
+                ch = substring(tmp, i-1, i);
+                if(ch == " ",
+                  row_wcol = ""; 
+                ,
+                  row_wcol = ch; 
+                );
+                wcol = wcol + 1;
+              );
+            );
+          ,
+            if(wcol == c, wcol = wcol + 1; );
+          );
+        );
+        Snew = append(Snew, row);
+      );
+    );
+  );
+
+  forall(1..9, r,
+    forall(1..9, c,
+      id = 100 + r * 10 + c;
+      Subsedit(id, Snew_r_c);
+    );
+  );
+);
+
+Findans():=(
+  regional(M0,r,c,id,result,tmp);
+  tmp=apply(1..9,0);
+  M0=apply(1..9,tmp);
+  forall(1..9, r,
+    forall(1..9, c,
+      local(id, tmp);
+      id = 100 + r * 10 + c; // 例: 1行2列 -> 112, 1行1列 -> 111 (※指示の101~109, 111~119に合わせる場合は調整が必要)
+      id = 100 + (r-1)*10 + c; 
+      
+      tmp = Textedit(id, "", "");
+      if(length(tmp) == 0,
+        M0_r_c = 0;
+      ,
+        M0_r_c = parse(tmp);
+      );
+    );
+  );
+
+  result = solvesudoku(M0);
+  
+  if(result_1,
+    Mans = result_2;
+    forall(1..9, r,
+      forall(1..9, c,
+        local(id);
+        id = 100 + (r-1)*10 + c;
+        Subsedit(id, M_ans_r_c);
+      );
+    );
+    echo("Solved!");
+  ,
+    echo("No solution found.");
+  );
+);
 
 
 
 History = []; 
 
-solvesudoku(M0) := (
-  local(stack, M, Ch, failed, j, k, rstart, cstart, v, cands, minlen, bestidx, trow, tcol, tcands, val, found, ans, len, r, c, i, idx, Mnext, newstack, looping);
+solvesudoku(Min) := (
+  local(stack, M, Ch, failed, j, k, rstart, cstart, v, cands, minlen, bestidx, trow, tcol, tcands, val, found, ansmat, len, r, c, i, idx, Mnext, newstack, looping);
 
-  stack = [ M0 ]; // 探索待ちの盤面リスト
+  stack = [ Min ];
+  History = []; 
   found = false;
-  ans = M0;
+  ansmat = Min; // _ を含まない変数名に変更
   looping = true;
 
   while(looping,
     if(length(stack) == 0,
-      looping = false; // スタックが空なら終了
+      looping = false;
     ,
       len = length(stack);
-      M = stack_len;
+      M = stack_len; // stackの最後を取得
       
       newstack = [];
       if(len > 1,
@@ -3645,7 +3672,6 @@ solvesudoku(M0) := (
         );
       );
       stack = newstack;
-
       History = append(History, M);
 
       Ch = []; 
@@ -3653,12 +3679,11 @@ solvesudoku(M0) := (
       
       forall(1..9, j,
         forall(1..9, k,
-          if(M_j_k == 0,
+          if(M_j_k == 0, // M の j行k列
             (
               v = [];
               forall(1..9, i, v = append(v, M_j_i));
               forall(1..9, i, v = append(v, M_i_k));
-              
               rstart = floor((j - 1) / 3) * 3 + 1;
               cstart = floor((k - 1) / 3) * 3 + 1;
               forall(0..2, r,
@@ -3666,11 +3691,9 @@ solvesudoku(M0) := (
                   v = append(v, M_(rstart+r)_(cstart+c));
                 );
               );
-              
-              v = set(v); // 重複を削除
-              cands = (1..9) -- v; // 1〜9から既出の数字を引く
-              
-              if(length(cands) == 0, failed = true); // 候補がなければ手詰まり
+              v = set(v);
+              cands = (1..9) -- v;
+              if(length(cands) == 0, failed = true);
               Ch = append(Ch, [j, k, cands]);
             )
           );
@@ -3678,121 +3701,496 @@ solvesudoku(M0) := (
       );
 
       if(failed == false,
-        (
-          if(length(Ch) == 0,
-            (
-              found = true;
-              ans = M;
-              History = append(History, ans);
-              looping = false; // ループを抜ける
-            ),
-            (
-              minlen = 10;
-              bestidx = 1;
-              forall(1..length(Ch), i,
-                if(length(Ch_i_3) < minlen,
-                  (
-                    minlen = length(Ch_i_3);
-                    bestidx = i;
-                  )
-                );
-              );
-              
-              trow = Ch_bestidx_1;
-              tcol = Ch_bestidx_2;
-              tcands = Ch_bestidx_3;
-              
-              forall(tcands, val,
-                Mnext = M;
-                Mnext_trow_tcol = val;
-                stack = append(stack, Mnext);
-              );
-            )
+        if(length(Ch) == 0,
+          found = true;
+          ansmat = M;
+          History = append(History, ansmat);
+          looping = false;
+        ,
+          minlen = 10;
+          bestidx = 1;
+          forall(1..length(Ch), i,
+            if(length(Ch_i_3) < minlen,
+              minlen = length(Ch_i_3);
+              bestidx = i;
+            );
           );
-        )
+          trow = Ch_bestidx_1;
+          tcol = Ch_bestidx_2;
+          tcands = Ch_bestidx_3;
+          forall(tcands, val,
+            Mnext = M;
+            Mnext_trow_tcol = val; // Mnext の指定位置に代入
+            stack = append(stack, Mnext);
+          );
+        );
       );
-    ); // end if length(stack)==0
-  ); // end while
-
+    );
+  );
   if(found,
-    [true, ans],
-    [false, M0]
+    Success=1;
+    [true, ansmat]
+  , 
+    Success=0;
+    [false, Min]
   );
 );
 
-starttime=time();
-println("計算開始...");
-finalresult = solvesudoku(M0raw);
-
-if(finalresult_1,
-  (
-    println("【探索終了】 正解が見つかりました！");
-    println("★ 記録された履歴のステップ数: " + length(History));
-    
-    Msolved = finalresult_2;
-    forall(1..9, r, println(Msolved_r));
-  ),
-  println("解が見つかりませんでした。")
-);
-
-endtime=time();
-
-println(starttime);
-println(endtime);
-tmp=starttime;
-tmp1=tmp_1*3600+tmp_2*60+tmp_3+tmp_4/1000;
-tmp=endtime;
-tmp2=tmp_1*3600+tmp_2*60+tmp_3+tmp_4/1000;
-println(tmp2-tmp1);
-
-
+resetflg=1;
+inputflg=0;
+solveflg=0;
+ansflg=0;
+Success=0;
+recflg=0;
 ;
 
 </script>
 <script id="csdraw" type="text/x-cindyscript">
 Ketinit();
 
-
-str=Texteditrep(7,"");
-
-
-Slider("N",[0,-1],[10,-1]);
 xL=apply(1..9,10);
-yL=apply(1..9,10);
+yL=apply(1..9,11.5);
 rmvL=[];
 Tabledata(xL,yL,rmvL,[0]);
 Tlistplot("1",["c0r3","c9r3"],["dr,3"]);
 Tlistplot("2",["c0r6","c9r6"],["dr,3"]);
 Tlistplot("3",["c3r0","c3r9"],["dr,3"]);
 Tlistplot("4",["c6r0","c6r9"],["dr,3"]);
-nh=length(History);
-nn=round(N.x/10*nh);
-if(nn==0,
-  mat=M0raw;
-,
-  mat=History_nn;
-  if(nn>1,
-    matp=History_(nn-1);
-    dif=[];
-    forall(1..9,j,
-      forall(1..9,k,
-        tmp1=matp_j_k;
-        tmp2=mat_j_k;
-        if(tmp1!=tmp2,
-          dif=[j,k];
-          pos=[10.5,-1];
-          tmp="n="+nn+","+dif+","+tmp1+"=>"+tmp2;
-          Subseditrep(0,tmp);
+
+xL=apply(1..9,12);
+Tabledata("2",xL,yL,rmvL,[0,"Move=[10,0]"]);
+Tlistplot("21",["c0r3","c9r3"],["dr,3"]);
+Tlistplot("22",["c0r6","c9r6"],["dr,3"]);
+Tlistplot("23",["c3r0","c3r9"],["dr,3"]);
+Tlistplot("24",["c6r0","c6r9"],["dr,3"]);
+
+
+if(!islist(UserHistory), UserHistory = []);
+if(!islist(HintData), HintData = []);
+if(!islist(RecordLog), RecordLog = []); // ★ 追加：操作履歴ログ
+if(!isreal(isSolvingMode), isSolvingMode = 0); 
+if(!isreal(solveStartTime), solveStartTime = seconds());
+
+tmpMaxLen = 0;
+forall(1..9, rr,
+  forall(1..9, cc,
+    tmpStr = Textedit(100 + rr*10 + cc, "", "");
+    if(length(tmpStr) > tmpMaxLen, tmpMaxLen = length(tmpStr));
+  );
+);
+
+if(tmpMaxLen > 9,
+  inputflg = 1;
+);
+
+if(resetflg == 1,
+  Resetall();
+  History = []; 
+  UserHistory = [];
+  HintData = [];
+  RecordLog = []; // ★ ログ初期化
+  isSolvingMode = 0; 
+  solveflg = 0;
+  nextflg = 0;
+  backflg = 0;
+  Success = 0;
+  resetflg = 0;
+  Subsedit(0, "");
+  forall(1..9, cr, forall(1..9, cc, Putcell("2", cc, cr, "c", ""); Putcell("2", cc, cr, "c", "")));
+);
+
+if(inputflg == 1,
+  InputQ();
+  History = []; 
+  UserHistory = [];
+  HintData = [];
+  RecordLog = []; // ★ ログ初期化
+  isSolvingMode = 0; 
+  solveflg = 0;
+  inputflg = 0; 
+  Subsedit(0, "問題を展開しました");
+  forall(1..9, cr, forall(1..9, cc, Putcell("2", cc, cr, "c", ""); Putcell("2", cc, cr, "c", "")));
+);
+
+if(solveflg == 1,
+  isSolvingMode = 1; 
+  nextflg = 1;       
+  solveflg = 0;      
+  UserHistory = [];
+  HintData = [];
+  RecordLog = []; // ★ ログ初期化
+  solveStartTime = seconds(); 
+);
+
+if(isSolvingMode == 1,
+  
+  if(nextflg == 1,
+    forall(1..9, cr, forall(1..9, cc, Putcell("2", cc, cr, "c", ""); Putcell("2", cc, cr, "c", "")));
+
+    Mcur = [];
+    forall(1..9, rr,
+      rVcur = [];
+      forall(1..9, cc,
+        idCur = 100 + rr * 10 + cc;
+        tmpVal = Textedit(idCur, "", "");
+        if(length(tmpVal) == 0, rVcur = append(rVcur, 0));
+        if(length(tmpVal) > 0, rVcur = append(rVcur, parse(tmpVal)));
+      );
+      Mcur = append(Mcur, rVcur);
+    );
+
+    diffStr = "";
+    targetR = 0; targetC = 0; targetVal = 0; candStr = "";
+    currentMsg = ""; 
+
+    tmpLen = length(UserHistory);
+    if(tmpLen > 0,
+      Mprev = UserHistory_tmpLen;
+      forall(1..9, rr, forall(1..9, cc,
+        if(Mprev_rr_cc == 0 & Mcur_rr_cc != 0 & targetR == 0,
+          diffStr = text(rr) + "行" + text(cc) + "列の[" + text(Mcur_rr_cc) + "]";
+          targetR = rr; targetC = cc; targetVal = Mcur_rr_cc;
         );
+      ));
+      
+      if(targetR != 0,
+        vCur = [];
+        forall(1..9, ii, vCur = append(vCur, Mprev_targetR_ii));
+        forall(1..9, ii, vCur = append(vCur, Mprev_ii_targetC));
+        rstartCur = floor((targetR - 1) / 3) * 3 + 1;
+        cstartCur = floor((targetC - 1) / 3) * 3 + 1;
+        forall(0..2, rrr, forall(0..2, ccc, vCur = append(vCur, Mprev_(rstartCur+rrr)_(cstartCur+ccc))));
+        vCur = set(vCur); candsCur = (1..9) -- vCur;
+        forall(candsCur, c, candStr = candStr + text(c) + " ");
+      );
+    );
+
+    ruleError = false; errInfo = "";
+
+    if(ruleError == false,
+      forall(1..9, rr,
+        vList = [];
+        forall(1..9, cc, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + "行目で数字が重複");
+      );
+    );
+
+    if(ruleError == false,
+      forall(1..9, cc,
+        vList = [];
+        forall(1..9, rr, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + "列目で数字が重複");
+      );
+    );
+
+    if(ruleError == false,
+      forall(0..2, br, forall(0..2, bc,
+        vList = [];
+        forall(1..3, rrr, forall(1..3, ccc,
+          valCur = Mcur_(br*3+rrr)_(bc*3+ccc);
+          if(valCur != 0, vList = append(vList, valCur));
+        ));
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "ブロック内で数字が重複");
+      ));
+    );
+
+    looping = true; deadEnd = false; errR = 0; errC = 0; 
+
+    if(ruleError, deadEnd = true; looping = false;);
+
+    while(looping,
+      minlenCur = 10; candsList = [];
+      forall(1..9, rr, forall(1..9, cc,
+        if(Mcur_rr_cc == 0,
+          vCur = [];
+          forall(1..9, ii, vCur = append(vCur, Mcur_rr_ii));
+          forall(1..9, ii, vCur = append(vCur, Mcur_ii_cc));
+          rstartCur = floor((rr - 1) / 3) * 3 + 1;
+          cstartCur = floor((cc - 1) / 3) * 3 + 1;
+          forall(0..2, rrr, forall(0..2, ccc, vCur = append(vCur, Mcur_(rstartCur+rrr)_(cstartCur+ccc))));
+          vCur = set(vCur); candsCur = (1..9) -- vCur; 
+          
+          candsList = append(candsList, [rr, cc, candsCur]);
+          if(length(candsCur) < minlenCur, minlenCur = length(candsCur));
+        );
+      ));
+
+      if(minlenCur == 0, 
+        deadEnd = true; looping = false;
+        errCells = select(candsList, length(#_3) == 0);
+        if(length(errCells) > 0, errR = errCells_1_1; errC = errCells_1_2;);
+      );
+      
+      if(minlenCur >= 2, looping = false;);
+      if(minlenCur == 1,
+        minCells = select(candsList, length(#_3) == 1); 
+        cellCur = minCells_1;
+        Mcur_(cellCur_1)_(cellCur_2) = (cellCur_3)_1;
+        Subsedit(100 + (cellCur_1)*10 + cellCur_2, text((cellCur_3)_1));
+      );
+    );
+
+    if(deadEnd,
+      tmpLen = length(UserHistory);
+      if(tmpLen > 0,
+        Mcur = UserHistory_tmpLen; 
+        forall(1..9, rr, forall(1..9, cc,
+          idCur = 100 + rr * 10 + cc;
+          if(Mcur_rr_cc == 0, Subsedit(idCur, ""));
+          if(Mcur_rr_cc != 0, Subsedit(idCur, text(Mcur_rr_cc)));
+        ));
+
+        minlenCur = 10; candsList = [];
+        forall(1..9, rr, forall(1..9, cc,
+          if(Mcur_rr_cc == 0,
+            vCur = [];
+            forall(1..9, ii, vCur = append(vCur, Mcur_rr_ii));
+            forall(1..9, ii, vCur = append(vCur, Mcur_ii_cc));
+            rstartCur = floor((rr - 1) / 3) * 3 + 1;
+            cstartCur = floor((cc - 1) / 3) * 3 + 1;
+            forall(0..2, rrr, forall(0..2, ccc, vCur = append(vCur, Mcur_(rstartCur+rrr)_(cstartCur+ccc))));
+            vCur = set(vCur); candsCur = (1..9) -- vCur;
+            candsList = append(candsList, [rr, cc, candsCur]);
+            if(length(candsCur) < minlenCur, minlenCur = length(candsCur));
+          );
+        ));
+
+        HintData = [];
+        if(minlenCur <= 9,
+          minCells = select(candsList, length(#_3) == minlenCur);
+          forall(minCells, cellCur,
+            strT = ""; strB = ""; candsCur = cellCur_3;
+            if(length(candsCur) <= 4, halfCur = 4);
+            if(length(candsCur) > 4, halfCur = ceil(length(candsCur) / 2));
+            forall(1..length(candsCur), ii,
+              if(ii <= halfCur, strT = strT + text(candsCur_ii) + " ");
+              if(ii > halfCur, strB = strB + text(candsCur_ii) + " ");
+            );
+            HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]); 
+          );
+        );
+
+        if(targetR != 0 & targetC != 0,
+          tCellList = select(candsList, #_1 == targetR & #_2 == targetC);
+          if(length(tCellList) > 0,
+            tCell = tCellList_1;
+            strT = ""; strB = ""; candsCur = tCell_3;
+            if(length(candsCur) <= 4, halfCur = 4);
+            if(length(candsCur) > 4, halfCur = ceil(length(candsCur) / 2));
+            forall(1..length(candsCur), ii,
+              if(ii <= halfCur, strT = strT + text(candsCur_ii) + " ");
+              if(ii > halfCur, strB = strB + text(candsCur_ii) + " ");
+            );
+            tmpHint = [];
+            forall(HintData, hd, if(hd_1 != targetR % hd_2 != targetC, tmpHint = append(tmpHint, hd)));
+            HintData = tmpHint;
+            HintData = append(HintData, [targetR, targetC, strT, strB, 1]); 
+          );
+        );
+        
+        if(ruleError,
+          if(length(diffStr) > 0, currentMsg = "ルール違反 (" + errInfo + ") → " + diffStr + " は不正解。");
+          if(length(diffStr) == 0, currentMsg = "ルール違反 (" + errInfo + ") → 直前の入力を取り消しました。");
+        );
+        if(!ruleError,
+          if(length(diffStr) > 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " は不正解。");
+          if(length(diffStr) == 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → 直前の入力は不正解です。");
+        );
+        Subsedit(0, currentMsg);
+      );
+      if(tmpLen == 0, Subsedit(0, "初期状態で矛盾しています"););
+    );
+
+    if(!deadEnd,
+      tmpLen = length(UserHistory);
+      if(tmpLen == 0, UserHistory = append(UserHistory, Mcur););
+      if(tmpLen > 0, if(text(UserHistory_tmpLen) != text(Mcur), UserHistory = append(UserHistory, Mcur);););
+
+      HintData = [];
+      if(minlenCur <= 9,
+        minCells = select(candsList, length(#_3) == minlenCur); 
+        forall(minCells, cellCur,
+          strT = ""; strB = ""; candsCur = cellCur_3;
+          if(length(candsCur) <= 4, halfCur = 4);
+          if(length(candsCur) > 4, halfCur = ceil(length(candsCur) / 2));
+          forall(1..length(candsCur), ii,
+            if(ii <= halfCur, strT = strT + text(candsCur_ii) + " ");
+            if(ii > halfCur, strB = strB + text(candsCur_ii) + " ");
+          );
+          HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]); 
+        );
+        currentMsg = "解答中 (Step: " + text(length(UserHistory)) + ")";
+        Subsedit(0, currentMsg);
+      );
+      
+      if(minlenCur > 9,
+        solveExeTime = round((seconds() - solveStartTime) * 100) / 100; 
+        currentMsg = "完成 (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
+        Subsedit(0, currentMsg);
+      );
+    );
+
+    if(targetR != 0,
+      RecordLog = append(RecordLog, [text(targetR)+"x"+text(targetC), candStr, text(targetVal), "N", currentMsg]);
+    );
+
+    nextflg = 0;
+  );
+
+  if(backflg == 1,
+    tmpLen = length(UserHistory);
+    if(tmpLen > 1,
+      diffBackStr = ""; targetR = 0; targetC = 0; 
+      McurState = UserHistory_(tmpLen);
+      MprevState = UserHistory_(tmpLen - 1);
+      forall(1..9, rr, forall(1..9, cc,
+        if(MprevState_rr_cc == 0 & McurState_rr_cc != 0,
+          diffBackStr = text(rr) + "行" + text(cc) + "列の[" + text(McurState_rr_cc) + "]";
+          targetR = rr; targetC = cc;
+        );
+      ));
+
+      UserHistory = UserHistory_(1..(tmpLen - 1)); 
+      Mcur = UserHistory_(length(UserHistory)); 
+      
+      forall(1..9, rr, forall(1..9, cc,
+        idCur = 100 + rr * 10 + cc;
+        if(Mcur_rr_cc == 0, Subsedit(idCur, ""));
+        if(Mcur_rr_cc != 0, Subsedit(idCur, text(Mcur_rr_cc)));
+      ));
+      
+      forall(1..9, cr, forall(1..9, cc, Putcell("2", cc, cr, "c", ""); Putcell("2", cc, cr, "c", "")));
+
+      minlenCur = 10; candsList = [];
+      forall(1..9, rr, forall(1..9, cc,
+        if(Mcur_rr_cc == 0,
+          vCur = [];
+          forall(1..9, ii, vCur = append(vCur, Mcur_rr_ii));
+          forall(1..9, ii, vCur = append(vCur, Mcur_ii_cc));
+          rstartCur = floor((rr - 1) / 3) * 3 + 1;
+          cstartCur = floor((cc - 1) / 3) * 3 + 1;
+          forall(0..2, rrr, forall(0..2, ccc, vCur = append(vCur, Mcur_(rstartCur+rrr)_(cstartCur+ccc))));
+          vCur = set(vCur); candsCur = (1..9) -- vCur;
+          candsList = append(candsList, [rr, cc, candsCur]);
+          if(length(candsCur) < minlenCur, minlenCur = length(candsCur));
+        );
+      ));
+
+      HintData = [];
+      if(minlenCur <= 9,
+        minCells = select(candsList, length(#_3) == minlenCur);
+        forall(minCells, cellCur,
+          strT = ""; strB = ""; candsCur = cellCur_3;
+          if(length(candsCur) <= 4, halfCur = 4);
+          if(length(candsCur) > 4, halfCur = ceil(length(candsCur) / 2));
+          forall(1..length(candsCur), ii,
+            if(ii <= halfCur, strT = strT + text(candsCur_ii) + " ");
+            if(ii > halfCur, strB = strB + text(candsCur_ii) + " ");
+          );
+          HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]);
+        );
+      );
+
+      if(targetR != 0 & targetC != 0,
+        tCellList = select(candsList, #_1 == targetR & #_2 == targetC);
+        if(length(tCellList) > 0,
+          tCell = tCellList_1;
+          strT = ""; strB = ""; candsCur = tCell_3;
+          if(length(candsCur) <= 4, halfCur = 4);
+          if(length(candsCur) > 4, halfCur = ceil(length(candsCur) / 2));
+          forall(1..length(candsCur), ii,
+            if(ii <= halfCur, strT = strT + text(candsCur_ii) + " ");
+            if(ii > halfCur, strB = strB + text(candsCur_ii) + " ");
+          );
+          tmpHint = [];
+          forall(HintData, hd, if(hd_1 != targetR % hd_2 != targetC, tmpHint = append(tmpHint, hd)));
+          HintData = tmpHint;
+          HintData = append(HintData, [targetR, targetC, strT, strB, 1]); 
+        );
+      );
+
+      currentMsg = "";
+      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " を取り消しました (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) == 0, currentMsg = "1手戻りました (Step: " + text(length(UserHistory)) + ")");
+      Subsedit(0, currentMsg);
+
+      RecordLog = append(RecordLog, ["-", "-", "-", "B", currentMsg]);
+    );
+    if(tmpLen <= 1, Subsedit(0, "これ以上戻れません。"));
+    backflg = 0;
+  );
+
+  if(length(HintData) > 0,
+    forall(HintData, hd,
+      if(hd_5 == 0,
+        if(length(hd_3) > 0, Putcell("2", hd_2, hd_1, "l1t1", hd_3, ["Size=0.8"]));
+        if(length(hd_4) > 0, Putcell("2", hd_2, hd_1, "l1b1", hd_4, ["Size=0.8"]));
+      );
+      if(hd_5 == 1,
+        if(length(hd_3) > 0, Putcell("2", hd_2, hd_1, "l1t1", hd_3, ["Size=0.8", "Color=red"]));
+        if(length(hd_4) > 0, Putcell("2", hd_2, hd_1, "l1b1", hd_4, ["Size=0.8", "Color=red"]));
       );
     );
   );
 );
-forall(1..9,j,
-  Putrow(j,"c",mat_j);
+
+if(recflg == 1,
+  tabStr = "	"; // Excel貼付用のタブ文字
+  outStr = "セル" + tabStr + "候補" + tabStr + "選択" + tabStr + "操作" + tabStr + "結果";
+  
+  forall(RecordLog, entry,
+    outStr = outStr + " || " + entry_1 + tabStr + entry_2 + tabStr + entry_3 + tabStr + entry_4 + tabStr + entry_5;
+  );
+  
+  Subsedit(0, outStr);
+  recflg = 0;
 );
-if(nn==0,Subseditrep(0,""));
+
+if(ansflg == 1,
+  isSolvingMode = 0; 
+  forall(1..9, cr, forall(1..9, cc, Putcell("2", cc, cr, "c", ""); Putcell("2", cc, cr, "c", "")));
+
+  Subsedit(0, "計算開始..."); 
+  starttime = seconds(); 
+
+  MinAns = [];
+  forall(1..9, rr,
+    rVans = [];
+    forall(1..9, cc,
+      idAns = 100 + rr * 10 + cc;
+      tmpAns = Textedit(idAns, "", "");
+      if(length(tmpAns) == 0, rVans = append(rVans, 0));
+      if(length(tmpAns) > 0, rVans = append(rVans, parse(tmpAns)));
+    );
+    MinAns = append(MinAns, rVans);
+  );
+
+  finalresult = solvesudoku(MinAns);
+  
+  if(finalresult_1,
+    endtime = seconds();
+    exetime = round((endtime - starttime) * 1000) / 1000; 
+    
+    Subsedit(0, "完成 (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
+    
+    Msolved = finalresult_2; 
+    forall(1..9, rr,
+      forall(1..9, cc,
+        idAns = 100 + rr * 10 + cc;
+        Subsedit(idAns, text(Msolved_rr_cc)); 
+      );
+    );
+    HintData = []; 
+  );
+  if(!finalresult_1,
+    Subsedit(0, "解なし");
+  );
+
+  ansflg = 0; 
+);
+
 Windispg();
+
 ;
 
 </script>
@@ -3810,19 +4208,101 @@ var cdy = CindyJS({
   angleUnit: "°",
   geometry: [
     {name: "SW", type: "Free", pos: [-0.004, -0.004, 4.0], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
-    {name: "NE", type: "Free", pos: [4.0, 4.0, 0.44439506721475397], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
-    {name: "N", type: "Free", pos: [0.0, -4.0, 4.0], color: [1.0, 0.0, 0.0], labeled: false, size: 6.0, border: true },
-    {name: "Text0", type: "EditableText", pos: [4.0, -0.2800875273522976, 0.3880507542324004], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 250, textsize: 24.0},
-    {name: "Text2", type: "Button", pos: [4.0, 0.19002375296912113, 0.21061662076509144], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "nn=nn+1;\nN.x=nn*10/length(History);", text: "+", textsize: 18.0},
-    {name: "Text6", type: "Button", pos: [4.0, -0.08530805687203791, 0.21011752924669078], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.27272728085517883, script: "nn=nn-1;\nN.x=nn*10/length(History);", text: "-", textsize: 18.0},
-    {name: "Text7", type: "EditableText", pos: [4.0, 3.309734513274336, 0.3923433510712544], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 250}
+    {name: "NE", type: "Free", pos: [-3.478311274273017, -4.0, -0.3864360931310984], color: [1.0,1.0,1.0], labeled: false, size: 2.0, border:false },
+    {name: "Text0", type: "EditableText", pos: [4.0, -0.35764705882352943, 0.39631400263285527], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 450, textsize: 24.0},
+    {name: "Text192", type: "EditableText", pos: [4.0, 1.1666666666666667, 3.3333333333333335], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text191", type: "EditableText", pos: [0.8, 1.4, 4.0], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text195", type: "EditableText", pos: [4.0, 0.3333333333333333, 0.9523809523809524], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text198", type: "EditableText", pos: [4.0, 0.19444444444444442, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text199", type: "EditableText", pos: [4.0, 0.17073170731707316, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text194", type: "EditableText", pos: [4.0, 0.4374999999999999, 1.2499999999999998], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text197", type: "EditableText", pos: [4.0, 0.2258064516129032, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text196", type: "EditableText", pos: [4.0, 0.26923076923076916, 0.7692307692307692], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text193", type: "EditableText", pos: [4.0, 0.6363636363636362, 1.8181818181818181], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text116", type: "EditableText", pos: [-2.1894736842105265, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text117", type: "EditableText", pos: [-2.610526315789474, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text114", type: "EditableText", pos: [-1.3473684210526318, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text113", type: "EditableText", pos: [-0.9263157894736843, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text112", type: "EditableText", pos: [-0.5052631578947369, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text111", type: "EditableText", pos: [-0.08421052631578949, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text118", type: "EditableText", pos: [-3.031578947368421, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text119", type: "EditableText", pos: [-3.452631578947368, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text115", type: "EditableText", pos: [-1.768421052631579, -4.0, -0.42105263157894735], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text122", type: "EditableText", pos: [-0.5748502994011976, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text123", type: "EditableText", pos: [-1.0538922155688624, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text124", type: "EditableText", pos: [-1.532934131736527, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text125", type: "EditableText", pos: [-2.011976047904192, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text126", type: "EditableText", pos: [-2.4910179640718564, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text127", type: "EditableText", pos: [-2.970059880239521, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text128", type: "EditableText", pos: [-3.4491017964071857, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text129", type: "EditableText", pos: [-3.9281437125748497, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text138", type: "EditableText", pos: [4.0, 4.0, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text121", type: "EditableText", pos: [-0.09580838323353294, -4.0, -0.47904191616766467], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text139", type: "EditableText", pos: [4.0, 3.5121951219512195, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text132", type: "EditableText", pos: [-0.6666666666666666, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text133", type: "EditableText", pos: [-1.2222222222222223, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text134", type: "EditableText", pos: [-1.777777777777778, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text135", type: "EditableText", pos: [-2.3333333333333335, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text136", type: "EditableText", pos: [-2.8888888888888893, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text137", type: "EditableText", pos: [-3.444444444444444, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text131", type: "EditableText", pos: [-0.11111111111111112, -4.0, -0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text141", type: "EditableText", pos: [-0.1322314049586777, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text142", type: "EditableText", pos: [-0.7933884297520661, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text143", type: "EditableText", pos: [-1.4545454545454546, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text144", type: "EditableText", pos: [-2.115702479338843, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text145", type: "EditableText", pos: [-2.7768595041322315, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text146", type: "EditableText", pos: [-3.43801652892562, -4.0, -0.6611570247933884], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text147", type: "EditableText", pos: [4.0, 3.903225806451612, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text149", type: "EditableText", pos: [4.0, 2.951219512195122, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text151", type: "EditableText", pos: [-0.16326530612244897, -4.0, -0.8163265306122448], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text148", type: "EditableText", pos: [4.0, 3.361111111111111, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text152", type: "EditableText", pos: [-0.9795918367346936, -4.0, -0.8163265306122448], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text153", type: "EditableText", pos: [-1.7959183673469385, -4.0, -0.8163265306122448], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text154", type: "EditableText", pos: [-2.6122448979591835, -4.0, -0.8163265306122448], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text155", type: "EditableText", pos: [-3.428571428571428, -4.0, -0.8163265306122448], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text156", type: "EditableText", pos: [4.0, 3.7692307692307696, 0.7692307692307692], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text157", type: "EditableText", pos: [4.0, 3.161290322580645, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text158", type: "EditableText", pos: [4.0, 2.7222222222222223, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text159", type: "EditableText", pos: [4.0, 2.3902439024390247, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text161", type: "EditableText", pos: [-0.2105263157894737, -4.0, -1.0526315789473684], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text162", type: "EditableText", pos: [-1.263157894736842, -4.0, -1.0526315789473684], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text163", type: "EditableText", pos: [-2.3157894736842106, -4.0, -1.0526315789473684], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text164", type: "EditableText", pos: [-3.368421052631579, -4.0, -1.0526315789473684], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text165", type: "EditableText", pos: [4.0, 3.6190476190476186, 0.9523809523809524], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text166", type: "EditableText", pos: [4.0, 2.9230769230769225, 0.7692307692307692], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text167", type: "EditableText", pos: [4.0, 2.451612903225806, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text168", type: "EditableText", pos: [4.0, 2.1111111111111107, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text169", type: "EditableText", pos: [4.0, 1.8536585365853657, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text171", type: "EditableText", pos: [-0.30188679245283023, -4.0, -1.5094339622641508], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text172", type: "EditableText", pos: [-1.811320754716981, -4.0, -1.5094339622641508], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text173", type: "EditableText", pos: [-3.3207547169811322, -4.0, -1.5094339622641508], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text174", type: "EditableText", pos: [4.0, 3.3124999999999996, 1.2499999999999998], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text175", type: "EditableText", pos: [4.0, 2.5238095238095237, 0.9523809523809524], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text176", type: "EditableText", pos: [4.0, 2.0384615384615383, 0.7692307692307692], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text178", type: "EditableText", pos: [4.0, 1.472222222222222, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text179", type: "EditableText", pos: [4.0, 1.292682926829268, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text181", type: "EditableText", pos: [-0.5333333333333334, -4.0, -2.6666666666666665], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text177", type: "EditableText", pos: [4.0, 1.7096774193548385, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text182", type: "EditableText", pos: [-3.1999999999999997, -4.0, -2.6666666666666665], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text183", type: "EditableText", pos: [4.0, 2.727272727272727, 1.8181818181818181], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text184", type: "EditableText", pos: [4.0, 1.875, 1.2499999999999998], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text185", type: "EditableText", pos: [4.0, 1.4285714285714286, 0.9523809523809524], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text186", type: "EditableText", pos: [4.0, 1.1538461538461537, 0.7692307692307692], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text187", type: "EditableText", pos: [4.0, 0.9677419354838709, 0.6451612903225806], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text188", type: "EditableText", pos: [4.0, 0.8333333333333334, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text189", type: "EditableText", pos: [4.0, 0.7317073170731707, 0.4878048780487805], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 1.0, 1.0], fillalpha: 1.0, minwidth: 26, textsize: 24.0},
+    {name: "Text13", type: "Button", pos: [4.0, -0.5165562913907285, 0.5577266593343162], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "ansflg=1;", text: "Ans", textsize: 24.0},
+    {name: "Text12", type: "Button", pos: [4.0, -1.7674418604651163, 1.9585285013832965], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 0.0, 1.0], fillalpha: 0.27272728085517883, script: "solveflg=1;", text: "Solve", textsize: 24.0},
+    {name: "Text10", type: "Button", pos: [0.47496503496503495, -3.5147412587412585, 4.0], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.0, 0.0], fillalpha: 0.41025641025641024, script: "resetflg=1;\ninputflg=0;\nsolveflg=0;\nansflg=0;", text: "Reset", textsize: 24.0},
+    {name: "Text6", type: "Button", pos: [4.0, -0.6866952789699571, 0.7228903481500579], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "backflg=1;", text: "Back", textsize: 24.0},
+    {name: "Text2", type: "Button", pos: [4.0, -0.9454545454545455, 1.020808794660385], color: [0.0, 0.0, 0.0], fillcolor: [0.0, 1.0, 1.0], fillalpha: 0.27272728085517883, script: "nextflg=1;", text: "Next", textsize: 24.0},
+    {name: "Text7", type: "Button", pos: [4.0, -0.42622950819672134, 0.46020068611738657], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.784, 0.0], fillalpha: 0.27272728085517883, script: "recflg=1;", text: "Rec", textsize: 24.0}
   ],
   ports: [{
-    width: 948,
-    height: 521,
+    width: 965,
+    height: 570,
     id: "CSCanvas",
-    transform: [{visibleRect: [-3.732959322268506, 10.228985212379259, 17.649792566012724, -1.5225060679947078]}],
-    grid: 1.0,
+    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 21.67027972027972, -2.1017202797202796]}],
     background: "rgb(247,247,247)"
   }],
   csconsole: false,
