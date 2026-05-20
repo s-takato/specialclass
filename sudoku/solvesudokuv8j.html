@@ -4467,46 +4467,44 @@ var cdy = CindyJS({
     </script>
 </head>
 <body>
-    <div id="CSCanvas"></div>
-<div>
-<iframe style="display:block; margin:0px auto; border: 1px solid #ccc;" width="980" height="700" src="solvesudokuv8jsoffL.html"></iframe>
-</div>
-<br>
+    <div id="CSCanvas" style="margin: 0 auto;"></div>
 
-<div style="max-width: 980px; margin: 0 auto; padding: 25px; background-color: #fcfcfc; border: 1px solid #ddd; border-radius: 8px; font-family: sans-serif; color: #333; line-height: 1.6;">
-  <h2 style="border-bottom: 2px solid #666; padding-bottom: 5px; margin-bottom: 15px;">数独ソルバーの使い方</h2>
-  
-  <h3 style="color: #0056b3; margin-top: 20px;">◆ 画面構成</h3>
-  <ul style="margin-left: 20px;">
-    <li><b>左の盤面:</b> 問題の確認や、手動での入力を行うための盤面です。</li>
-    <li><b>右の盤面:</b> 解答を表示するための盤面です。計算を開始すると、問題（初期配置）の数字が<b>赤色</b>で固定表示されます。</li>
-  </ul>
+    <div style="max-width: 965px; margin: 30px auto; padding: 25px; background-color: #fcfcfc; border: 1px solid #ddd; border-radius: 8px; font-family: sans-serif; color: #333; line-height: 1.6;">
+      <h2 style="border-bottom: 2px solid #666; padding-bottom: 5px; margin-bottom: 15px;">数独ソルバーの使い方</h2>
+      
+      <h3 style="color: #0056b3; margin-top: 20px;">◆ 画面構成</h3>
+      <ul style="margin-left: 20px;">
+        <li><b>左の盤面:</b> 問題の確認や、手動での入力を行うための盤面です。</li>
+        <li><b>右の盤面:</b> 解答を表示するための盤面です。計算を開始すると、問題（初期配置）の数字が<b>赤色</b>で固定表示されます。</li>
+      </ul>
 
-  <h3 style="color: #0056b3; margin-top: 20px;">◆ 問題の入力方法</h3>
-  <p style="margin-bottom: 10px;">画面下部のテキストボックス、または数字ボタンを使って問題を入力します。</p>
-  <ul style="margin-left: 20px; margin-bottom: 10px;">
-    <li><b>ボタン入力（個別入力）:</b> 「行」「列」「数字」の順番で3桁の数字を入力し、<code>OK</code>ボタンを押します。<br>
-      <span style="color: #555; font-size: 0.9em;">（例：1行2列目に「3」を入れる場合 → <code>1</code> <code>2</code> <code>3</code> を押し、<code>OK</code>）</span><br>
-      <span style="color: #555; font-size: 0.9em;">※ 連続して入力することも可能です（例：<code>123456</code> と押して <code>OK</code> を押すと、2マス分が同時に反映されます）。</span></li>
-    <li style="margin-top: 8px;"><b>コピペ入力（一括入力）:</b> テキストボックスにキーボードで直接数字を入力するか、他のテキストからコピーしたデータを貼り付けて <code>OK</code> を押すと、一括で盤面に反映されます。<br>
-      <span style="color: #555; font-size: 0.9em;">※ 3桁（行列数）の連続データだけでなく、<b>81マスの連続した数字データ（空白マスは0とする）</b>のペーストにも対応しています。</span></li>
-    <li style="margin-top: 8px;"><b>修正と消去:</b> 入力途中で間違えた場合は <code>BS</code> ボタンで1文字消去できます。すでに盤面に入力された数字を消去したい場合は、数字として「0」を入力して <code>OK</code> を押してください。<br>
-      <span style="color: #555; font-size: 0.9em;">（例：1行2列目を空欄に戻す場合 → <code>1</code> <code>2</code> <code>0</code> <code>OK</code>）</span></li>
-  </ul>
+      <h3 style="color: #0056b3; margin-top: 20px;">◆ 問題の入力方法</h3>
+      <p style="margin-bottom: 10px;">画面下部のテキストボックス、または数字ボタンを使って問題を入力します。</p>
+      <ul style="margin-left: 20px; margin-bottom: 10px;">
+        <li><b>ボタン入力（個別入力）:</b> 「行」「列」「数字」の順番で3桁の数字を入力し、<code>OK</code>ボタンを押します。<br>
+          <span style="color: #555; font-size: 0.9em;">（例：1行2列目に「3」を入れる場合 → <code>1</code> <code>2</code> <code>3</code> を押し、<code>OK</code>）</span><br>
+          <span style="color: #555; font-size: 0.9em;">※ 連続して入力することも可能です（例：<code>123456</code> と押して <code>OK</code> を押すと、2マス分が同時に反映されます）。</span></li>
+        <li style="margin-top: 8px;"><b>コピペ入力（一括入力）:</b> テキストボックスにキーボードで直接数字を入力するか、他のテキストからコピーしたデータを貼り付けて <code>OK</code> を押すと、一括で盤面に反映されます。<br>
+          <span style="color: #555; font-size: 0.9em;">※ 3桁（行列数）の連続データだけでなく、<b>81マスの連続した数字データ（空白マスは0とする）</b>のペーストにも対応しています。</span></li>
+        <li style="margin-top: 8px;"><b>修正と消去:</b> 入力途中で間違えた場合は <code>BS</code> ボタンで1文字消去できます。すでに盤面に入力された数字を消去したい場合は、数字として「0」を入力して <code>OK</code> を押してください。<br>
+          <span style="color: #555; font-size: 0.9em;">（例：1行2列目を空欄に戻す場合 → <code>1</code> <code>2</code> <code>0</code> <code>OK</code>）</span></li>
+      </ul>
 
-  <h3 style="color: #0056b3; margin-top: 20px;">◆ 操作ボタン</h3>
-  <ul style="margin-left: 20px;">
-    <li><b>Reset</b> : 盤面と履歴をすべてクリアし、初期状態に戻します。</li>
-    <li><b>Solve</b> : ユーザー解答モードを開始します。このボタンを押すと、初期配置が右側の盤面に赤字で固定されます。</li>
-    <li><b>Next</b> : 論理的に確定できるマスを1手自動で解析して埋めます。矛盾やルール違反がある場合はエラーメッセージが表示され、自動で1手元に戻ります（ロールバック）。</li>
-    <li><b>Back</b> : 操作を1手前に戻します。</li>
-    <li><b>Ans</b> : 自動計算アルゴリズムにより、最後まで一気に解答を出力します。</li>
-    <li><b>Rec</b> : これまでの解答履歴や操作ログを上部のテキストエリアにデータとして出力します。</li>
-  </ul>
-</div>
-
-<footer style="margin-top: 30px;">
+      <h3 style="color: #0056b3; margin-top: 20px;">◆ 操作ボタン</h3>
+      <ul style="margin-left: 20px;">
+        <li><b>Reset</b> : 盤面と履歴をすべてクリアし、初期状態に戻します。</li>
+        <li><b>Solve</b> : ユーザー解答モードを開始します。このボタンを押すと、初期配置が右側の盤面に赤字で固定されます。</li>
+        <li><b>Next</b> : 論理的に確定できるマスを1手自動で解析して埋めます。矛盾やルール違反がある場合はエラーメッセージが表示され、自動で1手元に戻ります（ロールバック）。</li>
+        <li><b>Back</b> : 操作を1手前に戻します。</li>
+        <li><b>Ans</b> : 自動計算アルゴリズムにより、最後まで一気に解答を出力します。</li>
+        <li><b>Rec</b> : これまでの解答履歴や操作ログを上部のテキストエリアにデータとして出力します。</li>
+      </ul>
+    </div>
+    </body><br>
+<footer>
   <p align="center"><font size="4">&copy; 2026 Setsuo Takato</font></p>
+  <p align="center" style="font-size: 12px; color: #888; margin-top: -10px;">
+    Assisted by Google Gemini
+  </p>
 </footer>
-</body>
 </html>
