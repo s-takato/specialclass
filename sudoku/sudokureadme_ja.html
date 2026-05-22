@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数独ソルバー（初級・チュートリアル版）説明書</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e1e1e1;
+        }
+        h1 {
+            font-size: 24px;
+            color: #111;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 18px;
+            color: #0056b3;
+            margin-top: 25px;
+            border-left: 4px solid #0056b3;
+            padding-left: 10px;
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Monaco, Consolas, Courier, monospace;
+            font-size: 0.9em;
+        }
+        .note {
+            background-color: #e6f2ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            border-top: 1px solid #eaeaea;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>数独ソルバー（初級・チュートリアル版）の使い方</h1>
+        <p>本アプリは、スマートフォンやPCのブラウザで手軽に動作する、1画面統合型の数独解答・思考支援ツールです。自動で盤面を埋めてしまうのではなく、論理的に確定可能な数字をヒントとして提示し、ユーザーご自身が考えて解き進めるためのチュートリアル用に最適化されています。</p>
+
+        <h2>◆ 画面構成と特徴</h2>
+        <ul>
+            <li><b>盤面の統合:</b> 出題（問題入力）と解答が同一の盤面上で行われます。</li>
+            <li><b>文字色のルール:</b> 最初に入力された数字（問題）は<b>赤色</b>で固定され、ユーザー自身が入力した解答や自動計算による解答は<b>黒色</b>で表示されます。</li>
+            <li><b>思考支援ヒント:</b> <code>Next</code>ボタンを押した際、確定可能な数字がマスの隅に小文字の<b>青色</b>で表示されます。</li>
+        </ul>
+
+        <h2>◆ 問題・解答の入力方法</h2>
+        <p>画面下部のテキストボックス、または画面上の数字ボタンを使って入力・変更を行います。</p>
+        <ol>
+            <li><b>ボタン入力（個別入力）:</b> 「行（縦）」「列（横）」「数字」の順番で3桁の数字を入力し、<code>OK</code>ボタンを押します。<br>
+                <span>（例：1行2列目に「3」を入れる場合 → <code>1</code> <code>2</code> <code>3</code> と連続して押し、<code>OK</code>をクリック）</span><br>
+                <small style="color: #666;">※ 複数のマスを連続して入力することも可能です（例：<code>123456</code> と押して <code>OK</code> を押すと、2マス分が同時に反映されます）。</small>
+            </li>
+            <li><b>コピペ入力（一括入力）:</b> テキストボックスにキーボードで直接文字を入力するか、外部のテキストデータを貼り付けて <code>OK</code> を押すと、一括で盤面に反映されます。<br>
+                <small style="color: #666;">※ 「行列数（3桁）」の連続データだけでなく、<b>81マスの連続した数字データ（空白マスは0とする）</b>の改行付きペーストにも完全対応しています。</small>
+            </li>
+            <li><b>修正と消去:</b> 入力途中で間違えた場合は <code>BS</code>（バックスペース）ボタンで1文字消去できます。すでに盤面に入力された数字を消去したい場合は、数字として「0」を入力して <code>OK</code> を押してください。<br>
+                <span>（例：1行2列目の数字を消去して空欄に戻す場合 → <code>1</code> <code>2</code> <code>0</code> <code>OK</code>）</span>
+            </li>
+        </ol>
+
+        <h2>◆ 各種操作ボタンの機能</h2>
+        <ul>
+            <li><b>Reset</b> : 盤面および内部の入力履歴、ログをすべて消去し、初期状態に戻します。</li>
+            <li><b>Solve</b> : ユーザー解答モードを開始します。このボタンを押した時点の盤面が初期配置（問題）としてロックされ、文字色が赤色に固定されます。</li>
+            <li><b>Next</b> : 論理的に絞り込めるマスを自動解析し、そのマスに入る可能性のある候補数字を<b>青色</b>で小さく表示します。<br>
+                <div class="alert"><b>※注意:</b> この初級版では、数字の自動入力は行われません。青色のヒント数字を見て、なぜその数字が入るのかをご自身で考えながら、手動で入力してください。</div>
+                なお、ルール違反や矛盾があるルートに入り込んだ場合はエラーメッセージが表示され、自動的に1手前の状態に巻き戻ります（ロールバック機能）。
+            </li>
+            <li><b>Back</b> : ご自身の操作を1手前に戻します。試行錯誤（分岐）の途中で行き詰まった際に便利です。</li>
+            <li><b>Ans</b> : バックトラック・アルゴリズムが内部で超高速計算を行い、現在の盤面から最後まで一気に解いた完全な解答を出力します。</li>
+            <li><b>Rec</b> : これまでの入力操作の履歴や、AIによる解析ログをテキストデータとして書き出します。</li>
+        </ul>
+
+        <div class="note">
+            <b>【おすすめの楽しみ方・デモ手順】</b><br>
+            問題をセットして <code>Solve</code> を押した後、<code>Next</code> ボタンを頼りに進めます。難問では候補が複数に分岐して止まりますが、そこで自分の直感を信じて数字を1つ入れてみてください。もし間違っていても、さらに <code>Next</code> を押したときにAIが矛盾を検知して自動で教えてくれます（人間とAIの協働協調）。
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Setsuo Takato</p>
+            <p style="font-size: 11px; color: #999; margin-top: 3px;">Assisted by Google Gemini</p>
+        </footer>
+    </div>
+</body>
+</html>
