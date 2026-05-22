@@ -4122,7 +4122,12 @@ if(numflg == 1,
 if(bsflg == 1,
   len = length(innum);
   if(len > 0,
-    if(len == 1, innum = "";, innum = innum_(1..(len - 1)););
+    if(len == 1, 
+      innum = "";
+    , 
+      // リスト化を防ぐため、substringで文字列として切り出す
+      innum = substring(innum, 0, len - 1);
+    );
     Subsedit(30, innum);
   );
   bsflg = 0;
