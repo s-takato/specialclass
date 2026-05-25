@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>solvesudokusingle.cdy</title>
+    <title>solvesudokuv3.cdy</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -3889,7 +3889,12 @@ if(isSolvingMode == 1,
         if(length(errCells) > 0, errR = errCells_1_1; errC = errCells_1_2;);
       );
       
-      if(minlenCur >= 1, looping = false;);
+      if(minlenCur >= 2, looping = false;);
+      if(minlenCur == 1,
+        minCells = select(candsList, length(#_3) == 1); 
+        cellCur = minCells_1;
+        Mcur_(cellCur_1)_(cellCur_2) = (cellCur_3)_1;
+      );
     );
 
     if(deadEnd,
@@ -4125,7 +4130,6 @@ if(bsflg == 1,
     if(len == 1, 
       innum = "";
     , 
-      // リスト化を防ぐため、substringで文字列として切り出す
       innum = substring(innum, 0, len - 1);
     );
     Subsedit(30, innum);
@@ -4133,9 +4137,9 @@ if(bsflg == 1,
   bsflg = 0;
 );
 
+
 if(okflg == 1,
   rawStr = Textedit(30, "", "");
-  
   TabMark = unicode("009");
   LFMark = unicode("00a");
   CRMark = unicode("00d");
@@ -4163,7 +4167,7 @@ if(okflg == 1,
       if(contains(digits, ch), inrest = inrest + ch;);
     );
 
-    if(isSolvingMode == 0 & length(inrest) >= 81,
+    if(isSolvingMode == 0 & length(inrest) == 81 & indexof(inrest, "0") > 0,
       forall(1..81, i,
         ch = inrest_i; rr = floor((i-1)/9) + 1; cc = mod(i-1, 9) + 1;
         if(ch == "0", CurrentBoard_rr_cc = 0;, CurrentBoard_rr_cc = parse(ch););
@@ -4183,7 +4187,6 @@ if(okflg == 1,
   
   innum = ""; Subsedit(30, ""); okflg = 0;
 );
-
 
 forall(1..9, cr, forall(1..9, cc, Putcell(cc, cr, "c", "");)); // 盤面クリア
 
@@ -4256,10 +4259,10 @@ var cdy = CindyJS({
     {name: "Text40", type: "Button", pos: [4.0, -1.9444444444444442, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [0.98, 1.0, 0.62], fillalpha: 0.27272728085517883, script: "inputVal=\"0\"; numflg=1;", text: "0", textsize: 30.0}
   ],
   ports: [{
-    width: 526,
-    height: 724,
+    width: 524,
+    height: 713,
     id: "CSCanvas",
-    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 11.244797202797203, -5.758951048951049]}],
+    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 11.1973006993007, -5.49772027972028]}],
     background: "rgb(247,247,247)"
   }],
   csconsole: false,
@@ -4268,21 +4271,6 @@ var cdy = CindyJS({
     </script>
 </head>
 <body>
-
-  <div style="max-width: 600px; margin: 0 auto;">
-    
     <div id="CSCanvas"></div>
-
-    <footer style="text-align: center; font-family: sans-serif; padding-top: 10px; padding-bottom: 30px;">
-      <p style="margin: 0;">
-        <font size="4">&copy; 2026 Setsuo Takato</font>
-      </p>
-      <p style="font-size: 13px; color: #777; margin-top: 5px; margin-bottom: 0;">
-        Assisted by Google Gemini
-      </p>
-    </footer>
-
-  </div>
-  </body>
+</body>
 </html>
-

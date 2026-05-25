@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>solvesudokusinglev2e.cdy</title>
+    <title>solvesudokuv3.cdy</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -3832,7 +3832,7 @@ if(isSolvingMode == 1,
       Mprev = UserHistory_tmpLen;
       forall(1..9, rr, forall(1..9, cc,
         if(Mprev_rr_cc == 0 & Mcur_rr_cc != 0 & targetR == 0,
-          diffStr = text(rr) + "行" + text(cc) + "列の[" + text(Mcur_rr_cc) + "]";
+          diffStr = "[" + text(Mcur_rr_cc) + "] at R" + text(rr) + "C" + text(cc);
           targetR = rr; targetC = cc; targetVal = Mcur_rr_cc;
         );
       ));
@@ -3850,18 +3850,18 @@ if(isSolvingMode == 1,
     ruleError = false; errInfo = "";
     if(!ruleError,
       forall(1..9, rr, vList = []; forall(1..9, cc, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + "行目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + " row has duplicates");
       );
     );
     if(!ruleError,
       forall(1..9, cc, vList = []; forall(1..9, rr, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + "列目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + " col has duplicates");
       );
     );
     if(!ruleError,
       forall(0..2, br, forall(0..2, bc, vList = [];
         forall(1..3, rrr, forall(1..3, ccc, valCur = Mcur_(br*3+rrr)_(bc*3+ccc); if(valCur != 0, vList = append(vList, valCur))));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "ブロック内で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "Block has duplicates");
       ));
     );
 
@@ -3889,7 +3889,12 @@ if(isSolvingMode == 1,
         if(length(errCells) > 0, errR = errCells_1_1; errC = errCells_1_2;);
       );
       
-      if(minlenCur >= 1, looping = false;);
+      if(minlenCur >= 2, looping = false;);
+      if(minlenCur == 1,
+        minCells = select(candsList, length(#_3) == 1); 
+        cellCur = minCells_1;
+        Mcur_(cellCur_1)_(cellCur_2) = (cellCur_3)_1;
+      );
     );
 
     if(deadEnd,
@@ -3944,12 +3949,12 @@ if(isSolvingMode == 1,
         );
         
         if(ruleError,
-          if(length(diffStr) > 0, currentMsg = "Rule violation (" + errInfo + ") → " + diffStr + " is incorrect.");
-          if(length(diffStr) == 0, currentMsg = "Rule violation (" + errInfo + ") -> Canceled last input.");
+          if(length(diffStr) > 0, currentMsg = "Rule violation (" + errInfo + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Rule violation (" + errInfo + ") → 直前の入力を取り消しました。");
         );
         if(!ruleError,
-          if(length(diffStr) > 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " is incorrect.");
-          if(length(diffStr) == 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") → Last input is incorrect.");
+          if(length(diffStr) > 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") -> Last input is incorrect.");
         );
         Subsedit(0, currentMsg);
       );
@@ -4009,7 +4014,7 @@ if(isSolvingMode == 1,
       if(islist(lastMan),
         if(length(lastMan) == 3,
           if(lastMan_1 != 0,
-            diffBackStr = text(lastMan_1) + "行" + text(lastMan_2) + "列の[" + text(lastMan_3) + "]";
+            diffBackStr = "[" + text(lastMan_3) + "] at R" + text(lastMan_1) + "C" + text(lastMan_2);
             targetR = lastMan_1; targetC = lastMan_2;
           );
         );
@@ -4019,7 +4024,7 @@ if(isSolvingMode == 1,
         McurState = UserHistory_tmpLen; MprevState = UserHistory_(tmpLen - 1);
         forall(1..9, rr, forall(1..9, cc,
           if(MprevState_rr_cc == 0 & McurState_rr_cc != 0,
-            if(targetR == 0, diffBackStr = text(rr) + "行" + text(cc) + "列の[" + text(McurState_rr_cc) + "]"; targetR = rr; targetC = cc;);
+            if(targetR == 0, diffBackStr = "[" + text(McurState_rr_cc) + "] at R" + text(rr) + "C" + text(cc); targetR = rr; targetC = cc;);
           );
         ));
       );
@@ -4122,15 +4127,19 @@ if(numflg == 1,
 if(bsflg == 1,
   len = length(innum);
   if(len > 0,
-    if(len == 1, innum = "";, innum = innum_(1..(len - 1)););
+    if(len == 1, 
+      innum = "";
+    , 
+      innum = substring(innum, 0, len - 1);
+    );
     Subsedit(30, innum);
   );
   bsflg = 0;
 );
 
+
 if(okflg == 1,
   rawStr = Textedit(30, "", "");
-  
   TabMark = unicode("009");
   LFMark = unicode("00a");
   CRMark = unicode("00d");
@@ -4158,7 +4167,7 @@ if(okflg == 1,
       if(contains(digits, ch), inrest = inrest + ch;);
     );
 
-    if(isSolvingMode == 0 & length(inrest) >= 81,
+    if(isSolvingMode == 0 & length(inrest) == 81 & indexof(inrest, "0") > 0,
       forall(1..81, i,
         ch = inrest_i; rr = floor((i-1)/9) + 1; cc = mod(i-1, 9) + 1;
         if(ch == "0", CurrentBoard_rr_cc = 0;, CurrentBoard_rr_cc = parse(ch););
@@ -4178,7 +4187,6 @@ if(okflg == 1,
   
   innum = ""; Subsedit(30, ""); okflg = 0;
 );
-
 
 forall(1..9, cr, forall(1..9, cc, Putcell(cc, cr, "c", "");)); // 盤面クリア
 
@@ -4251,10 +4259,10 @@ var cdy = CindyJS({
     {name: "Text40", type: "Button", pos: [4.0, -1.9444444444444442, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [0.98, 1.0, 0.62], fillalpha: 0.27272728085517883, script: "inputVal=\"0\"; numflg=1;", text: "0", textsize: 30.0}
   ],
   ports: [{
-    width: 509,
-    height: 706,
+    width: 524,
+    height: 713,
     id: "CSCanvas",
-    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 10.841076923076923, -5.331482517482518]}],
+    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 11.1973006993007, -5.49772027972028]}],
     background: "rgb(247,247,247)"
   }],
   csconsole: false,
@@ -4263,15 +4271,6 @@ var cdy = CindyJS({
     </script>
 </head>
 <body>
-  <div style="max-width: 600px; margin: 0 auto;">
     <div id="CSCanvas"></div>
-    <footer style="text-align: center; font-family: sans-serif; padding-top: 10px; padding-bottom: 30px;">
-      <p style="margin: 0;">
-        <font size="4">&copy; 2026 Setsuo Takato</font>
-      </p>
-      <p style="font-size: 13px; color: #777; margin-top: 5px; margin-bottom: 0;">
-        Assisted by Google Gemini
-      </p>
-    </footer>
 </body>
 </html>

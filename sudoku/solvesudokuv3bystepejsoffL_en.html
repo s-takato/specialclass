@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>solvesudokusinglev2.cdy</title>
+    <title>solvesudokuv3e.cdy</title>
     <style type="text/css">
         * {
             margin: 0px;
@@ -3832,7 +3832,7 @@ if(isSolvingMode == 1,
       Mprev = UserHistory_tmpLen;
       forall(1..9, rr, forall(1..9, cc,
         if(Mprev_rr_cc == 0 & Mcur_rr_cc != 0 & targetR == 0,
-          diffStr = text(rr) + "行" + text(cc) + "列の[" + text(Mcur_rr_cc) + "]";
+          diffStr = "[" + text(Mcur_rr_cc) + "] at R" + text(rr) + "C" + text(cc);
           targetR = rr; targetC = cc; targetVal = Mcur_rr_cc;
         );
       ));
@@ -3850,18 +3850,18 @@ if(isSolvingMode == 1,
     ruleError = false; errInfo = "";
     if(!ruleError,
       forall(1..9, rr, vList = []; forall(1..9, cc, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + "行目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + " row has duplicates");
       );
     );
     if(!ruleError,
       forall(1..9, cc, vList = []; forall(1..9, rr, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + "列目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + " col has duplicates");
       );
     );
     if(!ruleError,
       forall(0..2, br, forall(0..2, bc, vList = [];
         forall(1..3, rrr, forall(1..3, ccc, valCur = Mcur_(br*3+rrr)_(bc*3+ccc); if(valCur != 0, vList = append(vList, valCur))));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "ブロック内で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "Block has duplicates");
       ));
     );
 
@@ -3949,16 +3949,16 @@ if(isSolvingMode == 1,
         );
         
         if(ruleError,
-          if(length(diffStr) > 0, currentMsg = "ルール違反 (" + errInfo + ") → " + diffStr + " は不正解。");
-          if(length(diffStr) == 0, currentMsg = "ルール違反 (" + errInfo + ") → 直前の入力を取り消しました。");
+          if(length(diffStr) > 0, currentMsg = "Rule violation (" + errInfo + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Rule violation (" + errInfo + ") -> Canceled last input.");
         );
         if(!ruleError,
-          if(length(diffStr) > 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " は不正解。");
-          if(length(diffStr) == 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → 直前の入力は不正解です。");
+          if(length(diffStr) > 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") → Last input is incorrect.");
         );
         Subsedit(0, currentMsg);
       );
-      if(tmpLen == 0, Subsedit(0, "初期状態で矛盾しています"););
+      if(tmpLen == 0, Subsedit(0, "Contradiction in initial state"););
     );
 
     if(!deadEnd,
@@ -3987,13 +3987,13 @@ if(isSolvingMode == 1,
           );
           HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]); 
         );
-        currentMsg = "解答中 (Step: " + text(length(UserHistory)) + ")";
+        currentMsg = "Solving (Step: " + text(length(UserHistory)) + ")";
         Subsedit(0, currentMsg);
       );
       
       if(minlenCur > 9,
         solveExeTime = round((seconds() - solveStartTime) * 100) / 100; 
-        currentMsg = "完成 (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
+        currentMsg = "Completed (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
         Subsedit(0, currentMsg);
       );
     );
@@ -4014,7 +4014,7 @@ if(isSolvingMode == 1,
       if(islist(lastMan),
         if(length(lastMan) == 3,
           if(lastMan_1 != 0,
-            diffBackStr = text(lastMan_1) + "行" + text(lastMan_2) + "列の[" + text(lastMan_3) + "]";
+            diffBackStr = "[" + text(lastMan_3) + "] at R" + text(lastMan_1) + "C" + text(lastMan_2);
             targetR = lastMan_1; targetC = lastMan_2;
           );
         );
@@ -4024,7 +4024,7 @@ if(isSolvingMode == 1,
         McurState = UserHistory_tmpLen; MprevState = UserHistory_(tmpLen - 1);
         forall(1..9, rr, forall(1..9, cc,
           if(MprevState_rr_cc == 0 & McurState_rr_cc != 0,
-            if(targetR == 0, diffBackStr = text(rr) + "行" + text(cc) + "列の[" + text(McurState_rr_cc) + "]"; targetR = rr; targetC = cc;);
+            if(targetR == 0, diffBackStr = "[" + text(McurState_rr_cc) + "] at R" + text(rr) + "C" + text(cc); targetR = rr; targetC = cc;);
           );
         ));
       );
@@ -4082,19 +4082,19 @@ if(isSolvingMode == 1,
       );
 
       currentMsg = "";
-      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " を取り消しました (Step: " + text(length(UserHistory)) + ")");
-      if(length(diffBackStr) == 0, currentMsg = "1手戻りました (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " canceled (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) == 0, currentMsg = "Reverted 1 step (Step: " + text(length(UserHistory)) + ")");
       Subsedit(0, currentMsg);
       RecordLog = append(RecordLog, ["", "", "", "B", currentMsg]);
     );
-    if(tmpLen <= 1, Subsedit(0, "これ以上戻れません。"));
+    if(tmpLen <= 1, Subsedit(0, "Cannot go back further."));
     backflg = 0;
   );
 );
 
 if(recflg == 1,
   tabStr = "    "; 
-  outStr = "セル" + tabStr + "候補" + tabStr + "選択" + tabStr + "操作" + tabStr + "結果";
+  outStr = "Cell" + tabStr + "Cands" + tabStr + "Select" + tabStr + "Op" + tabStr + "Result";
   forall(RecordLog, entry, outStr = outStr + " || " + entry_1 + tabStr + entry_2 + tabStr + entry_3 + tabStr + entry_4 + tabStr + entry_5;);
   Subsedit(0, outStr);
   recflg = 0;
@@ -4102,7 +4102,7 @@ if(recflg == 1,
 
 if(ansflg == 1,
   isSolvingMode = 0; 
-  Subsedit(0, "計算開始..."); 
+  Subsedit(0, "Calculating..."); 
   starttime = seconds(); 
 
   if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
@@ -4110,11 +4110,11 @@ if(ansflg == 1,
   
   if(finalresult_1,
     endtime = seconds(); exetime = round((endtime - starttime) * 1000) / 1000; 
-    Subsedit(0, "完成 (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
+    Subsedit(0, "Completed (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
     CurrentBoard = finalresult_2; 
     HintData = []; 
   );
-  if(!finalresult_1, Subsedit(0, "解なし"););
+  if(!finalresult_1, Subsedit(0, "No solution found."););
   ansflg = 0; 
 );
 
@@ -4130,7 +4130,6 @@ if(bsflg == 1,
     if(len == 1, 
       innum = "";
     , 
-      // リスト化を防ぐため、substringで文字列として切り出す
       innum = substring(innum, 0, len - 1);
     );
     Subsedit(30, innum);
@@ -4140,7 +4139,6 @@ if(bsflg == 1,
 
 if(okflg == 1,
   rawStr = Textedit(30, "", "");
-  
   TabMark = unicode("009");
   LFMark = unicode("00a");
   CRMark = unicode("00d");
@@ -4168,7 +4166,7 @@ if(okflg == 1,
       if(contains(digits, ch), inrest = inrest + ch;);
     );
 
-    if(isSolvingMode == 0 & length(inrest) >= 81,
+    if(isSolvingMode == 0 & length(inrest) == 81 & indexof(inrest, "0") > 0,
       forall(1..81, i,
         ch = inrest_i; rr = floor((i-1)/9) + 1; cc = mod(i-1, 9) + 1;
         if(ch == "0", CurrentBoard_rr_cc = 0;, CurrentBoard_rr_cc = parse(ch););
@@ -4189,6 +4187,55 @@ if(okflg == 1,
   innum = ""; Subsedit(30, ""); okflg = 0;
 );
 
+if(okflg == 1,
+  rawStr = Textedit(30, "", "");
+  TabMark = unicode("009");
+  LFMark = unicode("00a");
+  CRMark = unicode("00d");
+  digits = ["0","1","2","3","4","5","6","7","8","9"];
+  
+  if(isSolvingMode == 0 & (indexof(rawStr, TabMark) > 0 % indexof(rawStr, LFMark) > 0 % indexof(rawStr, ",") > 0),
+    curr = 1; curc = 1;
+    forall(1..length(rawStr), i,
+      ch = rawStr_i;
+      if(contains(digits, ch),
+        if(curr <= 9 & curc <= 9,
+          if(ch == "0", CurrentBoard_curr_curc = 0;, CurrentBoard_curr_curc = parse(ch););
+        );
+      );
+      if(ch == TabMark % ch == ",", curc = curc + 1;);
+      
+      if((ch == " ") % (ch == LFMark) % (ch == CRMark),
+        if(curc > 1, curr = curr + 1; curc = 1;);
+      );
+    );
+  ,
+    inrest = "";
+    forall(1..length(rawStr), i,
+      ch = rawStr_i;
+      if(contains(digits, ch), inrest = inrest + ch;);
+    );
+
+    if(isSolvingMode == 0 & length(inrest) == 81 & indexof(inrest, "0") > 0,
+      forall(1..81, i,
+        ch = inrest_i; rr = floor((i-1)/9) + 1; cc = mod(i-1, 9) + 1;
+        if(ch == "0", CurrentBoard_rr_cc = 0;, CurrentBoard_rr_cc = parse(ch););
+      );
+    ,
+      while(length(inrest) >= 3,
+        j = parse(inrest_1); k = parse(inrest_2); n = inrest_3; 
+        if(isreal(j) & isreal(k),
+          if(j >= 1 & j <= 9 & k >= 1 & k <= 9,
+            if(n == "0", CurrentBoard_j_k = 0;, CurrentBoard_j_k = parse(n););
+          );
+        );
+        if(length(inrest) >= 4, inrest = inrest_(4..length(inrest));, inrest = "";);
+      );
+    );
+  );
+  
+  innum = ""; Subsedit(30, ""); okflg = 0;
+);
 
 forall(1..9, cr, forall(1..9, cc, Putcell(cc, cr, "c", "");)); // 盤面クリア
 
@@ -4261,10 +4308,10 @@ var cdy = CindyJS({
     {name: "Text40", type: "Button", pos: [4.0, -1.9444444444444442, 0.5555555555555556], color: [0.0, 0.0, 0.0], fillcolor: [0.98, 1.0, 0.62], fillalpha: 0.27272728085517883, script: "inputVal=\"0\"; numflg=1;", text: "0", textsize: 30.0}
   ],
   ports: [{
-    width: 526,
-    height: 724,
+    width: 519,
+    height: 708,
     id: "CSCanvas",
-    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 11.244797202797203, -5.758951048951049]}],
+    transform: [{visibleRect: [-1.2467832167832167, 11.434783216783217, 11.07855944055944, -5.3789790209790205]}],
     background: "rgb(247,247,247)"
   }],
   csconsole: false,
@@ -4273,15 +4320,6 @@ var cdy = CindyJS({
     </script>
 </head>
 <body>
-  <div style="max-width: 600px; margin: 0 auto;">
     <div id="CSCanvas"></div>
-    <footer style="text-align: center; font-family: sans-serif; padding-top: 10px; padding-bottom: 30px;">
-      <p style="margin: 0;">
-        <font size="4">&copy; 2026 Setsuo Takato</font>
-      </p>
-      <p style="font-size: 13px; color: #777; margin-top: 5px; margin-bottom: 0;">
-        Assisted by Google Gemini
-      </p>
-    </footer>
 </body>
 </html>
