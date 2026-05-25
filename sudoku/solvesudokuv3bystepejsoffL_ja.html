@@ -3949,16 +3949,16 @@ if(isSolvingMode == 1,
         );
         
         if(ruleError,
-          if(length(diffStr) > 0, currentMsg = "Rule violation (" + errInfo + ") → " + diffStr + " is incorrect.");
-          if(length(diffStr) == 0, currentMsg = "Rule violation (" + errInfo + ") -> Canceled last input.");
+          if(length(diffStr) > 0, currentMsg = "ルール違反 (" + errInfo + ") → " + diffStr + " は不正解。");
+          if(length(diffStr) == 0, currentMsg = "ルール違反 (" + errInfo + ") → 直前の入力を取り消しました。");
         );
         if(!ruleError,
-          if(length(diffStr) > 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " is incorrect.");
-          if(length(diffStr) == 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") → Last input is incorrect.");
+          if(length(diffStr) > 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " は不正解。");
+          if(length(diffStr) == 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → 直前の入力は不正解です。");
         );
         Subsedit(0, currentMsg);
       );
-      if(tmpLen == 0, Subsedit(0, "Contradiction in initial state"););
+      if(tmpLen == 0, Subsedit(0, "初期状態で矛盾しています"););
     );
 
     if(!deadEnd,
@@ -3987,13 +3987,13 @@ if(isSolvingMode == 1,
           );
           HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]); 
         );
-        currentMsg = "Solving (Step: " + text(length(UserHistory)) + ")";
+        currentMsg = "解答中 (Step: " + text(length(UserHistory)) + ")";
         Subsedit(0, currentMsg);
       );
       
       if(minlenCur > 9,
         solveExeTime = round((seconds() - solveStartTime) * 100) / 100; 
-        currentMsg = "Completed (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
+        currentMsg = "完成 (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
         Subsedit(0, currentMsg);
       );
     );
@@ -4082,19 +4082,19 @@ if(isSolvingMode == 1,
       );
 
       currentMsg = "";
-      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " canceled (Step: " + text(length(UserHistory)) + ")");
-      if(length(diffBackStr) == 0, currentMsg = "Reverted 1 step (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " を取り消しました (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) == 0, currentMsg = "1手戻りました (Step: " + text(length(UserHistory)) + ")");
       Subsedit(0, currentMsg);
       RecordLog = append(RecordLog, ["", "", "", "B", currentMsg]);
     );
-    if(tmpLen <= 1, Subsedit(0, "Cannot go back further."));
+    if(tmpLen <= 1, Subsedit(0, "これ以上戻れません。"));
     backflg = 0;
   );
 );
 
 if(recflg == 1,
   tabStr = "    "; 
-  outStr = "Cell" + tabStr + "Cands" + tabStr + "Select" + tabStr + "Op" + tabStr + "Result";
+  outStr = "セル" + tabStr + "候補" + tabStr + "選択" + tabStr + "操作" + tabStr + "結果";
   forall(RecordLog, entry, outStr = outStr + " || " + entry_1 + tabStr + entry_2 + tabStr + entry_3 + tabStr + entry_4 + tabStr + entry_5;);
   Subsedit(0, outStr);
   recflg = 0;
@@ -4102,7 +4102,7 @@ if(recflg == 1,
 
 if(ansflg == 1,
   isSolvingMode = 0; 
-  Subsedit(0, "Calculating..."); 
+  Subsedit(0, "計算開始..."); 
   starttime = seconds(); 
 
   if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
@@ -4110,11 +4110,11 @@ if(ansflg == 1,
   
   if(finalresult_1,
     endtime = seconds(); exetime = round((endtime - starttime) * 1000) / 1000; 
-    Subsedit(0, "Completed (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
+    Subsedit(0, "完成 (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
     CurrentBoard = finalresult_2; 
     HintData = []; 
   );
-  if(!finalresult_1, Subsedit(0, "No solution found."););
+  if(!finalresult_1, Subsedit(0, "解なし"););
   ansflg = 0; 
 );
 
