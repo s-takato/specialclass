@@ -3780,7 +3780,8 @@ if(!islist(UserHistory), UserHistory = []);
 if(!islist(ManualHistory), ManualHistory = []);
 if(!islist(HintData), HintData = []);
 if(!islist(RecordLog), RecordLog = []);
-if(!islist(InitialBoard), InitialBoard = []); 
+if(!islist(InitialBoard), InitialBoard = []);
+if(!islist(CrossBoard), CrossBoard = []); 
 if(!isreal(isSolvingMode), isSolvingMode = 0); 
 if(!isreal(solveStartTime), solveStartTime = seconds());
 
@@ -3809,6 +3810,7 @@ if(resetflg == 1,
 );
 
 if(solveflg == 1,
+  if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
   // ==============================================================
   // ★ 追加アルゴリズム：段ブロック（横並び3ブロック）での探索
   // ==============================================================
@@ -3883,6 +3885,8 @@ if(solveflg == 1,
   );
   // ==============================================================
   
+  CrossBoard = CurrentBoard;
+  
   isSolvingMode = 1; 
   nextflg = 1;       
   solveflg = 0;      
@@ -3891,7 +3895,6 @@ if(solveflg == 1,
   HintData = [];
   RecordLog = [];
   
-  InitialBoard = CurrentBoard;
   solveStartTime = seconds(); 
 );
 
@@ -4179,7 +4182,8 @@ if(ansflg == 1,
   Subsedit(0, "計算開始..."); 
   starttime = seconds(); 
 
-  InitialBoard = CurrentBoard;
+  if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
+  if(length(CrossBoard) == 0, CrossBoard = CurrentBoard;);
   finalresult = solvesudoku(CurrentBoard);
   
   if(finalresult_1,
@@ -4271,7 +4275,11 @@ forall(1..9, rr, forall(1..9, cc,
       if(InitialBoard_rr_cc != 0,
         Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=red"]);
       ,
-        Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=black"]);
+        if(length(CrossBoard) == 9 & CrossBoard_rr_cc != 0,
+          Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=magenta"]);
+        ,
+          Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=black"]);
+        );
       );
     ,
       Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=red"]);
@@ -4346,5 +4354,13 @@ var cdy = CindyJS({
 </head>
 <body>
     <div id="CSCanvas"></div>
+    <footer style="text-align: center; font-family: sans-serif; padding-top: 10px; padding-bottom: 30px;">
+      <p style="margin: 0;">
+        <font size="4">&copy; 2026 Setsuo Takato</font>
+      </p>
+      <p style="font-size: 13px; color: #777; margin-top: 5px; margin-bottom: 0;">
+        Assisted by Google Gemini
+      </p>
+    </footer>
 </body>
 </html>

@@ -3780,7 +3780,7 @@ if(!islist(UserHistory), UserHistory = []);
 if(!islist(ManualHistory), ManualHistory = []);
 if(!islist(HintData), HintData = []);
 if(!islist(RecordLog), RecordLog = []);
-if(!islist(InitialBoard), InitialBoard = []);
+if(!islist(InitialBoard), InitialBoard = []); 
 if(!islist(CrossBoard), CrossBoard = []); 
 if(!isreal(isSolvingMode), isSolvingMode = 0); 
 if(!isreal(solveStartTime), solveStartTime = seconds());
@@ -3865,6 +3865,38 @@ if(solveflg == 1,
           possibleCells = [];
           forall(1..3, rr, forall(1..3, cc,
             rIdx = missingBr * 3 + rr; cIdx = bc * 3 + cc;
+              if(CurrentBoard_rIdx_cIdx == 0,
+              canPlace = true;
+              forall(1..9, i,
+                if(CurrentBoard_rIdx_i == n, canPlace = false);
+                if(CurrentBoard_i_cIdx == n, canPlace = false);
+              );
+              if(canPlace, possibleCells = append(possibleCells, [rIdx, cIdx]));
+            );
+          ));
+          if(length(possibleCells) == 1,
+            tR = possibleCells_1_1; tC = possibleCells_1_2;
+            CurrentBoard_tR_tC = n;
+            updatedCross = true;
+          );
+        );
+      );
+      // --- 縦の列ブロック ---
+      forall(0..2, bc, 
+        hasN = [false, false, false];
+        forall(0..2, br, 
+          forall(1..3, rr, forall(1..3, cc,
+            rIdx = br * 3 + rr; cIdx = bc * 3 + cc;
+            if(CurrentBoard_rIdx_cIdx == n, hasN_(br+1) = true);
+          ));
+        );
+        countN = 0; missingBr = -1;
+        forall(1..3, i, if(hasN_i, countN = countN + 1, missingBr = i - 1));
+        
+        if(countN == 2,
+          possibleCells = [];
+          forall(1..3, rr, forall(1..3, cc,
+            rIdx = missingBr * 3 + rr; cIdx = bc * 3 + cc;
             if(CurrentBoard_rIdx_cIdx == 0,
               canPlace = true;
               forall(1..9, i,
@@ -3909,7 +3941,7 @@ if(isSolvingMode == 1,
       Mprev = UserHistory_tmpLen;
       forall(1..9, rr, forall(1..9, cc,
         if(Mprev_rr_cc == 0 & Mcur_rr_cc != 0 & targetR == 0,
-          diffStr = text(rr) + "行" + text(cc) + "列の[" + text(Mcur_rr_cc) + "]";
+          diffStr = "[" + text(Mcur_rr_cc) + "] at R" + text(rr) + "C" + text(cc);
           targetR = rr; targetC = cc; targetVal = Mcur_rr_cc;
         );
       ));
@@ -3927,18 +3959,18 @@ if(isSolvingMode == 1,
     ruleError = false; errInfo = "";
     if(!ruleError,
       forall(1..9, rr, vList = []; forall(1..9, cc, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + "行目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(rr) + " row has duplicates");
       );
     );
     if(!ruleError,
       forall(1..9, cc, vList = []; forall(1..9, rr, if(Mcur_rr_cc != 0, vList = append(vList, Mcur_rr_cc)));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + "列目で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = text(cc) + " col has duplicates");
       );
     );
     if(!ruleError,
       forall(0..2, br, forall(0..2, bc, vList = [];
         forall(1..3, rrr, forall(1..3, ccc, valCur = Mcur_(br*3+rrr)_(bc*3+ccc); if(valCur != 0, vList = append(vList, valCur))));
-        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "ブロック内で数字が重複");
+        if(length(vList) != length(set(vList)), ruleError = true; errInfo = "Block has duplicates");
       ));
     );
 
@@ -4026,16 +4058,16 @@ if(isSolvingMode == 1,
         );
         
         if(ruleError,
-          if(length(diffStr) > 0, currentMsg = "ルール違反 (" + errInfo + ") → " + diffStr + " は不正解。");
-          if(length(diffStr) == 0, currentMsg = "ルール違反 (" + errInfo + ") → 直前の入力を取り消しました。");
+          if(length(diffStr) > 0, currentMsg = "Rule violation (" + errInfo + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Rule violation (" + errInfo + ") → 直前の入力を取り消しました。");
         );
         if(!ruleError,
-          if(length(diffStr) > 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → " + diffStr + " は不正解。");
-          if(length(diffStr) == 0, currentMsg = "矛盾(" + text(errR) + "x" + text(errC) + ") → 直前の入力は不正解です。");
+          if(length(diffStr) > 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") -> " + diffStr + " is incorrect.");
+          if(length(diffStr) == 0, currentMsg = "Contradiction(" + text(errR) + "x" + text(errC) + ") -> Last input is incorrect.");
         );
         Subsedit(0, currentMsg);
       );
-      if(tmpLen == 0, Subsedit(0, "初期状態で矛盾しています"););
+      if(tmpLen == 0, Subsedit(0, "Contradiction in initial state"););
     );
 
     if(!deadEnd,
@@ -4064,13 +4096,13 @@ if(isSolvingMode == 1,
           );
           HintData = append(HintData, [cellCur_1, cellCur_2, strT, strB, 0]); 
         );
-        currentMsg = "解答中 (Step: " + text(length(UserHistory)) + ")";
+        currentMsg = "Solving (Step: " + text(length(UserHistory)) + ")";
         Subsedit(0, currentMsg);
       );
       
       if(minlenCur > 9,
         solveExeTime = round((seconds() - solveStartTime) * 100) / 100; 
-        currentMsg = "完成 (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
+        currentMsg = "Completed (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
         Subsedit(0, currentMsg);
       );
     );
@@ -4091,7 +4123,7 @@ if(isSolvingMode == 1,
       if(islist(lastMan),
         if(length(lastMan) == 3,
           if(lastMan_1 != 0,
-            diffBackStr = text(lastMan_1) + "行" + text(lastMan_2) + "列の[" + text(lastMan_3) + "]";
+            diffBackStr = "[" + text(lastMan_3) + "] at R" + text(lastMan_1) + "C" + text(lastMan_2);
             targetR = lastMan_1; targetC = lastMan_2;
           );
         );
@@ -4101,7 +4133,7 @@ if(isSolvingMode == 1,
         McurState = UserHistory_tmpLen; MprevState = UserHistory_(tmpLen - 1);
         forall(1..9, rr, forall(1..9, cc,
           if(MprevState_rr_cc == 0 & McurState_rr_cc != 0,
-            if(targetR == 0, diffBackStr = text(rr) + "行" + text(cc) + "列の[" + text(McurState_rr_cc) + "]"; targetR = rr; targetC = cc;);
+            if(targetR == 0, diffBackStr = "[" + text(McurState_rr_cc) + "] at R" + text(rr) + "C" + text(cc); targetR = rr; targetC = cc;);
           );
         ));
       );
@@ -4159,19 +4191,19 @@ if(isSolvingMode == 1,
       );
 
       currentMsg = "";
-      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " を取り消しました (Step: " + text(length(UserHistory)) + ")");
-      if(length(diffBackStr) == 0, currentMsg = "1手戻りました (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) > 0, currentMsg = diffBackStr + " canceled (Step: " + text(length(UserHistory)) + ")");
+      if(length(diffBackStr) == 0, currentMsg = "Reverted 1 step (Step: " + text(length(UserHistory)) + ")");
       Subsedit(0, currentMsg);
       RecordLog = append(RecordLog, ["", "", "", "B", currentMsg]);
     );
-    if(tmpLen <= 1, Subsedit(0, "これ以上戻れません。"));
+    if(tmpLen <= 1, Subsedit(0, "Cannot go back further."));
     backflg = 0;
   );
 );
 
 if(recflg == 1,
   tabStr = "    "; 
-  outStr = "セル" + tabStr + "候補" + tabStr + "選択" + tabStr + "操作" + tabStr + "結果";
+  outStr = "Cell" + tabStr + "Cands" + tabStr + "Select" + tabStr + "Op" + tabStr + "Result";
   forall(RecordLog, entry, outStr = outStr + " || " + entry_1 + tabStr + entry_2 + tabStr + entry_3 + tabStr + entry_4 + tabStr + entry_5;);
   Subsedit(0, outStr);
   recflg = 0;
@@ -4179,7 +4211,7 @@ if(recflg == 1,
 
 if(ansflg == 1,
   isSolvingMode = 0; 
-  Subsedit(0, "計算開始..."); 
+  Subsedit(0, "Calculating..."); 
   starttime = seconds(); 
 
   if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
@@ -4188,11 +4220,11 @@ if(ansflg == 1,
   
   if(finalresult_1,
     endtime = seconds(); exetime = round((endtime - starttime) * 1000) / 1000; 
-    Subsedit(0, "完成 (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
+    Subsedit(0, "Completed (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
     CurrentBoard = finalresult_2; 
     HintData = []; 
   );
-  if(!finalresult_1, Subsedit(0, "解なし"););
+  if(!finalresult_1, Subsedit(0, "No solution found."););
   ansflg = 0; 
 );
 
@@ -4276,7 +4308,7 @@ forall(1..9, rr, forall(1..9, cc,
         Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=red"]);
       ,
         if(length(CrossBoard) == 9 & CrossBoard_rr_cc != 0,
-          Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=purple"]);
+          Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=magenta"]);
         ,
           Putcell(cc, rr, "c", text(val), ["Size=1.5", "Color=black"]);
         );
@@ -4354,5 +4386,13 @@ var cdy = CindyJS({
 </head>
 <body>
     <div id="CSCanvas"></div>
+    <footer style="text-align: center; font-family: sans-serif; padding-top: 10px; padding-bottom: 30px;">
+      <p style="margin: 0;">
+        <font size="4">&copy; 2026 Setsuo Takato</font>
+      </p>
+      <p style="font-size: 13px; color: #777; margin-top: 5px; margin-bottom: 0;">
+        Assisted by Google Gemini
+      </p>
+    </footer>
 </body>
 </html>
