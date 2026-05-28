@@ -4072,6 +4072,16 @@ if(isSolvingMode == 1,
         solveExeTime = round((seconds() - solveStartTime) * 100) / 100; 
         currentMsg = "完成 (Step: " + text(length(UserHistory)) + ", Time: " + text(solveExeTime) + "s)";
         Subsedit(0, currentMsg);
+        
+        ansStr = "";
+        forall(1..9, r, forall(1..9, c, 
+          if(length(InitialBoard) == 9,
+            if(InitialBoard_r_c == 0, ansStr = ansStr + text(r) + text(c) + text(CurrentBoard_r_c) + " ");
+          ,
+            ansStr = ansStr + text(r) + text(c) + text(CurrentBoard_r_c) + " ";
+          );
+        ));
+        Subsedit(30, ansStr);
       );
     );
 
@@ -4170,10 +4180,29 @@ if(isSolvingMode == 1,
 );
 
 if(recflg == 1,
-  tabStr = "    "; 
-  outStr = "セル" + tabStr + "候補" + tabStr + "選択" + tabStr + "操作" + tabStr + "結果";
-  forall(RecordLog, entry, outStr = outStr + " || " + entry_1 + tabStr + entry_2 + tabStr + entry_3 + tabStr + entry_4 + tabStr + entry_5;);
-  Subsedit(0, outStr);
+  rawStr = Textedit(0, "", "");
+  digits = ["1","2","3","4","5","6","7","8","9"];
+  nums = [];
+  forall(1..length(rawStr), i,
+    ch = rawStr_i;
+    if(contains(digits, ch), nums = append(nums, parse(ch)));
+  );
+  
+  if(length(nums) >= 3,
+    if(length(InitialBoard) == 0, InitialBoard = CurrentBoard;);
+    
+    i = 1;
+    while(i + 2 <= length(nums),
+      tr = nums_i;
+      tc = nums_(i+1);
+      tv = nums_(i+2);
+      CurrentBoard_tr_tc = tv;
+      i = i + 3;
+    );
+    Subsedit(0, "解答データを反映しました");
+  ,
+    Subsedit(0, "有効な解答データがありません");
+  );
   recflg = 0;
 );
 
@@ -4191,6 +4220,16 @@ if(ansflg == 1,
     Subsedit(0, "完成 (Step: " + text(length(History)) + ", Time: " + text(exetime) + "s)");
     CurrentBoard = finalresult_2; 
     HintData = []; 
+    
+    ansStr = "";
+    forall(1..9, r, forall(1..9, c, 
+      if(length(InitialBoard) == 9,
+        if(InitialBoard_r_c == 0, ansStr = ansStr + text(r) + text(c) + text(CurrentBoard_r_c) + " ");
+      ,
+        ansStr = ansStr + text(r) + text(c) + text(CurrentBoard_r_c) + " ";
+      );
+    ));
+    Subsedit(30, ansStr);
   );
   if(!finalresult_1, Subsedit(0, "解なし"););
   ansflg = 0; 

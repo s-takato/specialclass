@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver Instruction Manual</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e1e1e1;
+        }
+        h1 {
+            font-size: 24px;
+            color: #111;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 18px;
+            color: #0056b3;
+            margin-top: 25px;
+            border-left: 4px solid #0056b3;
+            padding-left: 10px;
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Monaco, Consolas, Courier, monospace;
+            font-size: 0.9em;
+        }
+        .note {
+            background-color: #e6f2ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            border-top: 1px solid #eaeaea;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku Solver Instruction Manual</h1>
+        <p>This application is a single-screen integrated Sudoku solving and thinking support tool that runs easily on browsers across smartphones, tablets, and PCs. It is optimized for tutorial use, designed not just to automatically fill the board, but to present logically determinable numbers as hints, allowing users to think and solve the puzzle themselves.</p>
+
+        <h2>◆ Screen Layout and Features</h2>
+        <ul>
+            <li><b>Board Integration:</b> Problem input and solving occur on the same grid.</li>
+            <li><b>Color Rules:</b> Initial numbers (the problem) are fixed in <b>red</b>, while user-input answers and auto-calculated answers are displayed in <b>black</b>.</li>
+            <li><b>User Solving Mode:</b> Pressing the <code>Solve</code> button begins the solving mode. The board at this moment is locked as the initial layout (the problem). Additionally, cells that are uniquely determined by logic such as cross-hatching are automatically searched and displayed in magenta (reddish-purple).</li>
+            <li><b>Thinking Support Hints:</b> When the <code>Next</code> button is pressed, logically deducible numbers are displayed in small <b>blue</b> text in the corners of the cells.</li>
+            <li><b>Auto Calculation Mode:</b> Pressing the <code>Ans</code> button triggers a backtracking algorithm that performs high-speed internal calculations, outputting a complete solution instantly from the current board. The newly filled answer data (e.g., <code>127 132 146</code>) is automatically output to the upper input field.</li>
+       </ul>
+ 
+        <h2>◆ How to Enter Problems and Answers</h2>
+        <p>Use the text box at the bottom of the screen or the on-screen number buttons to input and modify data.</p>
+        <ol>
+            <li><b>Button Input (Individual):</b> Enter a 3-digit number in the order of "Row", "Column", and "Number", then press the <code>OK</code> button.<br>
+                <span>(Example: To enter "3" in Row 1, Column 2 &rarr; press <code>1</code>, <code>2</code>, <code>3</code> sequentially, then click <code>OK</code>)</span><br>
+                <small style="color: #666;">* You can also enter multiple cells continuously (e.g., press <code>123 456</code> then <code>OK</code> to reflect two cells at once).</small>
+            </li>
+            <li><b>Copy & Paste Input (Batch):</b> Type directly into the text box with your keyboard, or paste external text data and press <code>OK</code> to reflect it on the board all at once.</li>
+            <li><b>Correction and Deletion:</b> If you make a mistake during input, you can delete one character at a time using the <code>BS</code> (Backspace) button. To delete a number already on the board, enter "0" as the number and press <code>OK</code>.<br>
+                <span>(Example: To delete the number in Row 1, Column 2 and make it blank &rarr; <code>1</code> <code>2</code> <code>0</code> <code>OK</code>)</span>
+            </li>
+        </ol>
+
+        <h2>◆ Functions of Operation Buttons</h2>
+        <ul>
+            <li><b>Reset</b> : Clears the board, internal input history, and logs, returning it to the initial state.</li>
+            <li><b>Next</b> : Automatically analyzes cells that can be logically narrowed down, and displays the candidate numbers in small <b>blue</b> text.<br>
+                If you enter a path with rule violations or logical contradictions, an error message appears, and the grid automatically rolls back to the previous state (Rollback feature).
+            </li>
+            <li><b>Back</b> : Reverts your last action by one step. Useful when you get stuck during trial-and-error (branching).</li>
+            <li><b>Rec</b> : Loads and restores answer data. Paste your saved answer data (e.g., <code>127 132 146</code>) into the lower message field and press this button to populate the board with the answers in black. This is useful for restoring a board state while keeping the problem (red, magenta) and answers (black) distinct.</li>
+        </ul>
+
+        <h2>◆ Challenging an Extremely Difficult Puzzle (AI Escargot)</h2>
+        <p>This puzzle, "AI Escargot," was created by Finnish mathematician Arto Inkala in 2006 and was widely talked about as "the world's hardest Sudoku" at the time. Solving it manually requires advanced hypothesis and look-ahead logic, but by combining this solver's "pre-processing (determination in magenta)" and "Ans (full backtracking search)", you can experience how the AI instantly conquers this difficult problem.</p>
+        <p>Copy and paste the following data into the upper input field, press <code>OK</code>, then click <code>Solve</code> &rarr; <code>Ans</code> in that order to try the demonstration.</p>
+        <pre style="background-color: #f1f1f1; padding: 10px; border-radius: 4px; overflow-x: auto; font-family: Monaco, Consolas, Courier, monospace; font-size: 0.9em;">
+111 167 189
+223 252 298
+339 346 375
+435 443 479
+521 558 592
+616 664
+713 781
+824 897
+937 973
+</pre>
+
+        <div class="note">
+            <b>【Recommended Demonstration Scenario】</b><br>
+            Set a puzzle, press <code>Solve</code>, and proceed using the <code>Next</code> button. On difficult puzzles, candidates will branch and pause. At that point, trust your intuition and input one number. Even if you make a wrong choice, when you press <code>Next</code> again, the AI will detect the contradiction and automatically inform you (Human-AI Collaboration).
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Setsuo Takato</p>
+            <p style="font-size: 11px; color: #999; margin-top: 3px;">Assisted by Google Gemini</p>
+        </footer>
+    </div>
+</body>
+</html>
