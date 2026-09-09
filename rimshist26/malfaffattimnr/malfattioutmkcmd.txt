@@ -1,0 +1,416 @@
+oph=["Color=blue","Size=1.2"];
+ops(sz):=(
+["Size="+sz];
+);
+opsb=append(ops(1.5),"Color=blue");
+opsf=ops(1);
+Dispcom(dpos,dy,str):=(
+  Letter(Pos+dpos,"e",str,opsb);
+  Pos_2=Pos_2-dy;
+);
+
+mkcmd1():=(
+ cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r)",
+ "A:vtxT; B:vtxL; C:vtxR; I:inC",
+ "aT:angT",
+ "putT(m,n,s1*r); slideT(vtxL,B)",
+ "D:vtxT; E:vtxR; I1:inC",
+ "putT(m,n,s2*r); slideT(vtxR,C)",
+ "F:vtxT; G:vtxL; I2:inC", 
+ "putT(m,n,s3*r); slideT(vtxT,A)",
+ "H:vtxL; J:vtxR; I3:inC", 
+// "eq1:numer(lenSeg2(I1,I2)-(r1+r2)^2)",
+ "end"
+ ]);
+);
+var1="A::B::C::D::E::F::G::H::J::I1::I2::I3::aT";
+
+Disptex1():=(
+  Dispcom([-0.1,0],1,"putT(m,n,r)でABCをおく");
+  Disptex(Pos,Dy*0.8,"A::B::C");
+  Dispcom([-0.1,0],1,"putT(m,n,s1*r)でDBEとI1をおくorange");
+  Disptex(Pos,Dy,"D::E");
+  Dispcom([-0.1,0],Dy,"putT(m,n,s2*r)でFGCとI2をおくgreen");
+  Disptex(Pos,Dy,"F::G");
+  Dispcom([-0.1,0],1,"putT(m,n,s3*r)でAHJとI3をおくblue");
+  Disptex(Pos,Dy,"H::J");
+);
+
+dispfig1():=(
+  Listplot("1",[A,B,C,A]);
+  Circledata("0",[I,r],["Color=orangered"]);
+  Circledata("1a",[I1,s1*r]);
+  Circledata("2a",[I2,s2*r]);
+  Circledata("3a",[I3,s3*r]);
+  Listplot("1a",[D,E]);
+  Listplot("1b",[F,G]);
+  Listplot("1c",[H,J]);
+  Anglemark("1",[C,B,A],["E=1.2,(m)"]);
+  Anglemark("2",[A,C,B],["E=1.2,(n)"]);
+  Letter([A,"n","A",B,"w","B",C,"e","C"]);
+  Letter([D,"nw","D",E,"s","E",F,"ne","F"]);
+  Letter([G,"s","G",H,"w","H",J,"e","J"]);
+);
+dispfig1a():=(
+  Listplot("1b1",[D,B,E,D],["Color=apricot"]);
+  Listplot("1b2",[F,G,C,F],["Color=green"]);
+  Listplot("1b3",[A,H,J,A],["Color=blue"]);
+  Circledata("1a",[I1,s1*r],["Color=apricot"]);
+  Circledata("2a",[I2,s2*r],["Color=green"]);
+  Circledata("3a",[I3,s3*r],["Color=blue"]);
+);
+
+Execstep1():=(
+  Setmnrstep(1);
+  mkcmd1();
+  CalcbyMset(var1,"mxans1",cmdL1,op(5));
+  Disptex1();
+  s1=0.7; s2=0.6; s3=0.8;r=2;
+  Parsevv(var1);
+  dispfig1();
+  dispfig1a();
+  Pos=SW.xy+[1,-0.5]; op=["Color=blue","Size=1.5"];
+);
+
+mkcmd2():=(
+ cmdL2=concat(cmdL1,[
+ "rearr(eq,t):=block(
+    [out,temp],
+    temp:expand(eq),
+    out:0,
+    for j from 4 thru 0 step -1 do
+      out:out+factor(coeff(temp,t,j))*t^j,
+    return(out)
+  )",
+ "eq1:lenSeg2(I1,I2)-(s1*r+s2*r)^2",
+ "eq2:lenSeg2(I1,I3)-(s1*r+s3*r)^2",
+ "eq3:lenSeg2(I2,I3)-(s2*r+s3*r)^2",
+ "eq1:numerf(eq1)/r^2",
+ "eq2:numerf(eq2)/r^2",
+ "eq3:numerf(eq3)/r^2",
+ "eq1s1:rearr(eq1,s1)",
+ "eq1s2:rearr(eq1,s2)",
+ "eq2s1:rearr(eq2,s1)",
+ "eq2s3:rearr(eq2,s3)",
+ "eq3s2:rearr(eq3,s2)",
+ "eq3s3:rearr(eq3,s3)",
+ "end"
+ ]);
+);
+var2="eq1::eq2::eq3::eq1s1::eq1s2::eq2s1::eq2s3::eq3s2::eq3s3";
+
+Disptex2():=(
+   Dispcom([-0.1,0],1,"C1,C2,C3が接する条件(方程式)を変形");
+//   Pos_1=Pos_1+0.5;
+   Disptex(Pos,Dy*1,var2);
+);
+
+Execstep2():=(
+  Setmnrstep(2);
+  mkcmd1();mkcmd2();
+  v=var1+"::"+var2;
+  CalcbyMset(v,"mxans2",cmdL2,op(5));
+  Disptex2();
+  s1=0.7; s2=0.6; s3=0.8;r=2;
+  Parsevv(var1);
+  dispfig1();
+);
+
+mkcmd3():=(
+ cmdL3=concat(cmdL2,[
+ "ratvars(s1)",
+ "out1:reduceD([eq2s3,eq3s3],s3,10)",
+ "out:out1[2]",
+ "temp1:rearr(out,s2)",
+ "out2:reduceD([eq1s2,temp1],s2,10)",
+ "out:out2[2]",
+ "eqs1:factor(out)",
+ "len:length(eqs1)",
+ "eqs1a:nthfactor(eqs1,len-1)",
+ "eqs1a:rearr(eqs1a,s1)",
+ "eqs1b:nthfactor(eqs1,len)",
+ "eqs1b:rearr(eqs1b,s1)",
+ "sol1a:solve(eqs1a,s1)",
+ "lena:length(sol1a)",
+ "sol1b:solve(eqs1b,s1)",
+ "lenb:length(sol1b)",
+ "end"
+ ]);
+);
+var3="eqs1::len::eqs1a::eqs1b::sol1a::sol1b::lena::lenb";
+
+Disptex3():=(
+  Dispcom([-0.1,0],1,"t2,t3を消去してt1の方程式を作る");
+  Disptex(Pos,Dy*0.8,"eqs1",["Size=1"]);
+  Dispcom([-0.1,0],1,"最後から2番目の式と最後の式をとる");
+  Disptex(Pos,Dy*0.8,"len",["Size=1"]);
+  Disptex(Pos,Dy*1.5,"eqs1a",["Size=1"]);
+  Disptex(Pos,Dy*1.5,"eqs1b",["Size=1"]);
+  Dispcom([-0.1,0],1.5,"2つの方程式の解を求める");
+  Disptex(Pos,Dy*1.5,"sol1a::sol1b",["Size=1"]);
+);
+
+Execstep3():=(
+  Setmnrstep(3);
+  mkcmd1();mkcmd2();mkcmd3();
+  v=var1+"::"+var2+"::"+var3;
+  CalcbyMset(v,"mxans3",cmdL3,op(5));
+  //1.48 sec
+  v=var3;
+  Disptex3();
+  tmp1=Mxfactor(eqs1,2);
+  tmp2=Mxfactor(eqs1,3);
+  s1=0.7; s2=0.6; s3=0.8;
+  Parsevv(var1);
+);
+
+mkcmd4():=(
+ cmdL4=concat(cmdL2,[
+  "out1:reduceD([eq2s3,eq3s3],s3,20)",
+  "temp1:rearr(out1[2],s2)",
+  "out2:reduceD([eq1s2,temp1],s2,10)",
+  "eqs1:factor(out2[2])",
+  "eqs1q:frev(eqs1,[m=2*M/(1-M^2),n=2*N/(1-N^2)])",
+  "eqs1q:numerf(eqs1q)",
+  "sols1q:solve(eqs1q,s1)",
+  "lens1:length(sols1q)",
+  "s1a1:frev(s1,sols1q[1])",
+  "s1a2:frev(s1,sols1q[2])",
+  "s1a3:frev(s1,sols1q[3])",
+  "s1a4:frev(s1,sols1q[4])",
+  "s1a5:frev(s1,sols1q[5])",
+  "s1a6:frev(s1,sols1q[6])",
+  "s1a7:frev(s1,sols1q[7])",
+  "s1a8:frev(s1,sols1q[8])",
+  "end"
+ ]);
+);
+var4="eqs1q::sols1q::lens1::s1a1::s1a2::s1a3::s1a4";
+var4=var4+"::s1a5::s1a6::s1a7::s1a8";
+
+Disptex4():=(
+  Dispcom([-0.1,0],1,"方程式に4分角を代入して解く");
+  Disptex(Pos,Dy,"eqs1q::sols1q::lens1",["Size=1"]);
+  Dispcom([-0.1,0],1,"8個の解が有理式で求められる");
+  tmp="s1a1::s1a2::s1a3::s1a4::s1a5::s1a6::s1a7::s1a8";
+  Disptex(Pos,Dy,tmp,["Size=1"]);
+);
+
+Execstep4():=(
+  Setmnrstep(4);
+  mkcmd1();mkcmd2();mkcmd4();
+  v=var1+"::"+var2+"::"+var4;
+  CalcbyMset(v,"mxans4",cmdL4,op(20));
+ //3.75 sec
+  Disptex4();
+  tmp2=Mxfactor(eqs1q,3);
+  s1=0.7; s2=0.6; s3=0.8;
+//  Parsevv(var1);
+//  dispfig1();
+);
+
+mkcmd5():=(
+ cmdL5=concat(cmdL2,[
+   "s1:"+s1a1,
+   "rMN:[m=2*M/(1-M^2),n=2*N/(1-N^2)]",
+   "eq1q:frev(eq1,rMN)",
+   "eq1q:numerf(eq1q)",  
+   "sols2:solve(eq1q,s2)",
+   "s2:frev(s2,sols2[2])",  
+   "eq2q:frev(eq2,rMN)",
+   "eq2q:numerf(eq2q)",
+   "sols3:solve(eq2q,s3)",
+   "s3:frev(s3,sols3[2])",
+   "rMN:[m=2*M/(1-M^2),n=2*N/(1-N^2)]",
+   "I1:frev(I1,rMN)",
+   "I2:frev(I2,rMN)",
+   "I3:frev(I3,rMN)",
+   "end"
+ ]);
+);
+var5="I1::I2::I3::sols2::sols3::s1::s2::s3";
+
+Disptex5():=(
+  Dispcom([-0.1,0],1,"s1a1からI1,I2,I3,s2,s3を求める");
+  Disptex(Pos,Dy,"I1::I2::I3::sols2::sols3",["Size=1"]);
+  Disptex(Pos,Dy,"s1::s2::s3",["Size=1"]);
+);
+
+Execstep5():=(
+  Setmnrstep(5);
+  mkcmd1();mkcmd2();mkcmd4();
+  v=var1+"::"+var2+"::"+var4;
+  CalcbyMset(v,"mxans4",cmdL4,op(5));
+//  Disptex(Pos,Dy*1,var4,["Size=1"]);
+  mkcmd5();
+  CalcbyMset(var5,"mxans5",cmdL5,op(10));
+  Disptex5();
+);
+
+mkcmd6():=(
+ cmdL6=concat(cmdL4,[
+ "finds1s2s3(s1org):=block(
+      s2:'s2, s3:'s3,
+      s1:s1org,
+      rMN:[m=2*M/(1-M^2),n=2*N/(1-N^2)],
+      eq1q:frev(eq1,rMN),
+      eq1q:numerf(eq1q),
+      sols2:solve(eq1q, 's2),
+      s2: if length(sols2)>0 then frev('s2,last(sols2)) else 0,
+      eq2q:frev(eq2,rMN),
+      eq2q:numerf(eq2q),
+      sols3:solve(eq2q, 's3),
+      s3: if length(sols3)>0 then frev('s3,last(sols3)) else 0
+    )",
+   "finds1s2s3(s1a1);sL1:[s1,s2,s3]",
+   "finds1s2s3(s1a2);sL2:[s1,s2,s3]",
+   "finds1s2s3(s1a3);sL3:[s1,s2,s3]",
+   "finds1s2s3(s1a4);sL4:[s1,s2,s3]",
+   "finds1s2s3(s1a5);sL5:[s1,s2,s3]",
+   "finds1s2s3(s1a6);sL6:[s1,s2,s3]",
+   "finds1s2s3(s1a7);sL7:[s1,s2,s3]",
+   "finds1s2s3(s1a8);sL8:[s1,s2,s3]",
+   "end1"
+ ]);
+);
+var6="sL1::sL2::sL3::sL4::sL5::sL6::sL7::sL8";
+//var6=var6+"::vals1a5::vals1a6::vals1a7::vals1a8";
+
+Disptex6():=(
+  Dispcom([-0.1,0],1,"8個のs1から[s1,s2,s3]を作る");
+  Disptex(Pos,Dy,var6,["Size=1"]);
+);
+
+Execstep6():=(
+  Setmnrstep(6);
+  mkcmd1();mkcmd2();mkcmd4();
+  mkcmd5();
+  CalcbyMset(var5,"mxans5",cmdL5,opr(10));
+  mkcmd6();
+  CalcbyMset(var6,"mxans6",cmdL6,op(10));  
+  Disptex6();
+);
+
+mkcmd7():=(
+  cmdL7=concat(cmdL6,[
+ 
+  ]);
+);
+var7="sL1::sL2::sL3::sL4::sL5::sL6::sL7::sL8";
+
+Disptex7():=(
+  Dispcom([-0.1,0],1,"8個のsLに値を入れる");
+  Disptex(Pos,Dy,var7,["Size=1"]);
+  Dispcom([-0.1,0],1,"s1<1,s2<1,s3<1を満たすのは8しかない");
+  Dispcom([-0.1,0],1,"sL8が真の解である");
+);
+
+Execstep7():=(
+  Setmnrstep(7);
+  mkcmd1();mkcmd2();mkcmd4();mkcmd5();mkcmd6();
+  CalcbyMset(var6,"mxans6",cmdL6,op(5));  
+  Disptex7();
+  I=[0,0]; r=2;
+  svL=ParseL([sL1,sL2,sL3,sL4,sL4,sL6,sL7,sL8]);
+  caL="";
+  forall(1..8,
+    tmp=svL_#;
+    if((tmp_1<1)&(tmp_2<1)&(tmp_3<1),
+      caL=caL+#;
+    );
+  );
+//  tmp1=["Color=red","Size=1.5"];
+//  Letter([NE.x+1,SW.y+0.5],"e",caL,tmp1);
+);
+
+Disptex8():=(
+  Dispcom([-0.1,0],1,"sL8,s1,s2,s3は以下の通り");
+  tmp=substring(sL8,1,length(sL8)-1);
+  tmp1=Strsplit(tmp,",");
+  s1=tmp1_1; s2=tmp1_2; s3=tmp1_3;
+  Disptex(Pos,Dy,"sL8::s1::s2::s3");
+);
+
+Dispfig8():=(
+  I=[0,0]; r=2;
+  Parsevv("s1::s2::s3");
+  Parsevv("A::B::C::I1::I2::I3");
+  Listplot("1",[A,B,C,A]);
+  Circledata("0",[I,r]);
+  Circledata("1",[I1,s1*r],["Color=red"]);
+  Circledata("2",[I2,s2*r],["Color=red"]);
+  Circledata("3",[I3,s3*r],["Color=red"]);
+  Letter([A,"n","A",B,"w","B",C,"e","C"]);
+  Letter([I1,"c","$I_1$",I2,"c","$I_2$",I3,"c","$I_3$"]);
+  Letter([I,"c","$I$"]);
+);
+
+Execstep8():=(
+  Setmnrstep(8);
+  mkcmd1();mkcmd2();mkcmd4();mkcmd5();mkcmd6();
+  CalcbyMset(var1,"mxans1",cmdL1,op(5));
+  CalcbyMset(var6,"mxans6",cmdL6,op(5));  
+  Disptex8();
+  Dispfig8();
+);
+
+mkcmd9():=(
+ cmdL9=concat(Mxbatch("mnr"),[
+ "r1:r*((N+1)*(M*N-1))/((M+1)*(M*N-N-M-1))",
+ "r2:r*((M+1)*(M*N-1))/((N+1)*(M*N-N-M-1))",
+ "r3:r*((M+1)*(N+1)*(M*N-N-M-1))/(4*(M*N-1))",
+ "eq1:t23^2-r2*r3",
+ "eq2:t13^2-r1*r3",
+ "sol1:solve(eq1,t23)",
+ "sol2:solve(eq2,t13)",
+ "sol1:sol1[2]; sol2:sol2[2]",
+ "eq3:frev(t2*t3-t23,[sol1])",
+ "eq4:frev(t1*t3-t13,sol2)",
+ "sol3:solve([eq3,eq4],[M,N])",
+ "temp:frev(r1,sol3)",
+ "eq5:numerf(t1^2-temp)",
+ "sol5:solve(eq5,r)",
+ "sol:sol5[2]",
+ "r:frev(r,sol)",
+ "end"
+ ]);
+);
+var9="r1::r2::r3::sol3::eq5::sol5::sol::r";
+
+Disptex9():=(
+  Dispcom([-0.1,0],1,"和算家の解答を導く");
+  Disptex(Pos,Dy,"r1::r2::r3");
+  Dispcom([-0.1,0],1,"置き換え$t_1=\sqrt{s_1},t_2=\sqrt{s_2},t_1=\sqrt{s_3},$");
+  Disptex(Pos,Dy*1.2,"sol3::eq5::sol5::sol::r");
+);
+
+Dispfig9():=(
+  I=[0,0]; r=2;
+  Parsevv("s1::s2::s3");
+  Parsevv("A::B::C::I1::I2::I3");
+  Listplot("1",[A,B,C,A]);
+  Circledata("0",[I,r]);
+  Circledata("1",[I1,s1*r],["Color=red"]);
+  Circledata("2",[I2,s2*r],["Color=red"]);
+  Circledata("3",[I3,s3*r],["Color=red"]);
+);
+
+Execstep9():=(
+  Setmnrstep(9);
+  mkcmd1();mkcmd2();mkcmd4();mkcmd5();mkcmd6();
+  CalcbyMset(var1,"mxans1",cmdL1,op(5));
+//  Disptex(Pos,Dy*0.9,"A::B::C::I1::I2::I3");
+  CalcbyMset(var6,"mxans6",cmdL6,op(5));  
+  tmp=substring(sL8,1,length(sL8)-1);
+  tmp1=Strsplit(tmp,",");
+  s1=tmp1_1; s2=tmp1_2; s3=tmp1_3;
+  mkcmd9();
+  CalcbyMset(var9,"mxans9",cmdL9,op(5));
+  Disptex9();
+  tmp=substring(sL8,1,length(sL8)-1);
+  tmp1=Strsplit(tmp,",");
+  s1=tmp1_1; s2=tmp1_2; s3=tmp1_3;
+  dispfig9();
+);
+

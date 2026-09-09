@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeTCindy Home</title>
+    
+    <script src="offline25/ketcindyjs/jquery.min.js"></script>  
+    <link rel="stylesheet" href="offline24/ketcindyjs/katex/katex11.min.css" />  
+    <script src="offline25/ketcindyjs/fkatex/katex11.min.js"></script>  
+    <script src="offline25/ketcindyjs/auto-render11.min.js"></script>  
+    <script>$(document).ready(function(){renderMathInElement(document.body,{delimiters: [{left: "[[", right: "]]", display: true},{left: "$", right: "$", display: false}]})});</script>
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            color: #2c3e50;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            color: #0056b3;
+        }
+        h3 {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #444;
+        }
+        .header-sub {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .lang-link {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .date {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+        .alert {
+            color: #d9534f;
+            font-weight: bold;
+            background-color: #fdf7f7;
+            padding: 5px 10px;
+            border-left: 4px solid #d9534f;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .info-blue {
+            color: #31708f;
+            font-weight: bold;
+        }
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lang-link">
+        <a href="indexe.html">English</a>
+    </div>
+
+    <header>
+        <img src="header_illusts.png" alt="KeTCindy Illustration" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        
+        <h1>KeTCindy Home</h1>
+        <div class="header-sub">KeTCindy Center</div>
+        <div class="header-sub">2026-09-10</div>
+    </header>
+
+    <section>
+        <h2>最新ニュース</h2>
+        <ul>
+            <li>
+                <span class="date">2026-08-19</span> <strong>KeTCindy が更新されました (version 4.5.56)</strong>
+                <ul>
+                    <li>ketslideがlualatex対応になりました。</li>
+                    <li><a href="installketcindy.html">KeTCindyのインストール</a>を参考にしてください。</li>
+                    <li><strong>必須環境:</strong> TeX (KeTTeX, TeXLive) と <a href="https://cran.r-project.org">R</a></li>
+                    <li>
+                        <strong>Windowsの場合:</strong> <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer">Sumatra PDF</a>も必要です。
+                        <br><span class="alert">重要: インストーラ実行時に「すべてのユーザに対してインストール」を選択してください。</span>
+                        (インストール先が <code>C:\Program Files\SumatraPDF</code> になります)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="date">2026-06-12</span> <strong>Cinderella が更新されました (build2136)</strong>
+                <ul>
+                    <li><a href="installcindy.html">Cinderellaのインストール</a>を参考にしてください。</li>
+                    <li>検索時は <a href="https://beta.cinderella.de">beta cinderella</a> としてください。</li>
+                </ul>
+            </li>
+            <li>
+                <span class="date">2026-05-19</span> <strong>KeTTeX が TeXLive20260313 に更新されました</strong>
+                <ul>
+                    <li>「kettex」または「kettex release」で検索可能です。</li>
+                    <li><a href="installkettex.html">KeTTeXのインストール</a> / <a href="installeditor.html">エディタ設定(TeXWorks等)</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Windows用 一括インストーラ (沼津高専 学生作成)</strong>
+                <ul>
+                    <li>Cinderella, R, Sumatra, KeTTeX, KeTCindy が一括でインストールされます。</li>
+                    <li>v1.9に更新されました。</li>
+                    <li><a href="https://github.com/nikachu2012/ketcindy-auto-installer-gui/releases/tag/v1.9">Github</a> から <code>ketcindy-installer.ps1</code> をダウンロードし、管理者権限のPowerShellで実行してください。</li>
+                    <li><span class="alert">注意: Windowsを更新しないと動作しない場合があります。</span></li>
+                    <li><span class="info-blue">不完全なKeTTeXが残っている場合は削除してから実行してください。</span></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>KeTCindyとは</h2>
+        <p>Cinderellaのライブラリで、TeXの図を簡単に作成できます。</p>
+        <ul>
+            <li><strong>機能:</strong>
+                <ul>
+                    <li>KeTCindyJSで対話的なHTMLを簡単に作成可能</li>
+                    <li>Maximaやgccとの連携 (<a href="installmaxgcc.html">インストール方法</a>)</li>
+                    <li>数学プリント作成マクロ emath の組み込み (KeTTeX2025には組込済)</li>
+                    <li>PC/OS関連の豆知識: <a href="indexmisc.html">その他の操作</a></li>
+                </ul>
+            </li>
+            <li><strong>解説・リファレンス:</strong>
+                <ul>
+                    <li><a href="offline24/KeTCindyReferenceJ.pdf">KeTCindyリファレンス (PDF)</a> - コマンド説明</li>
+                    <li><a href="https://s-takato.github.io/ketcindysample/">KeTCindy Samples</a> - 様々なサンプル</li>
+                    <li><a href="https://sites.google.com/site/cinderellajapan/">CinderellaJapan</a> - 詳しい解説</li>
+                </ul>
+            </li>
+            <li><strong>動画解説:</strong> YouTube <a href="https://www.youtube.com/results?search_query=ketcindy">ketcindyチャンネル</a>
+                <ul>
+                    <li>インストール関連 (Cinderella, kettex, R+Sumatra, KeTCindy)</li>
+                    <li>TeXWorksの設定</li>
+                    <li>KeTCindyJS 基本編/実践編</li>
+                    <li>KeTTask, KeTMath の説明</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>KeTCindyJSによる教材例</h2>
+        <ol>
+            <li><a href="offline24/sine5jsoffL.html">y=sin xのグラフ</a></li>    
+            <li><a href="offline24/derivativev11jsoffL.html">導関数の意味</a></li>
+            <li><a href="offline24/polarcoordv12jsoffL.html">極方程式</a></li> 
+            <li><a href="offline24/drawgraphv6.html">関数のグラフ</a></li>    
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/offline/quadraturev10jsoffL.html">区分求積法</a></li> 
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/31statistics/indexj.html">統計(確率分布関数)</a></li> 
+            <li><a href="https://s-takato.github.io/specialclass/sudoku/solvesudokuv6jsoffL_ja_purple_key.html">数独ソルバー</a></li>
+<!--           <li><a href="https://s-takato.github.io/specialclass/sudoku/solvesudokuv6jsoffL_ja.html">数独ソルバー(by step)</a></li>-->
+            <li><a href="https://s-takato.github.io/specialclass/sudoku/readme_ja_Latest.html">数独ソルバーmanual</a></li>
+        </ol>
+
+        <h3>KeTCindy(JS)と和算の幾何</h3>
+        <ol>
+            <li><a href="https://s-takato.github.io/specialclass/wasan/offline/malfattivdgv3jsoffL.html">Malfattiの円(JS)</a></li> 
+            <li><a href="https://s-takato.github.io/specialclass/wasan/offline/jpn2outdgjsoffL.html">日本の幾何II(JS)</a> 
+                (関連論文: <a href="https://s-takato.github.io/specialclass/wasan/Japanth2/rims25Edv2.pdf" download>日本の定理IIの2解法</a>)
+            </li> 
+        </ol>
+    </section>
+
+    <section>
+        <h2>KeTMath と KeTLTS (KeTLMS)</h2>
+        <ul>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/ketmathv.html">KeTMath</a>: 1次元簡易数式を2次元数式で表示するWebアプリ</li>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/ketmathmax.html">KeTMathMax</a>: Maxima数式でも表示するWebアプリ</li>
+            <li><a href="https://s-takato.github.io/ketmath/misc/ketindex/indexketlms.html">KeTLTSオンライン型授業システムの使い方</a></li>
+            <li><a href="https://github.com/s-takato/ketmath">KeTLTS ダウンロード (GitHub)</a></li>
+        </ul>
+        <h3>サンプル</h3>
+        <ol>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/samples/kettaskv2307-1im.html">pngの読み込み</a></li>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/samples/kettaskv202-6dr.html">Napier数</a></li>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/samples/kettaskv0831-1dr.html">鞍点</a></li>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/samples/kettaskv2307-3dr.html">Atwood machine</a></li>
+            <li><a href="https://s-takato.github.io/ketcindysample/edutools/01ketmath/samples/kettaskv1007-1d">斜方投げ上げ</a></li>
+            <li><a href="offline25/kettaskv001-1id.html">日本の定理II</a></li>
+            <li><a href="offline25/kettaskveto2.html">干支速算</a></li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Archives & Papers</h2>
+        <h3>Archives</h3>
+        <ul>
+            <li><strong>2024-03-23 Josai Seminar:</strong> <a href="archives/josai240323/jpnth1proof.cdy">日本の定理Iの証明</a>, <a href="archives/josai240323/MNRJapan1memo.pdf">Step3メモ(北原)</a>, <a href="archives/josai240323/presen0323digest.pdf">スライド</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/atcm2024/presen241208digest.pdf">ATCM2024</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/rims2412/indexj.html">RIMS24 Computer Algebra</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/shibaura25/presen250125v3digest2.pdf" download>Shibaura0125digest</a> (<a href="https://s-takato.github.io/specialclass/shibaura25/presen250125v3.pdf" download>Full version</a>)</li>
+            <li><a href="https://s-takato.github.io/specialclass/josaiWS250301/presen250301digest.pdf" download>Josai seminar 250301digest</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/miyake250705/miyake250705digest.pdf" download>Miyake seminar 250705digest</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/25jssac0826/presenjssac2508luadigest.pdf" download>JSSACE250826digest</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/josaiWS260228/presenjosai2602lua.pdf" download>presenjosai2602lua</a></li>
+            <li><a href="https://s-takato.github.io/specialclass/rims26/presenrims26hist.pdf" target="_blank" rel="noopener noreferrer">presenrims26hist (PDF)</a>
+    <ul>
+        <li><a href="https://s-takato.github.io/specialclass/rims26/malfattimnr.zip" download>malfattimnr.zip</a></li>
+    </ul>
+</li>
+</ul>
+
+        <h3>最近の発表論文</h3>
+        <ul>
+            <li><a href="https://math.unm.edu/~aca/ACA/2025/Education/Takato.pdf">ACA2025 SS1: Two Methods for Proving 'Japanese Theorem II'...</a></li>
+            <li><a href="https://math.unm.edu/~aca/ACA/2025/Education/Takato.pdf">ACA2025 SS5: An attempt to create teaching materials for the Brachistochrone curve...</a></li>
+            <li><a href="papers/rims2024v3.pdf">RIMS講究録: MaximaとKeTCindyによる和算問題の解法と教材化</a></li>
+            <li><a href="papers/josai_takato.pdf">城西大学数学科数学教育紀要第8巻: Maximaによる和算の図形問題の解法と授業方法についての提案</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>メーリングリスト & リンク</h2>
+        <p><strong>メーリングリスト:</strong> <code>ketcindyml (at) googlegroups.com</code><br>
+        (参加希望は <code>ketcindyml+managers (at) googlegroups.com</code> まで)</p>
+        
+        <h3>リンクリスト</h3>
+        <ul>
+            <li><a href="https://www.tug.org/texlive/">TeXLive</a></li>
+            <li><a href="https://cindyjs.org">CindyJS</a></li>
+            <li><a href="https://sites.google.com/site/cinderellajapan/Home">cinderellajapan</a></li>
+            <li><a href="https://maeda21.github.io/dnt2023/">Maeda Math Works</a></li>
+            <li><a href="https://ctakaha77.blogspot.com/">CivilのKeTCindy教室</a></li>
+            <li><a href="https://kubo-yuge.github.io">Kubo KeTCindy</a></li>
+        </ul>
+    </section>
+
+</body>
+</html>

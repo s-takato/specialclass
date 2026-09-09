@@ -1,0 +1,175 @@
+ops(sz):=(
+ ["Size="+sz];
+);
+
+opsb=append(ops(1.5),"Color=blue");
+opsf=ops(1);
+Dispcom(dpos,dy,str):=(
+  Letter(Pos+dpos,"e",str,opsb);
+  Pos_2=Pos_2-dy;
+);
+
+Assignvalue():=(
+  r=0.8; m=mv; n=nv;
+  r1=(m+n)*r/(1-m*n); r2=r/m; r3=r/n;
+  s1=sqrt(r1); s2=sqrt(r2); s3=sqrt(r3);
+  s=sqrt(r1+r2+r3);
+);
+
+
+//step 1
+mkcmd1():=(
+ cmdL1=concat(Mxbatch("mnr"),[
+ "putT(m,n,r)",
+ "A:vtxT; B:vtxL; C:vtxR; I:inC",
+ "AB:edgL; BC:edgB; AC:edgR",
+ "eq1:numerf(r1+r2-AB); eq2:numerf(r2+r3-BC); eq3:numerf(r3+r1-AC)",
+ "sol:algsys([eq1,eq2,eq3],[r1,r2,r3])",
+ "r1:frev(r1,sol);r2:frev(r2,sol);r3:frev(r3,sol)",
+ "make",
+ "end"
+ ]);
+);
+var1="A::B::C::eq1::eq2::eq3::sol::r1::r2::r3";
+
+Disptex1():=(
+ Dispcom([-0.1,0],1,"ABCをおく");
+ Disptex(Pos,Dy*0.9,"A::B::C",opsf);
+println([40,Pos]);
+ Dispcom([-0.1,0],1,"3円が接する連立方程式");
+ Disptex(Pos,Dy*0.9,"eq1::eq2::eq3",opsf);
+ Dispcom([-0.1,0],1,"連立方程式の解");
+ Disptex(Pos,Dy*0.9,"sol",opsf);
+ Dispcom([-0.1,0],1,"3円の半径");
+ Disptex(Pos,Dy*0.9,"r1::r2::r3",opsf);
+);
+Dispfig1():=(
+  Assignvalue();
+  Parsevv("A::B::C");
+  Listplot("1",[A,B,C,A],["dr"]);
+  Circledata("1a",[A,r1]);Circledata("1b",[B,r2]);
+  Circledata("1c",[C,r3]);
+  Letter([A,"ne","A",B,"nw","B",C,"ne","C"]);
+);
+
+Execstep1():=(
+  Setmnrstep(1);
+  mkcmd1();
+  CalcbyMset(var1,"mxans1",cmdL1,op(25));
+  Disptex1();
+  Dispfig1();
+);
+
+//step 2
+mkcmd2():=(
+ cmdL2=concat(cmdL1,[
+ "cT12:comTan2(A,r1,B,r2)",
+ "P1:cT12[1]; Q1:cT12[2]",
+ "cT23:comTan2(B,r2,C,r3)",
+ "P2:cT23[1]; Q2:cT23[2]",
+ "cT31:comTan1(C,r3,A,r1)",
+ "P3:cT31[1]; Q3:cT31[2]",
+ "D:meetLine([P1,Q1],[P2,Q2]); D:radcan(D)",
+ "E:meetLine([P2,Q2],[P3,Q3]); E:radcan(E)",
+ "F:meetLine([P3,Q3],[P1,Q1]); F:radcan(F)",
+ "iC:meetLine([F,A],[E,C]); iC:radcan(iC)",
+ "iR:r2*(iC[1]-D[1])/(B[1]-D[1]); iR:radcan(iR)",
+ "end"
+ ]);
+);
+var2="P1::Q1::P2::Q2::P3::Q3::D::E::F::iC::iR";
+
+Dispfig2():=(
+  Assignvalue();
+  Parsevv("A::B::C");
+  Parsevv(var2);
+  Dispfig1();
+//  Lineplot("1",[P1,Q1]);
+//  Lineplot("2",[P2,Q2]);
+//  Lineplot("3",[P3,Q3]);
+  Letter([A,"ne","A",B,"nw","B",C,"ne","C"]);
+  Listplot("2",[D,E,F,D]);
+  Letter([D,"w","D",E,"e","E",F,"n","F"]);
+  Circledata("2",[iC,iR],["Color=blue"]);
+);
+
+Disptex2():=(
+  Dispcom([-0.1,0],1,"共通外接線P1Q1,P2Q2,P3Q3");
+  Disptex(Pos,Dy*0.9,"P1::Q1::P2::Q2::P3::Q3",opsf);
+  Dispcom([-0.1,0],1,Dy,"共通外接線の交点");
+  Disptex(Pos,Dy*1.2,"D::E::F",opsf);
+  Dispcom([-0.1,0],1,"DEFの内接円の中心と半径");
+  Disptex(Pos,Dy*1.2,"iC::iR",opsf);
+);
+
+Execstep2():=(
+  Setmnrstep(2);
+  mkcmd2();
+  CalcbyMset(var2,"mxans2",cmdL2,op(25));
+  Disptex2();
+  Dispfig2();
+);
+
+//step3
+mkcmd3():=(
+ cmdL3=concat(Mxbatch("mnr"),[
+ "iR:"+iR,
+ "r1m:"+r1,
+ "r2m:"+r2,
+ "r3m:"+r3,
+ //"kill(r1,r2,r3)",
+ "eq1:numerf(r1m-r1)",
+ "eq2:numerf(r2m-r2)",
+ "eq3:numerf(r3m-r3)",
+ "sol:solve([eq1,eq2,eq3],[m,n,r])",
+ "len:length(sol)",
+ "sol1:sol[1]",
+ "m:frev(m,sol1); m:radcan(m)",
+ "n:frev(n,sol1); n:radcan(n)",
+ "r:frev(r,sol1); r:radcan(r)",
+ "iRr:frev(iR,sol1); iRr:radcan(iRr)",
+ "assume(t1>0,t2>0,t3>0,t>0)",
+ "iRs:frev(iRr,[r1=t1^2,r2=t2^2,r3=t3^2])",
+ "iRs:radcan(iRs)",
+ "iRs2:frev(iRs,[t3^2+t2^2+t1^2=t^2])",
+ "iRs2:frfactor(iRs2)",
+ "niR:expand(num(iRs2))",
+ "diR:expand(denom(iRs2))",
+ "c1:coeff(niR,t,1); c0:coeff(niR,t,0)",
+ "niR2:expand(niR*(-c1*t+c0))",
+ "niR2:frev(niR2,[t^2=t1^2+t2^2+t3^2])",
+ "diR2:expand(diR*(-c1*t+c0))",
+ "diR2:frev(diR2,[t^2=t1^2+t2^2+t3^2])",
+ "iR2:frfactor(niR2/diR2)",
+ "end"
+ ]);
+);
+var3="sol::m::n::r::iRr::iRs::iRs2::niR::niR2::diR2::iR2";
+
+Disptex3():=(
+  Dispcom([-0.1,0],1,"m,n,r,iRをr1,r2,r3で表す");
+  Disptex(Pos,Dy,"sol::m::n::r::iRr",opsf);
+  Dispcom([-0.1,0.1],1,"$t1=\sqrt{r1},t2=\sqrt{r2},t3=\sqrt{r3}$とおく");
+  Disptex(Pos,Dy*1,,"iRs::iRs2",ops(1));
+  Dispcom([-0.1,-0.1],1,"$t=\sqrt{t1^2+t2^2+t3^2}$とおき分子を有理化する");
+  Disptex(Pos,Dy*0.8,,"niR::niR2::diR2::iR2",ops(1));
+);
+Dispfig3():=(
+  Assignvalue();
+  Parsevv("A::B::C::r1::r2::r3::D::E::F::iC::iR");
+  Parsevv("iR2");
+  Dispfig1();
+  Dispfig2();
+);
+
+Execstep3():=(
+  Setmnrstep(3);
+  mkcmd1();
+  mkcmd2();
+  CalcbyMset(var1,"mxans1",cmdL1,op(5));
+  CalcbyMset(var2,"mxans2",cmdL2,op(5));
+  mkcmd3();
+  CalcbyMset(var3,"mxans3",cmdL3,op(25));
+  Disptex3();
+  Dispfig3();
+);
